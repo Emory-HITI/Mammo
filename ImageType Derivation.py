@@ -26,19 +26,18 @@ merged_50_2 = pd.read_csv('/data/mammo/png_BR0_samples/merged_50_2_full_anon.csv
 
 # formuating the final function to add the image types and derived laterality or position
 
-def derive_ImageTypes(test_df):
-    """test_df should be the dataframe that contains the 'ImageLaterality', 'ViewPosition', 'SeriesDescription' columns"""
+def derive_imgType(dataframe):
     # initializing empty lists:
     DeriveFlag = []  # ImageLaterality: 0 (not derived), 1 (derived), 2 (need to derive)
     ImageLateralityFinal = []  # the image laterality either copied or taken from series description
     FinalImageType = []  # final image type: 2D, 3D, cview, ROI_SSC, ROI_SS, Other (not any of the other ones)
 
-    for index, row in test_df.iterrows():  # iterating over all rows
+    for index, row in dataframe.iterrows():  # iterating over all rows
         try:
             desc = row['SeriesDescription'].split(' ')  # splitting up the series description for checking
         except:
             DeriveFlag.append(2)  # update derive flag = 0 
-            ImageLateralityFinal.append('NaN')  # update final ImageLaterality
+            ImageLateralityFinal.append(np.nan)  # update final ImageLaterality
             FinalImageType.append('other')  # update imagetype
             continue
         if row['ImageLaterality'] in ['L', 'R']:  # if lat exists, it's either 2D or cview or ROI
@@ -57,23 +56,22 @@ def derive_ImageTypes(test_df):
                 FinalImageType.append('3D')  # update imagetype
             elif 'Capture' in desc:  # if it has Secondary Capture, it's SecurView Secondary Capture ROI
                 DeriveFlag.append(2)  # update derive flag = 1
-                ImageLateralityFinal.append('NaN')  # update final ImageLaterality
+                ImageLateralityFinal.append(np.nan)  # update final ImageLaterality
                 FinalImageType.append('ROI_SSC')  # update imagetype
             elif 'Screen Save' in desc:
                 DeriveFlag.append(2)  # update derive flag = 1
-                ImageLateralityFinal.append('NaN')  # update final ImageLaterality
+                ImageLateralityFinal.append(np.nan)  # update final ImageLaterality
                 FinalImageType.append('ROI_SS')  # update imagetype
             else:
                 DeriveFlag.append(2)  # update derive flag = 1
-                ImageLateralityFinal.append('NaN')  # update final ImageLaterality
+                ImageLateralityFinal.append(np.nan)  # update final ImageLaterality
                 FinalImageType.append('other')  # update imagetype
+            
+    dataframe['LateralityDeriveFlag'] = DeriveFlag
+    dataframe['ImageLateralityFinal'] = ImageLateralityFinal
+    dataframe['FinalImageType'] = FinalImageType
     
-    # adding the new, extracted columns
-    test_df['DeriveFlag'] = DeriveFlag
-    test_df['ImageLateralityFinal'] = ImageLateralityFinal
-    test_df['FinalImageType'] = FinalImageType
-    
-    return test_df
+    return dataframe
 
 
 # In[5]:
