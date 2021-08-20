@@ -173,3 +173,13 @@ def load_simple_df(df_path, df_type=None):
         df = pd.read_csv(df_path, low_memory=False)
         df = df[['SeriesDescription', 'ImageLaterality', '0_ViewCodeSequence_0_ViewModifierCodeSequence_CodeMeaning', 'png_path']]
     return df
+
+def replace_old_png_path(csv_path):
+    """
+    drops the old png_path column with '/opt/ssd-data/' and renames the 'correct_png_path' column to 'png_path'
+    """
+    cohort = pd.read_csv(csv_path)
+    cohort.drop(columns=['png_path'], inplace=True)
+    cohort.rename(columns={'corrected_png_path': 'png_path'}, inplace=True)
+    cohort.to_csv(csv_path)
+    print('dropped old png_path, renamed correct_png_path to png_path')
