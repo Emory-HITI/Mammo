@@ -156,11 +156,11 @@ def match_roi(main_df, roi_df):
     *need to update this to also merge the screen save rois
     """
     # gets the string path of the matching mammo
-    roi_df['Matching_Mammo'] = roi_df['Matching_Mammo'].apply(lambda x: eval(x)[0] if eval(x) else  "" )
+    roi_df['matching_path'] = roi_df['matching_path'].apply(lambda x: eval(x)[0] if eval(x) else  "" )
     mammo_roi = []
     # going through all the main df and checking for ROI df if ROI exists
     for i in range(len(main_df)):
-        roi = roi_df['ROI_coord'][roi_df['Matching_Mammo'] == main_df['png_path'].iloc[i]]
+        roi = roi_df['ROI_coord'][roi_df['matching_path'] == main_df['png_path'].iloc[i]]
         if roi.empty:
             mammo_roi.append([])
         else:
@@ -204,7 +204,6 @@ def replace_old_png_path(df, verbose=False):
     df.rename(columns={'corrected_png_path': 'png_path'}, inplace=True)
     if verbose:
         print('dropped old png_path, renamed correct_png_path to png_path')
-    return df
     
 def make_screensave_dict(df):
     """

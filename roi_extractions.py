@@ -457,7 +457,7 @@ class ROI_extraction():
             print(extracted_mam_coord)
             print(matching_mammo)
 
-        return ss_coord, roi_path, extracted_mam_coord, matching_mammo
+        return [ss_coord], [roi_path], extracted_mam_coord, matching_mammo
     
     def run_extractions(self, ss_dict, save_path=None, verbose=False):
         # test on cohort_1 to check memory
