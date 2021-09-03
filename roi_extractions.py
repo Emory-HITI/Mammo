@@ -343,20 +343,30 @@ class ROI_extraction():
 
         return best_sim, best_match, best_img, best_roi, final_flip, scale_factor
 
-    def extrapolate_coords(self, roi_path, coords, flip_flag, scale_factor):
+    def extrapolate_coords(self, roi_path, coords, flip_flag, scale_factor, verbose=False):
         """
         returns the screensave and mammogram coordinates based on the image, flip flag, and scale factor
         """
         # read roi image
+        if verbose:
+            print('reading {} images'.format(roi_path))
         roi_sitk = sitk.ReadImage(roi_path)
+        if verbose:
+            print('making array from image')
         roi_np = sitk.GetArrayFromImage(roi_sitk)
         # if flip_flag = 1, flip the roi image
+        if verbose:
+            print('flipping the image')
         if flip_flag == 1:
             roi_np = np.flip(roi_np, axis=1)
             roi_width = roi_np.shape[1]
             coords = [coords[0], roi_width - coords[3], coords[2], roi_width - coords[1]]
         # scaling up the roi_coordinates to the mammogram image
+        if verbose:
+            print('scaling up the coordinates')
         mam_coord = [int(np.round(i*scale_factor)) for i in coords]
+        if verbose:
+            print(mam_coord)
 
         return coords, mam_coord
     
@@ -428,20 +438,67 @@ class ROI_extraction():
         if verbose:
             print(datetime.datetime.now() - start_time)
             print('extrapolating and scaling up SSC coordinates to Mammograms...')
+            print(coords, classes)
         # ROI coordinates:
-        extracted_coord = []
+        extracted_mam_coord = []
         matching_mammo = []
         # going through all detected ROIs
         for i in range(len(classes)):
             # if the detection is an ROI
             if classes[i] == 'ROI':
                 # extract and save the ROI visualization
-                ss_coord, mam_coord = self.extrapolate_coords(roi_path, coords[i], flip_flag, scale_factor)
+                ss_coord, mam_coord = self.extrapolate_coords(roi_path, coords[i], flip_flag, scale_factor, verbose=verbose)
                 # add to list of coordinates
                 extracted_mam_coord.append(mam_coord)
                 matching_mammo.append(match_path)
+        if verbose:
+            print(ss_coord)
+            print(roi_path)
+            print(extracted_mam_coord)
+            print(matching_mammo)
 
-        plt.close()
-        plt.clf()
+        return ss_coord, roi_path, extracted_mam_coord, matching_mammo
+    
+    def run_extractions(self, ss_dict, save_path=None, verbose=False):
+        # test on cohort_1 to check memory
+        ROI_coords_ssc = []
+        ROI_coords_mammo = []
+        ROI_matching_ssc = []
+        ROI_matching_mammo = []
 
-        return extracted_ssc_coord, roi_path, extracted_mam_coord, matching_mammo
+        compare_save_path = save_path  # necessary if output images desired
+
+        start = datetime.datetime.now()  # check start time
+
+        n = 0
+        for i in ss_dict.keys():  # HITIdf_ssc.shape[0]
+            try:
+                extracted_ssc_coord, ssc_path, extracted_mam_coord, matching_mammo = self.ROI_Extract(i, ss_dict, start_time=start, save_path=save_path, verbose=verbose)
+                if verbose:
+                    print(datetime.datetime.now() - start)  # check elapsed time
+            except:
+                if verbose:
+                    print('No ROI detected')
+                extracted_ssc_coord = []
+                extracted_mam_coord = []
+                ssc_path = []
+                matching_mammo = []
+                if verbose:
+                    print(datetime.datetime.now() - start)  # check elapsed time
+            if verbose:
+                print('Progress:{}/{}'.format(n+1, len(ss_dict.keys())))
+                print('SSC_coord: {}'.format(extracted_ssc_coord))
+                print('Mammo_coord: {}'.format(extracted_mam_coord))
+                print('SSC_path: {}'.format(ssc_path))
+                print('Mammo_path: {}'.format(matching_mammo))
+            n += 1
+            ROI_coords_ssc.append(extracted_ssc_coord)
+            ROI_coords_mammo.append(extracted_mam_coord)
+            ROI_matching_ssc.append(ssc_path)
+            ROI_matching_mammo.append(matching_mammo)
+
+        time_elapse = datetime.datetime.now() - start  # check elapsed time
+        if verbose:
+            print(time_elapse)
+        
+        return ROI_coords_ssc, ROI_coords_mammo, ROI_matching_ssc, ROI_matching_mammo
