@@ -118,7 +118,7 @@ def correct_paths_PACS_hardcode(dataframe):
     
     return dataframe
 
-def correct_paths_PACS(dataframe, root_a, root_b):
+def correct_root_paths(dataframe, root_a, root_b, verbose=False):
     """
     Futureproofing with input path correction code. Input root and output roots are given and paths corrected. 
     Path splitting (png_path to path and filename) still the same implementation.
@@ -126,6 +126,8 @@ def correct_paths_PACS(dataframe, root_a, root_b):
     Sample Usage:
     df_new = correct_paths_PACS_hardcode(df, '/opt/ssd-data/', '/mnt/PACS_NAS1/')
     """
+    if verbose:
+        print('replacing {} with {}'.format(root_a, root_b))
     correct_png_path = []
     for i in dataframe.png_path.to_list():
         path = i.strip() # remove any whitespace
@@ -150,13 +152,15 @@ def correct_paths_PACS(dataframe, root_a, root_b):
 def match_roi(main_df, roi_df):
     """
     gets the main dataframe and ROI dataframe and merges the correct ROIs to the right column on the main dataframe
+    
+    *need to update this to also merge the screen save rois
     """
     # gets the string path of the matching mammo
     roi_df['Matching_Mammo'] = roi_df['Matching_Mammo'].apply(lambda x: eval(x)[0] if eval(x) else  "" )
     mammo_roi = []
     # going through all the main df and checking for ROI df if ROI exists
     for i in range(len(main_df)):
-        roi = roi_df['ROI_coord'][roi_df['Matching_Mammo'] == main_df['corrected_png_path'].iloc[i]]
+        roi = roi_df['ROI_coord'][roi_df['Matching_Mammo'] == main_df['png_path'].iloc[i]]
         if roi.empty:
             mammo_roi.append([])
         else:
@@ -165,21 +169,60 @@ def match_roi(main_df, roi_df):
     
     return main_df
 
-def load_simple_df(df_path, df_type=None):
-    if df_type == 'ROI':
-        df = pd.read_csv(df_path, dtype='str')
+def load_simple_df(df_path, df_type=None, verbose=False):
+    """
+    loads a "simple" dataframe with just the fields necessary for ROI extraction, ROI coordinates merging or image laterality/spotmag identification
+    
+    Sample Usage:
+    df = load_simple_df('/../../example_metadata.csv') OR load_simple_df('/../../example_metadata.csv', 'ROI_extract')
+    
+    *doublecheck and finetune this code
+    """
+    if df_type == 'ROI_merge':
+        if verbose:
+            print('Extracting a simple dataframe with just [png_path, Matching_Mammo, ROI_coord] columns to merge to metadata')
+        df = pd.read_csv(df_path, dtype='str', low_memory=False)
         df = df[['png_path', 'Matching_Mammo', 'ROI_coord']]
+        df['ROI_coord'] = df['ROI_coord'].apply(lambda x: eval(x)[0] if eval(x) else [])
+    elif df_type == 'ROI_extract':
+        if verbose:
+            print('Extracting a simple dataframe with just [png_path, FinalImageType, filename, folder_path] columns to extract ROIs from')
+        df = pd.read_csv(df_path, dtype='str', low_memory=False)
+        df = df[['png_path', 'FinalImageType', 'filename', 'folder_path']]
     else:
-        df = pd.read_csv(df_path, low_memory=False)
-        df = df[['SeriesDescription', 'ImageLaterality', '0_ViewCodeSequence_0_ViewModifierCodeSequence_CodeMeaning', 'png_path']]
+        if verbose:
+            print('Extracting a simple dataframe with just [png_path, FinalImageType, filename, folder_path] columns to extract ROIs from')
+        df = pd.read_csv(df_path, dtype='str', low_memory=False)
+        df = df[['SeriesDescription', 'ImageLaterality', '0_ViewCodeSequence_0_ViewModifierCodeSequence_CodeMeaning', 'filename', 'folder_path']]
     return df
 
-def replace_old_png_path(csv_path):
+def replace_old_png_path(df, verbose=False):
     """
     drops the old png_path column with '/opt/ssd-data/' and renames the 'correct_png_path' column to 'png_path'
     """
-    cohort = pd.read_csv(csv_path)
-    cohort.drop(columns=['png_path'], inplace=True)
-    cohort.rename(columns={'corrected_png_path': 'png_path'}, inplace=True)
-    cohort.to_csv(csv_path)
-    print('dropped old png_path, renamed correct_png_path to png_path')
+    df.drop(columns=['png_path'], inplace=True)
+    df.rename(columns={'corrected_png_path': 'png_path'}, inplace=True)
+    if verbose:
+        print('dropped old png_path, renamed correct_png_path to png_path')
+    return df
+    
+def make_screensave_dict(df):
+    """
+    extracts the filenames for each screensave images and makes a dictionary of the {screensave_filename:folder}
+    """
+    ssc_dict = {}
+    df_ssc_fn = df[df.FinalImageType == 'ROI_SSC']['filename'].to_list()
+    df_ssc_path = df[df.FinalImageType == 'ROI_SSC']['folder_path'].to_list()
+    for i in range(len(df_ssc_fn)):
+        ssc_dict[df_ssc_fn[i]] = df_ssc_path[i]
+    
+    return ssc_dict
+
+def read_df(path_to_csv):
+    """
+    reads csv and load the dataframe correctly so that ROIs are not a string
+    """
+    df = pd.read_csv(path_to_csv, low_memory=False)
+    df['ROI_coord'] = df['ROI_coord'].apply(lambda x: eval(x)[0] if eval(x) else [])
+    
+    return df
