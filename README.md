@@ -5,6 +5,7 @@ MammoROI
 
 Description:
 The MammoROI code is used to identify image type, special views, and extract ROI coordinates of images from cohorts
+Google Drive link: https://docs.google.com/document/d/1ytwhTBsamVCoEyJM22xBvLxR3chpXnEgv4eyPYY04Yw/edit?usp=sharing
 
 Libraries:
 dataframe_processing - functions for dataframe manipulations
