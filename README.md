@@ -142,3 +142,4 @@ ROI_matching_mammo: the path to the mammogram image for the same index of the RO
 Sample Usage:
 cohort_1_df = load_simple_df(‘/path/.../metadata_anon_cohort_1 .csv’)
 
+Trained model weights available by request.
