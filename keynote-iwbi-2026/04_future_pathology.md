@@ -1,7 +1,9 @@
 # Section 4 — The Other Half of the Slide: Computational Pathology
-### ~6 minutes · "Predict" (tissue) · the part a radiology audience rarely sees
+### ~6 minutes · spine stage: **PATIENT** (begins) · the part a radiology audience rarely sees
 
-**Purpose:** Cross the room from radiology to pathology. The point: the *same trajectory* (hand-crafted CAD → deep learning → foundation models) is playing out in pathology — but pathology AI can do something imaging cannot: **infer molecular and genomic identity directly from a stained glass slide.** That capability is the bridge to integrated, multimodal decision-making (Section 5).
+> **CALLBACK TO THE HOOK (seed #3):** *"The third model — across town, on the glass slide — about to read a $4,000 recurrence score. This is it."* Land the loop with the Oncotype-from-H&E result (Orpheus, Nat Commun 2025).
+
+**Purpose:** Cross the room from radiology to pathology — the spine's move into the **patient**. The *same trajectory* (hand-crafted CAD → deep learning → foundation models) is playing out in pathology — but pathology AI can do something imaging cannot: **infer molecular and genomic identity directly from a stained glass slide.** That capability is the bridge to integrated, multimodal decision-making (Section 5).
 
 ---
 

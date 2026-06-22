@@ -1,5 +1,5 @@
 # Section 2 — The Deep-Learning Turn & the Prospective Evidence
-### ~8 minutes · "Read" · the present-day state of screening AI
+### ~8 minutes · spine stage: **LESION** (modern) · the present-day state of screening AI
 
 **Purpose:** Show that modern AI is not CAD 2.0. The defining feature of this era is not a higher AUC — it's that, for the first time, screening AI has earned **level-1 randomized evidence** before scaling. This is the answer to Section 1's cautionary tale.
 

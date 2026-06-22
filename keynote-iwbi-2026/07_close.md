@@ -1,13 +1,15 @@
 # Section 7 — Close: Responsible Optimism
 ### ~4 minutes · land the plane
 
-**Purpose:** Resolve the arc. Return to the through-line (*Point → Read → Predict → Synthesize*), convert the cautionary tale into principles, and end on a line that makes an international, mixed audience of clinicians and scientists feel both grounded and called to act.
+**Purpose:** Resolve the arc. Return to the spine (*lesion → image → patient → population*), close the hook one last time, convert the cautionary tale into principles, and end on a line that makes an international, mixed audience of clinicians and scientists feel both grounded and called to act.
 
 ---
 
-## Reprise the arc (one slide, four verbs)
+## Reprise the spine (one slide, four words)
 
-> *"We taught computers to **point** at mammograms — and it failed. We taught them to **read** — and, validated in randomized trials, it works. We are teaching them to **predict** — turning the image into a biosensor for a woman's future. And we are beginning to teach them to **synthesize** — fusing image, tissue, gene, and history into one view of the patient. From CAD to clinical intelligence."*
+> *"We started at the **lesion** — teaching machines to find the spot and draw the circle. That was CAD, and it failed. We learned to read the whole **image** — and, validated in randomized trials, it finally works. We are learning to understand the **patient** — fusing image, tissue, gene, and history into one picture. And the real prize is the **population** — using all of it to decide who we screen, how, and whether everyone, everywhere, gets to be read."*
+
+> **Final callback to the hook:** *"Remember the normal mammogram we started with — the one that already knew? The image hasn't changed. What we can read from it has. Our job is to make sure every woman gets to be read."*
 
 ---
 

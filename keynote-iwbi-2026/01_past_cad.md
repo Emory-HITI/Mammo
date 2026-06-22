@@ -5,21 +5,23 @@
 
 ---
 
-## COLD OPEN (the first 60 seconds)
+## THE HONEST START (picks up directly from the hook's last line)
 
-> *(Open on a black slide with one number.)*
+*The hook (`00_HOOK.md`) ends: "this field has fooled itself before, and I'll start there." Land straight into the numbers — no second cold open.*
+
+> *(Black slide, one number.)*
 >
 > **"$400 million a year."**
 >
-> *"That's what the United States spent, every year, on a breast-imaging AI that didn't work. Not a fringe technology — it ran on nearly every screening mammogram in America. And when the definitive study finally looked, it found that radiologists reading with the tool weren't better. Some were measurably **worse**."*
+> *"That's what the United States spent, every year, on a breast-imaging AI that didn't work. Not a fringe technology — it ran on nearly every screening mammogram in America. And when the definitive study finally looked, radiologists reading with the tool weren't better. Some were measurably **worse**."*
 >
 > *(Second slide: **OR 0.53**.)*
 >
 > *"The same radiologist. The same eyes. Worse, with the machine turned on."*
 >
-> *"That technology was computer-aided detection — CAD. I'm telling you this story not to make you cynical about AI, but because **history repeats itself — unless we understand why it failed the first time.** Everything I show you in the next 45 minutes has to clear the bar that CAD did not."*
+> *"That technology was computer-aided detection — CAD. The first machines we built to find the **lesion**. I tell you this story not to make you cynical about AI, but because **history repeats itself unless we understand why it failed the first time.** Everything I show you for the next 40 minutes has to clear the bar that CAD did not."*
 
-**Why this works:** two cold numbers before a single word of background wakes a post-lunch room, and "history repeats itself" frames the entire talk as a test modern AI must pass — not a hype reel.
+**Why this works:** the hook soared (the image already knew); now you earn trust by being the person who names the field's biggest failure first. Two cold numbers keep the energy up, and "history repeats itself" frames the rest of the talk as a test modern AI must pass — not a hype reel. The word **lesion** ties CAD to the first stage of the spine.
 
 ---
 

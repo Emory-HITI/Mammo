@@ -1,7 +1,9 @@
 # Section 5 — Clinical Intelligence: Multimodal & Foundation Models
-### ~8 minutes · "Synthesize" · the conceptual peak of the talk
+### ~8 minutes · spine stage: **PATIENT** (completes) · the conceptual peak of the talk
 
-**Purpose:** This is where the title pays off. We leave the era of **narrow detectors** (one model, one finding) and enter the era of **generalist, multimodal systems** that synthesize all of a patient's data across the care continuum. This is the longest future section — it can be trimmed if running over.
+> **CALLBACK TO THE HOOK (seed #2):** the cardio-mammography beat (Act 3 below) is where you close the second loop — *"the model reading the calcium in her arteries, the incidental finding we threw away for forty years."* All three seeds from the opening mammogram are now harvested; the audience has felt the loop close three times.
+
+**Purpose:** This is where the title pays off and the **patient** stage completes. We leave the era of **narrow detectors** (one model, one finding) and enter the era of **generalist, multimodal systems** that synthesize all of a patient's data across the care continuum. This is the longest future section — it can be trimmed if running over.
 
 ---
 

@@ -6,9 +6,18 @@
 
 ## Thesis
 
-The arc of AI in breast cancer is the arc from **pointing to predicting to synthesizing**. Traditional CAD *pointed* at mammograms and failed. Modern deep learning *reads and predicts* — and, validated prospectively, finally works. The next decade is about **clinical intelligence**: AI that synthesizes imaging, pathology, genomics, and clinical data across the entire cancer continuum — screening → diagnosis → treatment → surveillance — to deliver care that is more accurate, more personalized, and (if we get the governance right) more equitable.
+The arc of AI in breast cancer is the steadily widening question of *what we ask the image to tell us* — **from the lesion, to the image, to the patient, to the population.** Traditional CAD helped us *see the lesion* — and failed. Modern deep learning *reads the whole image* — and, validated prospectively, finally works. The frontier is **clinical intelligence**: AI that *understands the patient* by fusing imaging, pathology, genomics, and clinical data across the continuum — and, ultimately, reshapes screening for *whole populations* more accurately, more personally, and (if we get the governance right) more equitably.
 
-**Through-line motif:** *Point → Read → Predict → Synthesize.* Each era of the talk advances one verb.
+**Through-line spine (state it in the hook, repeat at every transition):**
+
+> ### LESION → IMAGE → PATIENT → POPULATION
+
+- **Lesion** — find the spot, draw the circle. CAD → modern detection/screening AI. *(Sections 1–2)*
+- **Image** — the whole image predicts more than the lesion: future cancer, cardiovascular risk. The mammogram as biosensor. *(Section 3)*
+- **Patient** — fuse imaging + tissue + genome + history into one understanding. Pathology + clinical intelligence. *(Sections 4–5)*
+- **Population** — who gets screened, how, and whether AI narrows or widens the divide. Equity & governance. *(Section 6)*
+
+*("From CAD to clinical intelligence" is the title; "lesion → image → patient → population" is how the audience remembers it.)*
 
 ---
 
@@ -16,7 +25,7 @@ The arc of AI in breast cancer is the arc from **pointing to predicting to synth
 
 | Segment | Time | Content file |
 |---|---|---|
-| **0. Hook + framing** | 0:00–2:00 | this file |
+| **0. The hook (scripted cold open)** | 0:00–2:00 | `00_HOOK.md` |
 | **PART I — PAST & PRESENT** | **15 min** | |
 | 1. The cautionary tale of CAD | 2:00–7:00 (5m) | `01_past_cad.md` |
 | 2. The deep-learning turn + the prospective evidence | 7:00–15:00 (8m) | `02_present_screening.md` |

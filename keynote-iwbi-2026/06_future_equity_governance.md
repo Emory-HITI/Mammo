@@ -1,5 +1,5 @@
 # Section 6 — The Hard Part: Equity, Governance, and Trust
-### ~6 minutes · the segment that makes the vision credible
+### ~6 minutes · spine stage: **POPULATION** · the segment that makes the vision credible
 
 **Purpose:** Bring the room back to earth — deliberately. The technology is now the easy part. Whether "clinical intelligence" narrows or widens the world's breast-cancer divide is decided by the *non-algorithmic* parts: equity, governance, implementation science. This is also the segment where you speak in the first person (Gichoya, EMBED) and where the European framing lands hardest.
 

@@ -1,7 +1,9 @@
 # Section 3 — From Detection to Risk: The Mammogram as a Biosensor
-### ~6 minutes · "Predict" · opens Part II (the future)
+### ~6 minutes · spine stage: **IMAGE** · opens Part II (the future)
 
-**Purpose:** The first leap into the future. AI changes the question a mammogram answers — from *"is there cancer today?"* to *"what is this person's risk, and how hard should we look?"* This is the move from a detection device to a biosensor, and it is no longer hypothetical: it is FDA-cleared.
+> **CALLBACK TO THE HOOK (seed #1):** *"Remember the first model — the one that knew this woman would develop cancer in about four years? Here it is."* The hook promised it; this section delivers it, and closes that loop on screen.
+
+**Purpose:** The first leap into the future, and the spine's turn from **lesion → image**. AI changes the question a mammogram answers — from *"is there cancer today?"* to *"what is this person's risk, and how hard should we look?"* This is the move from a detection device to a biosensor, and it is no longer hypothetical: it is FDA-cleared.
 
 ---
 
