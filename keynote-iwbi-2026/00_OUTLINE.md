@@ -17,17 +17,17 @@ The arc of AI in breast cancer is the arc from **pointing to predicting to synth
 | Segment | Time | Content file |
 |---|---|---|
 | **0. Hook + framing** | 0:00–2:00 | this file |
-| **PART I — PAST & PRESENT** | **~13 min** | |
+| **PART I — PAST & PRESENT** | **15 min** | |
 | 1. The cautionary tale of CAD | 2:00–7:00 (5m) | `01_past_cad.md` |
 | 2. The deep-learning turn + the prospective evidence | 7:00–15:00 (8m) | `02_present_screening.md` |
-| **PART II — THE FUTURE** | **~28 min** | |
+| **PART II — THE FUTURE** | **30 min** | |
 | 3. From detection to risk: the mammogram as biosensor | 15:00–21:00 (6m) | `03_future_risk.md` |
 | 4. The other half of the slide: computational pathology | 21:00–27:00 (6m) | `04_future_pathology.md` |
 | 5. Clinical intelligence: multimodal & foundation models | 27:00–35:00 (8m) | `05_future_clinical_intelligence.md` |
 | 6. The hard part: equity, governance, trust | 35:00–41:00 (6m) | `06_future_equity_governance.md` |
 | **7. Close — responsible optimism** | 41:00–45:00 (4m) | `07_close.md` |
 
-> Note: Part I is ~13 min and Part II ~28 min, matching your "10–15 / 25" split with a little buffer. We can compress Section 5 or 6 if running long.
+> Budget: **Part I = 15 min** (hook + CAD + present), **Part II = 30 min** (future, Sections 3–7). Section 5 (clinical intelligence) is the natural release valve — compress it first if running long.
 
 ---
 
