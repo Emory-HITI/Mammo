@@ -31,6 +31,46 @@ The image carries signal — invisible to the human eye — about *future* cance
 
 ---
 
+## The trap hiding in a good AUC: population performance ≠ individual reliability
+### *(the intellectually honest centerpiece of this section — ~1.5–2 min)*
+
+> *"Every number I just showed you — 0.76, 0.81, 0.84 — is a **population** number. And here's the uncomfortable truth: a beautiful AUC tells you how a model sorts a million women. It tells you almost nothing about the one woman sitting in your clinic."*
+
+**What AUC/C-index actually is.** It's a *ranking* metric: the probability the model scores a random future-cancer patient higher than a random cancer-free one. A C-index of 0.80 is excellent at the population level — and *still* misranks a huge number of individual pairs. It is not the accuracy of any one woman's predicted risk.
+
+**Discrimination is not calibration.** AUC measures *ranking* (discrimination). Whether a predicted "8% five-year risk" actually means 8% — that's *calibration*, a separate property, far less often reported, and the one that governs an individual decision like "do you get an MRI?" Image-based models tend to discriminate well; their calibration across sites, scanners, and subpopulations is the under-reported, harder problem.
+
+**Discordance is the rule, not the exception.** Move from old models (Tyrer-Cuzick/Gail/PRS) to new image-based models and **roughly a third of women change risk category** (~35% reclassified) **[VERIFY exact figure — Arasu et al., DL vs traditional models, Radiology 2023]**. Yala 2019: the image model put **31% of future cancers in the top decile vs 18%** for Tyrer-Cuzick. So for *millions* of women, the old number and the new number disagree. That disagreement is not noise to be averaged away — it is the entire individual-level decision.
+
+### The four quadrants (the slide — and the part that actually matters clinically)
+
+> **[VISUAL — build later]** A 2×2: classical model (low/high) on one axis, image-based model (low/high) on the other.
+
+| | **Image model: LOW** | **Image model: HIGH** |
+|---|---|---|
+| **Classical: HIGH** | ⚠️ **The dangerous quadrant** | ✅ Concordant high → MRI, short interval |
+| **Classical: LOW** | ✅ Concordant low → standard/de-escalate | ★ **The high-value quadrant** |
+
+1. **Both low / both high** — concordant. Act with confidence: reassure-and-standardize, or escalate to supplemental MRI.
+
+2. **★ Classical LOW / image HIGH — the high-value quadrant.** The image sees something the questionnaire never could: a tissue-state signal. These are women the questionnaire era called "average." *But what kind of risk is it?* The Mirai paper itself says the model is strongest at **near-term** prediction and that high scores "may harbor occult malignancy or premalignant change" (Yala, STM 2021). So a high image score is partly a **"look harder NOW"** signal — short-interval follow-up, supplemental imaging, a second look at *this* mammogram — not automatically a lifetime-surveillance decision. **And acting on a signal we cannot explain is precisely the CAD trap** (see §1) — which is why interpretability (AsymMirai: the signal is bilateral asymmetry) and *prospective* validation (the **MIRAI-MRI trial, NCT05968157**, randomizing MRI for Mirai- vs Tyrer-Cuzick–high women) matter before we change management.
+
+3. **⚠️ Classical HIGH / image LOW — the dangerous quadrant.** A BRCA carrier, a strong family history, a high polygenic score — and a quiet-looking mammogram that earns a low image score. **Never let a reassuring image read override known germline risk.** The image model was not trained to see inherited risk; it cannot. De-escalating here would be the most consequential error this technology invites.
+
+### The synthesis: these models measure *different things*
+
+> *"The genome asks one question: what did she inherit? The image asks a completely different one: what is her tissue doing right now? Discordance between them isn't a bug to resolve — it's two answers to two questions."*
+
+- **Image-based DL** → near-term, tissue-state, occult/masking signal. Horizon: strongest at 1–2 years.
+- **Genomic / PRS + family history** → inherited, lifetime, stable.
+- **Density** → masking + modest independent risk.
+
+The future is not picking the winner — it's combining them into a **risk vector** with the right *action* attached to each axis (image-high → look now; genome-high → lifelong surveillance). Naïve substitution of one for the other is dangerous; thoughtful fusion is the goal (early evidence: image-only DL **+ PRS** improves over either alone, Br J Cancer 2026). **Equity caveat:** discordance patterns likely differ by ancestry (PRS portability; image-model training diversity) — the *classical-high/image-low* error could fall hardest on exactly the groups with worse outcomes.
+
+> **One-liner to land it:** *"Don't ask which model is right. Ask which question you're trying to answer for the woman in front of you — and whether you'd bet her management on a number you can't yet explain."*
+
+---
+
 ## The policy on-ramp: density became a national question
 
 - **FDA national dense-breast notification rule took effect Sept 10, 2024** — every US mammogram report must now state dense / not dense. Density is now a national clinical-action question overnight.
@@ -80,4 +120,10 @@ The image carries signal — invisible to the human eye — about *future* cance
 - *"Risk-adapted screening = more for the few who need it, less for the many who don't — and WISDOM just showed it's safe."*
 
 ## [VERIFY] before podium
-Brentnall/Volpara density figures; Clairity 77k-image validation + FDA date; MyPeBS enrollment/results (ongoing); Eriksson 2026 STM citation.
+- Brentnall/Volpara density figures; Clairity 77k-image validation + FDA date; MyPeBS enrollment/results (ongoing); Eriksson 2026 STM citation.
+- **~35% reclassification figure** — confirm exact number + source (Arasu et al., "DL vs traditional risk models," Radiology 2023, PMC9552206). Yala 2019 "31% vs 18% top-decile" is solid.
+- **Occult-malignancy / near-term framing** — ✓ grounded in the Mirai paper (Yala, Sci Transl Med 2021) discussion. **MIRAI-MRI trial = NCT05968157** (verify it's still recruiting/active).
+- **Image-DL + PRS** improves over either alone — Br J Cancer 2026 (confirm exact cite before quoting).
+
+## ⏱️ TIME NOTE
+The new "population vs individual" subsection adds ~1.5–2 min, pushing Section 3 from ~6 to ~7.5–8 min. To hold the 30-min future budget, compress the **density on-ramp** (→ ~20 sec) and trim the **WISDOM/MyPeBS** detail, OR borrow 1–2 min from Section 5 (the longest). Flag for rebalancing once all sections are locked.
