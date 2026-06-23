@@ -35,22 +35,33 @@
 
 ---
 
-## BEAT 2 — one image, every organ system: convergence breaks ALL the silos (seed #2) (~2.5 min)
+## BEAT 2 — one image, many predictions: the mammogram as a whole-body biosensor (seed #2) (~3.5 min)
 
-**Reframe:** convergence isn't only radiology + pathology. The same mammogram a woman gets for cancer also contains a **cardiovascular** story — the silo between breast imaging and cardiology is just as artificial.
+**Reframe:** convergence isn't only radiology + pathology. The same mammogram a woman gets for cancer is a **biosensor for her whole body** — the silo between breast imaging and the rest of medicine is just as artificial as the one between radiology and pathology.
 
-- **Future-cancer (recap from §3):** Mirai, C-index 0.76–0.81 (Sci Transl Med 2021).
-- **Cardio-mammography (breast arterial calcification → CVD risk) — close hook seed #2 here:**
-  - **Wang et al., IEEE TMI 2017** — original deep-learning BAC paper. *(PMID 28113340)*
-  - **Iribarren et al., Circulation: Cardiovascular Imaging 2022** — 5,059 women: BAC → **HR 1.51** for hard ASCVD, independent of traditional risk factors. *(PMID 35290077)*
-  - **★ Dapamede et al. (Emory + Mayo), European Heart Journal 2026** — **largest to date, 123,762 women:** severe BAC → MACE **HR 3.29**, additive to the AHA PREVENT score. **[YOUR/Emory headline — VERIFY exact DOI/volume]**
-  - Your group: **Guo et al. (SCU-Net), Medical Physics 2021.** **[your group]**
-  - Whole-image (beyond BAC) CVD prediction: **Barraclough et al., Heart 2026** — 49,196 women, **C-index 0.72.** *(PMID 40957672)*
-  - Analogy for breadth: opportunistic CT (Pickhardt et al., Lancet Digit Health 2020 — aortic calcium HR 4.53 for death).
+### 2a. The flagship: cardio-mammography (close hook seed #2 here)
+Breast arterial calcification (BAC) — long dismissed as an incidental finding — is a sex-specific cardiovascular signal sitting unread on millions of mammograms.
+- **Wang et al., IEEE TMI 2017** — first deep-learning BAC quantification. *(PMID 28113340)*
+- **Iribarren et al., Circulation: Cardiovascular Imaging 2022** — 5,059 women: BAC → **HR 1.51** for hard ASCVD, **independent of traditional risk factors.** *(PMID 35290077)*
+- **★ Dapamede et al. (Emory + Mayo), European Heart Journal 2026** — **the largest to date: 123,762 women, no known CVD.** A transformer model segments BAC and reports burden as area (mm²); a **continuous, dose-dependent** association with MACE — acute MI, stroke, heart failure, and all-cause mortality — stepwise from 0 to >25 mm². **Adds prognostic value on top of the AHA PREVENT score.** **[YOUR/Emory headline — DOI 10.1093/eurheartj/ehag128; VERIFY the HR ~3.29 for severe BAC and final volume/pages]**
+- Your group: **Guo et al. (SCU-Net), Medical Physics 2021** *(PMID 34328661)* **[your group]**
 
-> **Vision line (close the third loop):** *"That second model from our opening mammogram — the one reading the calcium in her arteries — has been there the whole time. We threw it away as an incidental finding for forty years. We can now give 40 million women a 'free' cardiovascular screen with the image they already came for. The breast clinic becomes a window onto the whole patient."*
+### 2b. Beyond the calcium: the whole image predicts cardiovascular risk
+- **Barraclough et al., Heart 2026** (George Institute, Sydney; DeepSurv on routine mammograms) — whole-image CVD risk prediction in **~49,000 women, C-index ~0.72** — comparable to established clinical risk equations, *without even isolating BAC.* *(PMID 40957672)* The tissue itself, not just the calcium, carries the signal.
 
-**Honest caveats:** BAC ≠ coronary calcium (modest correlation; Saccenti 2024, AUC ~0.64). **Bone-density-from-mammogram is NOT established** — present as an open frontier, not a result.
+### 2c. What else? — honest about mature vs. frontier
+- **All-cause mortality** — captured today *via* the BAC→MACE pathway (Dapamede includes all-cause mortality); a direct "mortality-from-mammogram" model is **emerging, not established.**
+- **Biological age / "mammographic age"** and **bone mineral density / osteoporosis** from mammograms — **OPEN FRONTIER, not a result.** (Biological-age and BMD prediction are established on *other* modalities — DXA, CT, ECG — but **not yet validated on mammography.** Say so plainly; don't overclaim.)
+
+### 2d. The unifying truth: every medical image is a richer biosensor than its indication
+Mammographic opportunistic screening isn't a quirk — it's one instance of a field-wide movement. The same surprising result keeps appearing across modalities:
+- **Retina — Poplin et al., Nature Biomedical Engineering 2018:** from a fundus photo, DL predicts **age (±3.3 yr), sex (AUC 0.97), smoking, blood pressure, and major cardiac events (AUC 0.70)** — signals no ophthalmologist reads. *(284,335 patients.)*
+- **ECG — Attia et al., Nature Medicine 2019:** a 10-second ECG detects **asymptomatic low ejection fraction (AUC 0.93)**; AI also reads age, sex, and predicts future atrial fibrillation from a *normal-rhythm* tracing.
+- **CT — Pickhardt et al., Lancet Digital Health 2020:** routine abdominal CT yields opportunistic bone density, body composition, and **aortic calcium (HR ~4.5 for death)**; chest CT from lung screening predicts cardiovascular risk (AUC ~0.87).
+
+> **Vision line (close the third loop + state the big idea):** *"That second model from our opening mammogram — reading the calcium in her arteries — has been there the whole time. We discarded it as an incidental finding for forty years. We can now give tens of millions of women a 'free' cardiovascular screen with an image they already came for, at zero added cost and zero added radiation. And this isn't special to mammography: the retina knows your blood pressure, the ECG knows your heart will weaken before you feel it, the CT knows your bones. **Every medical image is a far richer biosensor than the question we ordered it to answer.** AI is simply the first tool that can read the rest of it."*
+
+**Honest caveats:** BAC ≠ coronary calcium (modest correlation; Saccenti 2024, AUC ~0.64) — it's an independent risk marker, not a substitute for CT calcium scoring. And opportunistic predictions need their *own* prospective validation and a care pathway to act on them — a "free" CV risk score is only useful if someone owns the abnormal result.
 
 ---
 
@@ -77,7 +88,8 @@
 - Mammo-FM: **821,326 mammograms / 140,677 patients**, one backbone (2025) [preprint].
 - PORPOISE: multimodal beat unimodal in **12/14** cancers (Cancer Cell 2022) — *with* the batch-effect caveat.
 - Breast pCR: multimodal **AUC ~0.89** (Joo 2021; Hong 2026).
-- **Severe BAC → MACE HR 3.29, 123,762 women (Eur Heart J 2026, Emory).** BAC → ASCVD HR 1.51 (2022).
+- **Cardio-mammography: AI-BAC dose-dependent MACE, 123,762 women (Dapamede, Eur Heart J 2026, Emory; adds to PREVENT).** BAC → ASCVD HR 1.51 (2022). Whole-image CVD C-index ~0.72 (Barraclough, Heart 2026).
+- One-image-many-predictions across modalities: retina → age ±3.3 yr, sex AUC 0.97, MACE 0.70 (Poplin, Nat BME 2018); ECG → low-EF AUC 0.93 (Attia, Nat Med 2019); CT aortic calcium HR ~4.5 for death (Pickhardt, Lancet Digit Health 2020).
 - GPT-4 BI-RADS: **10.6%** management-altering errors (Radiology 2024); ~47% citations fabricated.
 - Workforce: UK **30% → 40% (2028)** radiologist shortfall.
 
@@ -85,4 +97,4 @@
 Med-Gemini/Mammo-FM are preprints; **Dapamede 2026 exact DOI/volume — confirm (flagship Emory number)**; Cureus/CARJ hallucination figures; DAX/Kaiser figures; Barraclough & Hong 2026 details; confirm your co-authorship on Li (Clin Imaging 2023), Guo/SCU-Net, and Dapamede before claiming from the podium.
 
 ## ⏱️ TIME NOTE
-Restructured from 5 acts to 3 beats + on-ramp (~8 min). This is the designated **release valve** for the whole future half — if Section 3 (~7.5 min) or others run long, Beat 3 (genAI + workforce) compresses to ~45 sec without losing the arc.
+3 beats + on-ramp. Beat 2 expanded (opportunistic/biosensor leaned-in per request) → section now ~9 min. **Release valves:** (1) Beat 3 (genAI + workforce) compresses to ~45 sec; (2) in Beat 2, the cross-modality 2d (retina/ECG/CT) can drop to a single sentence if pressed — it's breadth/color, not core. Rebalance across the future half once all sections lock; the future budget is 30 min total.
