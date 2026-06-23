@@ -7,11 +7,17 @@
 
 ---
 
-## The opening idea
+## The opening — close seed #1 (re-show the mammogram from the hook)
 
-> *"Every mammogram already contains a five-year forecast. We are only now learning to read it."*
+> **[Bring back the EXACT opening mammogram — the real case, still read as normal.]**
+>
+> *"Let's go back to where we started. This is the mammogram I opened with — the one two radiologists called normal, and they were right. I told you the first model knew this woman would develop cancer in about five years. Here is that model."*
+>
+> **[Reveal the risk overlay / heatmap on the same image.]**
+>
+> *"It wasn't looking for a lesion. There wasn't one. It was reading the **tissue** — and it was right. The image already knew. Every mammogram already contains a five-year forecast. We are only now learning to read it."*
 
-The image carries signal — invisible to the human eye — about *future* cancer, not just current cancer. Deep learning extracts it. That reframes screening from a snapshot into a trajectory.
+The image carries signal — invisible to the human eye — about *future* cancer, not just current cancer. Deep learning extracts it. That reframes screening from a snapshot into a trajectory: from *"is there cancer today?"* to *"when, and how hard should we look?"*
 
 ---
 
@@ -71,29 +77,31 @@ The future is not picking the winner — it's combining them into a **risk vecto
 
 ---
 
-## The policy on-ramp: density became a national question
+## Density: the crude proxy these models replace (compressed — ~20 sec)
 
-- **FDA national dense-breast notification rule took effect Sept 10, 2024** — every US mammogram report must now state dense / not dense. Density is now a national clinical-action question overnight.
-- **Automated density (Volpara, Densitas)** replaces subjective BI-RADS scoring; densest category carries multi-fold higher interval-cancer risk. **[VERIFY exact Brentnall/Volpara figures]**
-- Arc: **density → masking + independent risk → supplemental MRI/ultrasound** — but coverage is patchy. Density alone is blunt; this is exactly the gap DL risk models fill.
+> One line, not a detour: *"For 40 years our only imaging 'risk' marker was breast density — a blunt, subjective category. The US made it a national reporting requirement in 2024; automated tools (Volpara, Densitas) at least made it objective. But density is a crude proxy for what the deep-learning score now reads directly. We're watching density get superseded in real time."* **[VERIFY exact Volpara/Brentnall figures if shown]**
 
 ---
 
-## The future is already FDA-cleared
+## The future is already FDA-cleared (close the hook's "in this year's guidelines")
 
-**Clairity Breast (Constance Lehman's company) — FDA De Novo authorization announced June 2025** — the **first-ever** AI tool to predict 5-year breast cancer risk from a routine screening mammogram alone, validated across **>77,000 mammograms from 5 geographically distinct sites**; subsequently referenced in NCCN screening guidance. *The regulatory bridge from research model (Mirai) to clinical product has been crossed.* **[VERIFY — press-sourced; no primary peer-reviewed validation yet]**
+> *"Remember I said one of those three opening models was already in this year's guidelines? This is the one."*
+
+**Clairity Breast (Constance Lehman's company) — FDA De Novo authorization announced June 2025** — the **first-ever** AI tool to predict 5-year breast cancer risk from a routine screening mammogram alone, validated across **>77,000 mammograms from 5 geographically distinct sites**; subsequently referenced in NCCN screening guidance. *The regulatory bridge from research model (Mirai) to clinical product has been crossed — research model to cleared product to guideline, in under five years.* **[VERIFY — press-sourced; confirm exact 2026 NCCN language; no primary peer-reviewed validation yet]**
 
 ---
 
-## Risk-adapted screening — the evidence arrived in 2025
+## Risk-adapted screening — and Europe is running the definitive trial
 
-**WISDOM (US) — Esserman et al., JAMA 2025/2026.** Pragmatic RCT, **28,372 women** 40–74, all 50 states; risk-based vs annual; median follow-up 5.1 yr. Risk engine = 9-gene panel + polygenic score + BCSC model → 4 regimens (6-monthly mammo/MRI for highest risk; down to defer for lowest).
-- **Result: risk-based non-inferior for stage ≥IIB cancers** despite **~3,800 fewer mammograms per 100,000 person-yr.**
-- **Honest caveat:** it did **NOT** reduce biopsies (the superiority co-primary failed). In the observational arm, **89% of women chose risk-based** — patients want this. *(DOI 10.1001/jama.2025.24784)*
+> *"This is where it stops being a number on a slide and becomes a screening program — and the most important experiment in the world on this question is happening here, in Europe."*
 
-**MyPeBS (Europe) — the larger sibling.** EU RCT, target **85,000 women** across 6 countries (incl. a Greece-adjacent European framing), risk-stratified vs standard screening; **ongoing, results pending.** *(BMC Cancer 2022; DOI 10.1186/s12885-022-09484-6)*
+**MyPeBS (Europe) — the definitive trial.** EU-funded RCT, **~85,000 women** across **6 countries** (Belgium, France, Italy, Israel, Spain, UK), risk-stratified vs standard age-based screening, endpoint = stage ≥2 cancer incidence; **ongoing, results pending.** The largest test ever of whether we should screen by *risk* instead of by *age*. *(BMC Cancer 2022; DOI 10.1186/s12885-022-09484-6)*
 
-**How AI plugs in (your forward thesis):** WISDOM/MyPeBS triage on *genetics + classical models* today. The obvious next move is to feed the **image-derived AI score** into the engine — high score → MRI; low score → biennial or defer. Bernstein/Yala et al. (PLOS Digital Health 2026) already show Mirai as a 1-year "rule-out" can cut caseload **36–75%** with explicit false-omission tradeoffs — the quantitative scaffold for "who can safely screen less."
+**WISDOM (US) — the first results are already in.** Esserman et al., *JAMA* 2025. Pragmatic RCT, **28,372 women** 40–74; risk-based (9-gene panel + polygenic score + BCSC model → 4 regimens, from 6-monthly MRI down to *defer*) vs annual.
+- **Risk-based was non-inferior for advanced (stage ≥IIB) cancers — with ~3,800 fewer mammograms per 100,000 person-years.** Less screening, no excess advanced cancer.
+- **Honest caveat:** it did **NOT** reduce biopsies (that superiority endpoint failed). But **89% of women offered the choice picked risk-based** — patients want this. *(DOI 10.1001/jama.2025.24784)*
+
+**Where the image model plugs in (the forward thesis):** today MyPeBS and WISDOM triage on *genetics + classical models*. The obvious next step — and the synthesis of this whole section — is to add the **image-derived score as a second axis**: image-high → look sooner / MRI; concordant-low → safely extend the interval. Bernstein/Yala et al. (PLOS Digital Health 2026) show Mirai as a 1-year "rule-out" could cut caseload **36–75%** with quantified false-omission tradeoffs — the scaffold for "who can safely screen less." *(Tie back to the four quadrants: the trials currently use only the classical axis; the image axis is the value still on the table.)*
 
 ---
 
@@ -126,4 +134,4 @@ The future is not picking the winner — it's combining them into a **risk vecto
 - **Image-DL + PRS** improves over either alone — Br J Cancer 2026 (confirm exact cite before quoting).
 
 ## ⏱️ TIME NOTE
-The new "population vs individual" subsection adds ~1.5–2 min, pushing Section 3 from ~6 to ~7.5–8 min. To hold the 30-min future budget, compress the **density on-ramp** (→ ~20 sec) and trim the **WISDOM/MyPeBS** detail, OR borrow 1–2 min from Section 5 (the longest). Flag for rebalancing once all sections are locked.
+The "population vs individual" centerpiece adds ~1.5–2 min. **Density on-ramp now compressed to ~20 sec (done).** Realistic section length ~7–7.5 min vs the 6-min budget. If still long after a run-through, trim WISDOM detail or borrow ~1 min from Section 5 (the longest). Flag for rebalancing once all sections are locked.
