@@ -23,20 +23,29 @@ The arc of AI in breast cancer is the steadily widening question of *what we ask
 
 ## Time budget (45 min)
 
-| Segment | Time | Content file |
+### Target structure
+| Segment | Target | Content file |
 |---|---|---|
-| **0. The hook (scripted cold open)** | 0:00–2:00 | `00_HOOK.md` |
+| **0. The hook (scripted cold open)** | 2 min | `00_HOOK.md` |
 | **PART I — PAST & PRESENT** | **15 min** | |
-| 1. The cautionary tale of CAD | 2:00–7:00 (5m) | `01_past_cad.md` |
-| 2. The deep-learning turn + the prospective evidence | 7:00–15:00 (8m) | `02_present_screening.md` |
+| 1. The cautionary tale of CAD | 5m | `01_past_cad.md` |
+| 2. The deep-learning turn + the prospective evidence | 8m | `02_present_screening.md` |
 | **PART II — THE FUTURE** | **30 min** | |
-| 3. From detection to risk: the mammogram as biosensor | 15:00–21:00 (6m) | `03_future_risk.md` |
-| 4. The other half of the slide: computational pathology | 21:00–27:00 (6m) | `04_future_pathology.md` |
-| 5. Clinical intelligence: multimodal & foundation models | 27:00–35:00 (8m) | `05_future_clinical_intelligence.md` |
-| 6. The hard part: equity, governance, trust | 35:00–41:00 (6m) | `06_future_equity_governance.md` |
-| **7. Close — responsible optimism** | 41:00–45:00 (4m) | `07_close.md` |
+| 3. From detection to risk: the mammogram as biosensor | 6m | `03_future_risk.md` |
+| 4. The other half of the slide: computational pathology | 5m | `04_future_pathology.md` |
+| 5. Clinical intelligence: convergence + opportunistic biosensor | 7m | `05_future_clinical_intelligence.md` |
+| 6. The hard part: equity, governance, trust | 5m | `06_future_equity_governance.md` |
+| 6b. The wildcard: will frontier models eat everything? | 3.5m | `06b_future_frontier_models.md` |
+| **7. Close — responsible optimism** | 3.5m | `07_close.md` |
 
-> Budget: **Part I = 15 min** (hook + CAD + present), **Part II = 30 min** (future, Sections 3–7). Section 5 (clinical intelligence) is the natural release valve — compress it first if running long.
+### ⚠️ TIME RECONCILIATION (read this — we are currently OVER)
+As drafted, sections run long: §3 ~7.5 (the population-vs-individual addition), §5 ~9 (opportunistic lean-in), + the new §6b ~3.5. Raw total ≈ **51 min**. To land at 45, the future half needs ~6 min trimmed. **Proposed cuts (in priority order), all already flagged in-file as release valves:**
+1. **§5 Beat 3** (genAI + workforce) → compress to ~45 sec (saves ~1 min).
+2. **§5 Beat 2d** (cross-modality retina/ECG/CT) → one sentence (saves ~1–1.5 min).
+3. **§3** density beat already compressed; trim WISDOM detail (saves ~1 min).
+4. **§6b** → if needed, the 60-sec "wildcard" version instead of full 3.5 (saves ~2.5 min).
+5. **§4** trimmed target to 5 min (Oncotype + CDH1 + Virchow are the keepers; HER2/TIL/foundation table → fast).
+> Net: these get us to ~45 without losing any headline beat. **Don't cut: the hook, CAD numbers, MASAI, the four-quadrant risk reckoning, the cardio seed payoff, Gichoya, the close.** Rebalance live after a full read-through.
 
 ---
 
