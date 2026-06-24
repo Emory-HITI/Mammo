@@ -1,9 +1,9 @@
 # Section 3 — From Detection to Risk: The Mammogram as a Biosensor
 ### ~6 minutes · spine stage: **IMAGE** · opens Part II (the future)
 
-> **CALLBACK TO THE HOOK (seed #1):** *"Remember the first model — the one that knew this woman would develop cancer in about five years? Here it is."* Re-show the **real opening mammogram**, now revealed as a case a risk model flagged. The hook promised it; this section delivers it, and "the image already knew" returns on screen.
+> **CALLBACK TO THE HOOK (seed #1):** *"Remember the first model — the one that knew this woman would develop cancer in about five years? Here it is."* Re-show the **real opening mammogram**, now revealed as a case a risk model flagged. "The image already knew" returns on screen.
 
-**Purpose:** The first leap into the future, and the spine's turn from **lesion → image**. AI changes the question a mammogram answers — from *"is there cancer today?"* to *"what is this person's risk, and how hard should we look?"* This is the move from a detection device to a biosensor, and it is no longer hypothetical: it is FDA-cleared.
+**Purpose:** This section marks the spine's turn from **lesion → image**. AI changes the question a mammogram answers, from *"is there cancer today?"* to *"what is this person's risk, and how hard should we look?"* This is the move from a detection device to a biosensor. It is FDA-cleared.
 
 ---
 
@@ -17,7 +17,7 @@
 >
 > *"It wasn't looking for a lesion. There wasn't one. It was reading the **tissue** — and it was right. The image already knew. Every mammogram already contains a five-year forecast. We are only now learning to read it."*
 
-The image carries signal — invisible to the human eye — about *future* cancer, not just current cancer. Deep learning extracts it. That reframes screening from a snapshot into a trajectory: from *"is there cancer today?"* to *"when, and how hard should we look?"*
+The image carries signal, invisible to the human eye, about future cancer in addition to current cancer. Deep learning extracts it. That reframes screening from a snapshot into a trajectory: from *"is there cancer today?"* to *"when, and how hard should we look?"*
 
 ---
 
@@ -26,60 +26,60 @@ The image carries signal — invisible to the human eye — about *future* cance
 **The old world:** classical risk models use questionnaire factors + density and are weak discriminators — **Tyrer-Cuzick v8 5-year AUC ~0.62**; density-augmented Gail/TC ~0.59–0.61.
 
 **The pivot — MIT + MGH (Yala / Barzilay / Lehman):**
-- **Yala et al., Radiology 2019** (88,994 mammograms): hybrid DL (image + risk factors) **5-yr AUC 0.70** vs image-only 0.68, risk-factor logistic 0.67, **Tyrer-Cuzick 0.62** (p<0.001). First clean proof the *pixels* carry risk beyond density.
-- **Mirai — Yala et al., Science Translational Medicine 2021.** Designed to predict across time points, tolerate missing risk-factor data, and stay consistent across machines. Externally validated in **three countries**: C-index **0.76 (US) / 0.81 (Sweden) / 0.79 (Taiwan)**, beating Tyrer-Cuzick (all p<0.001). Among women who developed cancer within 5 years, **Mirai flagged 41.5% as high-risk vs 22.9% for Tyrer-Cuzick.** *(DOI 10.1126/scitranslmed.aba4373)*
+- **Yala et al., Radiology 2019** (88,994 mammograms): hybrid DL (image + risk factors) **5-yr AUC 0.70** vs image-only 0.68, risk-factor logistic 0.67, **Tyrer-Cuzick 0.62** (p<0.001). Early evidence that the pixels carry risk information beyond density.
+- **Mirai — Yala et al., Science Translational Medicine 2021.** Designed to predict across time points, tolerate missing risk-factor data, and stay consistent across machines. Externally validated in **three countries**: C-index **0.76 (US) / 0.81 (Sweden) / 0.79 (Taiwan)**, exceeding Tyrer-Cuzick (all p<0.001). Among women who developed cancer within 5 years, **Mirai flagged 41.5% as high-risk vs 22.9% for Tyrer-Cuzick.** *(DOI 10.1126/scitranslmed.aba4373)*
 
-**Explainability, done right — AsymMirai (Donnelly et al., Radiology 2024; Duke + Emory, EMBED, 210,067 mammograms).** Remember the second gap from §2 — *we usually can't say why a model fails.* This is the counter-example. AsymMirai cracked open Mirai's "black box" and showed its risk signal is largely **local bilateral dissimilarity** (left-vs-right tissue difference). A simplified, **interpretable** model nearly matched the black box: 1-yr AUC 0.79 (Mirai 0.84); in stable-tissue subgroups, **3-yr AUC 0.92.** *That's the goal — performance you can also explain, which is the only kind you can safely act on (and audit for the blind spots).* *(DOI 10.1148/radiol.232780)* **[YOUR PAPER — first-person moment on explainability]**
+**Explainability — AsymMirai (Donnelly et al., Radiology 2024; Duke + Emory, EMBED, 210,067 mammograms).** This addresses the second gap from §2: we usually cannot say why a model fails. AsymMirai examined Mirai's signal and showed it is largely **local bilateral dissimilarity** (left-vs-right tissue difference). A simplified, **interpretable** model nearly matched the original: 1-yr AUC 0.79 (Mirai 0.84); in stable-tissue subgroups, **3-yr AUC 0.92.** Performance that can also be explained is what can be acted on safely and audited for blind spots. *(DOI 10.1148/radiol.232780)* **[YOUR PAPER — first-person moment on explainability]**
 
-**The frontier — long-horizon, multi-institutional (2026).** Eriksson et al., Science Translational Medicine 2026: a 10-year image-derived model (developed KARMA/Sweden; validated Mayo, KARMA, EMBED/Atlanta). **10-yr AUC ~0.72**; in the top-decile risk group it captured **33% of cancers vs 24% (Mirai), 23% (Tyrer-Cuzick), 20% (BCSC)** — next-gen image models now beating Mirai itself for long-range triage. *(DOI 10.1126/scitranslmed.ady7414)* **[VERIFY 2026 cite]**
+**Long-horizon, multi-institutional (2026).** Eriksson et al., Science Translational Medicine 2026: a 10-year image-derived model (developed KARMA/Sweden; validated Mayo, KARMA, EMBED/Atlanta). **10-yr AUC ~0.72**; in the top-decile risk group it captured **33% of cancers vs 24% (Mirai), 23% (Tyrer-Cuzick), 20% (BCSC).** Newer image models now exceed Mirai for long-range triage. *(DOI 10.1126/scitranslmed.ady7414)* **[VERIFY 2026 cite]**
 
-> Independent replication (it generalizes): Park et al., Diagnostics 2024 (Lunit, Korea), external validation 16,894 mammograms, 1-yr AUC **0.90**, matched Mirai, crushed Tyrer-Cuzick (0.57) and Gail (0.52).
+> Independent replication: Park et al., Diagnostics 2024 (Lunit, Korea), external validation 16,894 mammograms, 1-yr AUC **0.90**, matched Mirai, and exceeded Tyrer-Cuzick (0.57) and Gail (0.52).
 
 ---
 
 ## The trap hiding in a good AUC: population performance ≠ individual reliability
-### *(the intellectually honest centerpiece of this section — ~1.5–2 min)*
+### *(~1.5–2 min)*
 
-> *"Every number I just showed you — 0.76, 0.81, 0.84 — is a **population** number. And here's the uncomfortable truth: a beautiful AUC tells you how a model sorts a million women. It tells you almost nothing about the one woman sitting in your clinic."*
+> *"Every number I just showed you — 0.76, 0.81, 0.84 — is a **population** number. An AUC tells you how a model sorts a million women. It tells you little about the one woman in your clinic."*
 
-**What AUC/C-index actually is.** It's a *ranking* metric: the probability the model scores a random future-cancer patient higher than a random cancer-free one. A C-index of 0.80 is excellent at the population level — and *still* misranks a huge number of individual pairs. It is not the accuracy of any one woman's predicted risk.
+**What AUC/C-index actually is.** It is a *ranking* metric: the probability the model scores a random future-cancer patient higher than a random cancer-free one. A C-index of 0.80 is strong at the population level and still misranks a large number of individual pairs. It is not the accuracy of any one woman's predicted risk.
 
-**Discrimination is not calibration.** AUC measures *ranking* (discrimination). Whether a predicted "8% five-year risk" actually means 8% — that's *calibration*, a separate property, far less often reported, and the one that governs an individual decision like "do you get an MRI?" Image-based models tend to discriminate well; their calibration across sites, scanners, and subpopulations is the under-reported, harder problem.
+**Discrimination is not calibration.** AUC measures *ranking* (discrimination). Whether a predicted "8% five-year risk" actually means 8% is *calibration*, a separate property, less often reported, and the one that governs an individual decision such as "do you get an MRI?" Image-based models tend to discriminate well; their calibration across sites, scanners, and subpopulations is the under-reported and harder problem.
 
-**Discordance is the rule, not the exception.** The image-based model and the clinical model flag **different women.** **Arasu et al., Radiology 2023** (the head-to-head: mammography AI vs the BCSC clinical risk model for 5-year risk) — the AI's top-risk decile captured **~28% of future cancers vs ~21%** for the clinical model, and the two models' high-risk groups **overlapped only partially.** So for a large share of women, the old number and the new number disagree — and that disagreement, not the average AUC, is the individual-level decision. *(Radiology 2023;307(5):e222733.)*
+**Discordance is common.** The image-based model and the clinical model flag **different women.** **Arasu et al., Radiology 2023** (mammography AI vs the BCSC clinical risk model for 5-year risk): the AI's top-risk decile captured **~28% of future cancers vs ~21%** for the clinical model, and the two models' high-risk groups **overlapped only partially.** For a large share of women, the old number and the new number disagree. That disagreement, not the average AUC, is the individual-level decision. *(Radiology 2023;307(5):e222733.)*
 
-### The four quadrants (the slide — and the part that actually matters clinically)
+### The four quadrants (the clinically relevant view)
 
 > **[VISUAL — build later]** A 2×2: classical model (low/high) on one axis, image-based model (low/high) on the other.
 
 | | **Image model: LOW** | **Image model: HIGH** |
 |---|---|---|
-| **Classical: HIGH** | ⚠️ **The dangerous quadrant** | ✅ Concordant high → MRI, short interval |
-| **Classical: LOW** | ✅ Concordant low → standard/de-escalate | ★ **The high-value quadrant** |
+| **Classical: HIGH** | ⚠️ Discordant: classical high / image low | ✅ Concordant high → MRI, short interval |
+| **Classical: LOW** | ✅ Concordant low → standard/de-escalate | ★ Classical low / image high |
 
-1. **Both low / both high** — concordant. Act with confidence: reassure-and-standardize, or escalate to supplemental MRI.
+1. **Both low / both high** — concordant. Manage accordingly: reassure-and-standardize, or escalate to supplemental MRI.
 
-2. **★ Classical LOW / image HIGH — the high-value quadrant.** The image sees something the questionnaire never could: a tissue-state signal. These are women the questionnaire era called "average." *But what kind of risk is it?* Image models perform **best at near-term prediction**, and the field's interpretation (including the Mirai authors' own discussion) is that a high short-term score may partly reflect **occult or premalignant change already present** — i.e., it's partly a **"look harder NOW"** signal: short-interval follow-up, supplemental imaging, a second look at *this* mammogram — not automatically a lifetime-surveillance decision. **And acting on a signal we cannot explain is precisely the CAD trap** (see §1) — which is why interpretability (AsymMirai: the signal is largely bilateral asymmetry) and *prospective* validation (the **MIRAI-MRI trial, NCT05968157**, comparing MRI for Mirai- vs Tyrer-Cuzick–high women) matter before we change management.
+2. **★ Classical LOW / image HIGH.** The image detects a tissue-state signal the questionnaire does not capture. These are women the questionnaire era classified as "average." The type of risk matters here. Image models perform **best at near-term prediction**, and the field's interpretation (including the Mirai authors' discussion) is that a high short-term score may partly reflect **occult or premalignant change already present**. It is partly a **"look harder now"** signal: short-interval follow-up, supplemental imaging, a second look at *this* mammogram, rather than automatically a lifetime-surveillance decision. Acting on a signal we cannot explain repeats the CAD problem (see §1), which is why interpretability (AsymMirai: the signal is largely bilateral asymmetry) and *prospective* validation (the **MIRAI-MRI trial, NCT05968157**, comparing MRI for Mirai- vs Tyrer-Cuzick–high women) matter before changing management.
 
-3. **⚠️ Classical HIGH / image LOW — the dangerous quadrant.** A BRCA carrier, a strong family history, a high polygenic score — and a quiet-looking mammogram that earns a low image score. **Never let a reassuring image read override known germline risk.** The image model was not trained to see inherited risk; it cannot. De-escalating here would be the most consequential error this technology invites.
+3. **⚠️ Classical HIGH / image LOW.** A BRCA carrier, a strong family history, or a high polygenic score, with a quiet-looking mammogram that earns a low image score. A reassuring image read should not override known germline risk. The image model was not trained to detect inherited risk and cannot. De-escalating here would be the most consequential error this technology invites.
 
 ### The synthesis: these models measure *different things*
 
-> *"The genome asks one question: what did she inherit? The image asks a completely different one: what is her tissue doing right now? Discordance between them isn't a bug to resolve — it's two answers to two questions."*
+> *"The genome asks what she inherited. The image asks what her tissue is doing now. Discordance between them is two answers to two questions."*
 
 - **Image-based DL** → near-term, tissue-state, occult/masking signal. Horizon: strongest at 1–2 years.
 - **Genomic / PRS + family history** → inherited, lifetime, stable.
-- **Density** → masking + modest independent risk.
+- **Density** → masking and modest independent risk.
 
-The future is not picking the winner — it's combining them into a **risk vector** with the right *action* attached to each axis (image-high → look now; genome-high → lifelong surveillance). Naïve substitution of one for the other is dangerous; thoughtful fusion is the goal (early evidence: image-only DL **+ PRS** improves over either alone, Br J Cancer 2026). **Equity caveat:** discordance patterns likely differ by ancestry (PRS portability; image-model training diversity) — the *classical-high/image-low* error could fall hardest on exactly the groups with worse outcomes.
+The aim is not to pick a winner but to combine them into a **risk vector** with the appropriate *action* attached to each axis (image-high → look now; genome-high → lifelong surveillance). Substituting one for the other is unsafe; fusion is the goal (early evidence: image-only DL **+ PRS** improves over either alone, Br J Cancer 2026). **Equity caveat:** discordance patterns likely differ by ancestry (PRS portability; image-model training diversity), and the *classical-high/image-low* error could fall hardest on the groups with worse outcomes.
 
-> **One-liner to land it:** *"Don't ask which model is right. Ask which question you're trying to answer for the woman in front of you — and whether you'd bet her management on a number you can't yet explain."*
+> **One-liner:** *"The clinical question is which model answers what you need for this patient — and whether you would base her management on a number you cannot yet explain."*
 
 ---
 
 ## Density: the crude proxy these models replace (compressed — ~20 sec)
 
-> One line, not a detour: *"For 40 years our only imaging 'risk' marker was breast density — a blunt, subjective category. The US made it a national reporting requirement in 2024; automated tools (Volpara, Densitas) at least made it objective. But density is a crude proxy for what the deep-learning score now reads directly. We're watching density get superseded in real time."* **[VERIFY exact Volpara/Brentnall figures if shown]**
+> One line, not a detour: *"For 40 years our only imaging risk marker was breast density, a coarse and subjective category. The US made it a national reporting requirement in 2024, and automated tools (Volpara, Densitas) made it objective. Density is a proxy for what the deep-learning score now reads directly, and it is being superseded."* **[VERIFY exact Volpara/Brentnall figures if shown]**
 
 ---
 
@@ -87,7 +87,7 @@ The future is not picking the winner — it's combining them into a **risk vecto
 
 > *"Remember I said one of those three opening models was already in this year's guidelines? This is the one."*
 
-**Clairity Breast (Constance Lehman's company) — FDA De Novo authorization, early June 2025** — the **first-ever** AI tool to predict 5-year breast cancer risk from a routine screening mammogram alone, validated across **~77,000 mammograms from 5 sites**; subsequently **added to the 2026 NCCN breast-screening guidance (AI-based risk assessment).** *The regulatory bridge from research model (Mirai) to clinical product has been crossed — research model to cleared product to guideline, in under five years.* **[✓ FDA date + ~77k/5-sites + NCCN-2026 confirmed by agent; no primary peer-reviewed validation paper yet]**
+**Clairity Breast (Constance Lehman's company) — FDA De Novo authorization, early June 2025** — the **first** AI tool to predict 5-year breast cancer risk from a routine screening mammogram alone, validated across **~77,000 mammograms from 5 sites**; subsequently **added to the 2026 NCCN breast-screening guidance (AI-based risk assessment).** The path from research model (Mirai) to cleared product to guideline took under five years. **[✓ FDA date + ~77k/5-sites + NCCN-2026 confirmed by agent; no primary peer-reviewed validation paper yet]**
 
 ---
 

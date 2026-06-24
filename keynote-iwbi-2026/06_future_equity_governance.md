@@ -1,44 +1,44 @@
-# Section 6 — The Hard Part: Equity, Governance, and Trust
-### ~6 minutes · spine stage: **POPULATION** · the segment that makes the vision credible
+# Section 6 — Equity, Governance, and Trust
+### ~6 minutes · spine stage: **POPULATION**
 
-**Purpose:** Bring the room back to earth — deliberately — right after the §5 peak. The technology is now the easy part. This section is **the CAD lesson retold at population scale:** deploy without evidence, monitoring, and discipline, and you don't just waste $400M — you widen a global mortality gap. Single narrative arc: **the gap → three ways AI could betray the promise → the CAD lesson at scale → the choice.** Your first-person credibility moment (Gichoya) lives here; the *principles* live in §7.
+**Purpose:** Return to the practical constraints after §5. This section is the CAD lesson at population scale: deploy without evidence, monitoring, and discipline, and the cost is no longer a wasted $400M but a wider global mortality gap. Narrative arc: the gap → three ways AI could fail the promise → the CAD lesson at scale → the choice. The first-person material (Gichoya) is here; the principles are in §7.
 
 ---
 
 ## The frame (the CAD loop closes)
 
-> *"I started this talk with a confession: this field deployed a technology before it proved it worked, and it cost us twenty years and four hundred million dollars a year. I want to end the future-half with the same warning — because the next time we make that mistake, the stakes won't be a wasted line item. They'll be measured in lives, and in who gets left behind."*
+> *"I started this talk by noting that this field deployed a technology before it proved it worked, and it cost us twenty years and four hundred million dollars a year. I want to close the future-half with the same point. The next time we make that mistake, the cost will be measured in lives, and in who gets left behind."*
 
 ---
 
-## Movement 1 — The gap (lead here; it's the moral center)
+## Movement 1 — The gap (lead here)
 
 - **2.3 million** new female breast-cancer cases and **~670,000 deaths** (≈666,000) worldwide in 2022 — the most common cancer in women (~23.8% of female cancers); projected to **exceed 6 million cases/year by 2050.** *(GLOBOCAN 2022; Bray et al., CA Cancer J Clin 2024; breast-specific GLOBOCAN analysis, PMID 39994475)*
-- **The headline disparity:** Africa's mortality-to-incidence ratio is **0.51** — the highest of any region; roughly **half** the women diagnosed die — versus far lower ratios in high-income Europe/North America. *Same disease, radically different survival — determined by access, not biology.* *(GCO 2022 analysis, PMID 39874943)*
+- **The disparity:** Africa's mortality-to-incidence ratio is **0.51**, the highest of any region; roughly **half** the women diagnosed die, versus lower ratios in high-income Europe and North America. *The same disease has different survival, determined largely by access rather than biology.* *(GCO 2022 analysis, PMID 39874943)*
 - **WHO Global Breast Cancer Initiative (2021):** target **2.5% annual mortality reduction**, averting **2.5M deaths by 2040.**
-- **Where AI's promise is genuinely real:** over two-thirds of the world's population lacks reliable access to a radiologist; **as many as 14 African countries have zero**; many LMICs have <5 mammography units and <10 radiologists per million. *(RAD-AID/global-radiology-gap reporting — advocacy-sourced, not a single primary census; phrase as "as many as.")* *The honest force-multiplier case is where there is no reader at all.*
+- **Where AI's value is clearest:** over two-thirds of the world's population lacks reliable access to a radiologist; **as many as 14 African countries have zero**; many LMICs have <5 mammography units and <10 radiologists per million. *(RAD-AID/global-radiology-gap reporting — advocacy-sourced, not a single primary census; phrase as "as many as.")* *The force-multiplier case is strongest where there is no reader at all.*
 
-> **The double-edged framing (the spine of the section):** *"The very same models that could bring screening to the fourteen countries with no radiologist were trained on data that excludes those countries' women. AI will either be the great equalizer of breast cancer outcomes — or its great amplifier. Nothing about the technology decides which. We do."*
+> **The double-edged framing (the spine of the section):** *"The same models that could bring screening to the fourteen countries with no radiologist were trained on data that excludes those countries' women. AI can narrow breast cancer outcome disparities or widen them. The technology does not decide which. We do."*
 
 ---
 
-## Movement 2 — The two gaps, and three ways we betray the promise
+## Movement 2 — The two gaps, and three failure modes
 
-**The two gaps (caveat emptor — the through-line from §2).** Between an impressive AUC and a tool you can actually trust sit two gaps we have not closed:
+**The two gaps (caveat emptor — the through-line from §2).** Between a strong AUC and a tool you can trust sit two gaps we have not closed:
 
-**Gap 1 — Subgroup performance: the aggregate number hides the failures.** Our own audits make this concrete, across two domains:
+**Gap 1 — Subgroup performance: the aggregate number hides the failures.** Our group's audits show this across two domains:
 - **Breast (DBT) — Nat Commun 2026 [your group]:** overall **AUC 0.91**, but **in-situ 0.85/sens 0.55, calcifications 0.80/0.66, dense breasts 0.88/0.63.**
 - **Neuro (ICH) — npj Digit Med 2025 [your group]:** overall **82.2% sensitivity**, but **subacute 45.5%, chronic 54.8%, outpatient 72.2%.**
-- Both were **demographically robust** — the blind spots were *clinical*, on exactly the subtle cases we most need help with. You only find them if you look. **Subgroup-stratified performance has to be a release criterion, not an afterthought.** (And demographic gaps are real elsewhere — density-driven false positives in the 2023 RSNA challenge / BreastScreen Norway; degraded transfer to under-represented groups.)
+- Both were **demographically robust**; the blind spots were *clinical*, on the subtle cases where help is most needed. They are found only by looking. **Subgroup-stratified performance should be a release criterion.** (Demographic gaps appear elsewhere too: density-driven false positives in the 2023 RSNA challenge / BreastScreen Norway, and degraded transfer to under-represented groups.)
 
-**Gap 2 — Explainability: we usually can't say *why*.** When that DBT model misses an in-situ cancer, we mostly cannot explain it — so we cannot anticipate the next miss. AsymMirai (§3) showed models *can* be built to be interrogated; most deployed tools are not. Without explanation, **subgroup auditing is the only safety net we have — and most deployments skip it.**
+**Gap 2 — Explainability: we usually cannot say *why*.** When that DBT model misses an in-situ cancer, we mostly cannot explain it, so we cannot anticipate the next miss. AsymMirai (§3) showed models can be built to be interrogated; most deployed tools are not. Without explanation, subgroup auditing is the only check available, and most deployments skip it.
 
-> *"So: caveat emptor. The two things standing between a great AUC and a tool you'd stake a patient on are whether you can see why it fails, and whether anyone checked where it fails. Both are usually missing."*
+> *"So: caveat emptor. The two things between a strong AUC and a tool you would use on a patient are whether you can see why it fails, and whether anyone checked where it fails. Both are usually missing."*
 
 **(a) Bias we cannot see — the first-person beat.**
-> *"Here's a finding from my own group that still unsettles me."* **Gichoya et al., Lancet Digital Health 2022** — deep learning predicts a patient's self-reported race from medical images — **AUC 0.81 on mammography**, 0.91–0.99 on chest X-ray — **even from corrupted, cropped, and noised images**, and *not* through any known proxy (density AUC only 0.61). *"No human radiologist can see race on a mammogram. The model can — and we still don't fully know how. If a model can learn that, it can silently learn to act on it. That is the hidden-bias problem in one experiment."* *(DOI 10.1016/S2589-7500(22)00063-2)* **[confirm Trivedi co-authorship]**
-- And performance doesn't transfer cleanly — externally validated mammography AI degrades on under-represented groups (worse in Hispanic women, women with prior breast cancer). Models trained on homogeneous high-income data are **brittle**.
-- The fix begins with data: **EMBED (Jeong et al., Radiology: AI 2023) — 3.4M mammographic images from ~116,000 women, ~42% African American** **[your group]** — but frameworks still don't compel developers to disclose dataset composition. *(arXiv preprint 2022 says 3.5M; published version 3.4M — use 3.4M with the journal cite.)*
+> *"Here is a finding from our group."* **Gichoya et al., Lancet Digital Health 2022** — deep learning predicts a patient's self-reported race from medical images: **AUC 0.81 on mammography**, 0.91–0.99 on chest X-ray, **even from corrupted, cropped, and noised images**, and not through any known proxy (density AUC only 0.61). *"No human radiologist can see race on a mammogram. The model can, and we still do not fully know how. If a model can learn that, it can learn to act on it without anyone noticing. That is the hidden-bias problem in one experiment."* *(DOI 10.1016/S2589-7500(22)00063-2)* **[confirm Trivedi co-authorship]**
+- Performance also does not transfer cleanly: externally validated mammography AI degrades on under-represented groups (worse in Hispanic women, women with prior breast cancer). Models trained on homogeneous high-income data are **brittle**.
+- The fix begins with data: **EMBED (Jeong et al., Radiology: AI 2023) — 3.4M mammographic images from ~116,000 women, ~42% African American** **[your group]** — but frameworks still do not require developers to disclose dataset composition. *(arXiv preprint 2022 says 3.5M; published version 3.4M — use 3.4M with the journal cite.)*
 
 **(b) Drift we don't monitor.** Models are not static. **Data drift** (new scanners/protocols), phenotype drift, concept drift — real-world performance decays. **FDA has authorized ~1,250 AI/ML devices by early 2025, nearing ~1,450 by mid-2025 (radiology ~76%)**, and finalized **Predetermined Change Control Plan (PCCP)** guidance (Dec 2024) — yet few cleared devices actually carry one. **A clearance or a CE mark is a snapshot, not a guarantee.** This is CAD's "deploy and forget," dressed up.
 

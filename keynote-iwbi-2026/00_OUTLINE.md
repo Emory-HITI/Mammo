@@ -7,16 +7,16 @@
 
 ## Thesis
 
-The arc of AI in breast cancer is the steadily widening question of *what we ask the image to tell us* — **from the lesion, to the image, to the patient, to the population.** Traditional CAD helped us *see the lesion* — and failed. Modern deep learning *reads the whole image* — and, validated prospectively, finally works. The frontier is **clinical intelligence**: AI that *understands the patient* by fusing imaging, pathology, genomics, and clinical data across the continuum — and, ultimately, reshapes screening for *whole populations* more accurately, more personally, and (if we get the governance right) more equitably.
+AI in breast cancer reflects a widening question of what we ask the image to tell us: from the lesion, to the image, to the patient, to the population. Traditional CAD aimed to help us see the lesion and did not improve outcomes. Modern deep learning reads the whole image and, validated prospectively, performs the task. The current frontier is **clinical intelligence**: AI that characterizes the patient by combining imaging, pathology, genomics, and clinical data across the continuum, and that may reshape screening at the population level with more accuracy, more personalization, and, given adequate governance, more equity.
 
 **Through-line spine (state it in the hook, repeat at every transition):**
 
 > ### LESION → IMAGE → PATIENT → POPULATION
 
 - **Lesion** — find the spot, draw the circle. CAD → modern detection/screening AI. *(Sections 1–2)*
-- **Image** — the whole image predicts more than the lesion: future cancer, cardiovascular risk. The mammogram as biosensor. *(Section 3)*
-- **Patient** — fuse imaging + tissue + genome + history into one understanding. Pathology + clinical intelligence. *(Sections 4–5)*
-- **Population** — who gets screened, how, and whether AI narrows or widens the divide. Equity & governance. *(Section 6)*
+- **Image** — the whole image predicts future cancer and cardiovascular risk beyond the lesion. The mammogram as biosensor. *(Section 3)*
+- **Patient** — combine imaging, tissue, genome, and history into one representation. Pathology and clinical intelligence. *(Sections 4–5)*
+- **Population** — who gets screened, how, and whether AI narrows or widens the divide. Equity and governance. *(Section 6)*
 
 *("From CAD to clinical intelligence" is the title; "lesion → image → patient → population" is how the audience remembers it.)*
 
@@ -52,25 +52,25 @@ As drafted, sections run long: §3 ~7.5 (the population-vs-individual addition),
 
 ## The five compelling themes (the spine the audience should remember)
 
-1. **"Paid first, proven never" → "prove it, then deploy it."** CAD was reimbursed before it was validated and it never worked. Modern AI earned level-1 RCT evidence (MASAI) before scaling. The lesson is the method, not just the machine.
-2. **From detection to forecast.** AI turns a screening image from "is there cancer today?" into "what is this person's risk, and how hard should we look?" — the mammogram as a biosensor (Mirai → FDA-cleared Clairity).
-3. **Morphology to molecular.** Pathology AI now infers genomics, receptor status, and recurrence risk from a cheap H&E slide — a capability imaging doesn't have, and the bridge to integrated decision-making.
-4. **Clinical intelligence, not point solutions.** Foundation and multimodal models fuse radiology + pathology + genomics + clinical data into one patient-level representation across the care continuum.
-5. **The technology is the easy part.** Equity, governance, and implementation science decide whether AI becomes the great equalizer of breast-cancer outcomes or its great amplifier — a question being written right now, in Europe.
+1. **"Paid first, proven never" → "prove it, then deploy it."** CAD was reimbursed before it was validated and did not improve outcomes. Modern AI obtained level-1 RCT evidence (MASAI) before scaling. The lesson is the method, not the machine alone.
+2. **From detection to forecast.** AI shifts a screening image from "is there cancer today?" to "what is this person's risk, and how closely should we look?" The mammogram functions as a biosensor (Mirai → FDA-cleared Clairity).
+3. **Morphology to molecular.** Pathology AI infers genomics, receptor status, and recurrence risk from an H&E slide, a capability imaging lacks and a bridge to integrated decision-making.
+4. **Clinical intelligence rather than point solutions.** Foundation and multimodal models combine radiology, pathology, genomics, and clinical data into one patient-level representation across the care continuum.
+5. **The technology is the easier part.** Equity, governance, and implementation science determine whether AI reduces or widens disparities in breast-cancer outcomes, a question now being addressed in Europe.
 
 ---
 
-## Speaker's personal thread (you are a co-author on several anchor papers)
+## Speaker's personal thread (papers the speaker co-authored)
 
 - **Schaffter et al., DREAM Challenge, JAMA Netw Open 2020** — present-day screening evidence.
 - **AsymMirai (Donnelly et al., Radiology 2024)** — interpretable risk (Duke + Emory).
 - **Gichoya et al., Lancet Digital Health 2022** — AI predicts race from images (the hidden-bias slide).
 - **EMBED dataset (Emory, 2022)** — 3.5M racially diverse mammograms; the equity/data thread.
 
-> These let you speak in the first person at four key moments — opening (evidence), risk (interpretability), and equity (twice). Confirm authorship on each before claiming from the podium.
+> These support first-person comments at four points: opening (evidence), risk (interpretability), and equity (twice). Confirm authorship on each before citing from the podium.
 
 ---
 
 ## Sourcing discipline (a meta-point worth making to this audience)
 
-Every clinical claim in the content files carries an author/journal/year. Items flagged **[VERIFY]** are press- or vendor-sourced and should be confirmed against a primary source before they go on a slide. This is itself part of the talk's argument: the field's credibility depends on the difference between a peer-reviewed endpoint and a press release.
+Every clinical claim in the content files carries an author/journal/year. Items flagged **[VERIFY]** are press- or vendor-sourced and should be confirmed against a primary source before they go on a slide. This is part of the talk's argument: the field's credibility depends on the distinction between a peer-reviewed endpoint and a press release.
