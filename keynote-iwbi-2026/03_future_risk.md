@@ -114,6 +114,12 @@ The future is not picking the winner — it's combining them into a **risk vecto
 
 ---
 
+## Bridge to Section 4 (image → patient)
+
+> *"So the image can tell us **when** to look and **how hard**. But the moment we find something, the question changes completely — from 'is there cancer, and what's her risk?' to '**what is this cancer, and what will it do?**' And that answer isn't in radiology at all. It's across the hospital, on a glass slide. If we're serious about understanding the patient, we have to walk into the pathology lab — because that's where AI is doing something our images can't."*
+
+---
+
 ## Slide-ready
 
 **Key numbers**

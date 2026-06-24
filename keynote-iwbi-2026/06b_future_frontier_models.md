@@ -7,9 +7,9 @@
 
 ---
 
-## The provocation (open here)
+## The provocation (open here — bridges from §6's "who decides")
 
-> *"I've shown you a dozen specialist models, each trained for one job. But there's a tidal force offstage. The frontier models from the big labs — GPT, Gemini, Claude — weren't built for radiology, yet they're improving faster than any medical model, and every generation they get better at things we were sure required a custom build. So let me ask the uncomfortable question: in five years, do we still build our own models — or do we just ask the general one?"*
+> *"I just said the outcome isn't decided by the technology — it's decided by us. But there's a force that will shape who 'us' even is, and I'd be dishonest to end without it. I've shown you a dozen specialist models, each trained for one job. Offstage, there's a tidal wave: the frontier models from the big labs — GPT, Gemini, Claude — weren't built for radiology, yet they're improving faster than any medical model, and every generation they do things we were sure required a custom build. So the uncomfortable question: in five years, do we still build our own models — or do we just ask the general one? And if it's the latter — who owns it?"*
 
 ---
 
