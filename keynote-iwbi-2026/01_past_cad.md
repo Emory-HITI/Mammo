@@ -1,27 +1,27 @@
 # Section 1 — The Cautionary Tale of CAD
-### ~5 minutes · "Point" · sets up the entire talk's standard of evidence
+### ~5 minutes · spine stage: **Lesion** (Era I) · sets the talk's standard of evidence
 
-**Purpose:** Open with humility, not hype. The story of traditional CAD is the reason this audience should believe the modern evidence — because we know what failure looked like, and what it cost. Theme: **history repeats itself — unless we make it not.**
+**Purpose:** Open plainly. CAD is the reason to weigh the modern evidence carefully — we know what failure looked like, and what it cost. The standard set here (prove it before scaling it) is the standard the rest of the talk is held to.
 
 ---
 
-## THE HONEST START (picks up directly from the hook's last line)
+## The start (picks up from the hook's last line)
 
-*The hook (`00_HOOK.md`) ends: "this field has fooled itself before, and I'll start there." Land straight into the numbers — no second cold open.*
+*The hook ends: "this field has overpromised before, and I'll start there." Go straight to the numbers.*
 
-> *(Black slide, one number.)*
+> *(Slide: one number.)*
 >
 > **"$400 million a year."**
 >
-> *"That's what the United States spent, every year, on a breast-imaging AI that didn't work. Not a fringe technology — it ran on nearly every screening mammogram in America. And when the definitive study finally looked, radiologists reading with the tool weren't better. Some were measurably **worse**."*
+> *"That's roughly what the U.S. spent each year on computer-aided detection for mammography — about one dollar of every ten thousand spent on U.S. health care. It ran on most screening mammograms in the country. When the definitive study was finally done, radiologists using CAD were no more accurate, and by one measure less."*
 >
-> *(Second slide: **OR 0.53**.)*
+> *(Slide: **OR 0.53**.)*
 >
-> *"The same radiologist. The same eyes. Worse, with the machine turned on."*
+> *"Among radiologists who read both with and without it, sensitivity was lower with CAD on. Same readers, same images, fewer cancers caught."*
 >
-> *"That technology was computer-aided detection — CAD. The first machines we built to find the **lesion**. I tell you this story not to make you cynical about AI, but because **history repeats itself unless we understand why it failed the first time.** Everything I show you for the next 40 minutes has to clear the bar that CAD did not."*
+> *"That tool was computer-aided detection — the first systems we built to find the **lesion**. I start here for a simple reason: the field has overpromised before. Everything in the next 40 minutes should clear the bar CAD did not."*
 
-**Why this works:** the hook soared (the image already knew); now you earn trust by being the person who names the field's biggest failure first. Two cold numbers keep the energy up, and "history repeats itself" frames the rest of the talk as a test modern AI must pass — not a hype reel. The word **lesion** ties CAD to the first stage of the spine.
+**Note:** name the field's clearest failure first; it earns the credibility to be optimistic later. The word **lesion** ties CAD to the first stage of the spine.
 
 ---
 
@@ -41,25 +41,27 @@
 
 **Lehman et al., JAMA Internal Medicine 2015** — the landmark, in the **digital** era. 323,973 women, **625,625 digital mammograms**, 271 radiologists, 66 facilities.
 - Sensitivity **85.3% with CAD vs 87.3% without.** Specificity **91.6% vs 91.4%.** Cancer detection **4.1/1,000 in both** — identical.
-- **The killer finding:** among the 107 radiologists who read both with and without CAD, sensitivity was **significantly *lower* with CAD (OR 0.53; 95% CI 0.29–0.97).** The same eyes missed more cancers with the machine on.
+- Among the 107 radiologists who read both with and without CAD, sensitivity was **lower with CAD on (OR 0.53; 95% CI 0.29–0.97).**
 - *DOI: 10.1001/jamainternmed.2015.5231*
 
-> **THE QUOTE (on-screen, verbatim):**
+> **Quote (on-screen, verbatim):**
 > *"Computer-aided detection does not improve diagnostic accuracy of mammography. These results suggest that insurers pay more for CAD with no established benefit to women."*
 > — Lehman CD et al., *JAMA Internal Medicine* 2015
 
-*This was foreshadowed years earlier:* **Fenton et al. (NEJM 2007; JNCI 2011)** had already shown CAD lowered specificity and raised biopsies (NEJM 2007: AUC **0.871 with CAD vs 0.919 without**; biopsy rate **+19.7%**) — with no gain in cancers found. The warning signs were there for a decade; we kept paying anyway.
+The authors offered a plausible mechanism, worth quoting because it foreshadows automation bias (§6): *"radiologists reading with CAD are overly dependent on the technology and ignore suspicious lesions if they are not marked by CAD"* (Lehman, 2015). The companion editorial was titled *"Is It Time to Stop Paying for Computer-Aided Mammography?"* (JAMA Intern Med 2015).
+
+The signal had been there for years. **Fenton et al. (NEJM 2007; JNCI 2011)** found CAD lowered specificity (90.2%→87.2%) and raised the biopsy rate (+19.7%) with no gain in cancers detected; the small, non-significant sensitivity change in 2007 was driven mostly by extra DCIS. *Honest caveat to state:* the 2007 study has been criticized because CAD was actually used at only 7 of 43 facilities — which is why the 2015 digital-era study (where CAD was near-universal) is the stronger evidence.
 
 ---
 
-## Why it failed — technically (the conceptual pivot of the talk)
+## Why it failed (the technical reasons)
 
-Traditional CAD was a **rule-based, hand-engineered expert system** — humans wrote explicit features and pixel-pattern rules, and a classifier flagged regions.
-- **It was built to find what we already find.** CAD was trained to flag the cancers radiologists already catch well — adding marks and noise, not a new class of finding. *(Kohli & Jha, JACR 2018; DOI 10.1016/j.jacr.2017.12.029)* *(Frame the "~84%" as context from the R2 device's original detection claim, not a quotable statistic from this commentary.)*
-- **Alert fatigue:** false-positive marks appeared on **~70% of normal cases.** As marks pile up, attention to each one drops. *(PMC3180536)*
-- **The human-factors trap:** as a "second reader" anchored on imperfect human-defined features, it could *lower* a good reader's sensitivity by inducing complacency about unmarked regions.
+Traditional CAD was a rule-based system: humans specified the image features and pixel patterns, and a classifier flagged regions. Three reasons it didn't help:
+- **It targeted the cancers we already find well.** So it added marks, not new information. *(Kohli & Jha, JACR 2018; DOI 10.1016/j.jacr.2017.12.029. Treat the "~84%" as context from the original device claim, not a quotable statistic.)*
+- **Readers learned to ignore it.** False-positive marks appeared on ~70% of normal studies; after enough false alarms, trust in the marks erodes. *(PMC3180536)*
+- **It could lower a good reader's sensitivity** — the over-dependence Lehman described.
 
-> **The field wrote its own post-mortem:** Kohli & Jha titled their 2018 JACR analysis *"Why CAD Failed in Mammography"* — and noted that AI skeptics now cite exactly this story. The honest answer to them is in the *next* section.
+> Kohli & Jha titled their 2018 JACR review *"Why CAD Failed in Mammography,"* and noted that AI skeptics cite this history. Section 2 is the response.
 
 ---
 
@@ -67,9 +69,9 @@ Traditional CAD was a **rule-based, hand-engineered expert system** — humans w
 
 - **2012 — AlexNet** wins ImageNet; the deep-learning era begins.
 - **~2016–2017** — CNNs reach mammography research in earnest.
-- **The conceptual difference (the heart of the talk):** Old CAD was *programmed* — humans specified what cancer "looks like." Modern deep learning is *trained end-to-end* — the network learns the discriminative features directly from labeled images. Old CAD **pointed** at boxes for a human to adjudicate; new AI can **read** the image as an independent reader or triage tool.
+- **The difference:** old CAD was *programmed* — humans specified what cancer looks like. Modern deep learning is *trained* — the model learns the features from labeled images. Old CAD **pointed** at regions for a human to check; modern AI can **read** the image, as a second reader or on its own.
 
-> **Transition line:** *"We spent two decades and billions teaching computers to **point** at mammograms. The breakthrough was teaching them to **read** them — and this time, validating it before we billed for it."*
+> **Transition line:** *"For two decades we taught computers to point at mammograms. The change was teaching them to read — and this time, validating it before billing for it."*
 
 ---
 
