@@ -66,4 +66,4 @@ The probable future is not a generalist replacing the specialist. It is a **stac
 - Frame current frontier models (GPT-5 / Gemini 3 / Claude) by the *trajectory*, not by specific unpublished benchmark numbers — don't quote figures you can't cite.
 
 ## ⏱️ TIME / PLACEMENT NOTE
-Adds ~3.5 min. **This pushes the talk over 45 — see the global time reconciliation.** If cut for time, this section can compress to a **60-second "the wildcard" beat** (provocation + bitter lesson + "bet on the discipline") and still earn its place. Strongest as a full ~3.5-min section if we trim elsewhere.
+Adds ~3.5 min. **This pushes the talk over 45 — see the global time reconciliation.** If cut for time, this section can compress to a **60-second beat** (opening + bitter lesson + "bet on the discipline"). Otherwise run it as a full ~3.5-min section and trim elsewhere.

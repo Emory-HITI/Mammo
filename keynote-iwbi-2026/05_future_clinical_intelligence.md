@@ -79,7 +79,7 @@ Mammographic opportunistic screening is one instance of a field-wide pattern. Th
 
 ## Closing synthesis of the section (bridge to Section 6)
 
-> *"We started with CAD — a second pair of eyes on one image. We arrive at clinical intelligence — a system that reads the mammogram for cancer **and** for cardiovascular risk, fuses it with the patient's pathology and genome into a living digital twin, drafts the report, and triages the worklist. The evidence is real — MASAI, PRAIM, Mirai, the cardio-mammography work. So are the failure modes — batch effects, hallucinated citations, one-in-ten BI-RADS errors. The task for this room is to build the validation, not just the models. And then to make sure it reaches everyone — because a technology this powerful will either close the gap in breast cancer outcomes, or widen it."*
+> *"We started with CAD, a second reader on one image. We arrive at clinical intelligence: a system that reads the mammogram for cancer **and** for cardiovascular risk, fuses it with the patient's pathology and genome into a digital twin, drafts the report, and triages the worklist. The evidence is established (MASAI, PRAIM, Mirai, the cardio-mammography work), and so are the failure modes (batch effects, fabricated citations, one-in-ten BI-RADS errors). The task for this room is to build the validation, not only the models, and to ensure it reaches everyone, because this technology will either close the gap in breast cancer outcomes or widen it."*
 
 ---
 
@@ -103,4 +103,4 @@ Mammographic opportunistic screening is one instance of a field-wide pattern. Th
 - DAX/Kaiser ambient-documentation figures (press); confirm your co-authorship on Li (Clin Imaging 2023), Guo/SCU-Net, and Dapamede before claiming from the podium.
 
 ## ⏱️ TIME NOTE
-3 beats + on-ramp. Beat 2 expanded (opportunistic/biosensor leaned-in per request) → section now ~9 min. **Release valves:** (1) Beat 3 (genAI + workforce) compresses to ~45 sec; (2) in Beat 2, the cross-modality 2d (retina/ECG/CT) can drop to a single sentence if pressed — it's breadth/color, not core. Rebalance across the future half once all sections lock; the future budget is 30 min total.
+3 beats + on-ramp. Beat 2 expanded (opportunistic/biosensor content per request) → section now ~9 min. **Release valves:** (1) Beat 3 (genAI + workforce) compresses to ~45 sec; (2) in Beat 2, the cross-modality 2d (retina/ECG/CT) can drop to a single sentence if pressed; it is supporting breadth, not core. Rebalance across the future half once all sections lock; the future budget is 30 min total.

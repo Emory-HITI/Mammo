@@ -47,13 +47,13 @@ CAD's failure was a failure of **evidence, monitoring, and discipline** rather t
 
 ## Optional final slide (under the closing line)
 
-The anchor evidence in one frame — **MASAI +29% detection / 44% workload · PRAIM +17.6% · Mirai C-index 0.76–0.81 · Clairity FDA-cleared 2025 · BAC→MACE 123k women** — beneath the words:
-> **"The future is already validated. Now make it reach everyone."**
+The anchor evidence in one frame: **MASAI +29% detection / 44% workload · PRAIM +17.6% · Mirai C-index 0.76–0.81 · Clairity FDA-cleared 2025 · BAC→MACE 123k women**, beneath the words:
+> **"The evidence is in place. Now make it reach everyone."**
 
 ---
 
 ## Delivery notes
-- A *return*, not new material — no new citations on screen.
-- **3.5-min cut if running long:** §6b handoff (15s) → spine reprise + hook callback (60s) → six principles as one slide read fast (75s) → primary closing line (30s).
-- **First-person authority:** by here the audience knows your fingerprints are on this field — DREAM, AsymMirai, Gichoya, EMBED, the Emory cardio-mammography work. You've earned *"some of this is work my own group has been part of — and I'm telling you the discipline matters more than any of it."*
-- Land the last line, then stop. Don't add a thank-you-slides coda after the closing line — let it sit.
+- A return, not new material; no new citations on screen.
+- **3.5-min cut if running long:** §6b handoff (15s), spine reprise plus hook callback (60s), six principles as one slide read quickly (75s), primary closing line (30s).
+- **First-person note:** much of the referenced work is the speaker's own (DREAM, AsymMirai, Gichoya, EMBED, the Emory cardio-mammography work). Optional line: *"Some of this is work my own group has been part of, and the discipline matters more than any single result."*
+- Deliver the last line, then stop. Do not add a thank-you-slides coda after the closing line; let it sit.

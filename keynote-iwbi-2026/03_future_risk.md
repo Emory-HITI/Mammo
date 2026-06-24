@@ -15,7 +15,7 @@
 >
 > **[Reveal the risk overlay / heatmap on the same image.]**
 >
-> *"It wasn't looking for a lesion. There wasn't one. It was reading the **tissue** — and it was right. The image already knew. Every mammogram already contains a five-year forecast. We are only now learning to read it."*
+> *"It was not looking for a lesion. There wasn't one. It was reading the **tissue**, and it was right. The image already knew. Every mammogram contains a five-year forecast. We are only now learning to read it."*
 
 The image carries signal, invisible to the human eye, about future cancer in addition to current cancer. Deep learning extracts it. That reframes screening from a snapshot into a trajectory: from *"is there cancer today?"* to *"when, and how hard should we look?"*
 
@@ -93,30 +93,30 @@ The aim is not to pick a winner but to combine them into a **risk vector** with 
 
 ## Risk-adapted screening — and Europe is running the definitive trial
 
-> *"This is where it stops being a number on a slide and becomes a screening program — and the most important experiment in the world on this question is happening here, in Europe."*
+> *"This is where it becomes a screening program rather than a number on a slide, and the largest trial on this question is running in Europe."*
 
-**MyPeBS (Europe) — the definitive trial.** EU-funded RCT, **~85,000 women** across **6 countries** (Belgium, France, Italy, Israel, Spain, UK), risk-stratified vs standard age-based screening, endpoint = stage ≥2 cancer incidence; **ongoing, results pending.** The largest test ever of whether we should screen by *risk* instead of by *age*. *(BMC Cancer 2022; DOI 10.1186/s12885-022-09484-6)*
+**MyPeBS (Europe).** EU-funded RCT, **~85,000 women** across **6 countries** (Belgium, France, Italy, Israel, Spain, UK), risk-stratified vs standard age-based screening, endpoint = stage ≥2 cancer incidence; **ongoing, results pending.** The largest test to date of whether to screen by *risk* instead of by *age*. *(BMC Cancer 2022; DOI 10.1186/s12885-022-09484-6)*
 
-**WISDOM (US) — the first results are already in.** Esserman et al., *JAMA* 2026;335(9):763–774. Pragmatic RCT, **28,372 women** 40–74; risk-based (9-gene panel + polygenic score + BCSC model → 4 regimens, from 6-monthly MRI down to *defer*) vs annual.
-- **Risk-based was non-inferior for advanced (stage ≥IIB) cancers — with ~3,800 fewer mammograms per 100,000 person-years.** Less screening, no excess advanced cancer.
-- **Honest caveat:** it did **NOT** reduce biopsies (that superiority endpoint failed). But **89% of women offered the choice picked risk-based** — patients want this. *(DOI 10.1001/jama.2025.24784)*
+**WISDOM (US) — first results reported.** Esserman et al., *JAMA* 2026;335(9):763–774. Pragmatic RCT, **28,372 women** 40–74; risk-based (9-gene panel + polygenic score + BCSC model → 4 regimens, from 6-monthly MRI down to *defer*) vs annual.
+- **Risk-based was non-inferior for advanced (stage ≥IIB) cancers, with ~3,800 fewer mammograms per 100,000 person-years.** Less screening, no excess advanced cancer.
+- **Caveat:** it did **NOT** reduce biopsies (that superiority endpoint failed). **89% of women offered the choice picked risk-based.** *(DOI 10.1001/jama.2025.24784)*
 
-**Where the image model plugs in (the forward thesis):** today MyPeBS and WISDOM triage on *genetics + classical models*. The obvious next step — and the synthesis of this whole section — is to add the **image-derived score as a second axis**: image-high → look sooner / MRI; concordant-low → safely extend the interval. Bernstein/Yala et al. (PLOS Digital Health 2026) show Mirai as a 1-year "rule-out" could cut caseload **36–75%** with quantified false-omission tradeoffs — the scaffold for "who can safely screen less." *(Tie back to the four quadrants: the trials currently use only the classical axis; the image axis is the value still on the table.)*
+**Where the image model plugs in:** today MyPeBS and WISDOM triage on *genetics + classical models*. The next step is to add the **image-derived score as a second axis**: image-high → look sooner / MRI; concordant-low → extend the interval. Bernstein/Yala et al. (PLOS Digital Health 2026) report Mirai as a 1-year "rule-out" could cut caseload **36–75%** with quantified false-omission tradeoffs, a basis for identifying who can screen less. *(Tie back to the four quadrants: the trials currently use only the classical axis; the image axis is not yet used.)*
 
 ---
 
 ## Equity & honest caveats (do not skip)
 
-- Mirai was developed on a **largely non-diverse US cohort** (the training set's exact racial composition isn't publicly disclosed) — the central fairness worry. *(Don't cite a specific "3.75%" figure — it's not in the papers.)*
-- **But** independent validation is reassuring: Omoleye et al., Radiology: AI 2023 (Univ. of Chicago) validated Mirai in a **46.4% African-American** cohort with comparable performance (1-yr AUC 0.71); notably the paper's main *stratified gap was by density* (0.72 nondense vs 0.58 dense), not race. The lesson: diverse-cohort validation must be **mandatory, not optional.**
-- WISDOM was **77% non-Hispanic White** — generalizability to Black/Hispanic/Asian women unproven, and Black women face higher mortality, younger onset, more triple-negative disease. A system that *defers* screening could **widen disparities** if it under-calls these groups.
-- **PRS portability** across ancestries remains unsolved. Real-world AUCs (~0.65–0.72) are good, not oracular.
+- Mirai was developed on a **largely non-diverse US cohort** (the training set's exact racial composition is not publicly disclosed), the central fairness concern. *(Don't cite a specific "3.75%" figure — it's not in the papers.)*
+- Independent validation is reassuring: Omoleye et al., Radiology: AI 2023 (Univ. of Chicago) validated Mirai in a **46.4% African-American** cohort with comparable performance (1-yr AUC 0.71); the paper's main *stratified gap was by density* (0.72 nondense vs 0.58 dense), not race. Diverse-cohort validation should be required.
+- WISDOM was **77% non-Hispanic White**, so generalizability to Black/Hispanic/Asian women is unproven, and Black women face higher mortality, younger onset, and more triple-negative disease. A system that *defers* screening could **widen disparities** if it under-calls these groups.
+- **PRS portability** across ancestries remains unsolved. Real-world AUCs (~0.65–0.72) are moderate.
 
 ---
 
 ## Bridge to Section 4 (image → patient)
 
-> *"So the image can tell us **when** to look and **how hard**. But the moment we find something, the question changes completely — from 'is there cancer, and what's her risk?' to '**what is this cancer, and what will it do?**' And that answer isn't in radiology at all. It's across the hospital, on a glass slide. If we're serious about understanding the patient, we have to walk into the pathology lab — because that's where AI is doing something our images can't."*
+> *"The image can tell us **when** to look and **how hard**. Once we find something, the question changes from 'is there cancer, and what is her risk?' to '**what is this cancer, and what will it do?**' That answer is not in radiology. It is across the hospital, on a glass slide. To understand the patient, we move to the pathology lab, where AI does something our images cannot."*
 
 ---
 
@@ -131,7 +131,7 @@ The aim is not to pick a winner but to combine them into a **risk vector** with 
 
 **Vision lines**
 - *"From 'is there cancer today?' to 'when, and how hard should we look?'"*
-- *"Risk-adapted screening = more for the few who need it, less for the many who don't — and WISDOM just showed it's safe."*
+- *"Risk-adapted screening: more for the few who need it, less for the many who do not. WISDOM showed it is safe."*
 
 ## ✓ VERIFIED (agent pass) — corrections applied
 - Yala 2019 (0.70/0.68/0.62), Mirai (C-index 0.76/0.81/0.79; 41.5% vs 22.9%), AsymMirai (0.79/0.84; 3-yr 0.92; EMBED 210,067), Park 2024 (AUC 0.90), MyPeBS (85k/6 countries), Bernstein/Yala PLOS Digit Health 2026 (36–75%), MIRAI-MRI NCT05968157, Omoleye (46.4% AA, AUC 0.71) — **all confirmed.**
@@ -146,4 +146,4 @@ The aim is not to pick a winner but to combine them into a **risk vector** with 
 - Soften any claim that Omoleye proved "no difference by race" — its stratified analysis was density, not a race test.
 
 ## ⏱️ TIME NOTE
-The "population vs individual" centerpiece adds ~1.5–2 min. **Density on-ramp now compressed to ~20 sec (done).** Realistic section length ~7–7.5 min vs the 6-min budget. If still long after a run-through, trim WISDOM detail or borrow ~1 min from Section 5 (the longest). Flag for rebalancing once all sections are locked.
+The "population vs individual" segment adds ~1.5–2 min. **Density on-ramp now compressed to ~20 sec (done).** Realistic section length ~7–7.5 min vs the 6-min budget. If still long after a run-through, trim WISDOM detail or borrow ~1 min from Section 5 (the longest). Flag for rebalancing once all sections are locked.

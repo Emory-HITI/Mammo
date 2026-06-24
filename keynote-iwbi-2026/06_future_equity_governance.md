@@ -40,28 +40,28 @@
 - Performance also does not transfer cleanly: externally validated mammography AI degrades on under-represented groups (worse in Hispanic women, women with prior breast cancer). Models trained on homogeneous high-income data are **brittle**.
 - The fix begins with data: **EMBED (Jeong et al., Radiology: AI 2023) — 3.4M mammographic images from ~116,000 women, ~42% African American** **[your group]** — but frameworks still do not require developers to disclose dataset composition. *(arXiv preprint 2022 says 3.5M; published version 3.4M — use 3.4M with the journal cite.)*
 
-**(b) Drift we don't monitor.** Models are not static. **Data drift** (new scanners/protocols), phenotype drift, concept drift — real-world performance decays. **FDA has authorized ~1,250 AI/ML devices by early 2025, nearing ~1,450 by mid-2025 (radiology ~76%)**, and finalized **Predetermined Change Control Plan (PCCP)** guidance (Dec 2024) — yet few cleared devices actually carry one. **A clearance or a CE mark is a snapshot, not a guarantee.** This is CAD's "deploy and forget," dressed up.
+**(b) Drift we do not monitor.** Models are not static. **Data drift** (new scanners/protocols), phenotype drift, and concept drift degrade real-world performance. **FDA has authorized ~1,250 AI/ML devices by early 2025, nearing ~1,450 by mid-2025 (radiology ~76%)**, and finalized **Predetermined Change Control Plan (PCCP)** guidance (Dec 2024), yet few cleared devices carry one. **A clearance or a CE mark is a snapshot, not a guarantee.** This is CAD's "deploy and forget" in a new form.
 
-**(c) Humans we quietly de-skill.** The human-in-the-loop is supposed to be the safeguard — but:
-- **Dratsch et al., Radiology 2023** (automation bias): when a (sometimes-wrong) AI was present, and it was wrong, reader accuracy collapsed — even **very experienced** readers fell to **~46%** (from ~80%+). *Everyone, at every level, was dragged down by a confident machine.*
-- **Budzyń et al., Lancet Gastroenterology & Hepatology 2025** (deskilling, now measured): after AI was introduced for colonoscopy, endoscopists' *unaided* detection fell **28.4% → 22.4%.** Routine AI exposure erodes the human's own skill.
-- **The oversight paradox:** the EU AI Act *mandates* a human in the loop — but the evidence shows the human can be the weak link, and de-skilling corrodes the very judgment oversight depends on. **Oversight is a design problem, not a checkbox.**
+**(c) Humans we de-skill.** The human-in-the-loop is meant to be the safeguard, but the evidence is mixed:
+- **Dratsch et al., Radiology 2023** (automation bias): when a sometimes-wrong AI was present and was wrong, reader accuracy dropped sharply; even **very experienced** readers fell to **~46%** (from ~80%+). The effect held across experience levels.
+- **Budzyń et al., Lancet Gastroenterology & Hepatology 2025** (deskilling, measured): after AI was introduced for colonoscopy, endoscopists' *unaided* detection fell **28.4% → 22.4%.** Routine AI exposure eroded unaided skill.
+- **The oversight paradox:** the EU AI Act mandates a human in the loop, but the evidence shows the human can be the weak link, and de-skilling reduces the judgment oversight depends on. Oversight is a design problem rather than a checkbox.
 
 ---
 
 ## Movement 3 — Governance: Europe writes the rules the world inherits
 
-- **EU AI Act — in force 1 Aug 2024.** Medical AI is largely **"high-risk"**: risk management, data governance, transparency, human oversight, robustness, post-market monitoring. **High-risk obligations bite from Aug 2026**; AI medical devices under MDR transition to **Aug 2027.** The most concrete governance reality in this room.
-- **Double regulation:** EU medical AI must satisfy **both MDR/IVDR and the AI Act** — real compliance cost, real innovation tension.
-- **Reimbursement ≠ clearance.** A cleared model that no one pays for doesn't reach a single woman. (US still lacks a dedicated CMS pathway for most diagnostic AI; the NHS is betting the other way with EDITH against a ~30% reader shortfall. **[VERIFY — press]**)
+- **EU AI Act — in force 1 Aug 2024.** Medical AI is largely **"high-risk"**: risk management, data governance, transparency, human oversight, robustness, post-market monitoring. **High-risk obligations apply from Aug 2026**; AI medical devices under MDR transition to **Aug 2027.** This is the most concrete governance framework relevant to this audience.
+- **Double regulation:** EU medical AI must satisfy **both MDR/IVDR and the AI Act**, with associated compliance cost and tension with innovation.
+- **Reimbursement ≠ clearance.** A cleared model that no one pays for does not reach patients. (The US still lacks a dedicated CMS pathway for most diagnostic AI; the NHS is taking a different approach with EDITH against a ~30% reader shortfall. **[VERIFY — press]**)
 
-> **The ownership line (bridge toward the close):** *"This audience — European regulators, clinicians, and scientists — will write the governance model the rest of the world inherits. That is not a burden. It is the most important contribution this field can make. Get it right here, and you set the standard everywhere."*
+> **The ownership line (bridge toward the close):** *"This audience of European regulators, clinicians, and scientists will write the governance model that much of the rest of the world inherits. Getting it right here sets the standard elsewhere."*
 
 ---
 
-## The one summary slide (keep just this — the keeper from the old "tensions" list)
+## The one summary slide (keep just this)
 
-> **FORCE MULTIPLIER ⟷ DIVIDE MULTIPLIER.** Same models. Same evidence base. The difference is entirely in the choices we make about *data, validation, monitoring, and access.* The technology is neutral; the outcome is not.
+> **FORCE MULTIPLIER ⟷ DIVIDE MULTIPLIER.** Same models, same evidence base. The difference is in the choices we make about *data, validation, monitoring, and access.* The technology is neutral; the outcome is not.
 
 ---
 
@@ -92,4 +92,4 @@
 - DBT/ICH subgroup figures verified via search; double-check exact CIs against the papers before a numbers slide.
 
 ## Structure note
-Restructured into 3 movements + 1 summary slide, with the **CAD-at-population-scale** through-line opening and closing the section. Principles/"what to do" deliberately held for §7 so the talk ends on the call to action.
+Restructured into 3 movements + 1 summary slide, with the CAD-at-population-scale through-line opening and closing the section. Principles and "what to do" are held for §7 so the talk ends on the call to action.
