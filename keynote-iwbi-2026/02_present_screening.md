@@ -70,6 +70,22 @@
 
 ---
 
+## CAVEAT EMPTOR — the headline AUC hides the blind spots (~1.5 min, your own data)
+
+*Right after the "it works" evidence, puncture it — with our own work. This is the credibility hinge of the whole talk and the first half of its central caution: **explainability + subgroup performance are the two gaps that separate an impressive number from a trustworthy tool.***
+
+> *"Before we get carried away — a single AUC is the most dangerous number in medical AI. It tells you how a model does on average. It tells you nothing about where it fails. So we went looking."*
+
+- **★ Our DBT audit — [Trivedi group], Subgroup Performance of a Commercial DBT Model, Nature Communications 2026** (EMBED, **163,449 exams**, Lunit INSIGHT DBT). Overall **AUC 0.91** — excellent. But stratified, it falls off exactly where the stakes are highest: **in-situ cancers AUC 0.85 / sensitivity 0.55; calcifications 0.80 / 0.66; dense breasts 0.88 / 0.63.** Demographically it was *relatively robust* — the blind spots were **clinical** (the subtle, hard cancers), not racial. *(DOI 10.1038/s41467-026-70637-3)* **[your group]**
+- **★ Same fingerprint in neuro — [Trivedi group], real-world ICH model evaluation, npj Digital Medicine 2025** (Aidoc, **101,944 head CTs**, 17 facilities). Overall **82.2% sensitivity** — but **subacute 45.5%, chronic 54.8%, small ≤10 mm 74.8%, outpatient 72.2%.** Robust across demographics; the misses were the **subtle, small, non-acute** bleeds. *(DOI 10.1038/s41746-025-02244-3)* **[your group]** *Two modalities, one lesson: the aggregate number hid the clinically important failures.*
+- **It generalizes across the field:** the **2023 RSNA Mammography AI Challenge** (Radiology 2024) and **BreastScreen Norway** (99,489 women) both show performance varies by **breast density** (more false positives in dense breasts); the **ARIES** stratified study (306,839 mammograms) reports variation across density/age/region; and a multivariate analysis of screening-mammography AI found **density — not race or age — drove most false-positive variation.** *(corroborating; cite 1–2.)*
+
+> **The takeaway line:** *"Caveat emptor. A model's headline AUC is a sales number. Until it's audited by subgroup — and until we can see why it fails — you don't actually know what you've bought. And the cases it fails on are the subtle ones we most needed help with."*
+
+> **Explainability hook (sets up §3 and §6):** *"Why does it miss those cases? Mostly, we can't say — and that's the second gap. We'll come back to it."*
+
+---
+
 ## "What we still don't know" — a deliberate ~45-second honesty beat (don't skip)
 
 *Promote this to the front of the audience's mind before the future half. It's what separates you from a vendor pitch — and it earns the credibility you'll spend in the next 30 minutes.*
@@ -89,6 +105,9 @@
 ## ✓ VERIFIED (agent pass) — all confirmed exact
 - McKinney, MASAI safety (Lång, Lancet Oncol 2023), MASAI secondary (Hernström, Lancet Digit Health 2025, n=105,934), **MASAI primary (Gommers, Lancet 2026;407:505–514)**, PRAIM (Eisemann, Nat Med 2025), ScreenTrustCAD (Dembrower 2023), Salim (0.956), DREAM/Schaffter (0.942), EDITH (Feb 2025, ~700k/30 sites/5 platforms) — all confirmed.
 - **"MAIA" Spanish RCT does NOT exist** (likely confused with MASAI; a product "MIA" by Kheiron/Roche exists but is not a trial). Removed. ✓
+- **Caveat-emptor sources confirmed:** DBT subgroup paper (Nat Commun 2026, DOI 10.1038/s41467-026-70637-3, EMBED 163,449, AUC 0.91; in-situ 0.85/0.55, calc 0.80/0.66, dense 0.88/0.63); ICH paper (npj Digit Med 2025, DOI 10.1038/s41746-025-02244-3, 101,944 CTs, 82.2% sens; subacute 45.5%, chronic 54.8%, outpatient 72.2%); RSNA 2023 challenge (Radiology 2024); BreastScreen Norway density (PMC11399294); ARIES (306,839); screening-mammography performance-gaps (arXiv 2305.04422). **Confirm your authorship on the two ★ papers.**
+
+> ⏱️ Adds ~1.5 min to §2 (now ~9–9.5). Worth it — it's the credibility hinge. Trim a trial from the spoken track (keep on the table slide) if needed.
 
 ## [VERIFY — still open]
 - Precise current count of FDA-cleared breast-specific AI devices (≥6 for DBT; check live FDA list before stating a number).

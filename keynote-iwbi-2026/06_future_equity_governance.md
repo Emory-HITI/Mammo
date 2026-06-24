@@ -22,7 +22,18 @@
 
 ---
 
-## Movement 2 — Three ways we betray the promise
+## Movement 2 — The two gaps, and three ways we betray the promise
+
+**The two gaps (caveat emptor — the through-line from §2).** Between an impressive AUC and a tool you can actually trust sit two gaps we have not closed:
+
+**Gap 1 — Subgroup performance: the aggregate number hides the failures.** Our own audits make this concrete, across two domains:
+- **Breast (DBT) — Nat Commun 2026 [your group]:** overall **AUC 0.91**, but **in-situ 0.85/sens 0.55, calcifications 0.80/0.66, dense breasts 0.88/0.63.**
+- **Neuro (ICH) — npj Digit Med 2025 [your group]:** overall **82.2% sensitivity**, but **subacute 45.5%, chronic 54.8%, outpatient 72.2%.**
+- Both were **demographically robust** — the blind spots were *clinical*, on exactly the subtle cases we most need help with. You only find them if you look. **Subgroup-stratified performance has to be a release criterion, not an afterthought.** (And demographic gaps are real elsewhere — density-driven false positives in the 2023 RSNA challenge / BreastScreen Norway; degraded transfer to under-represented groups.)
+
+**Gap 2 — Explainability: we usually can't say *why*.** When that DBT model misses an in-situ cancer, we mostly cannot explain it — so we cannot anticipate the next miss. AsymMirai (§3) showed models *can* be built to be interrogated; most deployed tools are not. Without explanation, **subgroup auditing is the only safety net we have — and most deployments skip it.**
+
+> *"So: caveat emptor. The two things standing between a great AUC and a tool you'd stake a patient on are whether you can see why it fails, and whether anyone checked where it fails. Both are usually missing."*
 
 **(a) Bias we cannot see — the first-person beat.**
 > *"Here's a finding from my own group that still unsettles me."* **Gichoya et al., Lancet Digital Health 2022** — deep learning predicts a patient's self-reported race from medical images — **AUC 0.81 on mammography**, 0.91–0.99 on chest X-ray — **even from corrupted, cropped, and noised images**, and *not* through any known proxy (density AUC only 0.61). *"No human radiologist can see race on a mammogram. The model can — and we still don't fully know how. If a model can learn that, it can silently learn to act on it. That is the hidden-bias problem in one experiment."* *(DOI 10.1016/S2589-7500(22)00063-2)* **[confirm Trivedi co-authorship]**
@@ -64,6 +75,8 @@
 | AI predicts race from mammography | AUC 0.81 | Gichoya, Lancet Digit Health 2022 |
 | Automation bias: expert accuracy when AI wrong | ~46% (from ~82%) | Dratsch, Radiology 2023 |
 | Deskilling: unaided detection drop | 28.4%→22.4% | Budzyń, Lancet GH 2025 |
+| DBT subgroup: overall vs in-situ/calc/dense | AUC 0.91 → 0.85 / 0.80 / 0.88 | Nat Commun 2026 [your group] |
+| ICH subgroup: overall vs subacute/chronic | 82.2% → 45.5% / 54.8% sens | npj Digit Med 2025 [your group] |
 | FDA AI/ML devices authorized | ~1,250 (early 2025) → ~1,450 (mid-2025); radiology ~76% | FDA list |
 | EU AI Act high-risk obligations | Aug 2026 (devices Aug 2027) | Reg (EU) 2024/1689 |
 
@@ -73,9 +86,10 @@
 - FDA count corrected (~1,250 early → ~1,450 mid-2025); the "~8% have a PCCP" sub-claim was weak — removed.
 
 ## [VERIFY — still open] before podium
-- **Confirm your co-authorship on Gichoya 2022** before the first-person framing.
+- **Confirm your co-authorship on Gichoya 2022, the DBT subgroup paper (Nat Commun 2026), and the ICH paper (npj Digit Med 2025)** before the first-person framing.
 - "14 African countries / two-thirds lack a radiologist" is advocacy-sourced (RAD-AID) — say **"as many as 14."**
 - NHS/EDITH figures (press-sourced).
+- DBT/ICH subgroup figures verified via search; double-check exact CIs against the papers before a numbers slide.
 
 ## Structure note
 Restructured into 3 movements + 1 summary slide, with the **CAD-at-population-scale** through-line opening and closing the section. Principles/"what to do" deliberately held for §7 so the talk ends on the call to action.

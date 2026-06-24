@@ -24,7 +24,7 @@
 CAD's failure was not a failure of algorithms — it was a failure of **evidence, monitoring, and discipline**. That is the through-line from the first slide to this one. The discipline that turns clinical intelligence into better outcomes:
 
 1. **Prove it before you scale it.** Prospective, randomized, population-level evidence — MASAI is the bar, not a retrospective AUC. *(This time we have it. Insist on it.)*
-2. **Equity is a release criterion, not an afterthought.** Diverse data, subgroup-stratified performance, validation in the deployment population *before* go-live.
+2. **Audit the blind spots — explainability and subgroup performance are release criteria, not afterthoughts.** A headline AUC is a sales number; demand subgroup-stratified performance (clinical *and* demographic), a model you can interrogate, and validation in the deployment population *before* go-live. *Caveat emptor.*
 3. **Govern the whole lifecycle.** Continuous monitoring and drift detection — operationalize the EU AI Act and PCCP; clearance is a snapshot, not a guarantee.
 4. **Protect the human.** Design against automation bias and deskilling; the clinician must stay a clinician, not a rubber stamp.
 5. **Solve the money and the access.** Reimbursement and LMIC deployment are part of the evidence base, not a footnote.
