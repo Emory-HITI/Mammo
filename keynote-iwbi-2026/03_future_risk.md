@@ -46,7 +46,7 @@ The image carries signal — invisible to the human eye — about *future* cance
 
 **Discrimination is not calibration.** AUC measures *ranking* (discrimination). Whether a predicted "8% five-year risk" actually means 8% — that's *calibration*, a separate property, far less often reported, and the one that governs an individual decision like "do you get an MRI?" Image-based models tend to discriminate well; their calibration across sites, scanners, and subpopulations is the under-reported, harder problem.
 
-**Discordance is the rule, not the exception.** Move from old models (Tyrer-Cuzick/Gail/PRS) to new image-based models and **roughly a third of women change risk category** (~35% reclassified) **[VERIFY exact figure — Arasu et al., DL vs traditional models, Radiology 2023]**. Yala 2019: the image model put **31% of future cancers in the top decile vs 18%** for Tyrer-Cuzick. So for *millions* of women, the old number and the new number disagree. That disagreement is not noise to be averaged away — it is the entire individual-level decision.
+**Discordance is the rule, not the exception.** The image-based model and the clinical model flag **different women.** **Arasu et al., Radiology 2023** (the head-to-head: mammography AI vs the BCSC clinical risk model for 5-year risk) — the AI's top-risk decile captured **~28% of future cancers vs ~21%** for the clinical model, and the two models' high-risk groups **overlapped only partially.** So for a large share of women, the old number and the new number disagree — and that disagreement, not the average AUC, is the individual-level decision. *(Radiology 2023;307(5):e222733.)*
 
 ### The four quadrants (the slide — and the part that actually matters clinically)
 
@@ -59,7 +59,7 @@ The image carries signal — invisible to the human eye — about *future* cance
 
 1. **Both low / both high** — concordant. Act with confidence: reassure-and-standardize, or escalate to supplemental MRI.
 
-2. **★ Classical LOW / image HIGH — the high-value quadrant.** The image sees something the questionnaire never could: a tissue-state signal. These are women the questionnaire era called "average." *But what kind of risk is it?* The Mirai paper itself says the model is strongest at **near-term** prediction and that high scores "may harbor occult malignancy or premalignant change" (Yala, STM 2021). So a high image score is partly a **"look harder NOW"** signal — short-interval follow-up, supplemental imaging, a second look at *this* mammogram — not automatically a lifetime-surveillance decision. **And acting on a signal we cannot explain is precisely the CAD trap** (see §1) — which is why interpretability (AsymMirai: the signal is bilateral asymmetry) and *prospective* validation (the **MIRAI-MRI trial, NCT05968157**, randomizing MRI for Mirai- vs Tyrer-Cuzick–high women) matter before we change management.
+2. **★ Classical LOW / image HIGH — the high-value quadrant.** The image sees something the questionnaire never could: a tissue-state signal. These are women the questionnaire era called "average." *But what kind of risk is it?* Image models perform **best at near-term prediction**, and the field's interpretation (including the Mirai authors' own discussion) is that a high short-term score may partly reflect **occult or premalignant change already present** — i.e., it's partly a **"look harder NOW"** signal: short-interval follow-up, supplemental imaging, a second look at *this* mammogram — not automatically a lifetime-surveillance decision. **And acting on a signal we cannot explain is precisely the CAD trap** (see §1) — which is why interpretability (AsymMirai: the signal is largely bilateral asymmetry) and *prospective* validation (the **MIRAI-MRI trial, NCT05968157**, comparing MRI for Mirai- vs Tyrer-Cuzick–high women) matter before we change management.
 
 3. **⚠️ Classical HIGH / image LOW — the dangerous quadrant.** A BRCA carrier, a strong family history, a high polygenic score — and a quiet-looking mammogram that earns a low image score. **Never let a reassuring image read override known germline risk.** The image model was not trained to see inherited risk; it cannot. De-escalating here would be the most consequential error this technology invites.
 
@@ -87,7 +87,7 @@ The future is not picking the winner — it's combining them into a **risk vecto
 
 > *"Remember I said one of those three opening models was already in this year's guidelines? This is the one."*
 
-**Clairity Breast (Constance Lehman's company) — FDA De Novo authorization announced June 2025** — the **first-ever** AI tool to predict 5-year breast cancer risk from a routine screening mammogram alone, validated across **>77,000 mammograms from 5 geographically distinct sites**; subsequently referenced in NCCN screening guidance. *The regulatory bridge from research model (Mirai) to clinical product has been crossed — research model to cleared product to guideline, in under five years.* **[VERIFY — press-sourced; confirm exact 2026 NCCN language; no primary peer-reviewed validation yet]**
+**Clairity Breast (Constance Lehman's company) — FDA De Novo authorization, early June 2025** — the **first-ever** AI tool to predict 5-year breast cancer risk from a routine screening mammogram alone, validated across **~77,000 mammograms from 5 sites**; subsequently **added to the 2026 NCCN breast-screening guidance (AI-based risk assessment).** *The regulatory bridge from research model (Mirai) to clinical product has been crossed — research model to cleared product to guideline, in under five years.* **[✓ FDA date + ~77k/5-sites + NCCN-2026 confirmed by agent; no primary peer-reviewed validation paper yet]**
 
 ---
 
@@ -97,7 +97,7 @@ The future is not picking the winner — it's combining them into a **risk vecto
 
 **MyPeBS (Europe) — the definitive trial.** EU-funded RCT, **~85,000 women** across **6 countries** (Belgium, France, Italy, Israel, Spain, UK), risk-stratified vs standard age-based screening, endpoint = stage ≥2 cancer incidence; **ongoing, results pending.** The largest test ever of whether we should screen by *risk* instead of by *age*. *(BMC Cancer 2022; DOI 10.1186/s12885-022-09484-6)*
 
-**WISDOM (US) — the first results are already in.** Esserman et al., *JAMA* 2025. Pragmatic RCT, **28,372 women** 40–74; risk-based (9-gene panel + polygenic score + BCSC model → 4 regimens, from 6-monthly MRI down to *defer*) vs annual.
+**WISDOM (US) — the first results are already in.** Esserman et al., *JAMA* 2026;335(9):763–774. Pragmatic RCT, **28,372 women** 40–74; risk-based (9-gene panel + polygenic score + BCSC model → 4 regimens, from 6-monthly MRI down to *defer*) vs annual.
 - **Risk-based was non-inferior for advanced (stage ≥IIB) cancers — with ~3,800 fewer mammograms per 100,000 person-years.** Less screening, no excess advanced cancer.
 - **Honest caveat:** it did **NOT** reduce biopsies (that superiority endpoint failed). But **89% of women offered the choice picked risk-based** — patients want this. *(DOI 10.1001/jama.2025.24784)*
 
@@ -107,8 +107,8 @@ The future is not picking the winner — it's combining them into a **risk vecto
 
 ## Equity & honest caveats (do not skip)
 
-- Mirai's training data was **only ~3.75% African American** — the central fairness worry.
-- **But** independent validation is reassuring: Omoleye et al., Radiology: AI 2023 (Univ. of Chicago, **46.4% African American**) found **no significant performance difference by race** (1-yr AUC 0.71). The editorial's point: diverse-cohort validation must be **mandatory, not optional.**
+- Mirai was developed on a **largely non-diverse US cohort** (the training set's exact racial composition isn't publicly disclosed) — the central fairness worry. *(Don't cite a specific "3.75%" figure — it's not in the papers.)*
+- **But** independent validation is reassuring: Omoleye et al., Radiology: AI 2023 (Univ. of Chicago) validated Mirai in a **46.4% African-American** cohort with comparable performance (1-yr AUC 0.71); notably the paper's main *stratified gap was by density* (0.72 nondense vs 0.58 dense), not race. The lesson: diverse-cohort validation must be **mandatory, not optional.**
 - WISDOM was **77% non-Hispanic White** — generalizability to Black/Hispanic/Asian women unproven, and Black women face higher mortality, younger onset, more triple-negative disease. A system that *defers* screening could **widen disparities** if it under-calls these groups.
 - **PRS portability** across ancestries remains unsolved. Real-world AUCs (~0.65–0.72) are good, not oracular.
 
@@ -133,11 +133,17 @@ The future is not picking the winner — it's combining them into a **risk vecto
 - *"From 'is there cancer today?' to 'when, and how hard should we look?'"*
 - *"Risk-adapted screening = more for the few who need it, less for the many who don't — and WISDOM just showed it's safe."*
 
-## [VERIFY] before podium
-- Brentnall/Volpara density figures; Clairity 77k-image validation + FDA date; MyPeBS enrollment/results (ongoing); Eriksson 2026 STM citation.
-- **~35% reclassification figure** — confirm exact number + source (Arasu et al., "DL vs traditional risk models," Radiology 2023, PMC9552206). Yala 2019 "31% vs 18% top-decile" is solid.
-- **Occult-malignancy / near-term framing** — ✓ grounded in the Mirai paper (Yala, Sci Transl Med 2021) discussion. **MIRAI-MRI trial = NCT05968157** (verify it's still recruiting/active).
-- **Image-DL + PRS** improves over either alone — Br J Cancer 2026 (confirm exact cite before quoting).
+## ✓ VERIFIED (agent pass) — corrections applied
+- Yala 2019 (0.70/0.68/0.62), Mirai (C-index 0.76/0.81/0.79; 41.5% vs 22.9%), AsymMirai (0.79/0.84; 3-yr 0.92; EMBED 210,067), Park 2024 (AUC 0.90), MyPeBS (85k/6 countries), Bernstein/Yala PLOS Digit Health 2026 (36–75%), MIRAI-MRI NCT05968157, Omoleye (46.4% AA, AUC 0.71) — **all confirmed.**
+- **CORRECTED — Eriksson STM 2026** (18(850):eady7414, PMID 42160452): top-decile 33% vs TC 23% / Mirai 24% / BCSC 20% (our values were already right).
+- **CORRECTED — WISDOM is JAMA *2026*;335(9):763–774** (PMID 41385349), not 2025; all numbers confirmed.
+- **CORRECTED — Clairity:** FDA De Novo early June 2025; added to **2026** NCCN guidance.
+- **REMOVED likely-fabricated "~35% reclassification / 'DL vs traditional' Arasu title."** Real paper: Arasu et al., *Radiology* 2023;307(5):e222733 — AI top-decile ~28% vs BCSC ~21%. Also dropped the unverified Yala "31% vs 18%."
+- **REMOVED unverified "Mirai 3.75% African American"** training figure (not in the papers).
+
+## [VERIFY — still open]
+- Brentnall/Volpara density figures (vendor-sourced); Clairity has **no primary peer-reviewed validation paper** yet (press + FDA only).
+- Soften any claim that Omoleye proved "no difference by race" — its stratified analysis was density, not a race test.
 
 ## ⏱️ TIME NOTE
 The "population vs individual" centerpiece adds ~1.5–2 min. **Density on-ramp now compressed to ~20 sec (done).** Realistic section length ~7–7.5 min vs the 6-min budget. If still long after a run-through, trim WISDOM detail or borrow ~1 min from Section 5 (the longest). Flag for rebalancing once all sections are locked.

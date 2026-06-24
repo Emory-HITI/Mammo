@@ -55,7 +55,7 @@
 ## Why it failed — technically (the conceptual pivot of the talk)
 
 Traditional CAD was a **rule-based, hand-engineered expert system** — humans wrote explicit features and pixel-pattern rules, and a classifier flagged regions.
-- **It was built to find what we already find.** CAD was trained to detect the ~84% of cancers radiologists already catch — adding noise, not new signal. *(Kohli & Jha, JACR 2018)*
+- **It was built to find what we already find.** CAD was trained to flag the cancers radiologists already catch well — adding marks and noise, not a new class of finding. *(Kohli & Jha, JACR 2018; DOI 10.1016/j.jacr.2017.12.029)* *(Frame the "~84%" as context from the R2 device's original detection claim, not a quotable statistic from this commentary.)*
 - **Alert fatigue:** false-positive marks appeared on **~70% of normal cases.** As marks pile up, attention to each one drops. *(PMC3180536)*
 - **The human-factors trap:** as a "second reader" anchored on imperfect human-defined features, it could *lower* a good reader's sensitivity by inducing complacency about unmarked regions.
 
@@ -83,11 +83,15 @@ Traditional CAD was a **rule-based, hand-engineered expert system** — humans w
 | Annual US CAD cost | >$400M/yr | Lehman 2015 |
 | JAMA IM 2015 within-reader sensitivity | **OR 0.53** (worse with CAD) | Lehman 2015 |
 | NEJM 2007 accuracy | AUC 0.871 (CAD) vs 0.919 | Fenton 2007 |
-| CAD trained to detect cancers radiologists already find | ~84% | Kohli & Jha 2018 |
+| CAD aimed at cancers radiologists already find well | (context, not a hard stat) | Kohli & Jha 2018 |
 | CAD false-positive marks on normal cases | ~70% | PMC3180536 |
 
-## [VERIFY] before podium
-- Lehman 2015 conclusion quote — **verified verbatim** from JAMA Network abstract (jamanetwork.com/.../2443369). ✓
-- Kohli & Jha, "Why CAD Failed in Mammography," JACR 2018;15(3 Pt B):535–537 — **citation verified** (PMID 29398499); the "~84%" and "skeptics cite CAD" framing are from this paper/related commentary — confirm exact phrasing if quoting verbatim rather than paraphrasing.
-- 74%/92% adoption from a 2020 review citing Medicare data — fine as field stats.
-- AlexNet "2012" / DL-reaches-mammography "2016–17" are framing dates, anchored by McKinney 2020 as the named landmark.
+## ✓ VERIFIED (agent pass) — all confirmed exact
+- Lehman 2015 (sens 85.3 vs 87.3%, spec 91.6 vs 91.4%, within-reader OR 0.53, CDR 4.1/1000, >$400M/yr; PMID 26414882) + verbatim conclusion quote — confirmed.
+- Fenton NEJM 2007 (spec 90.2→87.2%, biopsy +19.7%, AUC 0.871 vs 0.919, PPV 4.1→3.2%; PMID 17409321) — confirmed.
+- Kohli & Jha JACR 2018;15(3 Pt B):535–537 (PMID 29398499; **DOI added: 10.1016/j.jacr.2017.12.029**) — confirmed.
+- R2 ImageChecker FDA June 1998 (P970058); CMS 2002; CAD ~74% (2008) → ~92% (2016) per Keen, JACR 2018 — confirmed.
+
+## [VERIFY — still open]
+- The "~84%" is **context** (echoes the R2 device's original ~80→88/100 claim), not a quotable stat — keep as framing, no hard number on a slide.
+- AlexNet "2012" / DL-reaches-mammography "2016–17" are framing dates, anchored by McKinney 2020.

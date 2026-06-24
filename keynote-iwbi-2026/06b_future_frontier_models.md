@@ -55,12 +55,14 @@ The probable future isn't "generalist replaces specialist." It's a **stack**:
 - Med-HALT: general **76.6%** vs specialized **51.3%** hallucination-free.
 - Med-Gemini-**3D** CT: **53%** clinically acceptable (3D still lags).
 
-## [VERIFY] before podium
-- Med-Gemini figures (arXiv 2405.03162, 2024 — preprint).
-- VLM accuracy 8–29% and ~22% report-error figures (systematic reviews, *Life* 2026 / arXiv 2025–26 — confirm exact source + numbers before quoting).
-- Med-HALT 76.6% vs 51.3% (2025 benchmark — verify).
-- RadFM > GPT-4V (Wu et al., RadFM, Nat Commun 2025).
-- "Bitter lesson" = Rich Sutton, 2019 essay (attribute as an essay/argument, not a study).
+## ✓ VERIFIED (agent pass) — all confirmed
+- **Med-Gemini:** CXR reports "equivalent or better" 43–65% (abnormal) / 57–96% (normal); SOTA on 17/20 tasks; 3D CT 53% acceptable. *(Yang et al., arXiv:2405.03162, 2024 — preprint)*
+- **General VLM radiology accuracy 8.1–29.2%; ~22% of reports contain hallucinations.** *(Visual LLMs in Radiology, Life (MDPI) 2026;16(1):66, PMID 41598221)*
+- **RadFM > GPT-4V** *(Wu et al., Nat Commun 2025, DOI 10.1038/s41467-025-62385-7; arXiv 2308.02463)*
+- **Med-HALT: general 76.6% vs specialized 51.3% hallucination-free** *(MIT Media Lab medical-hallucination eval, 2025; Med-HALT arXiv 2307.15343)*
+- **"Bitter lesson"** = Rich Sutton, 2019 essay (attribute as essay/argument, not a study). ✓
+
+## [VERIFY — still open]
 - Frame current frontier models (GPT-5 / Gemini 3 / Claude) by the *trajectory*, not by specific unpublished benchmark numbers — don't quote figures you can't cite.
 
 ## ⏱️ TIME / PLACEMENT NOTE

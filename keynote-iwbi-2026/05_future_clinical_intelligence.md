@@ -23,7 +23,7 @@
 **The core idea:** no single modality sees the whole patient. Fuse imaging + pathology + genomics + clinical data, and you beat any one of them — because each modality answers a different question (exactly the "risk vector" logic from §3, now generalized to the whole patient).
 
 - **Chen et al. (PORPOISE), Cancer Cell 2022** — fused whole-slide images + molecular data across **14 cancers; multimodal beat unimodal in 12 of 14.** *(PMID 35944502)*
-  - **Honest caveat (pre-empt the experts):** El Nahhas et al. showed some gains were **TCGA site/batch effects** — under site-preserved validation, the advantage shrank (won in 4 of 8). *Cite this yourself — it shows you know where the field over-claims.*
+  - **Honest caveat (pre-empt the experts):** Howard, Kather & Pearson (*Cancer Cell* 2023; PMID 36368319) showed some multimodal gains reflect **TCGA site/batch effects** — under site-preserved validation the advantage shrinks. *Cite this yourself — it shows you know where the field over-claims.* *(NOTE: corrected attribution — this critique is Howard/Kather/Pearson, NOT "El Nahhas.")*
 - **Schmauch et al. (Owkin), Nature Communications 2020** — imaging alone can *predict the molecular profile* (RNA-Seq from H&E): the modalities are not just additive, they partly **encode each other.** *(PMID 32747659)*
 - **Boehm et al., Nature Reviews Cancer 2022** — the conceptual frame for multimodal precision oncology; flagship applied result in ovarian (Nature Cancer 2022). *No breast-specific Boehm paper — say "demonstrated in ovarian; the architecture is modality-agnostic."* *(PMID 34663944)*
 - **Breast-specific, hard numbers (treatment response):** multimodal (clinical + MRI) predicts neoadjuvant response **AUC 0.888 vs 0.827** clinical-only (Joo et al., Sci Rep 2021); pCR prediction in I-SPY2 **AUC 0.888 internal / 0.890 external** (Hong et al., Acad Radiol 2026).
@@ -43,7 +43,7 @@
 Breast arterial calcification (BAC) — long dismissed as an incidental finding — is a sex-specific cardiovascular signal sitting unread on millions of mammograms.
 - **Wang et al., IEEE TMI 2017** — first deep-learning BAC quantification. *(PMID 28113340)*
 - **Iribarren et al., Circulation: Cardiovascular Imaging 2022** — 5,059 women: BAC → **HR 1.51** for hard ASCVD, **independent of traditional risk factors.** *(PMID 35290077)*
-- **★ Dapamede et al. (Emory + Mayo), European Heart Journal 2026** — **the largest to date: 123,762 women, no known CVD.** A transformer model segments BAC and reports burden as area (mm²); a **continuous, dose-dependent** association with MACE — acute MI, stroke, heart failure, and all-cause mortality — stepwise from 0 to >25 mm². **Adds prognostic value on top of the AHA PREVENT score.** **[YOUR/Emory headline — DOI 10.1093/eurheartj/ehag128; VERIFY the HR ~3.29 for severe BAC and final volume/pages]**
+- **★ Dapamede et al. (Emory + Mayo), European Heart Journal 2026;47(18):2206–2220** — **the largest to date: 123,762 women, no known CVD.** A transformer model segments BAC and reports burden as area (mm²); a **continuous, dose-dependent** association with MACE — acute MI, stroke, heart failure, and all-cause mortality — stepwise from 0 to >25 mm². **Severe BAC → HR ~2.2 (internal) / ~1.8 (external)**, and it **adds prognostic value on top of the AHA PREVENT score.** **[YOUR/Emory headline — DOI 10.1093/eurheartj/ehag128. NOTE: HR corrected to 2.165 internal / 1.762 external — the earlier "3.29" was wrong, do not use it.]**
 - Your group: **Guo et al. (SCU-Net), Medical Physics 2021** *(PMID 34328661)* **[your group]**
 
 ### 2b. Beyond the calcium: the whole image predicts cardiovascular risk
@@ -93,8 +93,14 @@ Mammographic opportunistic screening isn't a quirk — it's one instance of a fi
 - GPT-4 BI-RADS: **10.6%** management-altering errors (Radiology 2024); ~47% citations fabricated.
 - Workforce: UK **30% → 40% (2028)** radiologist shortfall.
 
-## [VERIFY] before podium
-Med-Gemini/Mammo-FM are preprints; **Dapamede 2026 exact DOI/volume — confirm (flagship Emory number)**; Cureus/CARJ hallucination figures; DAX/Kaiser figures; Barraclough & Hong 2026 details; confirm your co-authorship on Li (Clin Imaging 2023), Guo/SCU-Net, and Dapamede before claiming from the podium.
+## ✓ VERIFIED (agent pass) — corrections applied
+- Moor, Med-PaLM/Med-PaLM2, Med-Gemini, **Mammo-FM** (arXiv:2512.00198), PORPOISE, Schmauch, Joo, **Hong** (Acad Radiol 2026;33(4):1473–1483, AUC 0.888/0.890), Sadée, Wang, Iribarren, Barraclough, Poplin (3.26yr/0.97), Attia (0.93), Pickhardt (HR 4.53), Li/Trivedi, Rau, Cozzi — **all confirmed** with PMIDs/DOIs.
+- **CORRECTED: Dapamede severe-BAC HR = 2.165 internal / 1.762 external (NOT 3.29).** EHJ 47(18):2206–2220.
+- **CORRECTED: PORPOISE batch-effect critique = Howard/Kather/Pearson (Cancer Cell 2023), not El Nahhas.**
+- 47% fabricated ChatGPT citations confirmed (Bhattacharyya, Cureus 2023, PMID 37337480).
+
+## [VERIFY — still open]
+- DAX/Kaiser ambient-documentation figures (press); confirm your co-authorship on Li (Clin Imaging 2023), Guo/SCU-Net, and Dapamede before claiming from the podium.
 
 ## ⏱️ TIME NOTE
 3 beats + on-ramp. Beat 2 expanded (opportunistic/biosensor leaned-in per request) → section now ~9 min. **Release valves:** (1) Beat 3 (genAI + workforce) compresses to ~45 sec; (2) in Beat 2, the cross-modality 2d (retina/ECG/CT) can drop to a single sentence if pressed — it's breadth/color, not core. Rebalance across the future half once all sections lock; the future budget is 30 min total.

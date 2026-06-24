@@ -39,7 +39,7 @@
 **MASAI — the RCT that anchors the talk (Sweden, Transpara).**
 - *Safety analysis* — **Lång et al., Lancet Oncology 2023** (80,033 women): CDR **6.1 vs 5.1/1,000**, false-positive rate **1.5% in both**, **44.3% reduction in screen-reading workload.** *(DOI 10.1016/S1470-2045(23)00298-X)*
 - *Full secondary outcomes* — **Hernström et al., Lancet Digital Health 2025** (~106,000 women): CDR **6.4 vs 5.0/1,000 = +29% (ratio 1.29, p=0.0021)**, recall and false positives **flat.** Extra cancers were mostly small, node-negative invasive cancers — clinically meaningful, not overdiagnosis. **44.2% workload reduction** confirmed. *(DOI 10.1016/S2589-7500(24)00267-X)*
-- *Primary endpoint (the headline) —* **Lancet 2026** (Lång group): **interval-cancer rate 1.55 vs 1.76/1,000 — non-inferior (ratio 0.88, p=0.41)**, fewer invasive / T2+ / non-luminal-A interval cancers. **Sensitivity 80.5% vs 73.8% (p=0.031); specificity 98.5% in both.** *The first RCT to show AI-supported screening doesn't trade away interval-cancer safety — the exact worry, answered with level-1 evidence.* *(DOI 10.1016/S0140-6736(25)02464-X)* **[VERIFY exact 2026 citation/volume]**
+- *Primary endpoint (the headline) —* **Gommers et al. (…Lång), Lancet 2026;407(10527):505–514**: **interval-cancer rate 1.55 vs 1.76/1,000 — non-inferior (ratio 0.88, p=0.41)**, fewer invasive / T2+ / non-luminal-A interval cancers. **Sensitivity 80.5% vs 73.8% (p=0.031); specificity 98.5% in both.** *The first RCT to show AI-supported screening doesn't trade away interval-cancer safety — the exact worry, answered with level-1 evidence.* *(PMID 41620232; DOI 10.1016/S0140-6736(25)02464-X)* **[✓ confirmed — note: lead author Gommers, NOT Hernström/Lång]**
 
 **PRAIM — real-world confirmation (Germany).** Eisemann et al., *Nature Medicine* 2025. **463,094 women**, 119 radiologists, 12 sites — largest real-world dataset: AI-supported double reading CDR **6.7 vs 5.7/1,000 = +17.6%** (statistically superior); recall **non-inferior/slightly lower**. *The MASAI signal holds outside a controlled trial.* *(DOI 10.1038/s41591-024-03408-6; observational — selection bias, lower evidence tier.)*
 
@@ -86,7 +86,9 @@
 
 ---
 
-## [VERIFY] before podium
-- MASAI 2026 primary-endpoint exact citation (Lancet volume/authors).
-- EDITH figures (press-sourced); current count of FDA-cleared breast-specific AI devices (≥6 for DBT; verify live FDA list).
-- A Spanish "MAIA" RCT could **not** be confirmed — do not cite.
+## ✓ VERIFIED (agent pass) — all confirmed exact
+- McKinney, MASAI safety (Lång, Lancet Oncol 2023), MASAI secondary (Hernström, Lancet Digit Health 2025, n=105,934), **MASAI primary (Gommers, Lancet 2026;407:505–514)**, PRAIM (Eisemann, Nat Med 2025), ScreenTrustCAD (Dembrower 2023), Salim (0.956), DREAM/Schaffter (0.942), EDITH (Feb 2025, ~700k/30 sites/5 platforms) — all confirmed.
+- **"MAIA" Spanish RCT does NOT exist** (likely confused with MASAI; a product "MIA" by Kheiron/Roche exists but is not a trial). Removed. ✓
+
+## [VERIFY — still open]
+- Precise current count of FDA-cleared breast-specific AI devices (≥6 for DBT; check live FDA list before stating a number).

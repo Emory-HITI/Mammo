@@ -13,10 +13,10 @@
 
 ## Movement 1 — The gap (lead here; it's the moral center)
 
-- **2.3 million** new female breast-cancer cases and **~670,000 deaths** worldwide in 2022 — the most common cancer in women; projected to **exceed 6 million cases/year by 2050.** *(GLOBOCAN 2022; Bray et al., CA Cancer J Clin 2024)*
-- **The headline disparity:** Africa's mortality-to-incidence ratio is **0.51** — roughly **half** the women diagnosed die — versus far lower ratios in high-income Europe/North America. *Same disease, radically different survival — determined by access, not biology.*
+- **2.3 million** new female breast-cancer cases and **~670,000 deaths** (≈666,000) worldwide in 2022 — the most common cancer in women (~23.8% of female cancers); projected to **exceed 6 million cases/year by 2050.** *(GLOBOCAN 2022; Bray et al., CA Cancer J Clin 2024; breast-specific GLOBOCAN analysis, PMID 39994475)*
+- **The headline disparity:** Africa's mortality-to-incidence ratio is **0.51** — the highest of any region; roughly **half** the women diagnosed die — versus far lower ratios in high-income Europe/North America. *Same disease, radically different survival — determined by access, not biology.* *(GCO 2022 analysis, PMID 39874943)*
 - **WHO Global Breast Cancer Initiative (2021):** target **2.5% annual mortality reduction**, averting **2.5M deaths by 2040.**
-- **Where AI's promise is genuinely real:** over two-thirds of the world's population lacks access to a radiologist; **14 African countries have zero**; many LMICs have <5 mammography units and <10 radiologists per million. *The honest force-multiplier case is where there is no reader at all.*
+- **Where AI's promise is genuinely real:** over two-thirds of the world's population lacks reliable access to a radiologist; **as many as 14 African countries have zero**; many LMICs have <5 mammography units and <10 radiologists per million. *(RAD-AID/global-radiology-gap reporting — advocacy-sourced, not a single primary census; phrase as "as many as.")* *The honest force-multiplier case is where there is no reader at all.*
 
 > **The double-edged framing (the spine of the section):** *"The very same models that could bring screening to the fourteen countries with no radiologist were trained on data that excludes those countries' women. AI will either be the great equalizer of breast cancer outcomes — or its great amplifier. Nothing about the technology decides which. We do."*
 
@@ -27,9 +27,9 @@
 **(a) Bias we cannot see — the first-person beat.**
 > *"Here's a finding from my own group that still unsettles me."* **Gichoya et al., Lancet Digital Health 2022** — deep learning predicts a patient's self-reported race from medical images — **AUC 0.81 on mammography**, 0.91–0.99 on chest X-ray — **even from corrupted, cropped, and noised images**, and *not* through any known proxy (density AUC only 0.61). *"No human radiologist can see race on a mammogram. The model can — and we still don't fully know how. If a model can learn that, it can silently learn to act on it. That is the hidden-bias problem in one experiment."* *(DOI 10.1016/S2589-7500(22)00063-2)* **[confirm Trivedi co-authorship]**
 - And performance doesn't transfer cleanly — externally validated mammography AI degrades on under-represented groups (worse in Hispanic women, women with prior breast cancer). Models trained on homogeneous high-income data are **brittle**.
-- The fix begins with data: **EMBED (Emory, 2022) — 3.5M racially diverse mammograms** **[your group]** — but frameworks still don't compel developers to disclose dataset composition.
+- The fix begins with data: **EMBED (Jeong et al., Radiology: AI 2023) — 3.4M mammographic images from ~116,000 women, ~42% African American** **[your group]** — but frameworks still don't compel developers to disclose dataset composition. *(arXiv preprint 2022 says 3.5M; published version 3.4M — use 3.4M with the journal cite.)*
 
-**(b) Drift we don't monitor.** Models are not static. **Data drift** (new scanners/protocols), phenotype drift, concept drift — real-world performance decays. **FDA has authorized >1,250 AI/ML devices** (mid-2025, radiology ~75%), and finalized **Predetermined Change Control Plan (PCCP)** guidance (Dec 2024) — yet only ~8% of new AI devices have one. **A clearance or a CE mark is a snapshot, not a guarantee.** This is CAD's "deploy and forget," dressed up.
+**(b) Drift we don't monitor.** Models are not static. **Data drift** (new scanners/protocols), phenotype drift, concept drift — real-world performance decays. **FDA has authorized ~1,250 AI/ML devices by early 2025, nearing ~1,450 by mid-2025 (radiology ~76%)**, and finalized **Predetermined Change Control Plan (PCCP)** guidance (Dec 2024) — yet few cleared devices actually carry one. **A clearance or a CE mark is a snapshot, not a guarantee.** This is CAD's "deploy and forget," dressed up.
 
 **(c) Humans we quietly de-skill.** The human-in-the-loop is supposed to be the safeguard — but:
 - **Dratsch et al., Radiology 2023** (automation bias): when a (sometimes-wrong) AI was present, and it was wrong, reader accuracy collapsed — even **very experienced** readers fell to **~46%** (from ~80%+). *Everyone, at every level, was dragged down by a confident machine.*
@@ -64,11 +64,18 @@
 | AI predicts race from mammography | AUC 0.81 | Gichoya, Lancet Digit Health 2022 |
 | Automation bias: expert accuracy when AI wrong | ~46% (from ~82%) | Dratsch, Radiology 2023 |
 | Deskilling: unaided detection drop | 28.4%→22.4% | Budzyń, Lancet GH 2025 |
-| FDA AI/ML devices authorized | >1,250 (mid-2025) | FDA list |
-| EU AI Act high-risk obligations | Aug 2026 (devices Aug 2027) | EU AI Act 2024 |
+| FDA AI/ML devices authorized | ~1,250 (early 2025) → ~1,450 (mid-2025); radiology ~76% | FDA list |
+| EU AI Act high-risk obligations | Aug 2026 (devices Aug 2027) | Reg (EU) 2024/1689 |
 
-## [VERIFY] before podium
-NHS/EDITH figures (press-sourced); confirm Trivedi co-authorship on Gichoya 2022 before claiming it; LMIC radiologist/units-per-million figures (review-sourced); GLOBOCAN 2022 exact figures via IARC.
+## ✓ VERIFIED (agent pass) — corrections applied
+- Gichoya AUC 0.81, Dratsch (82.3%→45.5%, n=27), Budzyń (28.4→22.4%, −6.0% p=0.0089), EU AI Act dates, WHO 2.5%, Africa MIR 0.51 — **all confirmed.**
+- GLOBOCAN deaths ≈666,000 (we say ~670,000 — both fine). EMBED corrected to 3.4M / Jeong et al. Radiology: AI 2023 / ~42% AA.
+- FDA count corrected (~1,250 early → ~1,450 mid-2025); the "~8% have a PCCP" sub-claim was weak — removed.
+
+## [VERIFY — still open] before podium
+- **Confirm your co-authorship on Gichoya 2022** before the first-person framing.
+- "14 African countries / two-thirds lack a radiologist" is advocacy-sourced (RAD-AID) — say **"as many as 14."**
+- NHS/EDITH figures (press-sourced).
 
 ## Structure note
 Restructured into 3 movements + 1 summary slide, with the **CAD-at-population-scale** through-line opening and closing the section. Principles/"what to do" deliberately held for §7 so the talk ends on the call to action.
