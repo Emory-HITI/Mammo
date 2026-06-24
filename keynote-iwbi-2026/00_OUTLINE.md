@@ -1,5 +1,6 @@
-# AI in Breast Imaging: From CAD to Clinical Intelligence
+# Thirty Years, Three Eras: AI in Breast Imaging from CAD to Clinical Intelligence
 ### Keynote — IWBI 2026 (International Workshop on Breast Imaging), Greece
+> **Official title:** *Thirty Years, Three Eras: AI in Breast Imaging from CAD to Clinical Intelligence.* The "three eras" (CAD → deep-learning detection → clinical intelligence) are the macro-frame; **lesion → image → patient → population** is the within-talk spine. The title card previews the three eras.
 **Speaker:** Hari Trivedi, MD (Emory University) · **Duration:** 45 minutes · **Audience:** physicians + scientists (broad, international)
 
 ---

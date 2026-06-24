@@ -52,6 +52,24 @@
     font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:9px}
   .eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);opacity:.6}
 
+  /* title / cover */
+  .s-title{flex-direction:column;justify-content:space-between}
+  .t-kick{font-family:var(--mono);font-size:clamp(.62rem,1vw,.72rem);letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}
+  .t-hero{margin:auto 0}
+  .s-title h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:.96;letter-spacing:-.03em;font-weight:700}
+  .s-title h1 .am{color:var(--amber)}
+  .t-sub{font-size:clamp(1.05rem,2vw,1.5rem);color:var(--ink-2);line-height:1.35;margin-top:20px;max-width:34ch;text-wrap:balance}
+  .t-by{font-family:var(--mono);font-size:clamp(.74rem,1.1vw,.86rem);letter-spacing:.05em;color:var(--ink-3);margin-top:22px}
+  .t-by b{color:var(--ink);font-weight:600}
+  .erabar{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+  .era{background:linear-gradient(180deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-top:2px solid var(--cyan);border-radius:9px;padding:clamp(11px,1.4vw,16px) clamp(12px,1.5vw,17px);display:flex;flex-direction:column;gap:4px}
+  .era.now{border-top-color:var(--amber);box-shadow:0 0 0 1px rgba(231,172,81,.16),0 16px 36px -26px rgba(231,172,81,.4)}
+  .era .rn{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--cyan);font-weight:600}
+  .era.now .rn{color:var(--amber)}
+  .era .en{font-size:clamp(1rem,1.6vw,1.28rem);font-weight:700;letter-spacing:-.01em;color:var(--ink);margin-top:2px}
+  .era .ey{font-family:var(--mono);font-size:.62rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .era .ed{font-size:clamp(.74rem,1.05vw,.86rem);color:var(--ink-2);line-height:1.35;margin-top:3px}
+
   /* viewport */
   .viewport{position:relative;background:var(--viewport);border-radius:7px;overflow:hidden;
     box-shadow:0 18px 40px -18px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.07), 0 0 0 1px rgba(231,172,81,.10);display:flex;flex-direction:column}
@@ -146,15 +164,29 @@
 </style>
 
 <div class="topbar">
-  <div class="brand"><b>From CAD to Clinical Intelligence</b> &nbsp;·&nbsp; IWBI 2026 · Opening</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 5</div>
+  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Opening</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 6</div>
 </div>
 
 <div class="stage">
   <div class="frame" id="frame">
     <canvas id="motif"></canvas>
 
-    <section class="slide s-open active" data-note="This is a screening mammogram. Two radiologists read it and reported it as normal — and they were correct. There's no visible cancer here.">
+    <section class="slide s-title active" data-note="[Title card] Thirty Years, Three Eras: AI in Breast Imaging, from CAD to Clinical Intelligence. — Hari Trivedi, Emory University.">
+      <div class="t-kick">International Workshop on Breast Imaging · 2026 · Keynote</div>
+      <div class="t-hero">
+        <h1>Thirty Years,<br><span class="am">Three Eras.</span></h1>
+        <p class="t-sub">AI in Breast Imaging — from CAD to Clinical Intelligence</p>
+        <p class="t-by"><b>Hari Trivedi, MD</b> &nbsp;·&nbsp; Emory University</p>
+      </div>
+      <div class="erabar">
+        <div class="era"><span class="rn">Era I</span><span class="en">CAD</span><span class="ey">1998 →</span><span class="ed">detection that didn't deliver</span></div>
+        <div class="era"><span class="rn">Era II</span><span class="en">Deep learning</span><span class="ey">2016 →</span><span class="ed">detection, finally validated</span></div>
+        <div class="era now"><span class="rn">Era III</span><span class="en">Clinical intelligence</span><span class="ey">now →</span><span class="ed">from the image to the patient</span></div>
+      </div>
+    </section>
+
+    <section class="slide s-open" data-note="This is a screening mammogram. Two radiologists read it and reported it as normal — and they were correct. There's no visible cancer here.">
       <span class="eyebrow">Opening</span>
       <div class="viewport">
         <div class="vp-head"><span>R MLO · screening</span><span class="tag">AI —</span></div>
