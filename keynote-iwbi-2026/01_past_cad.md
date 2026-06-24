@@ -58,7 +58,7 @@ The signal had been there for years. **Fenton et al. (NEJM 2007; JNCI 2011)** fo
 
 Traditional CAD was a rule-based system: humans specified the image features and pixel patterns, and a classifier flagged regions. Three reasons it didn't help:
 - **It targeted the cancers we already find well.** So it added marks, not new information. *(Kohli & Jha, JACR 2018; DOI 10.1016/j.jacr.2017.12.029. Treat the "~84%" as context from the original device claim, not a quotable statistic.)*
-- **Readers learned to ignore it.** False-positive marks appeared on ~70% of normal studies; after enough false alarms, trust in the marks erodes. *(PMC3180536)*
+- **Readers learned to ignore it.** False-positive marks appeared on ~70% of normal studies; in one direct comparison, **83% of cases carried at least one false-positive mark with conventional CAD** (vs 52% with an AI-based CAD). After enough false alarms, trust in the marks erodes. *(PMC3180536; Watanabe et al., J Digit Imaging 2019, PMC6646646)*
 - **It could lower a good reader's sensitivity** — the over-dependence Lehman described.
 
 > Kohli & Jha titled their 2018 JACR review *"Why CAD Failed in Mammography,"* and noted that AI skeptics cite this history. Section 2 is the response.
