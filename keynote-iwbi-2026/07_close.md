@@ -55,5 +55,5 @@ The anchor evidence in one frame: **MASAI +29% detection / 44% workload · PRAIM
 ## Delivery notes
 - A return, not new material; no new citations on screen.
 - **3.5-min cut if running long:** §6b handoff (15s), spine reprise plus hook callback (60s), six principles as one slide read quickly (75s), primary closing line (30s).
-- **First-person note:** much of the referenced work is the speaker's own (DREAM, AsymMirai, Gichoya, EMBED, the Emory cardio-mammography work). Optional line: *"Some of this is work my own group has been part of, and the discipline matters more than any single result."*
+- **First-person note:** much of the referenced work is the speaker's own (AsymMirai, Gichoya, EMBED, the DBT/ICH subgroup audits, the Emory cardio-mammography work). Optional line: *"Some of this is work my own group has been part of, and the discipline matters more than any single result."*
 - Deliver the last line, then stop. Do not add a thank-you-slides coda after the closing line; let it sit.

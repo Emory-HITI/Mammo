@@ -23,9 +23,8 @@
 
 **Act 3 — independent validation (2020).**
 - Salim et al., *JAMA Oncology* 2020 (Stockholm, 8,805 women): best algorithm **AUC 0.956**; AI + first reader reached **88.6% sensitivity at 93.0% specificity**, exceeding two human readers.
-- Schaffter et al., *JAMA Network Open* 2020 — **the DREAM Challenge**: 126 teams / 44 countries; **no single AI exceeded radiologists**, while an **AI + radiologist ensemble reached AUC 0.942.** **[YOUR PAPER — first-person: "I was part of this one."]**
 
-> **Takeaway (one line):** *"By 2020 the evidence showed AI could match or complement readers on retrospective data. CAD could meet that bar too. The relevant question is prospective."*
+> **Takeaway (one line):** *"Retrospective reader studies have well-known limitations — enriched case sets, lab conditions, no real workflow. They can show promise, but they are not the bar. The bar is prospective deployment in a screening program. That is where the rest of this section lives."*
 
 ---
 
@@ -103,7 +102,7 @@
 ---
 
 ## ✓ VERIFIED (agent pass) — all confirmed exact
-- McKinney, MASAI safety (Lång, Lancet Oncol 2023), MASAI secondary (Hernström, Lancet Digit Health 2025, n=105,934), **MASAI primary (Gommers, Lancet 2026;407:505–514)**, PRAIM (Eisemann, Nat Med 2025), ScreenTrustCAD (Dembrower 2023), Salim (0.956), DREAM/Schaffter (0.942), EDITH (Feb 2025, ~700k/30 sites/5 platforms) — all confirmed.
+- McKinney, MASAI safety (Lång, Lancet Oncol 2023), MASAI secondary (Hernström, Lancet Digit Health 2025, n=105,934), **MASAI primary (Gommers, Lancet 2026;407:505–514)**, PRAIM (Eisemann, Nat Med 2025), ScreenTrustCAD (Dembrower 2023), Salim (0.956), EDITH (Feb 2025, ~700k/30 sites/5 platforms) — all confirmed. *(DREAM/Schaffter removed per speaker — retrospective challenge, methodological concerns.)*
 - **"MAIA" Spanish RCT does NOT exist** (likely confused with MASAI; a product "MIA" by Kheiron/Roche exists but is not a trial). Removed. ✓
 - **Caveat-emptor sources confirmed:** DBT subgroup paper (Nat Commun 2026, DOI 10.1038/s41467-026-70637-3, EMBED 163,449, AUC 0.91; in-situ 0.85/0.55, calc 0.80/0.66, dense 0.88/0.63); ICH paper (npj Digit Med 2025, DOI 10.1038/s41746-025-02244-3, 101,944 CTs, 82.2% sens; subacute 45.5%, chronic 54.8%, outpatient 72.2%); RSNA 2023 challenge (Radiology 2024); BreastScreen Norway density (PMC11399294); ARIES (306,839); screening-mammography performance-gaps (arXiv 2305.04422). **Confirm your authorship on the two ★ papers.**
 

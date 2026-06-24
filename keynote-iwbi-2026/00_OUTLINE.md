@@ -62,7 +62,6 @@ As drafted, sections run long: §3 ~7.5 (the population-vs-individual addition),
 
 ## Speaker's personal thread (papers the speaker co-authored)
 
-- **Schaffter et al., DREAM Challenge, JAMA Netw Open 2020** — present-day screening evidence.
 - **AsymMirai (Donnelly et al., Radiology 2024)** — interpretable risk (Duke + Emory).
 - **Gichoya et al., Lancet Digital Health 2022** — AI predicts race from images (the hidden-bias slide).
 - **EMBED dataset (Emory, 2022)** — 3.5M racially diverse mammograms; the equity/data thread.
