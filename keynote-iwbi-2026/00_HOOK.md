@@ -3,7 +3,7 @@
 
 **Purpose:** Open visionary and human, not with a literature review. One normal mammogram becomes a demonstration that the image already contains the patient's future. Establishes the talk's spine — **lesion → image → patient → population** — and hands off to the CAD cautionary tale with "this field has fooled itself before, and I'll start there."
 
-**Delivery:** Slow. Let the image sit. The three models are revealed one at a time. The line *"The image already knew. We just couldn't read it."* is the emotional anchor of the entire talk — land it, then beat.
+**Delivery:** Unhurried but matter-of-fact. Let the image sit; introduce the three models one at a time, stated plainly as results. The understated line — *"The information was already there; we just haven't been extracting it"* — is the pivot; deliver it flatly, not as a flourish. The credibility comes from the citations, not the cadence.
 
 ---
 
@@ -12,29 +12,27 @@
 > **[Single screening mammogram on screen. Nothing marked. Clean.]**
 > *(Use the REAL de-identified case: a screening exam read as normal, from a woman diagnosed with breast cancer ~5 years later. This is a true image, not a composite — say so.)*
 >
-> *"This is a normal screening mammogram."*
+> *"This is a screening mammogram. Two radiologists read it and reported it as normal — and they were correct. There's no visible cancer here."*
 >
-> *"Two radiologists read it. Both called it normal. They were right."*
+> *"But three different AI models, applied to this same image and this same patient, each extract information that isn't available to the reader.*
 >
-> *"But three AI models looked at these exact same pixels — and each one saw something the human eye cannot.*
+> *The **first** estimates that she has a high probability of developing breast cancer within about five years.*
 >
-> *The **first** one knows this woman will develop breast cancer. Not today. In about five years.*
+> *The **second** measures the calcification in her breast arteries — an independent cardiovascular risk marker that, frankly, we've been ignoring for decades.*
 >
-> *The **second** one knows she is at high risk of a heart attack — it's reading the calcium in her arteries, which we've been throwing away as an incidental finding for forty years.*
+> *The **third**, applied to her biopsy slide, estimates the kind of genomic recurrence score we currently send to a reference lab for about four thousand dollars."*
 >
-> *And the **third** one — across town, on a glass slide in the pathology lab — is about to read a recurrence score we currently pay a genomics company four thousand dollars to extract."*
+> *"None of these are hypothetical. Each one is published and externally validated, and one is already in this year's screening guidelines."*
 >
-> *"None of this is science fiction. Every one of those models exists, is published, and one of them is in this year's screening guidelines."*
+> **[brief pause]**
 >
-> **[beat]**
+> *"The information was already there. We just haven't been extracting it."*
 >
-> *"The image already knew. We just couldn't read it."*
+> *"For about thirty years, we built tools to help us find the lesion — to mark the spot. That was CAD. What's changing now is the scope of the question we ask: from the **lesion**, to the **image**, to the **patient**, to the **population**."*
 >
-> **[beat]**
->
-> *"For thirty years, we built machines to help us **see** the breast — find the spot, draw the circle. That was CAD. What's happening now is different in kind, not degree. We are building machines that **understand the patient**. And the whole story of this field is one steadily widening question: from the **lesion**… to the **image**… to the **patient**… to the **population**."*
->
-> *"I want to walk you through that journey today. And I want to do it honestly — because this field has fooled itself before, and I'll start there."*
+> *"That's how I'll organize the next 45 minutes. And I'll start with a cautionary tale — because this field has overpromised before."*
+
+**Tone note:** measured and declarative, not theatrical. The content carries the weight; let the numbers and the citations do the work. No "the image already knew," no "tidal wave," no science-fiction framing — a scientific audience discounts hyperbole. The one near-rhetorical line ("the information was already there") is deliberately understated.
 
 ---
 
