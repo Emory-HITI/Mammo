@@ -29,7 +29,7 @@
 |---|---|
 | Hook → §1 | ✓ "this field has fooled itself before, and I'll start there" → "$400M" |
 | §1 → §2 | ✓ "validating it before we billed for it" → "AI is just CAD again? here's why they're wrong" |
-| §2 → §3 | ✓ "start asking it about the whole image" → seed-#1 reveal "the image already knew" |
+| §2 → §3 | ✓ "start asking it about the whole image" → seed-#1 reveal "hidden signals in the image" |
 | §3 → §4 | ✓ **FIXED** — added bridge: "what is this cancer? that answer's on a glass slide" |
 | §4 → §5 | ✓ "two views of the same patient" → convergence |
 | §5 → §6 | ✓ "make sure it reaches everyone — close the gap or widen it" → equity |
@@ -54,7 +54,7 @@ All eight transitions now hand off explicitly. The talk can be read top-to-botto
 
 ## 4. Recurring motifs (consistency check)
 
-- **"The image already knew."** Hook → §3 open → §7 close. ✓ Consistent, deliberate, lands 3×.
+- **"Hidden signals in the image."** Hook → §3 open → §7 close. ✓ Consistent, deliberate, lands 3×.
 - **CAD as the discipline-yardstick.** §1 ("paid first, proven never") → §2 ("proven first") → §3 (acting on unexplained signal = "the CAD trap") → §6 ("CAD at population scale") → §7 ("the bar CAD failed"). ✓ This is the talk's strongest connective thread — it appears in five sections and never contradicts itself.
 - **"Bet on the discipline, not the architecture."** §6b → §7. ✓
 - **Force multiplier ⟷ divide multiplier.** §6 summary + echoed in §6b (concentration) + §7 principle 6. ✓

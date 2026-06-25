@@ -15,7 +15,7 @@
 
 > *"We started at the **lesion**: teaching machines to find the spot and draw the circle. That was CAD, and it failed. We learned to read the whole **image**, and, validated in randomized trials, it works. We are learning to understand the **patient**, combining image, tissue, gene, and history into one picture. And the **population** is the next step: using all of it to decide who we screen, how, and whether everyone, everywhere, gets to be read."*
 
-> **Final callback to the hook:** *"Recall the normal mammogram we opened with, the one that already knew. The image hasn't changed. What we can read from it has. Our job is to make sure every woman gets to be read."*
+> **Final callback to the hook:** *"Recall the normal mammogram we opened with — the one full of hidden signals. The image hasn't changed. What we can read from it has. Our job is to make sure every woman gets to be read."*
 
 ---
 

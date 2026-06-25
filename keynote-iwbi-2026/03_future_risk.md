@@ -1,7 +1,7 @@
 # Section 3 — From Detection to Risk: The Mammogram as a Biosensor
 ### ~6 minutes · spine stage: **IMAGE** · opens Part II (the future)
 
-> **CALLBACK TO THE HOOK (seed #1):** *"Remember the first model — the one that knew this woman would develop cancer in about five years? Here it is."* Re-show the **real opening mammogram**, now revealed as a case a risk model flagged. "The image already knew" returns on screen.
+> **CALLBACK TO THE HOOK (seed #1):** *"Remember the first model — the one that knew this woman would develop cancer in about five years? Here it is."* Re-show the **real opening mammogram**, now revealed as a case a risk model flagged. **"Hidden signals in the image"** returns on screen.
 
 **Purpose:** This section marks the spine's turn from **lesion → image**. AI changes the question a mammogram answers, from *"is there cancer today?"* to *"what is this person's risk, and how hard should we look?"* This is the move from a detection device to a biosensor. It is FDA-cleared.
 
@@ -15,7 +15,7 @@
 >
 > **[Reveal the risk overlay / heatmap on the same image.]**
 >
-> *"It was not looking for a lesion. There wasn't one. It was reading the **tissue**, and it was right. The image already knew. Every mammogram contains a five-year forecast. We are only now learning to read it."*
+> *"It was not looking for a lesion. There wasn't one. It was reading the **tissue**, and it was right. There were hidden signals in the image. Every mammogram contains a five-year forecast. We are only now learning to read it."*
 
 The image carries signal, invisible to the human eye, about future cancer in addition to current cancer. Deep learning extracts it. That reframes screening from a snapshot into a trajectory: from *"is there cancer today?"* to *"when, and how hard should we look?"*
 
