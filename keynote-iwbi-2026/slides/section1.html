@@ -112,7 +112,7 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era I (1998)</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 7</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 8</div>
 </div>
 
 <div class="stage">
@@ -161,12 +161,12 @@
     </section>
 
     <!-- 3 grumbling -->
-    <section class="slide s-stat" data-note="But the reading room is not convinced. Conventional CAD marked something on the large majority of normal studies — 83% of cases — and after enough false alarms, radiologists learned to tune the marks out.">
+    <section class="slide s-stat" data-note="But the reading room is not convinced. Conventional CAD marked something on the large majority of normal studies. Across independent series, seventy to eighty-five percent of normal mammograms carried at least one false mark — Kim reported seventy percent, Mahoney seventy-seven to eighty-five, Watanabe eighty-three. In per-image terms that is roughly half a mark to one and a half marks on every image. After enough false alarms, radiologists learned to tune the marks out.">
       <span class="eyebrow">Era I · but the room grumbles</span>
-      <div class="statnum">83%</div>
-      <div class="statlabel">of cases marked by conventional CAD</div>
-      <p class="statctx">Marks on most normal studies. After enough false alarms, radiologists learned to tune them out.</p>
-      <div class="cite">vs 52% with AI-CAD · Watanabe et al., J Digit Imaging 2019</div>
+      <div class="statnum">70–85%</div>
+      <div class="statlabel">of normal mammograms carried ≥1 false CAD mark</div>
+      <p class="statctx">Marks on most normal studies — about 0.5–1.5 false marks per image. After enough false alarms, radiologists learned to tune them out.</p>
+      <div class="cite">Kim 2009 (70%) · Mahoney 2011 (77–85%) · Watanabe 2019 (83%, vs 52% AI-CAD)</div>
     </section>
 
     <!-- 4 reckoning stats -->
@@ -194,13 +194,92 @@
       </div>
     </section>
 
+    <!-- 5b the evidence: ROC + table -->
+    <section class="slide" data-note="Here is the evidence behind that verdict. On the left, the pooled ROC across 271 radiologists: the curve with CAD off sits at or above the curve with CAD on at every operating point — partial AUC 0.88 without, 0.84 with. On the right, every performance measure, side by side. Cancer detection, identical at 4.1 per thousand. Sensitivity, slightly lower with CAD. Specificity and recall, unchanged. No adjusted odds ratio crosses into benefit. The picture is not subtle: across half a million exams, CAD moved nothing in the right direction." style="flex-direction:column;justify-content:center;gap:clamp(10px,1.6vw,18px)">
+      <span class="eyebrow">Era I · the evidence</span>
+      <h2 style="font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-top:clamp(20px,2.4vw,8px)">Same readers, same curve, same detection rate — <span style="color:var(--amber)">with CAD or without.</span></h2>
+      <div style="display:flex;gap:clamp(20px,3.4vw,46px);align-items:center;width:100%;flex-wrap:wrap">
+
+        <!-- ROC figure -->
+        <figure style="flex:1 1 340px;min-width:300px;margin:0">
+          <svg viewBox="0 0 520 322" style="width:100%;height:auto;display:block;overflow:visible" font-family="var(--mono)">
+            <!-- gridlines -->
+            <g stroke="rgba(255,255,255,.08)" stroke-width="1">
+              <line x1="52" y1="300" x2="500" y2="300"/>
+              <line x1="52" y1="243.2" x2="500" y2="243.2"/>
+              <line x1="52" y1="186.4" x2="500" y2="186.4"/>
+              <line x1="52" y1="129.6" x2="500" y2="129.6"/>
+              <line x1="52" y1="72.8" x2="500" y2="72.8"/>
+              <line x1="52" y1="16" x2="500" y2="16"/>
+            </g>
+            <!-- axes -->
+            <g stroke="rgba(255,255,255,.28)" stroke-width="1.2">
+              <line x1="52" y1="16" x2="52" y2="300"/>
+              <line x1="52" y1="300" x2="500" y2="300"/>
+            </g>
+            <!-- y labels -->
+            <g fill="#9DA9B5" font-size="10" text-anchor="end">
+              <text x="46" y="304">0</text><text x="46" y="247">20</text><text x="46" y="190">40</text>
+              <text x="46" y="133">60</text><text x="46" y="76">80</text><text x="46" y="20">100</text>
+            </g>
+            <!-- x labels -->
+            <g fill="#9DA9B5" font-size="10" text-anchor="middle">
+              <text x="52" y="314">0</text><text x="164" y="314">10</text><text x="276" y="314">20</text>
+              <text x="388" y="314">30</text><text x="500" y="314">40</text>
+            </g>
+            <text x="276" y="288" fill="#5C6975" font-size="10.5" text-anchor="middle" opacity="0">x</text>
+            <!-- axis titles -->
+            <text x="276" y="322" fill="#9DA9B5" font-size="11" text-anchor="middle" font-family="var(--sans)">False-positive rate, %</text>
+            <text x="14" y="158" fill="#9DA9B5" font-size="11" text-anchor="middle" font-family="var(--sans)" transform="rotate(-90 14 158)">True-positive rate, %</text>
+            <!-- No CAD curve (dashed, light) PAUC 0.88 -->
+            <polyline points="52,300 74.4,95.5 108,61.4 164,41.6 276,27.4 388,21.7 500,17.4"
+              fill="none" stroke="#9DA9B5" stroke-width="2.4" stroke-dasharray="7 5" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- CAD curve (solid, amber) PAUC 0.84 -->
+            <polyline points="52,300 74.4,112.6 108,75.6 164,52.9 276,35.9 388,27.4 500,21.7"
+              fill="none" stroke="#E7AC51" stroke-width="2.6" stroke-linejoin="round" stroke-linecap="round"/>
+            <!-- legend -->
+            <g font-size="11" font-family="var(--sans)">
+              <line x1="300" y1="262" x2="332" y2="262" stroke="#9DA9B5" stroke-width="2.4" stroke-dasharray="7 5"/>
+              <text x="338" y="266" fill="#ECEFF3">No CAD  ·  pAUC 0.88</text>
+              <line x1="300" y1="282" x2="332" y2="282" stroke="#E7AC51" stroke-width="2.6"/>
+              <text x="338" y="286" fill="#ECEFF3">CAD  ·  pAUC 0.84</text>
+            </g>
+          </svg>
+          <figcaption style="font-family:var(--mono);font-size:.6rem;color:var(--ink-3);margin-top:6px;line-height:1.4">Pooled ROC, 271 radiologists. Each point in the original = one reader. <span style="color:var(--ink-2)">Redrawn from Lehman et al., JAMA Internal Medicine 2015 (Fig.).</span></figcaption>
+        </figure>
+
+        <!-- Table 2 (condensed) -->
+        <figure style="flex:1 1 380px;min-width:320px;margin:0">
+          <table style="width:100%;border-collapse:collapse;font-family:var(--sans);font-size:clamp(.72rem,1.04vw,.9rem)">
+            <thead>
+              <tr style="color:var(--ink-2);font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase">
+                <th style="text-align:left;padding:7px 8px 7px 0;border-bottom:1px solid var(--line)">Measure</th>
+                <th style="text-align:right;padding:7px 8px;border-bottom:1px solid var(--line)">CAD</th>
+                <th style="text-align:right;padding:7px 8px;border-bottom:1px solid var(--line)">No&nbsp;CAD</th>
+                <th style="text-align:right;padding:7px 8px;border-bottom:1px solid var(--line)">aOR</th>
+                <th style="text-align:right;padding:7px 0 7px 8px;border-bottom:1px solid var(--line)">P</th>
+              </tr>
+            </thead>
+            <tbody style="font-variant-numeric:tabular-nums">
+              <tr><td style="padding:7px 8px 7px 0;border-bottom:1px solid rgba(255,255,255,.05)">Cancers detected /1000</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--amber)">4.1</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05)">4.1</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2)">0.99</td><td style="text-align:right;padding:7px 0 7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-3)">.86</td></tr>
+              <tr><td style="padding:7px 8px 7px 0;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);padding-left:14px">— Invasive</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2)">2.9</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2)">3.1</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-3)">0.92</td><td style="text-align:right;padding:7px 0 7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-3)">.30</td></tr>
+              <tr><td style="padding:7px 8px 7px 0;border-bottom:1px solid rgba(255,255,255,.05)">Sensitivity, %</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--amber)">85.3</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05)">87.3</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2)">0.81</td><td style="text-align:right;padding:7px 0 7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-3)">.18</td></tr>
+              <tr><td style="padding:7px 8px 7px 0;border-bottom:1px solid rgba(255,255,255,.05)">Specificity, %</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--amber)">91.6</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05)">91.4</td><td style="text-align:right;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2)">1.02</td><td style="text-align:right;padding:7px 0 7px 8px;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-3)">.58</td></tr>
+              <tr><td style="padding:7px 8px 7px 0">Recall rate /100</td><td style="text-align:right;padding:7px 8px;color:var(--amber)">8.7</td><td style="text-align:right;padding:7px 8px">9.1</td><td style="text-align:right;padding:7px 8px;color:var(--ink-2)">0.96</td><td style="text-align:right;padding:7px 0 7px 8px;color:var(--ink-3)">.35</td></tr>
+            </tbody>
+          </table>
+          <figcaption style="font-family:var(--mono);font-size:.6rem;color:var(--ink-3);margin-top:8px;line-height:1.4">495,818 exams with CAD · 129,807 without. aOR = adjusted odds ratio; none favors CAD. <span style="color:var(--ink-2)">Lehman et al., JAMA Internal Medicine 2015 (Table 2).</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
     <!-- 6 why it failed -->
     <section class="slide s-why" data-note="Why did it fail? Three reasons. It flagged the cancers we already catch, so it mostly added noise. It marked most normal studies, so readers learned to ignore it. And as an imperfect second reader, it pulled good radiologists toward its mistakes — the over-dependence Lehman described.">
       <span class="eyebrow">Era I · why it didn't work</span>
       <h2>Three reasons it didn't work.</h2>
       <div class="why-grid">
         <div class="wcard"><span class="wi">01</span><span class="wt">It flagged what we already catch.<span>Hand-tuned rules aimed at the cancers radiologists already find. So it added marks, not new information.</span></span></div>
-        <div class="wcard"><span class="wi">02</span><span class="wt">Readers learned to ignore it.<span><b>83% of cases</b> carried a false-positive mark with conventional CAD. After enough false alarms, you stop trusting the marks.</span></span></div>
+        <div class="wcard"><span class="wi">02</span><span class="wt">Readers learned to ignore it.<span><b>70–85% of normal mammograms</b> carried a false mark with conventional CAD. After enough false alarms, you stop trusting the marks.</span></span></div>
         <div class="wcard"><span class="wi">03</span><span class="wt">It made good readers worse.<span>As an imperfect second reader, it pulled attention toward its marks and <b>lowered sensitivity</b> (OR 0.53).</span></span></div>
       </div>
     </section>

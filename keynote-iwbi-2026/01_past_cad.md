@@ -44,6 +44,8 @@
 - Among the 107 radiologists who read both with and without CAD, sensitivity was **lower with CAD on (OR 0.53; 95% CI 0.29–0.97).**
 - *DOI: 10.1001/jamainternmed.2015.5231*
 
+> **Slide — "the evidence" (after the verdict quote):** the pooled ROC (271 radiologists; **pAUC 0.88 without CAD vs 0.84 with**) plus a condensed Table 2 — cancers detected /1000 (4.1 = 4.1), sensitivity (85.3 vs 87.3), specificity (91.6 vs 91.4), recall /100 (8.7 vs 9.1), with adjusted ORs (none favors CAD). Redrawn in-theme from Lehman 2015 Fig. + Table 2.
+
 > **Quote (on-screen, verbatim):**
 > *"Computer-aided detection does not improve diagnostic accuracy of mammography. These results suggest that insurers pay more for CAD with no established benefit to women."*
 > — Lehman CD et al., *JAMA Internal Medicine* 2015
@@ -58,7 +60,7 @@ The signal had been there for years. **Fenton et al. (NEJM 2007; JNCI 2011)** fo
 
 Traditional CAD was a rule-based system: humans specified the image features and pixel patterns, and a classifier flagged regions. Three reasons it didn't help:
 - **It targeted the cancers we already find well.** So it added marks, not new information. *(Kohli & Jha, JACR 2018; DOI 10.1016/j.jacr.2017.12.029. Treat the "~84%" as context from the original device claim, not a quotable statistic.)*
-- **Readers learned to ignore it.** False-positive marks appeared on ~70% of normal studies; in one direct comparison, **83% of cases carried at least one false-positive mark with conventional CAD** (vs 52% with an AI-based CAD). After enough false alarms, trust in the marks erodes. *(PMC3180536; Watanabe et al., J Digit Imaging 2019, PMC6646646)*
+- **Readers learned to ignore it.** Across independent series, **~70–85% of normal mammograms carried at least one false-positive mark** with conventional CAD — Kim 2009 (70%), Mahoney 2011 (77–85% across two device versions), Watanabe 2019 (83%, vs 52% with an AI-based CAD). In per-unit terms this is roughly **0.5–1.5 false marks per image** (Leon 2009: ~0.52–0.55/image; Kim 2009: 1.5/exam) and **~2–4 marks per four-image case** (Mahoney 2011: mean ~2.3/case). After enough false alarms, trust in the marks erodes. *(Kim SJ et al., Acta Radiol 2009, PMID 19863409; Mahoney MC & Meganathan K, J Digit Imaging 2011, PMID 21547517; Leon SM et al., J Digit Imaging 2009, PMID 18704581; Watanabe et al., J Digit Imaging 2019, PMC6646646)*
 - **It could lower a good reader's sensitivity** — the over-dependence Lehman described.
 
 > Kohli & Jha titled their 2018 JACR review *"Why CAD Failed in Mammography,"* and noted that AI skeptics cite this history. Section 2 is the response.
@@ -86,7 +88,8 @@ Traditional CAD was a rule-based system: humans specified the image features and
 | JAMA IM 2015 within-reader sensitivity | **OR 0.53** (worse with CAD) | Lehman 2015 |
 | NEJM 2007 accuracy | AUC 0.871 (CAD) vs 0.919 | Fenton 2007 |
 | CAD aimed at cancers radiologists already find well | (context, not a hard stat) | Kohli & Jha 2018 |
-| CAD false-positive marks on normal cases | ~70% | PMC3180536 |
+| Normal mammograms with ≥1 false CAD mark | **~70–85%** (Kim 70%; Mahoney 77–85%; Watanabe 83%) | PMID 19863409 / 21547517 / PMC6646646 |
+| False CAD marks per image (conventional) | ~0.5–1.5/image (Leon 0.52–0.55; Kim 1.5/exam) | PMID 18704581 / 19863409 |
 
 ## ✓ VERIFIED (agent pass) — all confirmed exact
 - Lehman 2015 (sens 85.3 vs 87.3%, spec 91.6 vs 91.4%, within-reader OR 0.53, CDR 4.1/1000, >$400M/yr; PMID 26414882) + verbatim conclusion quote — confirmed.
