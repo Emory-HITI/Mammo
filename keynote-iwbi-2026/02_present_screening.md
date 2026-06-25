@@ -98,7 +98,14 @@
 4. **In-situ / overdiagnosis** is not fully settled (MASAI in-situ ratio ~1.51).
 5. **The main driver is operational**, workforce capacity, as much as diagnostic superiority. This is a legitimate reason and worth stating directly.
 
-> **Bridge to Part II:** *"That is the lesion: finding today's cancer, and now doing it with evidence. The same normal mammogram, the one we opened with, holds more than today's cancer. To see it, we stop asking the image about the lesion and start asking it about the whole **image**."*
+## Detection is already becoming risk (bridge to Era III)
+
+*The cleanest hand-off to the future: the detection score itself carries a forward signal.*
+
+- **Hickman et al., 2026** — in screening mammography, the **AI detection/abnormality score is elevated and rises progressively over the ~10 years preceding a cancer diagnosis**, well before a visible lesion. The detection score behaves like a risk trajectory, not just a present-day flag. *(Artificial-intelligence detection scores in screening mammography for early breast-cancer alerts.)* **[VERIFY exact numbers from the PDF; EMBED Figure 2 panel B — the score-vs-time-to-diagnosis curve — on this slide once the panel image is provided.]**
+- *Why it matters:* this is the conceptual hinge from Era II to Era III. The same model we trained to find today's cancer is, in its score, already forecasting tomorrow's. That is exactly the move from **lesion → image** — detection blurring into risk.
+
+> **Bridge to Era III:** *"That is the lesion: finding today's cancer, now with evidence. But notice what just happened — that detection score was already rising years before the cancer was visible. The same normal mammogram holds more than today's cancer. We stop asking the image about the lesion and start asking it about the whole **image** — and about the patient."*
 
 ---
 
