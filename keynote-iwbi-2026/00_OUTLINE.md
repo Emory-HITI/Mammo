@@ -39,7 +39,10 @@ AI in breast cancer reflects a widening question of what we ask the image to tel
 | 6b. The wildcard: will frontier models eat everything? | 3.5m | `06b_future_frontier_models.md` |
 | **7. Close — responsible optimism** | 3.5m | `07_close.md` |
 
-### ⚠️ TIME RECONCILIATION (read this — we are currently OVER)
+### 🛑 REVISED TIME BUDGET (update 2026-06-25): TALK IS NOW ~30–35 MIN + 10 MIN Q&A
+The organizers revised the slot: **~30–35 minutes of talk, ~10 minutes Q&A.** That is **~10–15 min less** than the 45-min plan below. **Decision: build all sections in full first, then trim/consolidate at the end** (easier to cut from complete drafts than to under-write). When we trim, target ≈ **32 min**: keep the spine (hook → CAD → MASAI → risk reckoning → pathology seed payoffs → convergence → Gichoya → close); the cuts in the list below all still apply, plus expect to merge slides within each Era deck (e.g. §4 CAMELYON16+HER2 into one, §3 drop a quadrant detail). Decks are currently built at full length on purpose.
+
+### ⚠️ TIME RECONCILIATION (original 45-min plan — retained for reference)
 As drafted, sections run long: §3 ~7.5 (the population-vs-individual addition), §5 ~9 (opportunistic lean-in), + the new §6b ~3.5. Raw total ≈ **51 min**. To land at 45, the future half needs ~6 min trimmed. **Proposed cuts (in priority order), all already flagged in-file as release valves:**
 1. **§5 Beat 3** (genAI + workforce) → compress to ~45 sec (saves ~1 min).
 2. **§5 Beat 2d** (cross-modality retina/ECG/CT) → one sentence (saves ~1–1.5 min).
