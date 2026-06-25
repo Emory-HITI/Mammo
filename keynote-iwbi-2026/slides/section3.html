@@ -1,0 +1,305 @@
+<title>Era III — From Detection to Risk (The mammogram as a biosensor)</title>
+<style>
+  :root{
+    --floor:#080B0F;--bg:#0F141A;--bg-2:#151C24;--bg-3:#1B232D;
+    --ink:#ECEFF3;--ink-2:#9DA9B5;--ink-3:#5C6975;--line:rgba(255,255,255,.09);
+    --amber:#E7AC51;--amber-deep:#C98A2E;--cyan:#5FB7C9;--warn:#D9785B;
+    --sans:"Helvetica Neue",Arial,system-ui,sans-serif;--mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{background:var(--floor);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+  .topbar{width:100%;max-width:1180px;display:flex;justify-content:space-between;align-items:baseline;padding:24px 28px 16px;gap:16px}
+  .brand{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .brand b{color:var(--amber);font-weight:600}
+  .counter{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .counter b{color:var(--amber);font-weight:600}
+  .stage{width:100%;max-width:1180px;padding:0 28px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:radial-gradient(120% 130% at 88% 12%,#18222C 0%,var(--bg) 46%,#0C1116 100%);border:1px solid var(--line);box-shadow:0 36px 80px -44px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.03)}
+  #motif{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .frame::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:6;background:linear-gradient(90deg,var(--amber),transparent 70%);opacity:.7}
+  .slide{position:absolute;inset:0;z-index:2;padding:clamp(28px,4.1vw,60px);display:flex;opacity:0;visibility:hidden;transition:opacity .4s ease}
+  .slide.active{opacity:1;visibility:visible}
+  .eyebrow{position:absolute;top:clamp(24px,3.1vw,34px);left:clamp(28px,4.1vw,60px);font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);opacity:.6}
+  .s-head{font-size:clamp(1.5rem,2.9vw,2.4rem);font-weight:700;letter-spacing:-.02em;line-height:1.08}
+  .s-head .am{color:var(--amber)}
+
+  /* viewport */
+  .viewport{position:relative;background:#06090c;border-radius:7px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.07),0 0 0 1px rgba(231,172,81,.10);display:flex;flex-direction:column}
+  .vp-head{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;border-bottom:1px solid rgba(255,255,255,.08);font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;color:rgba(236,239,243,.52);flex:0 0 auto}
+  .vp-head .tag{color:var(--cyan)}
+  .vp-body{position:relative;flex:1 1 auto;min-height:0}
+  img.realmammo{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#06090c}
+  .vp-foot{padding:7px 11px;border-top:1px solid rgba(255,255,255,.08);font-family:var(--mono);font-size:.55rem;letter-spacing:.03em;color:rgba(236,239,243,.4);flex:0 0 auto}
+
+  /* divider */
+  .s-divider{align-items:center;gap:clamp(24px,4vw,54px)}
+  .dv-copy{flex:1.25 1 0;min-width:0;display:flex;flex-direction:column;gap:18px}
+  .s-divider .spine{display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);flex-wrap:wrap}
+  .s-divider .spine .on{color:var(--amber)}.s-divider .spine .sep{opacity:.5}
+  .s-divider h1{font-size:clamp(2rem,4.4vw,3.4rem);line-height:1.02;letter-spacing:-.025em;font-weight:700;text-wrap:balance;max-width:16ch}
+  .s-divider h1 .am{color:var(--amber)}
+  .s-divider .sub{color:var(--ink-2);font-size:clamp(1.02rem,1.6vw,1.26rem);line-height:1.5;max-width:46ch}
+
+  /* stats */
+  .s-stat{flex-direction:column;justify-content:center;gap:6px}
+  .s-stat .statnum{font-size:clamp(3.4rem,10vw,7.5rem);font-weight:700;letter-spacing:-.04em;line-height:.9;color:var(--amber);font-variant-numeric:tabular-nums}
+  .s-stat .statlabel{font-family:var(--mono);font-size:clamp(.78rem,1.3vw,.98rem);letter-spacing:.1em;text-transform:uppercase;color:var(--ink);margin-top:16px}
+  .s-stat .statctx{color:var(--ink-2);font-size:clamp(1rem,1.55vw,1.2rem);line-height:1.5;max-width:46ch;margin-top:12px}
+  .s-stat .cite{font-family:var(--mono);font-size:.66rem;color:var(--ink-3);margin-top:16px}
+  .twostat{display:flex;gap:clamp(24px,5vw,72px);flex-wrap:wrap;align-items:flex-end}
+  .statblock .num{font-size:clamp(2.6rem,7vw,5.4rem);font-weight:700;letter-spacing:-.03em;line-height:.9;color:var(--amber);font-variant-numeric:tabular-nums}
+  .statblock .lab{font-family:var(--mono);font-size:clamp(.66rem,1.05vw,.8rem);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-top:12px;max-width:26ch;line-height:1.4}
+  .s-stat .ctx{color:var(--ink-2);font-size:clamp(.98rem,1.5vw,1.18rem);margin-top:20px;line-height:1.45;max-width:50ch}
+
+  /* primer / generic copy slide */
+  .s-primer{flex-direction:column;justify-content:center;gap:clamp(14px,2vw,22px)}
+  .s-primer h2{font-size:clamp(1.4rem,2.7vw,2.1rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+  .s-primer h2 .am{color:var(--amber)}
+  .s-primer p{font-size:clamp(.98rem,1.5vw,1.2rem);color:var(--ink-2);line-height:1.5;max-width:62ch}
+  .s-primer p b{color:var(--ink)}
+  .chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+  .chip{font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;background:linear-gradient(180deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:7px;padding:9px 14px;color:var(--ink)}
+  .chip b{color:var(--cyan)}
+  .cite{font-family:var(--mono);font-size:.66rem;color:var(--ink-3);margin-top:6px}
+
+  /* quote */
+  .s-quote{align-items:center;gap:clamp(24px,3.6vw,52px)}
+  .s-quote .qmain{flex:1.5 1 0;min-width:0}
+  .s-quote blockquote{font-size:clamp(1.3rem,2.5vw,2rem);line-height:1.28;letter-spacing:-.015em;font-weight:600;text-wrap:balance;position:relative}
+  .s-quote blockquote::before{content:"\201C";color:var(--amber);font-size:2.4em;line-height:0;position:absolute;left:-.18em;top:.42em;opacity:.5}
+  .s-quote .qcite{font-family:var(--mono);font-size:.72rem;color:var(--amber);margin-top:22px;letter-spacing:.04em}
+  .s-quote .qside{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:11px;border-left:1px solid var(--line);padding-left:clamp(18px,2.4vw,30px)}
+  .qstat .n{font-size:clamp(1.05rem,1.7vw,1.4rem);font-weight:700;color:var(--ink)}.qstat .n .cy{color:var(--cyan)}
+  .qstat .l{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+
+  /* ===== §3-specific ===== */
+  /* figure-forward slide */
+  .s-fig{flex-direction:column;justify-content:flex-start;gap:clamp(10px,1.4vw,16px)}
+  .s-fig .fhead{font-size:clamp(1.2rem,2.2vw,1.7rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;margin-top:clamp(22px,2.6vw,10px)}
+  .s-fig .fhead .am{color:var(--amber)}
+  .s-fig .fsub{font-size:clamp(.86rem,1.25vw,1.02rem);color:var(--ink-2);line-height:1.45;max-width:74ch}
+  .s-fig .fsub b{color:var(--cyan);font-weight:600}
+  .figrow{display:flex;gap:clamp(18px,2.6vw,34px);align-items:stretch;width:100%;flex:1 1 auto;min-height:0;margin-top:4px}
+  .figslot{flex:1 1 0;min-width:0;display:flex;flex-direction:column}
+  .figframe{flex:1 1 auto;min-height:0;border:1px dashed rgba(231,172,81,.45);border-radius:8px;background:repeating-linear-gradient(135deg,rgba(255,255,255,.018) 0 12px,transparent 12px 24px),#0b1116;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;padding:18px;overflow:hidden;position:relative}
+  .figframe img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#0b1116}
+  .figframe .ph-ic{font-family:var(--mono);font-size:1.6rem;color:var(--amber);opacity:.6}
+  .figframe .ph-t{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);max-width:30ch;line-height:1.5}
+  .figframe .ph-s{font-family:var(--mono);font-size:.6rem;color:var(--ink-3);max-width:34ch;line-height:1.5}
+  figcaption.attr{font-family:var(--mono);font-size:.58rem;color:var(--ink-3);margin-top:7px;line-height:1.45}
+  figcaption.attr b{color:var(--ink-2);font-weight:400}
+  .fnote{flex:0.85 1 0;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:13px;border-left:1px solid var(--line);padding-left:clamp(16px,2vw,26px)}
+  .fnote .pt{font-size:clamp(.92rem,1.35vw,1.1rem);font-weight:600;line-height:1.3}
+  .fnote .pt span{display:block;font-weight:400;color:var(--ink-2);font-size:.86em;margin-top:5px;line-height:1.45}
+  .fnote .pt b{color:var(--cyan)}
+
+  /* four-quadrant 2x2 */
+  .s-quad{flex-direction:column;justify-content:center;gap:clamp(12px,1.8vw,20px)}
+  .s-quad h2{font-size:clamp(1.3rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em}
+  .s-quad h2 .am{color:var(--amber)}
+  .quadwrap{display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:clamp(7px,1vw,12px);width:100%}
+  .qlabel{font-family:var(--mono);font-size:.6rem;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;justify-content:center;text-align:center;padding:4px}
+  .qlabel.vert{writing-mode:vertical-rl;transform:rotate(180deg)}
+  .qcell{border:1px solid var(--line);border-radius:9px;padding:clamp(11px,1.5vw,17px);background:linear-gradient(180deg,var(--bg-3),var(--bg-2));display:flex;flex-direction:column;gap:6px;min-height:0}
+  .qcell .qtag{font-family:var(--mono);font-size:.58rem;letter-spacing:.06em;text-transform:uppercase}
+  .qcell .qt{font-size:clamp(.92rem,1.35vw,1.1rem);font-weight:600;line-height:1.2}
+  .qcell .qd{font-size:clamp(.78rem,1.1vw,.92rem);color:var(--ink-2);line-height:1.4}
+  .qcell.ok{border-left:2px solid var(--cyan)}.qcell.ok .qtag{color:var(--cyan)}
+  .qcell.act{border-left:2px solid var(--amber);box-shadow:0 0 0 1px rgba(231,172,81,.16)}.qcell.act .qtag{color:var(--amber)}
+  .qcell.warn{border-left:2px solid var(--warn)}.qcell.warn .qtag{color:var(--warn)}
+
+  /* bridge / turn */
+  .s-turn{flex-direction:column;justify-content:center;gap:clamp(16px,2.4vw,26px)}
+  .turn-line{font-size:clamp(1.1rem,1.9vw,1.45rem);line-height:1.4;text-wrap:balance;color:var(--ink);font-weight:500;border-left:2px solid var(--amber);padding-left:16px;max-width:62ch}
+  .turn-line b{color:var(--amber)}
+  .s-turn h2{font-size:clamp(1.5rem,2.9vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+  .s-turn h2 .am{color:var(--amber)}
+
+  .speaker{width:100%;max-width:1180px;padding:2px 28px 0;display:flex;gap:13px;align-items:flex-start;min-height:56px}
+  .say{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--amber);font-weight:600;padding-top:3px;flex:0 0 auto}
+  .saytext{font-size:clamp(.9rem,1.35vw,1.02rem);line-height:1.5;color:var(--ink-2);max-width:66ch}
+  .controls{width:100%;max-width:1180px;padding:8px 28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .dots{display:flex;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#39434E;border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}
+  .dot:hover{background:var(--ink-3)}.dot.on{background:var(--amber);transform:scale(1.2)}
+  .btns{display:flex;gap:10px}.btn{font-family:var(--sans);font-size:.74rem;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);padding:9px 17px;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s}
+  .btn:hover{border-color:var(--amber);color:var(--amber)}.btn:disabled{color:var(--ink-3);opacity:.5;cursor:default}
+  .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+  .hint{font-family:var(--mono);font-size:.64rem;color:var(--ink-3)}
+  @media (max-width:720px){.s-divider,.s-quote,.figrow{flex-direction:column}.fnote{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:14px}.hint{display:none}}
+  @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
+</style>
+
+<div class="topbar">
+  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era III · the future</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 9</div>
+</div>
+
+<div class="stage">
+  <div class="frame" id="frame">
+    <canvas id="motif"></canvas>
+
+    <!-- 1 divider: callback to the hook -->
+    <section class="slide s-divider active" data-note="Come back to today. Same reading room, a normal mammogram — two readers, both right, no cancer. But one model just flagged her: about a five-year risk. It was not looking for a lesion; there wasn't one. It was reading the tissue. The image already knew. That is the turn this section is about — the mammogram stops being only a detector and becomes a biosensor. And this one is already FDA-cleared.">
+      <div class="dv-copy">
+        <div class="spine"><span>Lesion</span><span class="sep">→</span><span class="on">Image</span><span class="sep">→</span><span>Patient</span><span class="sep">→</span><span>Population</span></div>
+        <h1>The image <span class="am">already knew.</span></h1>
+        <p class="sub">A normal mammogram. Two readers, both right — no cancer today. But a model reads the same pixels and forecasts her five-year risk. The question changes: from <b style="color:var(--ink)">"is there cancer now?"</b> to <b style="color:var(--ink)">"what is her risk, and how hard should we look?"</b></p>
+        <p class="sub" style="color:var(--ink-3);font-size:clamp(.9rem,1.3vw,1.05rem)">The mammogram stops being only a detector. It becomes a biosensor — and this one is already cleared by the FDA.</p>
+      </div>
+    </section>
+
+    <!-- 2 the old world -->
+    <section class="slide s-quote" data-note="For forty years our only imaging risk marker was density — a coarse, subjective category. The questionnaire models we layered on top were weak: Tyrer-Cuzick predicts five-year risk at an AUC around 0.62, barely better than a coin flip at the individual level. We were sorting women into risk tiers with tools that could not really tell them apart.">
+      <span class="eyebrow">Era III · the old world</span>
+      <div class="qmain">
+        <blockquote>For forty years, the only risk signal we could read off the image was <span style="color:var(--amber)">density</span> — coarse, subjective, and a weak predictor.</blockquote>
+        <div class="qcite">Tyrer-Cuzick, Gail, BCSC — questionnaire-and-density models</div>
+      </div>
+      <div class="qside">
+        <div class="qstat"><div class="n">~0.62</div><div class="l">Tyrer-Cuzick v8 · 5-yr AUC</div></div>
+        <div class="qstat"><div class="n">~0.59–0.61</div><div class="l">density-augmented Gail / TC</div></div>
+        <div class="qstat"><div class="n" style="color:var(--ink-2);font-weight:400;font-size:1rem">Strong at the population level.<br>Weak for the woman in front of you.</div></div>
+      </div>
+    </section>
+
+    <!-- 3 the pivot: image-based DL reads risk -->
+    <section class="slide s-primer" data-note="Then the pixels turned out to carry risk. Yala and colleagues at MIT and MGH showed a deep network reading the mammogram itself beat the questionnaire models. Mirai, the next version, was built to predict across time, tolerate missing risk-factor data, and stay consistent across machines. Externally validated in three countries, C-index 0.76 to 0.81. Among women who went on to develop cancer within five years, Mirai flagged 41 percent as high-risk — versus 23 percent for Tyrer-Cuzick.">
+      <span class="eyebrow">Era III · the pivot</span>
+      <h2>The <span class="am">pixels</span> carry risk — beyond density, beyond the questionnaire.</h2>
+      <p>Yala et al. (Radiology 2019) showed a network reading the image itself out-predicted the classical models. <b>Mirai</b> (Yala et al., Science Translational Medicine 2021) was built to predict across time points, tolerate missing risk-factor data, and stay consistent across scanners.</p>
+      <div class="chips">
+        <div class="chip"><b>C-index 0.76 / 0.81 / 0.79</b> — validated US · Sweden · Taiwan</div>
+        <div class="chip"><b>41.5%</b> of future cancers flagged high-risk <span style="color:var(--ink-3)">(vs 22.9% Tyrer-Cuzick)</span></div>
+      </div>
+      <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">But a number like 0.81 is a <b style="color:var(--ink-2)">black box</b> answer. For a screening program, "it works" is not enough — we have to know <b style="color:var(--ink-2)">why</b>.</p>
+      <div class="cite">Yala et al., Radiology 2019 · Mirai — Yala et al., Sci Transl Med 2021 (DOI 10.1126/scitranslmed.aba4373)</div>
+    </section>
+
+    <!-- 4 ARCHITECTURE FIGURE SLOT (AsymMirai vs Mirai) -->
+    <section class="slide s-fig" data-note="Here is why explainability matters and what it looks like done right. On the right is Mirai: four images into CNNs, pooled, through a transformer and a risk-factor predictor, out come five years of risk. A black box. On the left is AsymMirai — our group's work with Duke. We asked what Mirai was actually keying on, and the answer was surprisingly simple: local bilateral dissimilarity, the difference between left and right breast tissue in the same region. A transparent model built only on that asymmetry nearly matched the black box: one-year AUC 0.79 versus 0.84. A signal you can point to on the image.">
+      <span class="eyebrow">Era III · explainability done right</span>
+      <div class="fhead">Why does it work? The signal is <span class="am">local bilateral asymmetry</span> — and you can see it.</div>
+      <p class="fsub">Mirai is accurate but opaque. <b>AsymMirai</b> (Donnelly et al., Radiology 2024 — Duke + Emory) reverse-engineered what it keys on: the left-vs-right tissue difference. A transparent model on that signal alone nearly matched the black box.</p>
+      <div class="figrow">
+        <figure class="figslot" style="margin:0;flex:1.5 1 0">
+          <div class="figframe">
+            <!-- Replace this block with: <img src="data:image/png;base64,..." alt="AsymMirai vs Mirai architecture"> -->
+            <div class="ph-ic">▢</div>
+            <div class="ph-t">AsymMirai vs Mirai — architecture</div>
+            <div class="ph-s">drop the figure here (left: asymmetry → prediction window → risk score; right: Mirai CNN → transformer → 5-yr risk)</div>
+          </div>
+          <figcaption class="attr"><b>Source:</b> Donnelly et al., "AsymMirai," Radiology 2024;310(3):e232780 · pubs.rsna.org/doi/10.1148/radiol.232780</figcaption>
+        </figure>
+        <div class="fnote">
+          <div class="pt">Transparent ≈ black box.<span>Interpretable model: <b>1-yr AUC 0.79</b> vs Mirai 0.84. In stable-tissue subgroups, <b>3-yr AUC 0.92</b>.</span></div>
+          <div class="pt">Auditable.<span>A signal you can <b>point to on the image</b> — so you can find where it fails. (The fix for §2's two gaps.)</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5 LONGITUDINAL FIGURE SLOT -->
+    <section class="slide s-fig" data-note="And the signal is visible early. This is one patient, left MLO, the same region tracked over three screening rounds. In 2014, at age 69, the model's attention sits on a subtle asymmetry the readers called normal. Seventeen months later it intensifies. By 2017 it is unmistakable — and that is where the cancer arose. The risk score was rising for years before the diagnosis. This is the same phenomenon Hickman described in the detection models: the signal builds on the image long before we call it cancer.">
+      <span class="eyebrow">Era III · the signal builds early</span>
+      <div class="fhead">The asymmetry intensified <span class="am">years before</span> the cancer.</div>
+      <p class="fsub">One patient, left MLO, same region across three screening rounds. The model's attention localizes to a growing asymmetry the readers reasonably called normal — and that is where the cancer arose.</p>
+      <div class="figrow">
+        <figure class="figslot" style="margin:0;flex:1.7 1 0">
+          <div class="figframe">
+            <!-- Replace this block with: <img src="data:image/jpeg;base64,..." alt="AsymMirai longitudinal case 2014/2015/2017"> -->
+            <div class="ph-ic">▢</div>
+            <div class="ph-t">Longitudinal case — 2014 / 2015 / 2017</div>
+            <div class="ph-s">drop the triptych here (L MLO, age 69 → 17 mo → 21 mo; red box on the localized asymmetry that became cancer)</div>
+          </div>
+          <figcaption class="attr"><b>Source:</b> Donnelly et al., "AsymMirai," Radiology 2024;310(3):e232780 · pubs.rsna.org/doi/10.1148/radiol.232780</figcaption>
+        </figure>
+        <div class="fnote">
+          <div class="pt">Risk is a trajectory, not a snapshot.<span>The score was rising <b>for years</b> before the diagnosis.</span></div>
+          <div class="pt">Same phenomenon as detection.<span>Hickman (§2): detection scores also climb across a decade <b>before</b> we call it cancer.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6 the trap: population != individual -->
+    <section class="slide s-primer" data-note="Now the caveat, and it is the whole ballgame for using these clinically. Every number I just showed — 0.76, 0.81, 0.84 — is a population number. An AUC tells you how a model sorts a million women; it tells you little about the one in your clinic. Discrimination is not calibration: whether a predicted eight-percent risk really means eight percent is a separate, less-reported property. And the image model and the clinical model flag different women. Arasu showed the AI's top-risk decile and the clinical model's overlapped only partially. For a large share of women, the old number and the new number disagree — and that disagreement, not the average AUC, is the decision in front of you.">
+      <span class="eyebrow">Era III · the trap in a good AUC</span>
+      <h2>A population AUC is not an <span class="am">individual</span> prediction.</h2>
+      <p><b>Discrimination ≠ calibration.</b> An AUC measures how well a model <i>ranks</i> a million women. Whether a predicted "8% risk" actually means 8% — calibration — is a separate property, less often reported, and it is the one that governs <i>her</i> decision.</p>
+      <div class="chips">
+        <div class="chip"><b>~28%</b> of future cancers in the AI top decile</div>
+        <div class="chip"><b>~21%</b> in the clinical-model top decile</div>
+        <div class="chip">the two high-risk groups <b>overlap only partially</b></div>
+      </div>
+      <p style="font-size:clamp(.9rem,1.3vw,1.05rem)">The image model and the clinical model flag <b>different women</b>. That disagreement — not the average AUC — is the decision in front of you.</p>
+      <div class="cite">Arasu et al., Radiology 2023;307(5):e222733</div>
+    </section>
+
+    <!-- 7 four quadrants -->
+    <section class="slide s-quad" data-note="So picture the real decision as a two-by-two. The classical model on one axis, the image model on the other. When they agree, management is easy: both low, standardize or extend the interval; both high, escalate to MRI. The interesting cells are the disagreements. Classical-low but image-high: the tissue is doing something the questionnaire never captured — look harder now, short-interval follow-up, a second read of this mammogram. And the dangerous cell, classical-high but image-low: a BRCA carrier with a quiet-looking image. The reassuring image must not override known germline risk. De-escalating there would be the most consequential error this technology invites. The models measure different things — inherited risk versus current tissue state — and each carries its own action.">
+      <span class="eyebrow">Era III · the clinically relevant view</span>
+      <h2>Two models, <span class="am">two questions</span> — match the action to the axis.</h2>
+      <div class="quadwrap">
+        <div class="qlabel"></div>
+        <div class="qlabel">Image model · LOW</div>
+        <div class="qlabel">Image model · HIGH</div>
+
+        <div class="qlabel vert">Classical · HIGH</div>
+        <div class="qcell warn"><div class="qtag">⚠ discordant</div><div class="qt">Germline risk, quiet image</div><div class="qd">BRCA / strong family history, low image score. The image was not trained on inherited risk — do <b>not</b> de-escalate. Highest-stakes error.</div></div>
+        <div class="qcell ok"><div class="qtag">✓ concordant high</div><div class="qt">Escalate</div><div class="qd">Supplemental MRI, short interval. Both axes agree.</div></div>
+
+        <div class="qlabel vert">Classical · LOW</div>
+        <div class="qcell ok"><div class="qtag">✓ concordant low</div><div class="qt">Standardize / de-escalate</div><div class="qd">Routine screening, consider longer interval.</div></div>
+        <div class="qcell act"><div class="qtag">★ the new signal</div><div class="qt">"Average" by questionnaire, high by image</div><div class="qd">Tissue-state signal the form missed. Strongest near-term — <b>look harder now</b>: short interval, supplemental imaging, a second look at <i>this</i> exam.</div></div>
+      </div>
+    </section>
+
+    <!-- 8 FDA-cleared + risk-adapted screening -->
+    <section class="slide s-primer" data-note="And this is no longer hypothetical. Clairity Breast — Constance Lehman's company — received FDA De Novo authorization in June 2025: the first tool to predict five-year risk from a routine screening mammogram alone, and it was added to the 2026 NCCN screening guidance. The path from research model to cleared product to guideline took under five years. Meanwhile the trials are testing whether to screen by risk instead of by age. WISDOM, reported in JAMA this year, found risk-based screening non-inferior for advanced cancers with about 3,800 fewer mammograms per hundred-thousand person-years — and 89 percent of women offered the choice picked it. MyPeBS, 85,000 women across six countries, will give the definitive answer.">
+      <span class="eyebrow">Era III · already cleared, already in trials</span>
+      <h2>From research model to <span class="am">cleared product</span> to guideline — in under five years.</h2>
+      <p><b>Clairity Breast</b> (FDA De Novo, June 2025) — the first tool to predict 5-year risk from a routine screening mammogram alone; added to the <b>2026 NCCN</b> screening guidance.</p>
+      <div class="chips">
+        <div class="chip"><b>WISDOM</b> (JAMA 2026): risk-based non-inferior for stage ≥IIB · ~3,800 fewer mammograms /100k person-yr · <b>89%</b> chose risk-based</div>
+        <div class="chip"><b>MyPeBS</b>: ~85,000 women · 6 countries · screen-by-risk vs by-age · <b>ongoing</b></div>
+      </div>
+      <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">Today the trials triage on genetics and classical models. The image-derived score is the second axis they have not yet switched on.</p>
+      <div class="cite">Clairity — FDA De Novo 2025 (no primary validation paper yet) · WISDOM — Esserman et al., JAMA 2026;335(9):763–774 · MyPeBS — BMC Cancer 2022</div>
+    </section>
+
+    <!-- 9 bridge to §4 -->
+    <section class="slide s-turn" data-note="So the image can now tell us when to look and how hard. But once we find something, the question changes again — from is there cancer and what is her risk, to what is this cancer and what will it do? That answer is not in radiology. It is across the hospital, on a glass slide. To understand the patient, we move to the pathology lab — where AI does something our images cannot.">
+      <span class="eyebrow">Era III · image → patient</span>
+      <h2>The image tells us <span class="am">when</span> to look and <span class="am">how hard.</span></h2>
+      <p class="turn-line">Once we find something, the question changes again: from <b>"is there cancer, and what is her risk?"</b> to <b>"what is this cancer, and what will it do?"</b></p>
+      <div class="spine" style="display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);flex-wrap:wrap">
+        <span>Lesion</span><span style="opacity:.5">→</span><span style="color:var(--amber)">Image ✓</span><span style="opacity:.5">→</span><span style="color:var(--amber)">Patient →</span><span style="opacity:.5">→</span><span>Population</span>
+      </div>
+      <p style="font-size:clamp(1rem,1.55vw,1.22rem);color:var(--ink-2);line-height:1.5;max-width:60ch">That answer is not in radiology. It is across the hospital, on a glass slide. We move to the <b style="color:var(--ink)">pathology lab</b> — where AI does something our images cannot.</p>
+    </section>
+
+  </div>
+  <div class="speaker"><span class="say">SAY</span><p class="saytext" id="note"></p></div>
+</div>
+
+<div class="controls">
+  <div class="dots" id="dots"></div>
+  <div class="hint">← → arrow keys</div>
+  <div class="btns"><button class="btn" id="prev">← Prev</button><button class="btn" id="next">Next →</button></div>
+</div>
+
+<script>
+(function(){"use strict";
+var slides=[].slice.call(document.querySelectorAll('.slide'));var i=0,n=slides.length;
+var curEl=document.getElementById('cur'),noteEl=document.getElementById('note'),prevB=document.getElementById('prev'),nextB=document.getElementById('next'),dotsWrap=document.getElementById('dots');
+var dots=slides.map(function(_,idx){var b=document.createElement('button');b.className='dot'+(idx===0?' on':'');b.setAttribute('aria-label','Slide '+(idx+1));b.addEventListener('click',function(){go(idx);});dotsWrap.appendChild(b);return b;});
+function show(idx){slides.forEach(function(s,k){s.classList.toggle('active',k===idx);});dots.forEach(function(d,k){d.classList.toggle('on',k===idx);});curEl.textContent=idx+1;noteEl.textContent=slides[idx].getAttribute('data-note')||'';prevB.disabled=idx===0;nextB.disabled=idx===n-1;}
+function go(idx){i=Math.max(0,Math.min(n-1,idx));show(i);}
+nextB.addEventListener('click',function(){go(i+1);});prevB.addEventListener('click',function(){go(i-1);});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(n-1);}});
+function drawMotif(c){var dpr=Math.min(window.devicePixelRatio||1,2);var r=c.getBoundingClientRect();var w=Math.max(8,Math.round(r.width*dpr)),h=Math.max(8,Math.round(r.height*dpr));c.width=w;c.height=h;var x=c.getContext('2d');x.clearRect(0,0,w,h);var fx=w*0.84,fy=h*0.20,rings=22;for(var k=1;k<=rings;k++){var rad=(k/rings)*Math.max(w,h)*0.95;var a=0.085*(1-k/rings)+0.012;x.beginPath();for(var t=0;t<=Math.PI*2+0.01;t+=0.18){var pert=1+0.10*Math.sin(t*3+k*0.5)+0.06*Math.cos(t*5-k*0.3);var px=fx+Math.cos(t)*rad*pert;var py=fy+Math.sin(t)*rad*pert*0.9;if(t===0)x.moveTo(px,py);else x.lineTo(px,py);}x.closePath();x.strokeStyle='rgba(231,172,81,'+a.toFixed(3)+')';x.lineWidth=1;x.stroke();}}
+function renderAll(){var m=document.getElementById('motif');if(m)drawMotif(m);}
+var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(renderAll,160);});requestAnimationFrame(function(){requestAnimationFrame(renderAll);});setTimeout(renderAll,300);
+show(0);
+})();
+</script>
