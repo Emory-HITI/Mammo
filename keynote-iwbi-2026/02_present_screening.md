@@ -102,8 +102,9 @@
 
 *The cleanest hand-off to the future: the detection score itself carries a forward signal.*
 
-- **Hickman et al., 2026** — in screening mammography, the **AI detection/abnormality score is elevated and rises progressively over the ~10 years preceding a cancer diagnosis**, well before a visible lesion. The detection score behaves like a risk trajectory, not just a present-day flag. *(Artificial-intelligence detection scores in screening mammography for early breast-cancer alerts.)* **[VERIFY exact numbers from the PDF; EMBED Figure 2 panel B — the score-vs-time-to-diagnosis curve — on this slide once the panel image is provided.]**
-- *Why it matters:* this is the conceptual hinge from Era II to Era III. The same model we trained to find today's cancer is, in its score, already forecasting tomorrow's. That is exactly the move from **lesion → image** — detection blurring into risk.
+- **Hickman et al., Radiology 2026;319(3):e251309** (VAI-B, Sweden; **31,394 individuals / 88,963 exams**; three commercial AI CAD systems — Vara, Lunit INSIGHT MMG, MammoScreen). For people later diagnosed with cancer, the **AI detection score is already elevated up to 10 years before diagnosis and rises steadily toward it**, while cancer-free individuals stay flat. ✓
+- **The numbers (proportion of future cancers flagged at the 90th-centile score):** ~13–17% at 10 yr → **19.0–19.7% at 6 yr → 23.3–25.2% at 4 yr → 35.4–39.3% at 2 yr → 42–48% at 1 yr.** Combined predictive AUC **0.63–0.67** across systems vs **0.57 for mammographic density** (all P<.001). *(DOI 10.1148/radiol.251309)*
+- *Why it matters:* this is the hinge from Era II to Era III. The model trained to find today's cancer is, in its score, already forecasting tomorrow's — detection blurring into risk. The chart on this slide is **redrawn from the paper's data (Table 2 / Fig 2A)** and cited; we don't reproduce the original figure.
 
 > **Bridge to Era III:** *"That is the lesion: finding today's cancer, now with evidence. But notice what just happened — that detection score was already rising years before the cancer was visible. The same normal mammogram holds more than today's cancer. We stop asking the image about the lesion and start asking it about the whole **image** — and about the patient."*
 

@@ -149,7 +149,7 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · §2 Present</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 12</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 13</div>
 </div>
 
 <div class="stage">
@@ -308,6 +308,49 @@
           <text x="204" y="242" text-anchor="middle" font-family="SFMono-Regular,Menlo,monospace" font-size="10.5" fill="#5C6975">DBT model — AUC by subgroup</text>
         </svg>
         <div class="chcap">Headline 0.91 → 0.80 on calcifications</div>
+      </div>
+    </section>
+
+    <!-- 9b Hickman: detection becoming risk -->
+    <section class="slide s-caveat" data-note="And one more result points straight at the next era. Hickman and colleagues, in Radiology this year, ran three commercial detection systems across sequential screening mammograms. In people later diagnosed with cancer, the AI detection score was already elevated up to ten years before diagnosis and rose steadily toward it; in cancer-free women it stayed flat. At the 90th-centile threshold, the proportion flagged rose from about 19% at six years, to 24% at four years, to nearly 38% at two years. The score we trained to find today's cancer is already forecasting tomorrow's. Detection is becoming risk.">
+      <span class="eyebrow">Detection is becoming risk</span>
+      <div class="left">
+        <h2>The detection score rises for <span class="am">years before</span> the cancer is visible.</h2>
+        <p class="gap"><b>Hickman et al., Radiology 2026</b> — three commercial CAD systems across sequential screens (31,394 women). For future cancers, the AI score is elevated up to <b>10 years</b> before diagnosis; cancer-free women stay flat.</p>
+        <p class="gap">Proportion flagged at the 90th centile: <b>~19% at 6 yr → 24% at 4 yr → ~38% at 2 yr.</b> Combined AUC <b>0.63&ndash;0.67</b> vs 0.57 for density.</p>
+        <p class="gap" style="color:var(--ink-3);font-family:var(--mono);font-size:.62rem;margin-top:12px">Chart redrawn from Hickman et al., Radiology 2026;319(3):e251309 (Table 2 / Fig 2A). DOI 10.1148/radiol.251309.</p>
+      </div>
+      <div class="right">
+        <svg class="barchart" viewBox="0 0 380 250" role="img" aria-label="Proportion of future cancers flagged by AI rises from ~15% ten years before diagnosis to ~45% one year before; cancer-free stays near 10%">
+          <!-- axes -->
+          <line x1="55" y1="210" x2="360" y2="210" stroke="rgba(255,255,255,.16)"/>
+          <line x1="55" y1="20" x2="55" y2="210" stroke="rgba(255,255,255,.16)"/>
+          <g font-family="SFMono-Regular,Menlo,monospace" font-size="10.5" fill="#5C6975">
+            <text x="48" y="214" text-anchor="end">0%</text>
+            <text x="48" y="119" text-anchor="end">50%</text>
+            <text x="48" y="24" text-anchor="end">100%</text>
+            <text x="55" y="228" text-anchor="middle">10</text>
+            <text x="116" y="228" text-anchor="middle">8</text>
+            <text x="177" y="228" text-anchor="middle">6</text>
+            <text x="238" y="228" text-anchor="middle">4</text>
+            <text x="299" y="228" text-anchor="middle">2</text>
+            <text x="360" y="228" text-anchor="middle">0</text>
+            <text x="207" y="245" text-anchor="middle" fill="#9DA9B5">Years before diagnosis</text>
+          </g>
+          <!-- cancer-free flat ~10% -->
+          <line x1="55" y1="191" x2="360" y2="191" stroke="#5C6975" stroke-width="2" stroke-dasharray="4 4"/>
+          <text x="350" y="186" text-anchor="end" font-family="SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#5C6975">cancer-free</text>
+          <!-- future-cancer line (% flagged at 90th centile) -->
+          <polyline points="55,182.4 85.5,177.9 116,180.2 146.5,175.4 177,173.1 207.5,170.1 238,164 268.5,143.9 299,138 329.5,125.3 360,43.6" fill="none" stroke="#E7AC51" stroke-width="3" stroke-linejoin="round"/>
+          <g fill="#E7AC51"><circle cx="177" cy="173.1" r="4"/><circle cx="238" cy="164" r="4"/><circle cx="299" cy="138" r="4"/><circle cx="360" cy="43.6" r="4.5"/></g>
+          <g font-family="SFMono-Regular,Menlo,monospace" font-size="11" fill="#ECEFF3" font-weight="bold">
+            <text x="173" y="165" text-anchor="middle">19%</text>
+            <text x="234" y="156" text-anchor="middle">24%</text>
+            <text x="296" y="130" text-anchor="middle">38%</text>
+            <text x="356" y="37" text-anchor="end">dx</text>
+          </g>
+        </svg>
+        <div class="chcap">% of future cancers flagged (AI score &gt; 90th centile)</div>
       </div>
     </section>
 
