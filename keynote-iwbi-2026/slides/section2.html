@@ -71,6 +71,19 @@
   .dots{display:flex;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#39434E;border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}.dot:hover{background:var(--ink-3)}.dot.on{background:var(--amber);transform:scale(1.2)}
   .btns{display:flex;gap:10px}.btn{font-family:var(--sans);font-size:.74rem;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);padding:9px 17px;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s}.btn:hover{border-color:var(--amber);color:var(--amber)}.btn:disabled{color:var(--ink-3);opacity:.5;cursor:default}
   .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}.hint{font-family:var(--mono);font-size:.64rem;color:var(--ink-3)}
+  .bigline{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;margin-top:8px}
+  .bigline .bn{font-size:clamp(2.7rem,6.8vw,4.8rem);font-weight:700;letter-spacing:-.03em;color:var(--amber);line-height:.95;font-variant-numeric:tabular-nums}
+  .bigline .bn .vs{color:var(--ink-3);font-weight:400;font-size:.62em}
+  .bigline .bl{font-family:var(--mono);font-size:clamp(.82rem,1.25vw,1rem);letter-spacing:.04em;text-transform:uppercase;color:var(--ink)}
+  .cmp{border-collapse:collapse;width:auto;font-size:clamp(.9rem,1.35vw,1.12rem);margin-top:16px}
+  .cmp th{text-align:left;font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);padding:8px 30px 8px 0;border-bottom:1px solid var(--line);font-weight:400}
+  .cmp th.r{text-align:right;padding-right:8px}
+  .cmp td{padding:9px 30px 9px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+  .cmp td.m{color:var(--ink-2)}
+  .cmp td.r{text-align:right;padding-right:8px;font-variant-numeric:tabular-nums}
+  .cmp td.ai{color:var(--amber);font-weight:700}
+  .cmp td.ct{color:var(--ink)}
+  .cite-lg{font-family:var(--mono);font-size:.8rem;color:var(--ink-3);margin-top:16px}
   .chips.lg{gap:12px}.chips.lg .chip{font-size:clamp(.84rem,1.25vw,1.02rem);padding:10px 16px}
   @media (max-width:720px){.s-divider,.s-caveat{flex-direction:column}.dv-view,.s-caveat .right,.s-fig .right{width:85%}.hint{display:none}}
   @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
@@ -187,37 +200,38 @@
     </section>
 
     <!-- 6 MASAI 2023 safety analysis -->
-    <section class="slide s-act" data-note="In 2023, MASAI published its clinical safety analysis — a randomized trial of about eighty thousand women, roughly forty thousand per arm. Cancer detection was 6.1 per thousand with AI versus 5.1 in controls, a ratio of 1.2, above the lowest acceptable safety limit. Recall was essentially identical, 2.2 versus 2.0 percent, and the false-positive rate was 1.5 percent in both. The positive predictive value of recall was higher with AI, 28 versus 25 percent. Three-quarters of detected cancers were invasive. So: safe, and detecting more — the green light to continue.">
+    <section class="slide s-act" data-note="In 2023, MASAI published its clinical safety analysis — a randomized trial of about eighty thousand women, roughly forty thousand per arm. Cancer detection was 6.1 per thousand with AI versus 5.1 in controls, a ratio of 1.2, above the lowest acceptable safety limit. Recall was essentially identical, 2.2 versus 2.0 percent; the false-positive rate was 1.5 percent in both; and the positive predictive value of recall was higher with AI, 28 versus 25 percent. Three-quarters of detected cancers were invasive. So: safe, and detecting more — the green light to continue.">
       <span class="eyebrow">Era II</span>
       <h2>2023: MASAI publishes its <span class="am">safety analysis.</span></h2>
       <p>A randomized trial, <b>~80,000 women</b> (≈40,000 per arm) — AI-supported reading vs standard double reading.</p>
-      <div class="twostat" style="margin-top:10px">
-        <div class="statblock"><div class="num" style="font-size:clamp(3.6rem,9.5vw,7.2rem)">6.1 <span style="color:var(--ink-3);font-weight:400">vs</span> 5.1</div><div class="lab" style="font-size:clamp(.74rem,1.15vw,.92rem);max-width:30ch">cancers detected /1,000 — AI vs control · ratio 1.2 (95% CI 1.0–1.5; p=0.052)</div></div>
-      </div>
-      <div class="chips" style="margin-top:14px">
-        <div class="chip">recall <b>2.2% vs 2.0%</b></div>
-        <div class="chip">false positives <b>1.5%</b> in both</div>
-        <div class="chip">PPV of recall <b>28.3% vs 24.8%</b></div>
-        <div class="chip">detected cancers <b>75% invasive</b></div>
-      </div>
-      <div class="cite">Lång et al., Lancet Oncology 2023 — above the lowest acceptable detection limit for safety</div>
+      <div class="bigline"><span class="bn">6.1 <span class="vs">vs</span> 5.1</span><span class="bl">CDR per 1,000 · ratio 1.2 (95% CI 1.0–1.5)</span></div>
+      <table class="cmp">
+        <thead><tr><th>Measure</th><th class="r">AI</th><th class="r">Control</th></tr></thead>
+        <tbody>
+          <tr><td class="m">Recall rate</td><td class="r ai">2.2%</td><td class="r ct">2.0%</td></tr>
+          <tr><td class="m">False-positive rate</td><td class="r ai">1.5%</td><td class="r ct">1.5%</td></tr>
+          <tr><td class="m">PPV of recall</td><td class="r ai">28.3%</td><td class="r ct">24.8%</td></tr>
+          <tr><td class="m">Invasive cancers</td><td class="r ai">75%</td><td class="r ct">81%</td></tr>
+        </tbody>
+      </table>
+      <div class="cite-lg">Lång et al., Lancet Oncology 2023 — above the lowest acceptable detection limit for safety</div>
     </section>
 
     <!-- 7 PRAIM -->
-    <section class="slide s-act" data-note="Does it hold in routine practice? PRAIM is the largest real-world dataset: 463,000 women across 12 German sites, 119 radiologists, with about 261,000 read with AI support from the Vara system. Detection was 6.7 per thousand with AI, a 17.6 percent relative increase, statistically superior to 5.7 in controls; recall was non-inferior and PPV improved. But note the design: radiologists voluntarily chose whether to use the AI. The arms were not randomized — sites and readers self-selected — which introduces real confounding. Strong, supportive, real-world evidence, but a tier below the randomized trial.">
+    <section class="slide s-act" data-note="Does it hold in routine practice? PRAIM is the largest real-world dataset: 463,000 women across 12 German sites, 119 radiologists, with about 261,000 read with AI support from the Vara system. Detection was 6.7 per thousand with AI, a 17.6 percent relative increase, statistically superior to 5.7 in controls; recall was non-inferior, and the predictive value of both recall and biopsy improved. The MASAI result holds outside a controlled trial.">
       <span class="eyebrow">Era II</span>
-      <h2>PRAIM: the largest real-world dataset — <span class="am">but not randomized.</span></h2>
-      <p><b>463,094 women</b> (50–69), 12 German sites, 119 radiologists, 2021–23; ~260,739 read with AI support (Vara).</p>
-      <div class="twostat" style="margin-top:4px">
-        <div class="statblock"><div class="num">+17.6%</div><div class="lab">detection — 6.7 vs 5.7 /1,000 (95% CI +5.7% to +30.8%), superior</div></div>
-      </div>
-      <div class="chips" style="margin-top:12px">
-        <div class="chip">recall <b>37.4 vs 38.3 /1,000</b> — non-inferior</div>
-        <div class="chip">PPV recall <b>17.9% vs 14.9%</b></div>
-        <div class="chip">PPV biopsy <b>64.5% vs 59.2%</b></div>
-      </div>
-      <p style="font-size:clamp(.86rem,1.25vw,1.02rem);line-height:1.4;color:var(--ink-2);border-left:2px solid var(--warn);padding-left:14px;margin-top:14px;max-width:64ch"><b style="color:var(--warn)">Design caveat:</b> radiologists <b style="color:var(--ink)">voluntarily chose</b> whether to use AI — the arms were not randomized. Sites and readers self-selected, introducing confounding. A tier below the RCT.</p>
-      <div class="cite">Eisemann et al., Nature Medicine 2025</div>
+      <h2>2025: PRAIM — <span class="am">real-world data.</span></h2>
+      <p><b>463,000 women</b> · 12 sites · 119 radiologists (Germany, 2021–23) — ~261,000 read with AI support (Vara).</p>
+      <div class="bigline"><span class="bn">6.7 <span class="vs">vs</span> 5.7</span><span class="bl">CDR per 1,000 · +17.6% (95% CI +5.7% to +30.8%), superior</span></div>
+      <table class="cmp">
+        <thead><tr><th>Measure</th><th class="r">AI</th><th class="r">Control</th></tr></thead>
+        <tbody>
+          <tr><td class="m">Recall rate /1,000</td><td class="r ai">37.4</td><td class="r ct">38.3</td></tr>
+          <tr><td class="m">PPV of recall</td><td class="r ai">17.9%</td><td class="r ct">14.9%</td></tr>
+          <tr><td class="m">PPV of biopsy</td><td class="r ai">64.5%</td><td class="r ct">59.2%</td></tr>
+        </tbody>
+      </table>
+      <div class="cite-lg">Eisemann et al., Nature Medicine 2025 — observational, real-world</div>
     </section>
 
     <!-- 8 MASAI 2026 interval cancer -->
