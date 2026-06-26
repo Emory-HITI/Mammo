@@ -130,6 +130,16 @@
   .step .sx{font-family:var(--mono);font-size:.6rem;color:var(--ink-3);font-variant-numeric:tabular-nums;margin-top:14px}
   .step .sw{margin-top:8px;font-size:clamp(1.05rem,2vw,1.55rem);font-weight:700;letter-spacing:-.015em;color:var(--ink)}
   .step .sd{margin-top:6px;font-size:clamp(.72rem,1vw,.84rem);color:var(--ink-2);line-height:1.35}
+  /* graduated amber tint across the spine — increasing signal */
+  .s-spine .step:nth-child(1){background:linear-gradient(180deg,rgba(231,172,81,.015),rgba(231,172,81,0)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.12)}
+  .s-spine .step:nth-child(2){background:linear-gradient(180deg,rgba(231,172,81,.07),rgba(231,172,81,.025)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.26)}
+  .s-spine .step:nth-child(3){background:linear-gradient(180deg,rgba(231,172,81,.14),rgba(231,172,81,.055)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.40)}
+  .s-spine .step:nth-child(4){background:linear-gradient(180deg,rgba(231,172,81,.24),rgba(231,172,81,.10)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.58)}
+  .s-spine .step::before{background:var(--amber)}
+  .s-spine .step:nth-child(1)::before{opacity:.25}
+  .s-spine .step:nth-child(2)::before{opacity:.45}
+  .s-spine .step:nth-child(3)::before{opacity:.7}
+  .s-spine .step:nth-child(4)::before{opacity:1}
   .spine-sub{font-size:clamp(1.1rem,2vw,1.45rem);line-height:1.38;color:var(--ink);font-weight:600;letter-spacing:-.01em;text-wrap:balance;max-width:40ch}
   .spine-hand{font-size:clamp(.8rem,1.2vw,.95rem);color:var(--ink-2);border-left:2px solid var(--amber);padding-left:14px;line-height:1.45;max-width:48ch}
 
@@ -183,9 +193,7 @@
         <div class="vp-body"><canvas class="mammo"></canvas><span class="vp-note">[ placeholder — swap real de-identified Emory case ]</span></div>
       </div>
       <div class="copy">
-        <div class="label">A real, de-identified exam from Emory</div>
         <h1>A normal screening mammogram — read as normal.</h1>
-        <p class="sub">No visible cancer. This is what we do today.</p>
       </div>
     </section>
 
