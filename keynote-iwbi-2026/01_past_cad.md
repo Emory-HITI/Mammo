@@ -7,6 +7,8 @@
 
 ## The start (picks up from the hook's last line)
 
+The year is 
+
 *The hook ends: "this field has overpromised before, and I'll start there." Go straight to the numbers.*
 
 > *(Slide: one number.)*
@@ -15,13 +17,15 @@
 >
 > *"That's roughly what the U.S. spent each year on computer-aided detection for mammography — about one dollar of every ten thousand spent on U.S. health care. It ran on most screening mammograms in the country. When the definitive study was finally done, radiologists using CAD were no more accurate, and by one measure less."*
 >
+> Mammography sensitivity was 85.3% (95% CI, 83.6%-86.9%) with and 87.3% (95% CI, 84.5%-89.7%) without CAD. Specificity was 91.6% (95% CI, 91.0%-92.2%) with and 91.4% (95% CI, 90.6%-92.0%) without CAD.
+>
 > *(Slide: **OR 0.53**.)*
+> 
+> *"Among radiologists who read both with and without it, sensitivity was lower with CAD on."* Include table from Lehman Paper. In fact radiologists had a 47% lower odds of detecting a malignant lesion with CAD on than off, which is quite remarkable 
 >
-> *"Among radiologists who read both with and without it, sensitivity was lower with CAD on. Same readers, same images, fewer cancers caught."*
->
-> *"That tool was computer-aided detection — the first systems we built to find the **lesion**. I start here for a simple reason: the field has overpromised before. Everything in the next 40 minutes should clear the bar CAD did not."*
+> * start here for a simple reason: the field has overpromised before. Everything in the next 40 minutes should clear the bar CAD did not."*
 
-**Note:** name the field's clearest failure first; it earns the credibility to be optimistic later. The word **lesion** ties CAD to the first stage of the spine.
+For the radiologists in the audience, I know that every breast radiologist I have spoken with essentially ignores the cad markings or finds them to be disruptive, so I dont think this paper was much of a surprise to anyone.
 
 ---
 
