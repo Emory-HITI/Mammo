@@ -246,40 +246,48 @@
       <div class="cite">Gommers et al. (…Lång), Lancet 2026;407(10527):505–514</div>
     </section>
 
-    <!-- 8 subgroup performance: AUC + sensitivity -->
-    <section class="slide s-caveat" data-note="So it is 2026 — where do we actually stand? The averages look strong, but a single AUC describes average performance and says nothing about where a model fails. In our audit of a commercial DBT model across 163,000 exams, the overall AUC was 0.91 — but look at sensitivity, and the picture changes. On dense breasts the AUC is 0.88 but sensitivity is 0.63; on in-situ cancers, AUC 0.85 but sensitivity 0.55; on calcifications, 0.80 and 0.66. The model is weakest exactly where the cases are subtle and the stakes are high. And in our Beyond Screening work, the models didn't transfer to diagnostic exams or to women with implants. The two gaps: subgroup performance, and explainability.">
+    <!-- 8 subgroup performance: by histologic subtype -->
+    <section class="slide s-caveat" data-note="So it is 2026 — where do we actually stand? The averages look strong, but a single AUC describes average performance and says nothing about where a model fails. In our audit of a commercial DBT model across 163,000 exams, the overall AUC was 0.91 — but detection drops sharply by histologic subtype. The common invasive ductal cancers are flagged about 86 percent of the time; the rarer special subtypes — tubular, papillary, colloid — far less, 57 to 62 percent, though on small numbers. Sensitivity also falls on dense breasts, in-situ disease, and calcifications even as the AUC stays high. And in our Beyond Screening work, the models did not transfer to diagnostic exams or to women with implants. The two gaps: subgroup performance, and explainability.">
       <span class="eyebrow">Era II</span>
       <div class="left">
         <h2>2026: the averages look strong — so where do these models <span class="am">still fail?</span></h2>
-        <p class="gap"><b>Our DBT audit</b> (EMBED, 163,449 exams): overall AUC <b>0.91</b> — but sensitivity falls on the subtle, high-stakes cases (dense, in-situ, calcifications).</p>
-        <p class="gap"><b>It doesn't transfer:</b> "Beyond Screening" — models trained on screening dropped on diagnostic exams and fell to specificity 31–54% on women with implants.</p>
-        <p class="gap">The two gaps: <b>subgroup performance</b> + <b>explainability.</b></p>
-        <p class="gap" style="color:var(--ink-3);font-family:var(--mono);font-size:.62rem;margin-top:10px">Trivedi group — Nat Commun 2026 (DBT) · Du H et al. "Beyond Screening" 2026. Corroborated: RSNA 2023 challenge, BreastScreen Norway.</p>
+        <p class="gap"><b>Our DBT audit</b> (EMBED, 163,449 exams): overall AUC <b>0.91</b> — but detection drops by histologic subtype.</p>
+        <p class="gap">Common <b>ductal</b> cancers are flagged <b style="color:var(--amber)">~86%</b> of the time; rarer special subtypes — tubular, papillary, colloid — far less, <b style="color:var(--warn)">57–62%</b> (small n).</p>
+        <p class="gap">Sensitivity also falls on <b>dense breasts, in-situ, and calcifications</b> (0.55–0.66) even as AUC stays ~0.80–0.88. And it <b>doesn't transfer</b> — specificity 31–54% on women with implants.</p>
+        <p class="gap" style="color:var(--ink-3);font-family:var(--mono);font-size:.62rem;margin-top:10px">Trivedi group — DBT subgroup audit (Nat Commun 2026) · Du H et al. "Beyond Screening" 2026. Chart redrawn from the subtype figure.</p>
       </div>
-      <div class="right">
-        <svg class="barchart" viewBox="0 0 360 252" role="img" aria-label="DBT model AUC and sensitivity by subgroup">
-          <g font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#5C6975">
-            <line x1="56" y1="20" x2="56" y2="200" stroke="rgba(255,255,255,.14)"/><line x1="56" y1="200" x2="350" y2="200" stroke="rgba(255,255,255,.14)"/>
-            <line x1="56" y1="110" x2="350" y2="110" stroke="rgba(255,255,255,.07)"/>
-            <text x="50" y="204" text-anchor="end">.50</text><text x="50" y="114" text-anchor="end">.75</text><text x="50" y="24" text-anchor="end">1.0</text>
+      <div class="right" style="width:46%;max-width:480px">
+        <svg class="barchart" viewBox="0 0 380 248" role="img" aria-label="AI detection rate by histologic subtype">
+          <g stroke="rgba(255,255,255,.10)" stroke-width="1">
+            <line x1="120" y1="24" x2="120" y2="222"/><line x1="236" y1="24" x2="236" y2="222"/><line x1="352" y1="24" x2="352" y2="222"/>
           </g>
-          <g font-size="9.5"><rect x="206" y="14" width="11" height="11" fill="#E7AC51"/><text x="221" y="23" fill="#9DA9B5" font-family="SFMono-Regular,Menlo,monospace">AUC</text><rect x="266" y="14" width="11" height="11" fill="#5FB7C9"/><text x="281" y="23" fill="#9DA9B5" font-family="SFMono-Regular,Menlo,monospace">Sensitivity</text></g>
-          <rect x="74"  y="52.4" width="26" height="147.6" rx="2" fill="#E7AC51"/>
-          <rect x="142" y="63.2" width="26" height="136.8" rx="2" fill="#E7AC51"/><rect x="170" y="153.2" width="26" height="46.8" rx="2" fill="#5FB7C9"/>
-          <rect x="212" y="74"   width="26" height="126"   rx="2" fill="#E7AC51"/><rect x="240" y="182"   width="26" height="18"   rx="2" fill="#5FB7C9"/>
-          <rect x="282" y="92"   width="26" height="108"   rx="2" fill="#E7AC51"/><rect x="310" y="142.4" width="26" height="57.6" rx="2" fill="#5FB7C9"/>
-          <g font-family="SFMono-Regular,Menlo,monospace" font-size="10.5" font-weight="bold" fill="#ECEFF3" text-anchor="middle">
-            <text x="87" y="46">.91</text>
-            <text x="155" y="57">.88</text><text x="183" y="147">.63</text>
-            <text x="225" y="68">.85</text><text x="253" y="176">.55</text>
-            <text x="295" y="86">.80</text><text x="323" y="136">.66</text>
+          <rect x="120" y="29" width="200" height="18" rx="2" fill="#E7AC51"/>
+            <text x="114" y="42" text-anchor="end" font-size="9.5" fill="#9DA9B5">IDC (NOS) · n=544</text>
+            <text x="325" y="42" font-size="10" font-weight="bold" fill="#ECEFF3">86%</text>
+            <rect x="120" y="58" width="195" height="18" rx="2" fill="#E7AC51"/>
+            <text x="114" y="71" text-anchor="end" font-size="9.5" fill="#9DA9B5">Mammary · n=67</text>
+            <text x="320" y="71" font-size="10" font-weight="bold" fill="#ECEFF3">84%</text>
+            <rect x="120" y="87" width="190" height="18" rx="2" fill="#E7AC51"/>
+            <text x="114" y="100" text-anchor="end" font-size="9.5" fill="#9DA9B5">Lobular · n=100</text>
+            <text x="315" y="100" font-size="10" font-weight="bold" fill="#ECEFF3">82%</text>
+            <rect x="120" y="116" width="144" height="18" rx="2" fill="#D9785B"/>
+            <text x="114" y="129" text-anchor="end" font-size="9.5" fill="#9DA9B5">Papillary · n=8</text>
+            <text x="269" y="129" font-size="10" font-weight="bold" fill="#ECEFF3">62%</text>
+            <rect x="120" y="145" width="132" height="18" rx="2" fill="#D9785B"/>
+            <text x="114" y="158" text-anchor="end" font-size="9.5" fill="#9DA9B5">Tubular · n=7</text>
+            <text x="257" y="158" font-size="10" font-weight="bold" fill="#ECEFF3">57%</text>
+            <rect x="120" y="174" width="132" height="18" rx="2" fill="#D9785B"/>
+            <text x="114" y="187" text-anchor="end" font-size="9.5" fill="#9DA9B5">Colloid · n=7</text>
+            <text x="257" y="187" font-size="10" font-weight="bold" fill="#ECEFF3">57%</text>
+            <rect x="120" y="203" width="232" height="18" rx="2" fill="#5C6975"/>
+            <text x="114" y="216" text-anchor="end" font-size="9.5" fill="#9DA9B5">Medullary · n=1</text>
+            <text x="357" y="216" font-size="10" font-weight="bold" fill="#ECEFF3">100%</text>
+          <g font-family="SFMono-Regular,Menlo,monospace" font-size="9" fill="#5C6975" text-anchor="middle">
+            <text x="120" y="236">0</text><text x="236" y="236">50%</text><text x="352" y="236">100%</text>
           </g>
-          <g font-family="SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#9DA9B5" text-anchor="middle">
-            <text x="87" y="216">Overall</text><text x="169" y="216">Dense</text><text x="239" y="216">In-situ</text><text x="309" y="216">Calc</text>
-          </g>
-          <text x="203" y="242" text-anchor="middle" font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#5C6975">A commercial DBT model — AUC vs sensitivity by subgroup</text>
+          <text x="236" y="16" text-anchor="middle" font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#9DA9B5">% of cancers detected, by histologic subtype</text>
         </svg>
-        <div class="chcap">AUC stays high; sensitivity collapses on the hard cases</div>
+        <div class="chcap">Rare special subtypes are detected far less often (small n)</div>
       </div>
     </section>
 
