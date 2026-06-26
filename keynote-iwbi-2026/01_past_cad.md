@@ -7,7 +7,7 @@
 
 ## The start (picks up from the hook's last line)
 
-The year is 
+The year is **1998** — the year the FDA cleared the first CAD system for mammography (R2 ImageChecker).
 
 *The hook ends: "this field has overpromised before, and I'll start there." Go straight to the numbers.*
 
@@ -23,7 +23,7 @@ The year is
 > 
 > *"Among radiologists who read both with and without it, sensitivity was lower with CAD on."* Include table from Lehman Paper. In fact radiologists had a 47% lower odds of detecting a malignant lesion with CAD on than off, which is quite remarkable 
 >
-> * start here for a simple reason: the field has overpromised before. Everything in the next 40 minutes should clear the bar CAD did not."*
+> *"I start here for a simple reason: the field has overpromised before. Everything in the next 30 minutes should clear the bar CAD did not."*
 
 For the radiologists in the audience, I know that every breast radiologist I have spoken with essentially ignores the cad markings or finds them to be disruptive, so I dont think this paper was much of a surprise to anyone.
 
