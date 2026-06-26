@@ -64,7 +64,22 @@ The signal had been there for years. **Fenton et al. (NEJM 2007; JNCI 2011)** fo
 
 Traditional CAD was a rule-based system: humans specified the image features and pixel patterns, and a classifier flagged regions. Three reasons it didn't help:
 - **It targeted the cancers we already find well.** So it added marks, not new information. *(Kohli & Jha, JACR 2018; DOI 10.1016/j.jacr.2017.12.029. Treat the "~84%" as context from the original device claim, not a quotable statistic.)*
-- **Readers learned to ignore it.** Across independent series, **~70–85% of normal mammograms carried at least one false-positive mark** with conventional CAD — Kim 2009 (70%), Mahoney 2011 (77–85% across two device versions), Watanabe 2019 (83%, vs 52% with an AI-based CAD). In per-unit terms this is roughly **0.5–1.5 false marks per image** (Leon 2009: ~0.52–0.55/image; Kim 2009: 1.5/exam) and **~2–4 marks per four-image case** (Mahoney 2011: mean ~2.3/case). After enough false alarms, trust in the marks erodes. *(Kim SJ et al., Acta Radiol 2009, PMID 19863409; Mahoney MC & Meganathan K, J Digit Imaging 2011, PMID 21547517; Leon SM et al., J Digit Imaging 2009, PMID 18704581; Watanabe et al., J Digit Imaging 2019, PMC6646646)*
+- **Readers learned to ignore it.** Across independent series, **~70–85% of normal mammograms carried at least one false-positive mark** with conventional CAD
+-
+- Non-dense breast (n = 61)	Dense breast (n = 39)	Mann–Whitney test p value
+Mean	Median (interquartile range)	Mean	Median (interquartile range)
+V 5.0
+All marks	2.6	2.0 (1.0, 4.0)	2.0	2.0 (0.0, 3.0)	0.23
+Marks on masses	1.7	1.0 (0.0, 2.0)	1.4	1.0 (0.0, 2.0)	0.33
+Marks on calcifications	0.9	0.0 (0.0, 1.0)	0.6	0.0 (0.0, 1.0)	0.21
+V 7.2
+All marks	2.6	2.0 (1.0, 4.0)	1.8	1.0 (1.0, 3.0)	0.05
+Marks on masses	2.0	2.0 (1.0, 3.0)	1.5	1.0 (1.0, 3.0)	0.12
+Marks on calcifications	0.6	0.0 (0.0, 1.0)	0.3	0.0 (0.0, 0.0)	0.14
+https://pmc.ncbi.nlm.nih.gov/articles/PMC3180536/table/Tab4/
+
+
+  Mahoney MC & Meganathan K, J Digit Imaging 2011, PMID 21547517; Leon SM et al., J Digit Imaging 2009, PMID 18704581; Watanabe et al., J Digit Imaging 2019, PMC6646646)*
 - **It could lower a good reader's sensitivity** — the over-dependence Lehman described.
 
 > Kohli & Jha titled their 2018 JACR review *"Why CAD Failed in Mammography,"* and noted that AI skeptics cite this history. Section 2 is the response.
