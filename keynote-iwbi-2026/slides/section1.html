@@ -135,7 +135,7 @@
 
     <!-- 2 adoption -->
     <section class="slide s-timeline" data-note="And within a decade, it is everywhere. A reimbursement code in 2002 — not an outcomes trial — drove adoption from nothing to about 74% of US screening mammograms by 2008, and 92% by 2016. We adopted it on a billing code, not a clinical trial.">
-      <span class="eyebrow">Era I · and everyone adopts it</span>
+      <span class="eyebrow">Era I</span>
       <h2>Within a decade, CAD was used on <span class="am">most US mammograms.</span></h2>
       <div class="tlwrap">
         <svg viewBox="0 0 1000 340" role="img" aria-label="CAD adoption rose to 92% by 2016; the definitive no-benefit study arrived in 2015">
@@ -162,7 +162,7 @@
 
     <!-- 3 grumbling -->
     <section class="slide s-stat" style="justify-content:center" data-note="And the reading room is not convinced — because conventional CAD produced false positives constantly. Across independent series, seventy to eighty-five percent of normal mammograms carried at least one false-positive mark: Kim seventy, Mahoney up to eighty-five, Watanabe eighty-three — versus fifty-two percent for an AI-based CAD. In per-image terms that is roughly half a mark to one and a half false marks on every image. Mahoney measured about two to three false marks on a normal case — and more on non-dense breasts, where there is more to flag. After enough false alarms, radiologists learned to tune the marks out.">
-      <span class="eyebrow">Era I · the false-positive problem</span>
+      <span class="eyebrow">Era I</span>
       <div style="display:flex;gap:clamp(26px,4vw,58px);align-items:center;width:100%;margin-top:6px">
         <div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(14px,2vw,22px)">
           <h2 style="font-size:clamp(1.25rem,2.3vw,1.85rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;max-width:18ch">Conventional CAD put a <span style="color:var(--warn)">false-positive mark</span> on most normal exams.</h2>
@@ -213,7 +213,7 @@
 
     <!-- 4 reckoning stats -->
     <section class="slide s-stat" data-note="Then the data came in. The United States was spending over four hundred million dollars a year — roughly one dollar of every ten thousand in US healthcare. And among radiologists who read both with and without CAD, the odds of detecting a malignant lesion were 47 percent lower with CAD on — same readers, same images. That is quite remarkable. For the radiologists in the audience: every breast radiologist I have spoken with essentially ignores the CAD marks, or finds them disruptive — so this paper was not much of a surprise.">
-      <span class="eyebrow">Era I · the reckoning</span>
+      <span class="eyebrow">Era I</span>
       <div class="twostat">
         <div class="statblock"><div class="num">$400M<span style="font-size:.4em;color:var(--ink-2);font-weight:400">/yr</span></div><div class="lab">U.S. spend ≈ $1 of every $10,000 in health care</div></div>
         <div class="statblock"><div class="num">−47%<span style="font-size:.34em;color:var(--ink-3);font-weight:400"> odds</span></div><div class="lab">odds of detecting a malignant lesion — CAD on vs off, same readers (OR 0.53)</div></div>
@@ -224,7 +224,7 @@
 
     <!-- 5 verdict quote -->
     <section class="slide s-quote" data-note="The conclusion is worth reading verbatim. It had been foreshadowed years earlier — Fenton, in the New England Journal in 2007, already showed CAD lowered accuracy and raised the biopsy rate.">
-      <span class="eyebrow">Era I · the verdict</span>
+      <span class="eyebrow">Era I</span>
       <div class="qmain">
         <blockquote>Computer-aided detection does not improve diagnostic accuracy of mammography. These results suggest that insurers pay more for CAD with no established benefit to women.</blockquote>
         <div class="qcite">— Lehman et al., JAMA Internal Medicine 2015</div>
@@ -236,9 +236,10 @@
       </div>
     </section>
 
-    <!-- 5b the evidence: ROC + table -->
+    <!-- 5b the evidence: ROC + table  ·  ⚑ MARKED FOR HIDING IN FINAL (keep for now, likely cut) -->
     <section class="slide" data-note="Here is the evidence behind that verdict. On the left, the pooled ROC across 271 radiologists: the curve with CAD off sits at or above the curve with CAD on at every operating point — partial AUC 0.88 without, 0.84 with. On the right, every performance measure, side by side. Cancer detection, identical at 4.1 per thousand. Sensitivity, slightly lower with CAD. Specificity and recall, unchanged. No adjusted odds ratio crosses into benefit. The picture is not subtle: across half a million exams, CAD moved nothing in the right direction." style="flex-direction:column;justify-content:center;gap:clamp(10px,1.6vw,18px)">
-      <span class="eyebrow">Era I · the evidence</span>
+      <span class="eyebrow">Era I</span>
+      <span style="position:absolute;top:clamp(24px,3.1vw,34px);right:clamp(28px,4.1vw,60px);font-family:var(--mono);font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--warn);border:1px solid var(--warn);border-radius:4px;padding:3px 8px;opacity:.85">⚑ hide in final</span>
       <h2 style="font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:700;letter-spacing:-.02em;line-height:1.1;margin-top:clamp(20px,2.4vw,8px)">Same readers, same curve, same detection rate — <span style="color:var(--amber)">with CAD or without.</span></h2>
       <div style="display:flex;gap:clamp(20px,3.4vw,46px);align-items:center;width:100%;flex-wrap:wrap">
 
@@ -317,8 +318,8 @@
 
     <!-- 6 why it failed -->
     <section class="slide s-why" data-note="Why did it fail? Three reasons. It flagged the cancers we already catch, so it mostly added noise. It marked most normal studies, so readers learned to ignore it. And as an imperfect second reader, it pulled good radiologists toward its mistakes — the over-dependence Lehman described.">
-      <span class="eyebrow">Era I · why it didn't work</span>
-      <h2>Three reasons it didn't work.</h2>
+      <span class="eyebrow">Era I</span>
+      <h2>What went wrong.</h2>
       <div class="why-grid">
         <div class="wcard"><span class="wi">01</span><span class="wt">It flagged what we already catch.<span>Hand-tuned rules aimed at the cancers radiologists already find. So it added marks, not new information.</span></span></div>
         <div class="wcard"><span class="wi">02</span><span class="wt">Readers learned to ignore it.<span><b>70–85% of normal mammograms</b> carried a false mark with conventional CAD. After enough false alarms, you stop trusting the marks.</span></span></div>
@@ -328,7 +329,7 @@
 
     <!-- 7 lesson + turn -->
     <section class="slide s-turn" data-note="The lesson from Era I is that CAD was reimbursed before it was proven, and was never shown to help. Around 2012 the technology changed. Traditional CAD was programmed — we wrote the rules. Modern deep learning is trained — it learns the patterns from the images. Traditional CAD pointed at spots; modern models can read the image. Sixteen years later.">
-      <span class="eyebrow">Era I · the lesson, and the turn</span>
+      <span class="eyebrow">Era I</span>
       <div class="turn-grid">
         <div class="tcol old"><div class="th">Traditional CAD</div><div class="verb">Programmed</div><p>We wrote the rules for what cancer looks like. It <em>pointed</em> at spots for a human to check.</p></div>
         <div class="turn-arrow">→</div>
