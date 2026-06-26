@@ -161,12 +161,47 @@
     </section>
 
     <!-- 3 grumbling -->
-    <section class="slide s-stat" data-note="But the reading room is not convinced. Conventional CAD marked something on the large majority of normal studies. Across independent series, seventy to eighty-five percent of normal mammograms carried at least one false mark — Kim reported seventy percent, Mahoney seventy-seven to eighty-five, Watanabe eighty-three. In per-image terms that is roughly half a mark to one and a half marks on every image. After enough false alarms, radiologists learned to tune the marks out.">
-      <span class="eyebrow">Era I · but the room grumbles</span>
-      <div class="statnum">70–85%</div>
-      <div class="statlabel">of normal mammograms carried ≥1 false CAD mark</div>
-      <p class="statctx">Marks on most normal studies — about 0.5–1.5 false marks per image. After enough false alarms, radiologists learned to tune them out.</p>
-      <div class="cite">Kim 2009 (70%) · Mahoney 2011 (77–85%) · Watanabe 2019 (83%, vs 52% AI-CAD)</div>
+    <section class="slide s-stat" style="justify-content:center" data-note="And the reading room is not convinced — because conventional CAD produced false positives constantly. Across independent series, seventy to eighty-five percent of normal mammograms carried at least one false-positive mark: Kim seventy, Mahoney up to eighty-five, Watanabe eighty-three — versus fifty-two percent for an AI-based CAD. In per-image terms that is roughly half a mark to one and a half false marks on every image, two to four on a four-view case. After enough false alarms, radiologists learned to tune the marks out.">
+      <span class="eyebrow">Era I · the false-positive problem</span>
+      <div style="display:flex;gap:clamp(26px,4vw,58px);align-items:center;width:100%;margin-top:6px">
+        <div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(14px,2vw,22px)">
+          <h2 style="font-size:clamp(1.25rem,2.3vw,1.85rem);font-weight:700;line-height:1.12;letter-spacing:-.02em;max-width:18ch">Conventional CAD put a <span style="color:var(--warn)">false-positive mark</span> on most normal exams.</h2>
+          <div style="display:flex;gap:clamp(22px,3.4vw,48px);flex-wrap:wrap;align-items:flex-end">
+            <div>
+              <div style="font-size:clamp(2.3rem,5vw,3.7rem);font-weight:700;color:var(--amber);line-height:.88;font-variant-numeric:tabular-nums">70–85%</div>
+              <div style="font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin-top:10px;max-width:20ch;line-height:1.45">of normal mammograms had <b style="color:var(--warn)">≥1 false positive</b></div>
+            </div>
+            <div>
+              <div style="font-size:clamp(2.3rem,5vw,3.7rem);font-weight:700;color:var(--amber);line-height:.88;font-variant-numeric:tabular-nums">0.5–1.5</div>
+              <div style="font-family:var(--mono);font-size:.68rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink);margin-top:10px;max-width:22ch;line-height:1.45"><b style="color:var(--warn)">false positives per image</b> — about 2–4 per 4-view case</div>
+            </div>
+          </div>
+          <div class="cite">Kim 2009 · Mahoney 2011 · Watanabe 2019 · Leon 2009</div>
+        </div>
+        <figure style="flex:1 1 0;min-width:0;margin:0">
+          <svg viewBox="0 0 380 250" style="width:100%;height:auto;display:block;overflow:visible" font-family="var(--mono)">
+            <g stroke="rgba(255,255,255,.08)" stroke-width="1">
+              <line x1="50" y1="200" x2="360" y2="200"/><line x1="50" y1="110" x2="360" y2="110"/><line x1="50" y1="20" x2="360" y2="20"/>
+            </g>
+            <g fill="#5C6975" font-size="10" text-anchor="end">
+              <text x="44" y="204">0</text><text x="44" y="114">50%</text><text x="44" y="24">100%</text>
+            </g>
+            <!-- bars: conventional (amber) vs AI-CAD (cyan) -->
+            <rect x="66" y="74" width="52" height="126" rx="2" fill="#E7AC51"/>
+            <rect x="140" y="47" width="52" height="153" rx="2" fill="#E7AC51"/>
+            <rect x="214" y="51" width="52" height="149" rx="2" fill="#E7AC51"/>
+            <rect x="288" y="106" width="52" height="94" rx="2" fill="#5FB7C9"/>
+            <g font-size="12.5" font-weight="bold" fill="#ECEFF3" text-anchor="middle">
+              <text x="92" y="66">70%</text><text x="166" y="39">85%</text><text x="240" y="43">83%</text><text x="314" y="98">52%</text>
+            </g>
+            <g font-size="9.5" fill="#9DA9B5" text-anchor="middle">
+              <text x="92" y="214">Kim '09</text><text x="166" y="214">Mahoney '11</text><text x="240" y="214">Watanabe '19</text><text x="314" y="214" fill="#5FB7C9">AI-CAD '19</text>
+            </g>
+            <text x="205" y="240" text-anchor="middle" font-size="10" fill="#5C6975" font-family="var(--sans)">Normal mammograms with ≥1 false-positive mark</text>
+          </svg>
+          <figcaption style="font-family:var(--mono);font-size:.58rem;color:var(--ink-3);margin-top:6px;line-height:1.45">Conventional CAD (amber) vs an AI-based CAD (cyan). <span style="color:var(--ink-2)">Kim, Acta Radiol 2009; Mahoney, J Digit Imaging 2011; Watanabe, J Digit Imaging 2019.</span></figcaption>
+        </figure>
+      </div>
     </section>
 
     <!-- 4 reckoning stats -->
