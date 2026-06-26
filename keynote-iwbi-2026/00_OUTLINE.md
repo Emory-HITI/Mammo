@@ -1,7 +1,7 @@
 # Thirty Years, Three Eras: AI in Breast Imaging from CAD to Clinical Intelligence
 ### Keynote — IWBI 2026 (International Workshop on Breast Imaging), Greece
 > **Official title:** *Thirty Years, Three Eras: AI in Breast Imaging from CAD to Clinical Intelligence.* The "three eras" (CAD → deep-learning detection → clinical intelligence) are the macro-frame; **lesion → image → patient → population** is the within-talk spine. The title card previews the three eras.
-**Speaker:** Hari Trivedi, MD (Emory University) · **Duration:** 45 minutes · **Audience:** physicians + scientists (broad, international)
+**Speaker:** Hari Trivedi, MD (Emory University) · **Duration:** 30 minutes · **Audience:** physicians + scientists (broad, international)
 
 ---
 
@@ -22,7 +22,7 @@ AI in breast cancer reflects a widening question of what we ask the image to tel
 
 ---
 
-## Time budget (45 min)
+## Time budget (30 min)
 
 ### Target structure
 | Segment | Target | Content file |
@@ -39,25 +39,12 @@ AI in breast cancer reflects a widening question of what we ask the image to tel
 | 6b. The wildcard: will frontier models eat everything? | 3.5m | `06b_future_frontier_models.md` |
 | **7. Close — responsible optimism** | 3.5m | `07_close.md` |
 
-### 🛑 REVISED TIME BUDGET (update 2026-06-25): TALK IS NOW ~30–35 MIN + 10 MIN Q&A
-The organizers revised the slot: **~30–35 minutes of talk, ~10 minutes Q&A.** That is **~10–15 min less** than the 45-min plan below. **Decision: build all sections in full first, then trim/consolidate at the end** (easier to cut from complete drafts than to under-write). When we trim, target ≈ **32 min**: keep the spine (hook → CAD → MASAI → risk reckoning → pathology seed payoffs → convergence → Gichoya → close); the cuts in the list below all still apply, plus expect to merge slides within each Era deck (e.g. §4 CAMELYON16+HER2 into one, §3 drop a quadrant detail). Decks are currently built at full length on purpose.
-
-### ⚠️ TIME RECONCILIATION (original 45-min plan — retained for reference)
-As drafted, sections run long: §3 ~7.5 (the population-vs-individual addition), §5 ~9 (opportunistic lean-in), + the new §6b ~3.5. Raw total ≈ **51 min**. To land at 45, the future half needs ~6 min trimmed. **Proposed cuts (in priority order), all already flagged in-file as release valves:**
-1. **§5 Beat 3** (genAI + workforce) → compress to ~45 sec (saves ~1 min).
-2. **§5 Beat 2d** (cross-modality retina/ECG/CT) → one sentence (saves ~1–1.5 min).
-3. **§3** density beat already compressed; trim WISDOM detail (saves ~1 min).
-4. **§6b** → if needed, the 60-sec "wildcard" version instead of full 3.5 (saves ~2.5 min).
-5. **§4** trimmed target to 5 min (Oncotype + CDH1 + Virchow are the keepers; HER2/TIL/foundation table → fast).
-> Net: these get us to ~45 without losing any headline beat. **Don't cut: the hook, CAD numbers, MASAI, the four-quadrant risk reckoning, the cardio seed payoff, Gichoya, the close.** Rebalance live after a full read-through.
-
----
 
 ## The five compelling themes (the spine the audience should remember)
 
 1. **Reimbursement before evidence, versus evidence before deployment.** CAD was reimbursed before it was validated and did not improve outcomes. Modern AI obtained randomized-trial evidence (MASAI) before scaling. The lesson is the method, not the machine alone.
 2. **From detection to forecast.** AI shifts a screening image from "is there cancer today?" to "what is this person's risk, and how closely should we look?" The mammogram functions as a biosensor (Mirai → FDA-cleared Clairity).
-3. **Morphology to molecular.** Pathology AI infers genomics, receptor status, and recurrence risk from an H&E slide, a capability imaging lacks and a bridge to integrated decision-making.
+3. **Multimodal combinations of imaging and pathology.** Pathology AI infers genomics, receptor status, and recurrence risk from an H&E slide, a capability imaging lacks and a bridge to integrated decision-making.
 4. **Clinical intelligence rather than point solutions.** Foundation and multimodal models combine radiology, pathology, genomics, and clinical data into one patient-level representation across the care continuum.
 5. **The technology is the easier part.** Equity, governance, and implementation science determine whether AI reduces or widens disparities in breast-cancer outcomes, a question now being addressed in Europe.
 
