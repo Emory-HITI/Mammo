@@ -71,6 +71,7 @@
   .dots{display:flex;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#39434E;border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}.dot:hover{background:var(--ink-3)}.dot.on{background:var(--amber);transform:scale(1.2)}
   .btns{display:flex;gap:10px}.btn{font-family:var(--sans);font-size:.74rem;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);padding:9px 17px;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s}.btn:hover{border-color:var(--amber);color:var(--amber)}.btn:disabled{color:var(--ink-3);opacity:.5;cursor:default}
   .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}.hint{font-family:var(--mono);font-size:.64rem;color:var(--ink-3)}
+  .chips.lg{gap:12px}.chips.lg .chip{font-size:clamp(.84rem,1.25vw,1.02rem);padding:10px 16px}
   @media (max-width:720px){.s-divider,.s-caveat{flex-direction:column}.dv-view,.s-caveat .right,.s-fig .right{width:85%}.hint{display:none}}
   @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
 </style>
@@ -127,15 +128,15 @@
     <section class="slide s-caveat" data-note="So what was the early evidence? In 2020, McKinney and colleagues at Google Health, in Nature, reported an AI that on US data cut false positives by 5.7% and false negatives by 9.4%, exceeded the average radiologist's AUC by over 11 points, and could cut a second reader's workload by 88%. The figure shows example cases the model localized. On paper, superhuman — but retrospective.">
       <span class="eyebrow">Era II</span>
       <div class="left">
-        <h2>2020: an AI that beat the average radiologist <span class="am">on paper.</span></h2>
+        <h2>2020: Google publishes its <span class="am">breast-cancer AI model.</span></h2>
         <p class="gap"><b>McKinney et al., Nature 2020</b> (Google Health, UK + US) — a deep-learning system read screening mammograms stand-alone.</p>
-        <div class="chips" style="margin-top:12px">
+        <div class="chips lg" style="margin-top:14px">
           <div class="chip">false positives <b>−5.7% US / −1.2% UK</b></div>
           <div class="chip">false negatives <b>−9.4% US / −2.7% UK</b></div>
           <div class="chip">AUC <b>+11.5%</b> vs avg radiologist</div>
           <div class="chip">2nd-reader workload <b>−88%</b></div>
         </div>
-        <p class="gap" style="color:var(--ink);font-weight:600;margin-top:12px">Impressive — but retrospective.</p>
+        <p class="gap" style="color:var(--ink);font-weight:600;margin-top:14px">Results are promising — but again, only on retrospective, clean data.</p>
       </div>
       <div class="right" style="width:30%;max-width:300px">
         <figure style="margin:0">
@@ -154,7 +155,7 @@
       <div class="left">
         <h2>Three commercial models, independently validated on <span class="am">8,800 women.</span></h2>
         <p class="gap"><b>Salim et al., JAMA Oncology 2020</b> tested three commercial algorithms on an external Stockholm cohort.</p>
-        <div class="chips" style="margin-top:14px">
+        <div class="chips lg" style="margin-top:14px">
           <div class="chip">best (Algorithm 1) <b>AUC 0.956</b></div>
           <div class="chip">AI + first reader <b>88.6% sens @ 93% spec</b></div>
           <div class="chip">exceeded <b>two human readers</b></div>
@@ -190,8 +191,8 @@
       <span class="eyebrow">Era II</span>
       <h2>2023: MASAI publishes its <span class="am">safety analysis.</span></h2>
       <p>A randomized trial, <b>~80,000 women</b> (≈40,000 per arm) — AI-supported reading vs standard double reading.</p>
-      <div class="twostat" style="margin-top:4px">
-        <div class="statblock"><div class="num">6.1<span style="font-size:.34em;color:var(--ink-3);font-weight:400"> vs 5.1</span></div><div class="lab">cancers detected /1,000 — AI vs control (ratio 1.2; p=0.052)</div></div>
+      <div class="twostat" style="margin-top:10px">
+        <div class="statblock"><div class="num" style="font-size:clamp(3.6rem,9.5vw,7.2rem)">6.1 <span style="color:var(--ink-3);font-weight:400">vs</span> 5.1</div><div class="lab" style="font-size:clamp(.74rem,1.15vw,.92rem);max-width:30ch">cancers detected /1,000 — AI vs control · ratio 1.2 (95% CI 1.0–1.5; p=0.052)</div></div>
       </div>
       <div class="chips" style="margin-top:14px">
         <div class="chip">recall <b>2.2% vs 2.0%</b></div>
