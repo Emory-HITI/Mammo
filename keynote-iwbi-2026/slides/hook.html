@@ -187,7 +187,6 @@
     </section>
 
     <section class="slide s-open" data-note="As you all know, this is a screening mammogram. In fact, a normal one — and it was read as normal. This is a real, de-identified exam from Emory. This is what we do today.">
-      <span class="eyebrow">Opening</span>
       <div class="viewport">
         <div class="vp-head"><span>R MLO · screening</span><span class="tag">AI —</span></div>
         <div class="vp-body"><canvas class="mammo"></canvas><span class="vp-note">[ placeholder — swap real de-identified Emory case ]</span></div>
@@ -198,34 +197,30 @@
     </section>
 
     <section class="slide s-anchor" data-note="Two radiologists read this and were right — there is no cancer to see today. So the question I want to pose is: what are we not seeing?">
-      <span class="eyebrow">Opening</span>
       <div class="a1">What are we <b>not seeing?</b></div>
     </section>
 
     <section class="slide s-report" data-note="What I want to describe by the end of this talk is how AI models — past, present, and future — read this same mammogram, and her eventual biopsy slide, and extract information that is not visible to us. The first estimates a high probability of breast cancer within about five years — which she did develop. The second quantifies calcification in her breast arteries — an independent cardiovascular risk marker, with a measurable dose-response. The third, applied to the slide from her eventual biopsy, estimates a recurrence score we currently send to a genomics lab for about four thousand dollars. None of these is hypothetical. Each is published and externally validated, and one is already in this year's screening guidelines.">
-      <span class="eyebrow">Opening</span>
       <div class="viewport">
         <div class="vp-head"><span>R MLO · screening</span><span class="tag">AI ✓✓✓</span></div>
         <div class="vp-body"><canvas class="mammo"></canvas></div>
       </div>
       <div class="report">
         <h2>AI reads this <span class="q">same mammogram</span> — and her eventual biopsy slide — for information not visible to us.</h2>
-        <div class="finding"><span class="ix">01</span><span class="out">A high probability of breast cancer within <span class="v">~5 years</span> — which she developed.<span>image-based risk model</span></span></div>
-        <div class="finding"><span class="ix">02</span><span class="out">Breast arterial calcification, <span class="v">quantified</span><span>an independent cardiovascular risk marker, with a dose-response relationship</span></span></div>
-        <div class="finding"><span class="ix">03</span><span class="out">A genomic recurrence score, <span class="v">from her eventual biopsy slide</span><span>the assay we currently send to a genomics lab for <b>~$4,000</b></span></span></div>
+        <div class="finding"><span class="ix">01</span><span class="out"><span class="v">Image-based risk</span> — high probability of cancer within ~5 years<span>which she developed</span></span></div>
+        <div class="finding"><span class="ix">02</span><span class="out"><span class="v">Cardiovascular disease</span> — breast arterial calcification<span>an independent risk marker, with a dose-response relationship</span></span></div>
+        <div class="finding"><span class="ix">03</span><span class="out"><span class="v">Recurrence prediction</span> — a genomic recurrence score from the biopsy slide</span></div>
         <p class="foot">None of these is hypothetical. Each is published and externally validated — and <b>one is already in this year's screening guidelines.</b></p>
       </div>
     </section>
 
     <section class="slide s-pivot" data-note="For about thirty years, we built tools to help us find the lesion — to mark the spot. That was CAD. What's changing now is the scope of the question we ask.">
-      <span class="eyebrow">The shift</span>
       <div class="pivot-line was"><span class="k">~30 yrs</span><span class="v">We built tools to <b>find the lesion</b> — to mark the spot. That was CAD.</span></div>
       <div class="pivot-rule"></div>
       <div class="pivot-line now"><span class="k">Now</span><span class="v">What's changing is the <b>scope of the question</b> we ask.</span></div>
     </section>
 
     <section class="slide s-spine" data-note="So over the next thirty minutes or so, I want to take you on a short journey of how we got here and where we can expect to go: from the lesion, to the image, to the patient, to the population. And I'll start with a cautionary tale, because this field has overpromised before.">
-      <span class="eyebrow">How the talk is organized</span>
       <div class="spine-row">
         <div class="step"><div class="sx">01</div><div class="sw">Lesion</div><div class="sd">find &amp; characterize</div></div>
         <div class="step"><div class="sx">02</div><div class="sw">Image</div><div class="sd">risk &amp; opportunistic signal</div></div>
