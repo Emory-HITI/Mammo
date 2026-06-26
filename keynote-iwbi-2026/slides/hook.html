@@ -130,16 +130,21 @@
   .step .sx{font-family:var(--mono);font-size:.6rem;color:var(--ink-3);font-variant-numeric:tabular-nums;margin-top:14px}
   .step .sw{margin-top:8px;font-size:clamp(1.05rem,2vw,1.55rem);font-weight:700;letter-spacing:-.015em;color:var(--ink)}
   .step .sd{margin-top:6px;font-size:clamp(.72rem,1vw,.84rem);color:var(--ink-2);line-height:1.35}
-  /* graduated amber tint across the spine — increasing signal */
-  .s-spine .step:nth-child(1){background:linear-gradient(180deg,rgba(231,172,81,.015),rgba(231,172,81,0)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.12)}
-  .s-spine .step:nth-child(2){background:linear-gradient(180deg,rgba(231,172,81,.07),rgba(231,172,81,.025)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.26)}
-  .s-spine .step:nth-child(3){background:linear-gradient(180deg,rgba(231,172,81,.14),rgba(231,172,81,.055)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.40)}
-  .s-spine .step:nth-child(4){background:linear-gradient(180deg,rgba(231,172,81,.24),rgba(231,172,81,.10)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.58)}
+  /* graduated amber across the spine — increasing signal, ending full orange */
+  .spine-title{font-size:clamp(1.9rem,3.9vw,3rem);font-weight:700;letter-spacing:-.025em;line-height:1.04;text-wrap:balance}
+  .spine-title .am{color:var(--amber)}
+  .s-spine .step:nth-child(1){background:linear-gradient(180deg,rgba(231,172,81,.05),rgba(231,172,81,.02)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.18)}
+  .s-spine .step:nth-child(2){background:linear-gradient(180deg,rgba(231,172,81,.16),rgba(231,172,81,.07)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.36)}
+  .s-spine .step:nth-child(3){background:linear-gradient(180deg,rgba(231,172,81,.34),rgba(231,172,81,.18)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.62)}
+  .s-spine .step:nth-child(4){background:linear-gradient(165deg,var(--amber),var(--amber-deep));border-color:var(--amber-deep);box-shadow:0 0 0 1px rgba(231,172,81,.2),0 16px 36px -26px rgba(231,172,81,.5)}
   .s-spine .step::before{background:var(--amber)}
-  .s-spine .step:nth-child(1)::before{opacity:.25}
-  .s-spine .step:nth-child(2)::before{opacity:.45}
-  .s-spine .step:nth-child(3)::before{opacity:.7}
-  .s-spine .step:nth-child(4)::before{opacity:1}
+  .s-spine .step:nth-child(1)::before{opacity:.3}
+  .s-spine .step:nth-child(2)::before{opacity:.55}
+  .s-spine .step:nth-child(3)::before{opacity:.8}
+  .s-spine .step:nth-child(4)::before{background:rgba(0,0,0,.35);opacity:1}
+  .s-spine .step:nth-child(4) .sx{color:rgba(20,15,5,.6)}
+  .s-spine .step:nth-child(4) .sw{color:#1a1206}
+  .s-spine .step:nth-child(4) .sd{color:rgba(26,18,6,.82)}
   .spine-sub{font-size:clamp(1.1rem,2vw,1.45rem);line-height:1.38;color:var(--ink);font-weight:600;letter-spacing:-.01em;text-wrap:balance;max-width:40ch}
   .spine-hand{font-size:clamp(.8rem,1.2vw,.95rem);color:var(--ink-2);border-left:2px solid var(--amber);padding-left:14px;line-height:1.45;max-width:48ch}
 
@@ -221,14 +226,13 @@
     </section>
 
     <section class="slide s-spine" data-note="So over the next thirty minutes or so, I want to take you on a short journey of how we got here and where we can expect to go: from the lesion, to the image, to the patient, to the population. And I'll start with a cautionary tale, because this field has overpromised before.">
+      <h2 class="spine-title">From lesions to <span class="am">populations.</span></h2>
       <div class="spine-row">
         <div class="step"><div class="sx">01</div><div class="sw">Lesion</div><div class="sd">find &amp; characterize</div></div>
         <div class="step"><div class="sx">02</div><div class="sw">Image</div><div class="sd">risk &amp; opportunistic signal</div></div>
         <div class="step"><div class="sx">03</div><div class="sw">Patient</div><div class="sd">pathology + integration</div></div>
         <div class="step"><div class="sx">04</div><div class="sw">Population</div><div class="sd">access, equity, governance</div></div>
       </div>
-      <p class="spine-sub">From the lesion, to the image, to the patient, to the population.</p>
-      <p class="spine-hand">That's the arc for the next thirty minutes — and I'll start with a cautionary tale, because this field has overpromised before.</p>
     </section>
 
   </div>
