@@ -77,7 +77,7 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era II</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 9</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 10</div>
 </div>
 
 <div class="stage">
@@ -185,37 +185,61 @@
       <div class="cite">ESR EuroAIM/EuSoMII survey, Insights Imaging 2024 (n=572) · US estimate: industry report</div>
     </section>
 
-    <!-- 6 MASAI (one slide) -->
-    <section class="slide s-act" data-note="So where is the prospective evidence? The central study is MASAI — a randomized controlled trial in Sweden of about 106,000 women, comparing AI-supported reading against standard double reading. The results, across three papers: 29% more cancers detected, with no increase in false positives; 44% less screen-reading workload; and, in the 2026 primary endpoint, the interval-cancer rate did not rise — 1.55 versus 1.76 per thousand — with sensitivity actually higher, 80.5 versus 73.8 percent. This is the level-1 evidence CAD never had.">
+    <!-- 6 MASAI 2023 safety analysis -->
+    <section class="slide s-act" data-note="In 2023, MASAI published its clinical safety analysis — a randomized trial of about eighty thousand women, roughly forty thousand per arm. Cancer detection was 6.1 per thousand with AI versus 5.1 in controls, a ratio of 1.2, above the lowest acceptable safety limit. Recall was essentially identical, 2.2 versus 2.0 percent, and the false-positive rate was 1.5 percent in both. The positive predictive value of recall was higher with AI, 28 versus 25 percent. Three-quarters of detected cancers were invasive. So: safe, and detecting more — the green light to continue.">
       <span class="eyebrow">Era II</span>
-      <h2>MASAI: the randomized trial that <span class="am">cleared the bar.</span></h2>
-      <p>A randomized controlled trial in Sweden, <b>~106,000 women</b> — AI-supported reading vs standard double reading.</p>
-      <div class="twostat" style="margin-top:6px">
-        <div class="statblock"><div class="num">+29%</div><div class="lab">more cancers detected — no rise in false positives</div></div>
-        <div class="statblock"><div class="num">−44%</div><div class="lab">screen-reading workload</div></div>
+      <h2>2023: MASAI publishes its <span class="am">safety analysis.</span></h2>
+      <p>A randomized trial, <b>~80,000 women</b> (≈40,000 per arm) — AI-supported reading vs standard double reading.</p>
+      <div class="twostat" style="margin-top:4px">
+        <div class="statblock"><div class="num">6.1<span style="font-size:.34em;color:var(--ink-3);font-weight:400"> vs 5.1</span></div><div class="lab">cancers detected /1,000 — AI vs control (ratio 1.2; p=0.052)</div></div>
       </div>
       <div class="chips" style="margin-top:14px">
-        <div class="chip">interval cancer <b>1.55 vs 1.76 /1,000</b> — non-inferior (0.88)</div>
-        <div class="chip">sensitivity <b>80.5% vs 73.8%</b></div>
-        <div class="chip" style="border-left-color:var(--amber)">first RCT to clear this bar — <b style="color:var(--amber)">level-1 evidence</b></div>
+        <div class="chip">recall <b>2.2% vs 2.0%</b></div>
+        <div class="chip">false positives <b>1.5%</b> in both</div>
+        <div class="chip">PPV of recall <b>28.3% vs 24.8%</b></div>
+        <div class="chip">detected cancers <b>75% invasive</b></div>
       </div>
-      <div class="cite">Lång 2023 (Lancet Oncol) · Hernström 2025 (Lancet Digit Health) · Gommers 2026 (Lancet) — one trial, three reports</div>
+      <div class="cite">Lång et al., Lancet Oncology 2023 — above the lowest acceptable detection limit for safety</div>
     </section>
 
     <!-- 7 PRAIM -->
-    <section class="slide s-stat" data-note="Does it hold outside a controlled trial? PRAIM is the largest real-world dataset: 463,000 women, 119 radiologists, 12 sites in the German screening program. AI-supported double reading detected 17.6% more cancers — statistically superior — with recall non-inferior. The MASAI result holds in routine practice. The caveat: this is observational, so it sits a tier below the randomized evidence.">
+    <section class="slide s-act" data-note="Does it hold in routine practice? PRAIM is the largest real-world dataset: 463,000 women across 12 German sites, 119 radiologists, with about 261,000 read with AI support from the Vara system. Detection was 6.7 per thousand with AI, a 17.6 percent relative increase, statistically superior to 5.7 in controls; recall was non-inferior and PPV improved. But note the design: radiologists voluntarily chose whether to use the AI. The arms were not randomized — sites and readers self-selected — which introduces real confounding. Strong, supportive, real-world evidence, but a tier below the randomized trial.">
       <span class="eyebrow">Era II</span>
-      <div class="statnum">+17.6%</div>
-      <div class="statlabel">more cancers detected — in routine practice</div>
-      <p class="statctx"><b>PRAIM</b> (Eisemann et al., Nature Medicine 2025): 463,094 women, 119 radiologists, 12 German sites — the largest real-world dataset. AI-supported double reading; recall non-inferior. The trial result holds outside a trial.</p>
-      <div class="cite">Nature Medicine 2025 · observational (selection bias; a tier below the RCT)</div>
+      <h2>PRAIM: the largest real-world dataset — <span class="am">but not randomized.</span></h2>
+      <p><b>463,094 women</b> (50–69), 12 German sites, 119 radiologists, 2021–23; ~260,739 read with AI support (Vara).</p>
+      <div class="twostat" style="margin-top:4px">
+        <div class="statblock"><div class="num">+17.6%</div><div class="lab">detection — 6.7 vs 5.7 /1,000 (95% CI +5.7% to +30.8%), superior</div></div>
+      </div>
+      <div class="chips" style="margin-top:12px">
+        <div class="chip">recall <b>37.4 vs 38.3 /1,000</b> — non-inferior</div>
+        <div class="chip">PPV recall <b>17.9% vs 14.9%</b></div>
+        <div class="chip">PPV biopsy <b>64.5% vs 59.2%</b></div>
+      </div>
+      <p style="font-size:clamp(.86rem,1.25vw,1.02rem);line-height:1.4;color:var(--ink-2);border-left:2px solid var(--warn);padding-left:14px;margin-top:14px;max-width:64ch"><b style="color:var(--warn)">Design caveat:</b> radiologists <b style="color:var(--ink)">voluntarily chose</b> whether to use AI — the arms were not randomized. Sites and readers self-selected, introducing confounding. A tier below the RCT.</p>
+      <div class="cite">Eisemann et al., Nature Medicine 2025</div>
+    </section>
+
+    <!-- 8 MASAI 2026 interval cancer -->
+    <section class="slide s-act" data-note="And this year, the result everyone was waiting for: MASAI's interval-cancer study, about 105,000 women. The design is a triage — high-risk exams went to standard human double reading, low-risk exams to a single radiologist. The interval-cancer rate — the cancers that surface between screens — was 12 percent lower, non-inferior. Sensitivity was 80.5 percent with AI versus 73.8 in controls, a near seven-point gain, at the same specificity of 98.5 percent, and the results held across age and breast-density subgroups. This is the level-1 evidence CAD never had.">
+      <span class="eyebrow">Era II</span>
+      <h2>2026: MASAI's <span class="am">interval-cancer</span> result.</h2>
+      <p>~105,000 women. A <b>triage design</b>: high-risk exams → standard double reading; low-risk → a single radiologist.</p>
+      <div class="twostat" style="margin-top:4px">
+        <div class="statblock"><div class="num">−12%</div><div class="lab">interval-cancer rate — non-inferior (ratio 0.88)</div></div>
+        <div class="statblock"><div class="num">80.5%<span style="font-size:.34em;color:var(--ink-3);font-weight:400"> vs 73.8%</span></div><div class="lab">sensitivity — at the same specificity (98.5%)</div></div>
+      </div>
+      <div class="chips" style="margin-top:14px">
+        <div class="chip">consistent across <b>age & breast density</b></div>
+        <div class="chip" style="border-left-color:var(--amber)">the bar CAD never cleared — <b style="color:var(--amber)">level-1 evidence</b></div>
+      </div>
+      <div class="cite">Gommers et al. (…Lång), Lancet 2026;407(10527):505–514</div>
     </section>
 
     <!-- 8 subgroup performance: AUC + sensitivity -->
-    <section class="slide s-caveat" data-note="So we have the evidence — off to the races? Not quite. A single AUC describes average performance and says nothing about where a model fails. In our audit of a commercial DBT model across 163,000 exams, the overall AUC was 0.91 — but look at sensitivity, and the picture changes. On dense breasts the AUC is 0.88 but sensitivity is 0.63; on in-situ cancers, AUC 0.85 but sensitivity 0.55; on calcifications, 0.80 and 0.66. The model is weakest exactly where the cases are subtle and the stakes are high. And in our Beyond Screening work, the models didn't transfer to diagnostic exams or to women with implants. The two gaps: subgroup performance, and explainability.">
+    <section class="slide s-caveat" data-note="So it is 2026 — where do we actually stand? The averages look strong, but a single AUC describes average performance and says nothing about where a model fails. In our audit of a commercial DBT model across 163,000 exams, the overall AUC was 0.91 — but look at sensitivity, and the picture changes. On dense breasts the AUC is 0.88 but sensitivity is 0.63; on in-situ cancers, AUC 0.85 but sensitivity 0.55; on calcifications, 0.80 and 0.66. The model is weakest exactly where the cases are subtle and the stakes are high. And in our Beyond Screening work, the models didn't transfer to diagnostic exams or to women with implants. The two gaps: subgroup performance, and explainability.">
       <span class="eyebrow">Era II</span>
       <div class="left">
-        <h2>A single AUC hides <span class="am">where a model fails.</span></h2>
+        <h2>2026: the averages look strong — so where do these models <span class="am">still fail?</span></h2>
         <p class="gap"><b>Our DBT audit</b> (EMBED, 163,449 exams): overall AUC <b>0.91</b> — but sensitivity falls on the subtle, high-stakes cases (dense, in-situ, calcifications).</p>
         <p class="gap"><b>It doesn't transfer:</b> "Beyond Screening" — models trained on screening dropped on diagnostic exams and fell to specificity 31–54% on women with implants.</p>
         <p class="gap">The two gaps: <b>subgroup performance</b> + <b>explainability.</b></p>
