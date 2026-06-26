@@ -48,7 +48,7 @@ By contrast, a U.S. report estimated only ~2% of practices use AI today, indicat
 
 **ScreenTrustCAD — Dembrower et al., Lancet Digital Health 2023** (Sweden, 55,581 women, Lunit): **one radiologist + AI was non-inferior to two radiologists**; two + AI was superior (+8%). *Evidence for replacing one of two readers with AI.* *(Lunit-funded — disclose.)*
 
-**Ongoing trials:** **EDITH (UK NHS, launched April 2025)** — ~700,000 women, 30 sites, **5 AI platforms**, against a ~30% reader shortfall; rollout targeted ~2027 **[VERIFY — press]**. **AI-STREAM (Korea)** for non-Western data.
+**Ongoing trials:** **EDITH (UK NHS, launched April 2025)** — ~700,000 women, 30 sites, **5 AI platforms**, against a ~30% reader shortfall; rollout targeted ~2027 **[VERIFY — press]**. **PRISM (USA)** — the *Pragmatic Randomized Trial of Artificial Intelligence for Screening Mammography*, a **$16M PCORI-funded, 7-site RCT announced Sept 2025**, recruiting now; described as the **first large-scale RCT of AI for screening mammography in the United States**, using **Transpara (ScreenPoint)**. Results are years away. *This matters because the pivotal evidence so far is European/double-reading; PRISM tests AI in the US single-reader workflow.* **[press/PCORI — no results yet]**. **AI-STREAM (Korea)** for non-Western data.
 
 ---
 
@@ -62,6 +62,7 @@ By contrast, a U.S. report estimated only ~2% of practices use AI today, indicat
 | PRAIM | 2025 Nat Med | Germany, 463k | Real-world | **+17.6% CDR**; recall non-inferior |
 | ScreenTrustCAD | 2023 Lancet Digit Health | Sweden, 56k | Prospective | 1 reader + AI = 2 readers |
 | EDITH | launched 2025 | UK, ~700k | RCT, 5 platforms | pending |
+| **PRISM** | announced 2025 | **USA, 7 sites** | **RCT** (Transpara) | first large US AI screening RCT; recruiting — results years away |
 
 ---
 Ok so now we have the evidence we need right? Off to the races? Well not quite.
