@@ -167,7 +167,7 @@
     <!-- 3 the pivot: image-based DL reads risk -->
     <section class="slide s-primer" data-note="Then the pixels turned out to carry risk. Yala and colleagues at MIT and MGH showed a deep network reading the mammogram itself beat the questionnaire models. Mirai, the next version, was built to predict across time, tolerate missing risk-factor data, and stay consistent across machines. Externally validated in three countries, C-index 0.76 to 0.81. Among women who went on to develop cancer within five years, Mirai flagged 41 percent as high-risk — versus 23 percent for Tyrer-Cuzick.">
       <span class="eyebrow">Era III · the pivot</span>
-      <h2>The <span class="am">pixels</span> carry risk — beyond density, beyond the questionnaire.</h2>
+      <h2>Deep-learning models predict risk from the <span class="am">mammogram itself.</span></h2>
       <p>Yala et al. (Radiology 2019) showed a network reading the image itself out-predicted the classical models. <b>Mirai</b> (Yala et al., Science Translational Medicine 2021) was built to predict across time points, tolerate missing risk-factor data, and stay consistent across scanners.</p>
       <div class="chips">
         <div class="chip"><b>C-index 0.76 / 0.81 / 0.79</b> — validated US · Sweden · Taiwan</div>
@@ -180,7 +180,7 @@
     <!-- 4 ARCHITECTURE FIGURE SLOT (AsymMirai vs Mirai) -->
     <section class="slide s-fig" data-note="Here is why explainability matters and what it looks like done right. On the right is Mirai: four images into CNNs, pooled, through a transformer and a risk-factor predictor, out come five years of risk. A black box. On the left is AsymMirai — our group's work with Duke. We asked what Mirai was actually keying on, and the answer was surprisingly simple: local bilateral dissimilarity, the difference between left and right breast tissue in the same region. A transparent model built only on that asymmetry nearly matched the black box: one-year AUC 0.79 versus 0.84. A signal you can point to on the image.">
       <span class="eyebrow">Era III · explainability done right</span>
-      <div class="fhead">Why does it work? The signal is <span class="am">local bilateral asymmetry</span> — and you can see it.</div>
+      <div class="fhead">AsymMirai: much of the signal is <span class="am">local bilateral asymmetry.</span></div>
       <p class="fsub">Mirai is accurate but opaque. <b>AsymMirai</b> (Donnelly et al., Radiology 2024 — Duke + Emory) reverse-engineered what it keys on: the left-vs-right tissue difference. A transparent model on that signal alone nearly matched the black box.</p>
       <figure style="margin:6px 0 0;flex:1 1 auto;min-height:0;display:flex;flex-direction:column">
         <svg viewBox="0 0 1180 392" style="width:100%;height:auto;max-height:100%;display:block;overflow:visible" font-family="var(--sans)">
@@ -265,7 +265,7 @@
     <!-- 5 LONGITUDINAL FIGURE SLOT -->
     <section class="slide s-fig" data-note="And the signal is visible early. This is one patient, left MLO, the same region tracked over three screening rounds. In 2014, at age 69, the model's attention sits on a subtle asymmetry the readers called normal. Seventeen months later it intensifies. By 2017 it is unmistakable — and that is where the cancer arose. The risk score was rising for years before the diagnosis. This is the same phenomenon Hickman described in the detection models: the signal builds on the image long before we call it cancer.">
       <span class="eyebrow">Era III · the signal builds early</span>
-      <div class="fhead">The asymmetry intensified <span class="am">years before</span> the cancer.</div>
+      <div class="fhead">The asymmetry was present <span class="am">years before</span> the diagnosis.</div>
       <p class="fsub">One patient, left MLO, same region across three screening rounds. The model's attention localizes to a growing asymmetry the readers reasonably called normal — and that is where the cancer arose.</p>
       <div class="figrow">
         <figure class="figslot" style="margin:0;flex:1.7 1 0">
@@ -301,7 +301,7 @@
     <!-- 7 four quadrants -->
     <section class="slide s-quad" data-note="So picture the real decision as a two-by-two. The classical model on one axis, the image model on the other. When they agree, management is easy: both low, standardize or extend the interval; both high, escalate to MRI. The interesting cells are the disagreements. Classical-low but image-high: the tissue is doing something the questionnaire never captured — look harder now, short-interval follow-up, a second read of this mammogram. And the dangerous cell, classical-high but image-low: a BRCA carrier with a quiet-looking image. The reassuring image must not override known germline risk. De-escalating there would be the most consequential error this technology invites. The models measure different things — inherited risk versus current tissue state — and each carries its own action.">
       <span class="eyebrow">Era III · the clinically relevant view</span>
-      <h2>Two models, <span class="am">two questions</span> — match the action to the axis.</h2>
+      <h2>Image-based and clinical risk models often flag <span class="am">different women.</span></h2>
       <div class="quadwrap">
         <div class="qlabel"></div>
         <div class="qlabel">Image model · LOW</div>
@@ -320,7 +320,7 @@
     <!-- 8 FDA-cleared + risk-adapted screening -->
     <section class="slide s-primer" data-note="And this is no longer hypothetical. Clairity Breast — Constance Lehman's company — received FDA De Novo authorization in June 2025: the first tool to predict five-year risk from a routine screening mammogram alone, and it was added to the 2026 NCCN screening guidance. The path from research model to cleared product to guideline took under five years. Meanwhile the trials are testing whether to screen by risk instead of by age. WISDOM, reported in JAMA this year, found risk-based screening non-inferior for advanced cancers with about 3,800 fewer mammograms per hundred-thousand person-years — and 89 percent of women offered the choice picked it. MyPeBS, 85,000 women across six countries, will give the definitive answer.">
       <span class="eyebrow">Era III · already cleared, already in trials</span>
-      <h2>From research model to <span class="am">cleared product</span> to guideline — in under five years.</h2>
+      <h2>From research model to <span class="am">FDA clearance</span> and screening guidelines.</h2>
       <p><b>Clairity Breast</b> (FDA De Novo, June 2025) — the first tool to predict 5-year risk from a routine screening mammogram alone; added to the <b>2026 NCCN</b> screening guidance.</p>
       <div class="chips">
         <div class="chip"><b>WISDOM</b> (JAMA 2026): risk-based non-inferior for stage ≥IIB · ~3,800 fewer mammograms /100k person-yr · <b>89%</b> chose risk-based</div>
@@ -333,7 +333,7 @@
     <!-- 9 bridge to §4 -->
     <section class="slide s-turn" data-note="So the image can now tell us when to look and how hard. But once we find something, the question changes again — from is there cancer and what is her risk, to what is this cancer and what will it do? That answer is not in radiology. It is across the hospital, on a glass slide. To understand the patient, we move to the pathology lab — where AI does something our images cannot.">
       <span class="eyebrow">Era III · image → patient</span>
-      <h2>The image tells us <span class="am">when</span> to look and <span class="am">how hard.</span></h2>
+      <h2>The risk score guides <span class="am">when and how closely</span> to screen.</h2>
       <p class="turn-line">Once we find something, the question changes again: from <b>"is there cancer, and what is her risk?"</b> to <b>"what is this cancer, and what will it do?"</b></p>
       <div class="spine" style="display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);flex-wrap:wrap">
         <span>Lesion</span><span style="opacity:.5">→</span><span style="color:var(--amber)">Image ✓</span><span style="opacity:.5">→</span><span style="color:var(--amber)">Patient →</span><span style="opacity:.5">→</span><span>Population</span>

@@ -107,16 +107,16 @@
     <section class="slide s-divider active" data-note="For the whole talk we have stayed in the reading room. Now walk across the hospital to the pathology lab — a part of the building a radiology audience rarely sees. The same arc played out here: hand-built tools, then deep learning, then foundation models. But tissue AI can do one thing our images cannot, and it is the reason this matters to you. And remember the third model I opened with — the four-thousand-dollar recurrence score being read off a glass slide across town. We are about to meet it.">
       <div class="dv-copy">
         <div class="spine"><span>Lesion</span><span class="sep">→</span><span>Image</span><span class="sep">→</span><span class="on">Patient</span><span class="sep">→</span><span>Population</span></div>
-        <h1>The other half <span class="am">of the slide.</span></h1>
-        <p class="sub">We have stayed in the reading room. Walk across the hospital to the <b>pathology lab</b>. The same arc — hand-built tools, then deep learning, then foundation models — played out here too. But tissue AI can do something imaging cannot.</p>
-        <p class="seed">Remember the <b>third model</b> from the start — a ~$4,000 recurrence score being read off a glass slide across town? We are about to meet it.</p>
+        <h1>Across the hospital, in the <span class="am">pathology lab.</span></h1>
+        <p class="sub">So far we have stayed in the reading room. The same arc — hand-built tools, then deep learning, then foundation models — has played out in pathology, and it has one capability our images do not: inferring molecular and genomic features directly from the stained slide.</p>
+        <p class="seed">This is also where the <b>third model</b> from the opening lives — the recurrence score read from a glass slide.</p>
       </div>
     </section>
 
     <!-- 2 foundation models built on tissue -->
     <section class="slide s-primer" data-note="Here is a fact that surprises most imaging people. Some of the largest foundation models in medicine were not built on radiology images — they were built on pathology slides. In 2024, Virchow, from Paige and Microsoft, was trained on about 1.5 million whole-slide images from roughly 120,000 patients, self-supervised, with no hand labels. It learned the structure of human tissue on its own, and detects cancer across more than a dozen tissue types at clinical-grade accuracy, including rare cancers where data is scarce.">
       <span class="eyebrow">Era III · an unexpected fact</span>
-      <h2>The largest foundation models in medicine were built on <span class="am">tissue,</span> not radiology.</h2>
+      <h2>Some of the largest medical foundation models were trained on <span class="am">pathology slides.</span></h2>
       <p><b>Virchow</b> (Paige + Microsoft, Nature Medicine 2024) was trained on ~1.5M whole-slide images from ~120,000 patients — <b>self-supervised, no hand labels</b>. It learned the structure of human tissue on its own, and detects cancer across a dozen-plus tissue types at clinical-grade accuracy, including rare cancers.</p>
       <div class="chips">
         <div class="chip"><b>1.49M</b> whole-slide images</div>
@@ -129,7 +129,7 @@
     <!-- 3 morphology is molecular: CDH1 / ILC -->
     <section class="slide s-primer" data-note="And this is directly relevant to breast imaging. These models read features off the H&E that the eye cannot see. Take the cancer hardest to detect on a mammogram — invasive lobular carcinoma. It hides in dense tissue and grows single-file. Lobular cancer is defined molecularly by the loss of one protein, E-cadherin, the CDH1 gene. A model predicts CDH1 status from the H&E alone at an AUC around 0.94. The morphology was always a readout of the molecular biology underneath; it just was not visible by eye. And among cases the model flagged as CDH1-lost where the standard test found nothing, about three-quarters had another mechanism silencing the gene — biology the assay never tested for.">
       <span class="eyebrow">Era III · morphology is molecular</span>
-      <h2>It reads molecular identity off the H&amp;E — including the cancer you <span class="am">can't see</span> on a mammogram.</h2>
+      <h2>Inferring molecular features from the H&amp;E, including <span class="am">invasive lobular carcinoma.</span></h2>
       <p><b>Invasive lobular carcinoma</b> hides in dense tissue and grows single-file — the hardest cancer to catch on mammography. It is defined molecularly by loss of E-cadherin (the <b>CDH1</b> gene). A model predicts CDH1 status <b>from the H&amp;E alone</b>. The morphology was always a readout of the biology underneath; it just wasn't visible by eye.</p>
       <div class="chips">
         <div class="chip">CDH1 from H&amp;E · <b>AUC ~0.94</b></div>
@@ -141,7 +141,7 @@
     <!-- 4 CAMELYON16 reader study -->
     <section class="slide s-stat" data-note="Pathology ran the same AI-versus-experts study radiology did. CAMELYON16: detecting lymph-node metastasis on H&E, eleven pathologists reading a test set under a realistic two-hour time limit. The best algorithm scored 0.994; the pathologist panel, under the clock, 0.810. The top algorithms matched experts given unlimited time. The framing is not replacement — it is fatigue and time pressure, which machines do not feel.">
       <span class="eyebrow">Era III · pathology's reader study</span>
-      <h2>The same "AI vs experts" study — on <span class="am">glass.</span></h2>
+      <h2>CAMELYON16: <span class="am">AI compared with pathologists</span> on lymph-node metastasis.</h2>
       <div class="twostat">
         <div class="statblock"><div class="num">0.994</div><div class="lab">best algorithm · AUC</div></div>
         <div class="statblock"><div class="num">0.810</div><div class="lab">pathologist panel · AUC (under a 2-hour limit)</div></div>
@@ -153,7 +153,7 @@
     <!-- 5 HER2-low -->
     <section class="slide s-primer" data-note="Here is AI on a problem that decides treatment today. Since trastuzumab deruxtecan and DESTINY-Breast04, HER2-low disease is treatable. That makes the HER2 zero-versus-one-plus call decisive — and it is a call the assay was never designed to make, on which pathologists disagree. Baseline agreement is about 72 percent. Automated AI reaches 92. And on the hardest call, zero versus one-plus, AI lifts reader agreement from about 70 to about 87 percent. A distinction that now determines who is eligible for a drug that improves survival.">
       <span class="eyebrow">Era III · a call that now picks a drug</span>
-      <h2>HER2-low became treatable — so the <span class="am">0-vs-1+</span> call now decides who gets the drug.</h2>
+      <h2>HER2-low: AI improves agreement on the <span class="am">0-versus-1+</span> call.</h2>
       <p>Since trastuzumab deruxtecan (DESTINY-Breast04), <b>HER2-low is treatable</b>. That makes the HER2 0-vs-1+ distinction decisive — a call the assay wasn't designed for, on which pathologists disagree.</p>
       <div class="chips">
         <div class="chip">pathologist agreement <b>72.4%</b></div>
@@ -166,7 +166,7 @@
     <!-- 6 morphology -> molecular: Oncotype from H&E (seed #3 payoff) -->
     <section class="slide s-stat" data-note="And this is the capability imaging simply does not have, and the third model from the opening. Oncotype DX — the 21-gene recurrence score — costs about four thousand dollars and takes one to two weeks. The slide is already on the desk. Orpheus, in Nature Communications this year, infers that recurrence score directly from the H&E across six thousand cases. It flags the high-risk patients at an AUC of 0.89 versus 0.73 for a leading nomogram. And in the low-score patients — the ones the test calls low-risk — it predicts who actually recurs better than the recurrence score itself: 0.75 versus 0.49. Morphology to molecular identity, from a slide we already have.">
       <span class="eyebrow">Era III · morphology → molecular (the third model)</span>
-      <h2>A <span class="am">$4,000</span> recurrence score — read off a slide already on the desk.</h2>
+      <h2>Estimating the Oncotype DX recurrence score from the <span class="am">H&amp;E slide.</span></h2>
       <div class="twostat">
         <div class="statblock"><div class="num">0.89<span class="vs"> vs 0.73</span></div><div class="lab">flags high-risk (RS&gt;25) vs a leading nomogram</div></div>
         <div class="statblock"><div class="num">0.75<span class="vs"> vs 0.49</span></div><div class="lab">predicts recurrence in low-RS patients — beating the score itself</div></div>
@@ -178,7 +178,7 @@
     <!-- 7 foundation-model wave + deployment -->
     <section class="slide s-table" data-note="The reason all of this arrived at once is the substrate underneath it. Instead of training a new model per task, labs trained one self-supervised model on millions of unlabeled slides — a GPT for tissue — that learns the visual language of pathology and adapts with minimal fine-tuning. UNI, CONCH, Virchow, and Prov-GigaPath were published within months of each other in Nature and Nature Medicine. They cut the data a breast task needs and generalize across institutions and scanners, which is what had limited clinical pathology AI. The honest caveat: the bottleneck now is scanning, digital workflow, and reimbursement — not the algorithm. Most US labs still read glass. Paige Prostate was the first FDA-authorized pathology AI, in 2021; molecular-from-H&E is not yet replacing the assays.">
       <span class="eyebrow">Era III · the substrate</span>
-      <h2>One model, millions of unlabeled slides — a <span class="am">"GPT for tissue."</span></h2>
+      <h2>Pathology <span class="am">foundation models</span> (2024).</h2>
       <table class="ptable">
         <thead><tr><th>Model (2024)</th><th>Group</th><th>Scale</th><th>Note</th></tr></thead>
         <tbody>
@@ -192,12 +192,12 @@
     </section>
 
     <!-- 8 bridge to §5 -->
-    <section class="slide s-turn" data-note="So step back. For decades, radiology and pathology have run as separate departments — separate images, separate reports, separate hallways. AI is the first tool that treats them as two views of the same patient. Radiology localizes the lesion; pathology reads molecular identity from the same disease; and multimodal models are starting to combine them into one representation. That convergence — that is where the rest of the talk goes, and it is what I mean by clinical intelligence.">
-      <span class="eyebrow">Era III · two views of one patient</span>
-      <h2>Two departments. Two images. <span class="am">One patient.</span></h2>
-      <p class="turn-line">For decades radiology and pathology ran as separate departments — separate images, separate reports. <b>AI is the first tool that treats them as two views of the same patient.</b></p>
+    <section class="slide s-turn" data-note="For decades, radiology and pathology have been handled as separate departments, with separate images and separate reports. AI now makes it practical to analyze them together for the same patient. Radiology AI localizes the lesion; pathology AI infers molecular features from the same disease; and multimodal models combine the two. That is where the next section goes, and it is what the talk means by clinical intelligence.">
+      <span class="eyebrow">Era III · combining the two specialties</span>
+      <h2>Analyzing radiology and pathology <span class="am">together.</span></h2>
+      <p class="turn-line">Radiology and pathology have been handled as separate departments, with separate images and separate reports. AI now makes it practical to analyze them together for the same patient.</p>
       <div class="spine-row"><span>Lesion</span><span style="opacity:.5">→</span><span style="color:var(--amber)">Image ✓</span><span style="opacity:.5">→</span><span style="color:var(--amber)">Patient →</span><span style="opacity:.5">→</span><span>Population</span></div>
-      <p>Radiology localizes the lesion; pathology reads molecular identity from the same disease; multimodal models combine them into one representation. <b>That convergence is clinical intelligence</b> — where we go next.</p>
+      <p>Radiology AI localizes the lesion; pathology AI infers molecular features from the same disease; multimodal models combine the two. This is what the next section means by clinical intelligence.</p>
     </section>
 
   </div>

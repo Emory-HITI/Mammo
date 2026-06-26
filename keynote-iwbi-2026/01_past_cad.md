@@ -31,7 +31,7 @@
 - **2002:** CMS reimburses CAD separately. This — not outcome data — is what drove adoption. *(Lehman et al., 2015)*
 - **By 2008: ~74%** of US screening mammograms were read with CAD. **By 2016: ~92%.** *(review, PMC6927034, 2020)*
 
-> **The "Paid first, proven never" gap:** adopted on a billing code in 2002, scaled to nearly every mammogram in America — and the definitive accuracy study didn't land until 2015, concluding it never helped.
+> **The reimbursement-before-evidence gap:** adopted on a billing code in 2002, scaled to nearly every mammogram in America — and the definitive accuracy study didn't land until 2015, concluding it never improved accuracy.
 
 > **[VISUAL — to build later]** A timeline bar: 1998 approval → 2002 reimbursement → adoption curve climbing to ~92% → 2015 the verdict lands (in red). One slide that shows adoption racing *ahead* of evidence. *(I'll create this when we move to visuals — flagged, not built yet.)*
 

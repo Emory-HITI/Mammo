@@ -55,7 +55,7 @@ As drafted, sections run long: §3 ~7.5 (the population-vs-individual addition),
 
 ## The five compelling themes (the spine the audience should remember)
 
-1. **"Paid first, proven never" → "prove it, then deploy it."** CAD was reimbursed before it was validated and did not improve outcomes. Modern AI obtained level-1 RCT evidence (MASAI) before scaling. The lesson is the method, not the machine alone.
+1. **Reimbursement before evidence, versus evidence before deployment.** CAD was reimbursed before it was validated and did not improve outcomes. Modern AI obtained randomized-trial evidence (MASAI) before scaling. The lesson is the method, not the machine alone.
 2. **From detection to forecast.** AI shifts a screening image from "is there cancer today?" to "what is this person's risk, and how closely should we look?" The mammogram functions as a biosensor (Mirai → FDA-cleared Clairity).
 3. **Morphology to molecular.** Pathology AI infers genomics, receptor status, and recurrence risk from an H&E slide, a capability imaging lacks and a bridge to integrated decision-making.
 4. **Clinical intelligence rather than point solutions.** Foundation and multimodal models combine radiology, pathology, genomics, and clinical data into one patient-level representation across the care continuum.

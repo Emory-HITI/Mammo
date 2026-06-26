@@ -3,7 +3,7 @@
 
 > **CALLBACK TO THE HOOK (seed #2):** the cardio-mammography beat (Beat 2 below) closes the last loop — *"the model reading the calcium in her arteries, the incidental finding we threw away for forty years."* All three seeds from the opening mammogram are now addressed.
 
-**Purpose:** The **patient** stage completes here. Section 4 ended on *"two views of the same patient."* This section covers the convergence: AI fusing imaging, pathology, genomics, and history into one understanding of the patient, and in doing so addressing the divisions between radiology and pathology and between specialties. This is the block §4 noted would take the most time. **Three substantial beats plus a brief on-ramp.**
+**Purpose:** The **patient** stage completes here. Section 4 ended on the point that radiology and pathology can be analyzed together. This section covers the convergence: AI combining imaging, pathology, genomics, and history into one understanding of the patient, and in doing so addressing the divisions between radiology and pathology and between specialties. This is the block §4 noted would take the most time. **Three substantial beats plus a brief on-ramp.**
 
 ---
 

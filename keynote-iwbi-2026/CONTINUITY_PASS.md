@@ -31,7 +31,7 @@
 | §1 → §2 | ✓ "validating it before we billed for it" → "AI is just CAD again? here's why they're wrong" |
 | §2 → §3 | ✓ "start asking it about the whole image" → seed-#1 reveal "hidden signals in the image" |
 | §3 → §4 | ✓ **FIXED** — added bridge: "what is this cancer? that answer's on a glass slide" |
-| §4 → §5 | ✓ "two views of the same patient" → convergence |
+| §4 → §5 | ✓ "radiology and pathology can be analyzed together" → convergence |
 | §5 → §6 | ✓ "make sure it reaches everyone — close the gap or widen it" → equity |
 | §6 → §6b | ✓ **FIXED** — added bridge: "a force that shapes who 'us' even is… who owns it?" |
 | §6b → §7 | ✓ "bet on the discipline" → close opens by catching that line |

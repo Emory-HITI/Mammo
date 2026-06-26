@@ -19,8 +19,8 @@
 >
 > *The model also extended this. Among the cases it called CDH1-lost where the standard test found no mutation, **about three-quarters had some other mechanism switching that gene off** — fusions and noncoding changes the assay did not test for. The model reproduced the known biology and also identified biology the assay had missed."*
 
-> **Two points to carry into the second half** *(say this verbatim — it is the thesis of the convergence):*
-> *"First: the mammogram and the H&E slide both contain more than what we currently read off them. Second: radiology and pathology have operated for decades as separate departments, with separate images and separate reports, and AI is the first tool that treats them as **two views of the same patient.** That convergence is where this is heading, and it is where I want to spend most of the remaining time."*
+> **Two points to carry into the second half:**
+> *"First, the mammogram and the H&E slide both carry more information than we currently read from them. Second, radiology and pathology have been handled for decades as separate departments, with separate images and separate reports. AI now makes it practical to analyze them together for the same patient. That is where I want to spend most of the remaining time."*
 
 ### Source-check for the script
 - **Virchow** — Vorontsov et al., *Nature Medicine* 2024 (Paige + Microsoft). **1,488,550 WSIs from 119,629 patients**; self-supervised; **0.95 specimen-level AUC** across **9 common + 7 rare cancers** (published Nature version; the arXiv preprint says 10 + 7 = 17 — say *"more than a dozen tissue types"* to stay safe). *(DOI 10.1038/s41591-024-03141-0)*
@@ -59,7 +59,7 @@ An example of AI applied to a current clinical problem.
 
 ## The foundation-model wave (2024) — the substrate behind it
 
-**Plain-language frame:** instead of training a new model per task, labs trained **one self-supervised model on millions of unlabeled slides** — a *"GPT for tissue"* — that learns the visual language of pathology and adapts to a given task with minimal fine-tuning. These were published within months of each other in Nature / Nature Medicine:
+**Plain-language frame:** instead of training a new model per task, labs trained **one self-supervised model on millions of unlabeled slides** that learns general features of tissue and adapts to a given task with minimal fine-tuning. Several were published within months of each other in Nature / Nature Medicine:
 
 | Model | Group | Scale | Note |
 |---|---|---|---|
@@ -88,7 +88,7 @@ An example of AI applied to a current clinical problem.
 
 ## The bridge to Section 5 (the convergence — already teed up in the script)
 
-> The script's closing line — *"two views of the same patient"* — is the bridge. Section 5 picks it up: radiology AI localizes the lesion, pathology AI reads molecular identity from the same disease, and multimodal models combine them into one representation of the patient. **That convergence is clinical intelligence.**
+The closing point — that radiology and pathology can be analyzed together — is the bridge. Section 5 picks it up: radiology AI localizes the lesion, pathology AI infers molecular features from the same disease, and multimodal models combine them. This is what the talk means by clinical intelligence.
 
 ---
 

@@ -115,7 +115,7 @@
     <!-- 2 what it is -->
     <section class="slide s-primer" data-note="What changed: instead of programming rules, we trained a deep network on millions of labeled mammograms. It outputs a suspicion score and localizes the finding. Commercial systems now run on standard 2D mammography and on tomosynthesis, the 3D exam. I'm not going to name products — what matters is the kind of evidence behind them.">
       <span class="eyebrow">What changed</span>
-      <div class="s-head">It learned to read — and it runs on the exams you already do.</div>
+      <div class="s-head">Deep-learning detection, on standard mammography and tomosynthesis.</div>
       <p>Instead of programming the rules, the model <b>learns the features from millions of labeled mammograms</b> and outputs a suspicion score plus a heatmap. The question that matters is not the brand — it is the <b>kind of evidence</b> behind it.</p>
       <div class="chips"><span class="chip">2D mammography</span><span class="chip">Tomosynthesis (3D / DBT)</span><span class="chip">score + localization</span></div>
     </section>
@@ -133,7 +133,7 @@
     <!-- 4 2026: the evidence grew up (ladder) -->
     <section class="slide s-ladder" data-note="Fast-forward to today, 2026. The evidence grew up. It climbed from retrospective reader studies, to prospective deployment, to a randomized controlled trial with an interval-cancer endpoint, and to real-world data in nearly half a million women. This is the ladder CAD never climbed — it was billed before it reached the first rung.">
       <span class="eyebrow">2026 · the evidence grew up</span>
-      <div class="s-head">From "looks good on old data" to <span class="am">level-1 evidence.</span></div>
+      <div class="s-head">The evidence progressed from retrospective studies to a <span class="am">randomized trial.</span></div>
       <div class="ladder">
         <div class="rung r1"><div class="ry">2020</div><div class="rtype">Retrospective</div><div class="rfind">Reader studies, external validation. Strong AUCs — on old data.</div></div>
         <div class="rung r2"><div class="ry">2023</div><div class="rtype">Prospective</div><div class="rfind">One radiologist + AI <b>non-inferior</b> to two readers.</div></div>
@@ -158,7 +158,7 @@
     <section class="slide s-caveat" data-note="But before you deploy it everywhere — a single AUC hides where a model fails. We audited a commercial detection model: overall AUC 0.91, but it fell off on in-situ disease, calcifications, and dense breasts. And it doesn't transfer: trained on screening, performance dropped on diagnostic exams and collapsed on women with implants. Both were demographically robust; the gaps were clinical. The two things between a good AUC and a tool you trust: can you see why it fails, and has anyone checked where it fails.">
       <span class="eyebrow">Caveat emptor</span>
       <div class="left">
-        <h2>A single AUC hides <span class="am">where it fails.</span></h2>
+        <h2>An overall AUC can hide <span class="am">where a model fails.</span></h2>
         <p class="gap"><b>Subgroup blind spots.</b> A commercial DBT model: overall AUC 0.91, but lower on in-situ cancers, calcifications, and dense breasts — the subtle, high-stakes cases.</p>
         <p class="gap"><b>It doesn't transfer.</b> Trained on screening (AUC 0.78–0.81), it dropped on diagnostic exams and fell to AUC 0.69–0.76 / specificity 31–54% on women with implants.</p>
         <p class="gap">Both were demographically robust; the gaps were <b>clinical</b>. The two gaps: <b>explainability</b> + <b>subgroup performance.</b></p>
@@ -186,7 +186,7 @@
         <h2>The detection score rises for <span class="am">years before</span> the cancer is visible.</h2>
         <p class="gap"><b>Hickman et al., Radiology 2026</b> — three detection systems across sequential screens (31,394 women). For future cancers, the AI score is elevated up to <b>10 years</b> before diagnosis; cancer-free women stay flat.</p>
         <p class="gap">Proportion flagged at the 90th centile: <b>~19% at 6 yr → 24% at 4 yr → ~38% at 2 yr.</b> Combined AUC <b>0.63&ndash;0.67</b> vs 0.57 for density.</p>
-        <p class="gap" style="color:var(--ink);font-weight:600;margin-top:12px">The model trained to find today's cancer is already forecasting tomorrow's.</p>
+        <p class="gap" style="color:var(--ink);font-weight:600;margin-top:12px">A score trained to detect current cancer also carries information about future cancer.</p>
         <p class="gap" style="color:var(--ink-3);font-family:var(--mono);font-size:.62rem">Chart redrawn from Hickman et al., Radiology 2026;319(3):e251309 (Table 2 / Fig 2A).</p>
       </div>
       <div class="right">
