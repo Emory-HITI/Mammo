@@ -1,19 +1,18 @@
 # Section 2 — The Deep-Learning Turn & the Prospective Evidence
 ### ~8 minutes · spine stage: **LESION** (modern) · the present-day state of screening AI
 
-**Purpose:** Show how modern AI differs from CAD. The defining feature of this era is that screening AI earned **level-1 randomized evidence** before scaling. This responds to Section 1's cautionary tale, and to the view that AI is a repeat of CAD.
+**Purpose:** Show how modern AI differs from CAD. The defining feature of this era is that AI is being forced to generate evidence before scaling, and we have some of that.
 
 ---
 
-## OPENING BEAT (picks up from §1's Kohli & Jha)
-
-*Section 1 closed on the field's own review: skeptics cite CAD as evidence that AI will not deliver. Open Section 2 by addressing that point.*
-
-> *"Here is the fair challenge. When someone says AI is CAD with better marketing, they have a point; CAD earns that skepticism. The burden is on us. The question is not whether the AUC is higher, since CAD had reasonable numbers too. The question CAD never answered before it scaled to 92% of American mammograms is whether AI holds up, prospectively, in a real screening program. We now have evidence on that question."*
-
-> **The frame for the whole section:** CAD was paid first and not prospectively proven. Modern screening AI was proven first.
-
+The years is 2020, you're a radiologist and you've spent the last 4 years hearing about AI. Maybe you're impressed, maybe you're worried about job replacement. 
 ---
+The problem is the radiologists are still feeling the burn from CAD, some are using CAD and AI in tandem, even adding to the confusion.
+
+So what does mammography AI look like and what is the evidence 
+
+
+
 
 ## Acts 1–3 — the path to validation (run as a brief ~2.5-min sequence, one slide each)
 
@@ -26,7 +25,12 @@
 
 > **Takeaway (one line):** *"Retrospective reader studies have well-known limitations — enriched case sets, lab conditions, no real workflow. They can show promise, but they are not the bar. The bar is prospective deployment in a screening program. That is where the rest of this section lives."*
 
+Put the dream challenge info back into this slide, incldue the year, and first large scale development of AI models for breast cancer. We participated in this, and there was this incredible surge of optimism that this challenge would solve breast cancer AI, and the winning model had something like an AUC of (xx, look up from schaffter dream challenge paper), and there was a company that even spun out of this and was still around today.
+
 ---
+
+It's now 2026, AI for breast imaging has been around for 6 years, and where do we stand. A 2024 ESR survey of 572 members found 48% of respondents currently use AI tools in clinical practice (up from 20% in 2018), with mammography cited by 75 respondents (13.1% of the total surveyed) as the modality for which they use certified AI tools. PubMed Central
+By contrast, a U.S. report estimated only ~2% of practices use AI today, indicating significant regional variation. IntuitionLabs
 
 ## Act 4 — the prospective and randomized evidence (~5 min — this is what is new)
 
@@ -60,15 +64,7 @@
 | EDITH | launched 2025 | UK, ~700k | RCT, 5 platforms | pending |
 
 ---
-
-## The reframe (the era's defining idea)
-
-> CAD aimed to make one radiologist marginally better at one image. Modern screening AI **decouples reading workload from accuracy**, allowing a constrained workforce to read more, miss fewer cancers, and recall no more often. In Europe, where double-reading is standard and radiologists are in short supply, this is a different operating model rather than an incremental gain.
-
-> **[VISUAL — build later]** Two-column slide: **CAD** (left, red) — *scaled to 92%, then the 2015 finding*; **Modern AI** (right, green) — *RCT-validated first: MASAI +29% / 44% workload, PRAIM +17.6%*. Summarizes the first half of the talk in one image. *(Flagged, not built.)*
-
----
-
+Ok so now we have the evidence we need right? Off to the races? Well not quite.
 ## CAVEAT EMPTOR — the aggregate AUC hides subgroup blind spots (~1.5 min, your own data)
 
 *Follow the "it works" evidence with our own work, which qualifies it. This is the first half of the section's central caution: **explainability and subgroup performance are the two gaps that separate a strong aggregate number from a trustworthy tool.***
@@ -107,15 +103,3 @@
 - *Why it matters:* this is the hinge from Era II to Era III. The model trained to find today's cancer is, in its score, already forecasting tomorrow's — detection blurring into risk. The chart on this slide is **redrawn from the paper's data (Table 2 / Fig 2A)** and cited; we don't reproduce the original figure.
 
 > **Bridge to Era III:** *"That is the lesion: finding today's cancer, now with evidence. But notice what just happened — that detection score was already rising years before the cancer was visible. The same normal mammogram holds more than today's cancer. We stop asking the image about the lesion and start asking it about the whole **image** — and about the patient."*
-
----
-
-## ✓ VERIFIED (agent pass) — all confirmed exact
-- McKinney, MASAI safety (Lång, Lancet Oncol 2023), MASAI secondary (Hernström, Lancet Digit Health 2025, n=105,934), **MASAI primary (Gommers, Lancet 2026;407:505–514)**, PRAIM (Eisemann, Nat Med 2025), ScreenTrustCAD (Dembrower 2023), Salim (0.956), EDITH (Feb 2025, ~700k/30 sites/5 platforms) — all confirmed. *(DREAM/Schaffter removed per speaker — retrospective challenge, methodological concerns.)*
-- **"MAIA" Spanish RCT does NOT exist** (likely confused with MASAI; a product "MIA" by Kheiron/Roche exists but is not a trial). Removed. ✓
-- **Caveat-emptor sources confirmed:** DBT subgroup paper (Nat Commun 2026, DOI 10.1038/s41467-026-70637-3, EMBED 163,449, AUC 0.91; in-situ 0.85/0.55, calc 0.80/0.66, dense 0.88/0.63); ICH paper (npj Digit Med 2025, DOI 10.1038/s41746-025-02244-3, 101,944 CTs, 82.2% sens; subacute 45.5%, chronic 54.8%, outpatient 72.2%); RSNA 2023 challenge (Radiology 2024); BreastScreen Norway density (PMC11399294); ARIES (306,839); screening-mammography performance-gaps (arXiv 2305.04422). **Confirm your authorship on the two ★ papers.**
-
-> ⏱️ Adds ~1.5 min to §2 (now ~9–9.5). If time is short, trim a trial from the spoken track and keep it on the table slide.
-
-## [VERIFY — still open]
-- Precise current count of FDA-cleared breast-specific AI devices (≥6 for DBT; check live FDA list before stating a number).
