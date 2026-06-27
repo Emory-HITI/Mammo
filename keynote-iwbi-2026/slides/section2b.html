@@ -91,11 +91,27 @@
   .s-turn h2{font-size:clamp(1.5rem,2.9vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}.s-turn h2 .am{color:var(--amber)}
   .s-turn p{font-size:clamp(.98rem,1.5vw,1.18rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-turn p b{color:var(--ink)}
   .turn-line{font-size:clamp(1.05rem,1.8vw,1.35rem);line-height:1.42;color:var(--ink);font-weight:500;border-left:2px solid var(--amber);padding-left:16px;max-width:66ch}.turn-line b{color:var(--amber)}
+  .s-primer{flex-direction:column;justify-content:center;gap:clamp(14px,2vw,22px)}
+  .s-primer h2{font-size:clamp(1.4rem,2.7vw,2.1rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}
+  .s-primer h2 .am{color:var(--amber)}
+  .s-primer p{font-size:clamp(.98rem,1.5vw,1.2rem);color:var(--ink-2);line-height:1.5;max-width:62ch}.s-primer p b{color:var(--ink)}
+  .s-quote{align-items:center;gap:clamp(24px,3.6vw,52px)}
+  .s-quote .qmain{flex:1.5 1 0;min-width:0}
+  .s-quote blockquote{font-size:clamp(1.3rem,2.5vw,2rem);line-height:1.28;letter-spacing:-.015em;font-weight:600;text-wrap:balance;position:relative}
+  .s-quote blockquote::before{content:"\201C";color:var(--amber);font-size:2.4em;line-height:0;position:absolute;left:-.18em;top:.42em;opacity:.5}
+  .s-quote .qcite{font-family:var(--mono);font-size:.72rem;color:var(--amber);margin-top:22px;letter-spacing:.04em}
+  .s-quote .qside{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:11px;border-left:1px solid var(--line);padding-left:clamp(18px,2.4vw,30px)}
+  .qstat .n{font-size:clamp(1.05rem,1.7vw,1.4rem);font-weight:700;color:var(--ink)}.qstat .n .cy{color:var(--cyan)}
+  .qstat .l{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-top:3px}
+  .s-fig{flex-direction:column;justify-content:flex-start;gap:clamp(10px,1.4vw,16px)}
+  .s-fig .fhead{font-size:clamp(1.2rem,2.2vw,1.7rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;margin-top:clamp(22px,2.6vw,10px)}
+  .s-fig .fhead .am{color:var(--amber)}
+  .s-fig .fsub{font-size:clamp(.86rem,1.25vw,1.02rem);color:var(--ink-2);line-height:1.45;max-width:74ch}.s-fig .fsub b{color:var(--cyan);font-weight:600}
 </style>
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era II · 2026</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 4</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 8</div>
 </div>
 
 <div class="stage">
@@ -160,6 +176,135 @@
       <h2>We are at the <span class="am">brink of Era III.</span></h2>
       <p class="turn-line">Detection is proven. But the same 2026 image — and the tissue that follows it — already tells us more than <b>"is there cancer today?"</b></p>
       <p>From one screening mammogram and its biopsy: a <b>future-risk</b> estimate, a <b>cardiovascular</b> signal, and a <b>molecular recurrence</b> score. The shift from finding the lesion to <b>characterizing the patient</b> — and much of it is available now.</p>
+    </section>
+
+
+
+    <!-- ===== image-based risk (pulled from §3) ===== -->
+
+    <!-- 2 the old world -->
+    <section class="slide s-quote" data-note="For forty years the only risk signal we could read off the image was breast density — coarse and subjective. The questionnaire models we layered on top were weak: Tyrer-Cuzick predicts five-year risk at an AUC around 0.62, barely better than chance at the level of the individual.">
+      <span class="eyebrow">Era III · 2026</span>
+      <div class="qmain">
+        <blockquote>For forty years, the only risk signal we could read off the image was <span style="color:var(--amber)">density</span> — coarse, subjective, and a weak predictor.</blockquote>
+        <div class="qcite">Tyrer-Cuzick, Gail, BCSC — questionnaire-and-density models</div>
+      </div>
+      <div class="qside">
+        <div class="qstat"><div class="n">~0.62</div><div class="l">Tyrer-Cuzick v8 · 5-yr AUC</div></div>
+        <div class="qstat"><div class="n">~0.59–0.61</div><div class="l">density-augmented Gail / TC</div></div>
+        <div class="qstat"><div class="n" style="color:var(--ink-2);font-weight:400;font-size:1rem">Strong across a population.<br>Weak for the woman in front of you.</div></div>
+      </div>
+    </section>
+
+    <!-- 3 the pivot -->
+    <section class="slide s-primer" data-note="Then the image itself turned out to carry risk. Yala and colleagues at MIT and MGH showed a deep network reading the mammogram out-predicted the questionnaire models. Mirai, the next version, was built to predict across time, tolerate missing risk-factor data, and stay consistent across machines. Externally validated in three countries, C-index 0.76 to 0.81. Among women who developed cancer within five years, Mirai flagged 41.5 percent as high-risk, versus 22.9 percent for Tyrer-Cuzick.">
+      <span class="eyebrow">Era III · 2026</span>
+      <h2>The image itself <span class="am">carries risk</span> — beyond density.</h2>
+      <p><b>Yala et al. (Radiology 2019)</b> showed a network reading the image out-predicted the classical models. <b>Mirai</b> (Yala et al., Sci Transl Med 2021) predicts across time points, tolerates missing risk-factor data, and stays consistent across scanners.</p>
+      <div class="chips">
+        <div class="chip">C-index <b>0.76 / 0.81 / 0.79</b> — US · Sweden · Taiwan</div>
+        <div class="chip"><b>41.5%</b> of future cancers flagged high-risk <span style="color:var(--ink-3)">(vs 22.9% Tyrer-Cuzick)</span></div>
+      </div>
+      <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">But a C-index is a <b style="color:var(--ink-2)">black-box</b> number. For a screening program, we have to know <b style="color:var(--ink-2)">why</b> it works.</p>
+      <div class="cite">Yala et al., Radiology 2019 · Mirai — Sci Transl Med 2021 (DOI 10.1126/scitranslmed.aba4373)</div>
+    </section>
+
+    <!-- 4 AsymMirai architecture -->
+    <section class="slide s-fig" data-note="Here is explainability done right, and it is our group's work with Duke. We asked what Mirai was actually keying on. The answer was surprisingly simple: local bilateral dissimilarity — the difference between left and right breast tissue in the same region. A transparent model built only on that asymmetry nearly matched the black box: one-year AUC 0.79 versus 0.84, and in stable-tissue subgroups three-year AUC 0.92. A risk signal you can point to on the image, and audit for where it fails.">
+      <span class="eyebrow">Era III · 2026</span>
+      <div class="fhead">AsymMirai: much of the signal is <span class="am">local bilateral asymmetry.</span></div>
+      <p class="fsub"><b>AsymMirai</b> (Donnelly et al., Radiology 2024 — Duke + Emory, EMBED 210,067 mammograms) reverse-engineered Mirai's signal: the left-vs-right tissue difference. A transparent model on that alone nearly matched the black box — <b>1-yr AUC 0.79 vs 0.84; 3-yr AUC 0.92</b> in stable tissue. Performance you can explain is performance you can audit.</p>
+      <figure style="margin:6px 0 0;flex:1 1 auto;min-height:0;display:flex;flex-direction:column">
+        <svg viewBox="0 0 1180 392" style="width:100%;height:auto;max-height:100%;display:block;overflow:visible" font-family="var(--sans)">
+          <defs><marker id="ah3" markerWidth="7" markerHeight="7" refX="5.2" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5C6975"/></marker></defs>
+          <style>
+            .ab{rx:6;ry:6} .bx{font-size:10.5px;fill:#ECEFF3;text-anchor:middle} .bxs{font-size:9px;fill:#ECEFF3;text-anchor:middle}
+            .ar{stroke:#5C6975;stroke-width:1.3;fill:none;marker-end:url(#ah3)}
+            .plab{font-size:11px;font-weight:700;text-anchor:middle;font-family:var(--mono);letter-spacing:.04em}
+          </style>
+
+          <!-- divider -->
+          <line x1="368" y1="6" x2="368" y2="360" stroke="rgba(255,255,255,.10)" stroke-width="1"/>
+          <line x1="772" y1="6" x2="772" y2="360" stroke="rgba(255,255,255,.10)" stroke-width="1" stroke-dasharray="3 4"/>
+
+          <!-- ===== LEFT: AsymMirai ===== -->
+          <!-- tiles -->
+          <g fill="#11161c" stroke="rgba(255,255,255,.14)"><rect x="40" y="8" width="50" height="38" rx="3"/><rect x="96" y="8" width="50" height="38" rx="3"/><rect x="180" y="8" width="50" height="38" rx="3"/><rect x="236" y="8" width="50" height="38" rx="3"/></g>
+          <!-- CNN -->
+          <g><rect class="ab" x="40" y="62" width="50" height="30" fill="rgba(95,183,201,.16)" stroke="#5FB7C9"/><rect class="ab" x="96" y="62" width="50" height="30" fill="rgba(95,183,201,.16)" stroke="#5FB7C9"/><rect class="ab" x="180" y="62" width="50" height="30" fill="rgba(95,183,201,.16)" stroke="#5FB7C9"/><rect class="ab" x="236" y="62" width="50" height="30" fill="rgba(95,183,201,.16)" stroke="#5FB7C9"/></g>
+          <g class="bx" fill="#9FD6E0"><text x="65" y="81">CNN</text><text x="121" y="81">CNN</text><text x="205" y="81">CNN</text><text x="261" y="81">CNN</text></g>
+          <g fill="#5C6975" font-size="13" text-anchor="middle"><text x="93" y="82">=</text><text x="233" y="82">=</text></g>
+          <!-- tiles->cnn -->
+          <g class="ar"><line x1="65" y1="46" x2="65" y2="61"/><line x1="121" y1="46" x2="121" y2="61"/><line x1="205" y1="46" x2="205" y2="61"/><line x1="261" y1="46" x2="261" y2="61"/></g>
+          <!-- asymmetry -->
+          <rect class="ab" x="40" y="116" width="106" height="34" fill="rgba(231,172,81,.16)" stroke="#E7AC51"/><text class="bx" x="93" y="137">CC Asymmetry</text>
+          <rect class="ab" x="180" y="116" width="106" height="34" fill="rgba(231,172,81,.16)" stroke="#E7AC51"/><text class="bx" x="233" y="137">MLO Asymmetry</text>
+          <g class="ar"><path d="M65,92 L65,104 L93,104 L93,115"/><path d="M121,92 L121,104 L93,104"/><path d="M205,92 L205,104 L233,104 L233,115"/><path d="M261,92 L261,104 L233,104"/></g>
+          <!-- prediction window -->
+          <rect class="ab" x="40" y="172" width="106" height="34" fill="rgba(201,138,46,.18)" stroke="#C98A2E"/><text class="bxs" x="89" y="192">Prediction Window</text><rect x="128" y="183" width="11" height="11" fill="none" stroke="#D9785B" stroke-width="1.6"/>
+          <rect class="ab" x="180" y="172" width="106" height="34" fill="rgba(201,138,46,.18)" stroke="#C98A2E"/><text class="bxs" x="229" y="192">Prediction Window</text><rect x="268" y="183" width="11" height="11" fill="none" stroke="#D9785B" stroke-width="1.6"/>
+          <g class="ar"><line x1="93" y1="150" x2="93" y2="171"/><line x1="233" y1="150" x2="233" y2="171"/></g>
+          <!-- average -->
+          <rect class="ab" x="40" y="228" width="246" height="30" fill="rgba(157,169,181,.14)" stroke="#9DA9B5"/><text class="bx" x="163" y="247">Average</text>
+          <g class="ar"><path d="M93,206 L93,217 L163,217 L163,227"/><path d="M233,206 L233,217 L163,217"/></g>
+          <!-- risk score -->
+          <rect class="ab" x="93" y="282" width="140" height="34" fill="none" stroke="#ECEFF3" stroke-width="1.4"/><text class="bx" x="163" y="303" font-size="11">Risk Score</text>
+          <line class="ar" x1="163" y1="258" x2="163" y2="281"/>
+          <text class="plab" x="163" y="344" fill="#E7AC51">AsymMirai · interpretable</text>
+
+          <!-- ===== RIGHT: Mirai ===== -->
+          <g fill="#11161c" stroke="rgba(255,255,255,.14)"><rect x="400" y="8" width="48" height="38" rx="3"/><rect x="454" y="8" width="48" height="38" rx="3"/><rect x="540" y="8" width="48" height="38" rx="3"/><rect x="594" y="8" width="48" height="38" rx="3"/></g>
+          <g><rect class="ab" x="400" y="62" width="48" height="28" fill="rgba(95,183,201,.16)" stroke="#5FB7C9"/><rect class="ab" x="454" y="62" width="48" height="28" fill="rgba(95,183,201,.16)" stroke="#5FB7C9"/><rect class="ab" x="540" y="62" width="48" height="28" fill="rgba(95,183,201,.16)" stroke="#5FB7C9"/><rect class="ab" x="594" y="62" width="48" height="28" fill="rgba(95,183,201,.16)" stroke="#5FB7C9"/></g>
+          <g class="bxs" fill="#9FD6E0"><text x="424" y="80">CNN</text><text x="478" y="80">CNN</text><text x="564" y="80">CNN</text><text x="618" y="80">CNN</text></g>
+          <g fill="#5C6975" font-size="13" text-anchor="middle"><text x="451" y="80">=</text><text x="591" y="80">=</text></g>
+          <g class="ar"><line x1="424" y1="46" x2="424" y2="61"/><line x1="478" y1="46" x2="478" y2="61"/><line x1="564" y1="46" x2="564" y2="61"/><line x1="618" y1="46" x2="618" y2="61"/></g>
+          <!-- maxpool -->
+          <g><rect class="ab" x="400" y="110" width="48" height="26" fill="rgba(140,124,196,.18)" stroke="#8E7FC0"/><rect class="ab" x="454" y="110" width="48" height="26" fill="rgba(140,124,196,.18)" stroke="#8E7FC0"/><rect class="ab" x="540" y="110" width="48" height="26" fill="rgba(140,124,196,.18)" stroke="#8E7FC0"/><rect class="ab" x="594" y="110" width="48" height="26" fill="rgba(140,124,196,.18)" stroke="#8E7FC0"/></g>
+          <g class="bxs" fill="#C9BEE6"><text x="424" y="127">Maxpool</text><text x="478" y="127">Maxpool</text><text x="564" y="127">Maxpool</text><text x="618" y="127">Maxpool</text></g>
+          <g class="ar"><line x1="424" y1="90" x2="424" y2="109"/><line x1="478" y1="90" x2="478" y2="109"/><line x1="564" y1="90" x2="564" y2="109"/><line x1="618" y1="90" x2="618" y2="109"/></g>
+          <!-- transformer -->
+          <rect class="ab" x="400" y="158" width="242" height="26" fill="rgba(231,172,81,.14)" stroke="#C98A2E"/><text class="bx" x="521" y="175">Transformer</text>
+          <g class="ar"><path d="M424,136 L424,148 L521,148 L521,157"/><path d="M478,136 L478,148"/><path d="M564,136 L564,148"/><path d="M618,136 L618,148"/></g>
+          <!-- risk factor predictor -->
+          <rect class="ab" x="400" y="200" width="172" height="26" fill="rgba(217,120,91,.18)" stroke="#D9785B"/><text class="bxs" x="486" y="217">Risk Factor Predictor</text>
+          <line class="ar" x1="486" y1="184" x2="486" y2="199"/>
+          <!-- AHL chain -->
+          <g><rect class="ab" x="400" y="244" width="40" height="26" fill="rgba(217,120,91,.13)" stroke="#D9785B"/><rect class="ab" x="452" y="244" width="40" height="26" fill="rgba(217,120,91,.13)" stroke="#D9785B"/><rect class="ab" x="504" y="244" width="40" height="26" fill="rgba(217,120,91,.13)" stroke="#D9785B"/><rect class="ab" x="556" y="244" width="40" height="26" fill="rgba(217,120,91,.13)" stroke="#D9785B"/><rect class="ab" x="608" y="244" width="40" height="26" fill="rgba(217,120,91,.13)" stroke="#D9785B"/></g>
+          <g class="bxs" fill="#ECEFF3"><text x="420" y="261">AHL</text><text x="472" y="261">AHL</text><text x="524" y="261">AHL</text><text x="576" y="261">AHL</text><text x="628" y="261">AHL</text></g>
+          <g class="ar"><line x1="440" y1="257" x2="451" y2="257"/><line x1="492" y1="257" x2="503" y2="257"/><line x1="544" y1="257" x2="555" y2="257"/><line x1="596" y1="257" x2="607" y2="257"/><path d="M486,226 L420,226 L420,243"/></g>
+          <!-- years -->
+          <g fill="none" stroke="#ECEFF3" stroke-width="1.2"><rect x="398" y="300" width="44" height="34" rx="6"/><rect x="450" y="300" width="44" height="34" rx="6"/><rect x="502" y="300" width="44" height="34" rx="6"/><rect x="554" y="300" width="44" height="34" rx="6"/><rect x="606" y="300" width="44" height="34" rx="6"/></g>
+          <g class="bxs"><text x="420" y="314">Year 1</text><text x="420" y="325">Risk</text><text x="472" y="314">Year 2</text><text x="472" y="325">Risk</text><text x="524" y="314">Year 3</text><text x="524" y="325">Risk</text><text x="576" y="314">Year 4</text><text x="576" y="325">Risk</text><text x="628" y="314">Year 5</text><text x="628" y="325">Risk</text></g>
+          <g class="ar"><line x1="420" y1="270" x2="420" y2="299"/><line x1="472" y1="270" x2="472" y2="299"/><line x1="524" y1="270" x2="524" y2="299"/><line x1="576" y1="270" x2="576" y2="299"/><line x1="628" y1="270" x2="628" y2="299"/></g>
+          <text class="plab" x="521" y="356" fill="#9DA9B5">Mirai · black box</text>
+
+          <!-- ===== ATTENTION inset ===== -->
+          <rect x="800" y="20" width="366" height="318" rx="10" fill="rgba(231,172,81,.04)" stroke="#C98A2E" stroke-dasharray="5 5" stroke-width="1.2"/>
+          <text x="983" y="42" font-size="10" font-family="var(--mono)" fill="#E7AC51" text-anchor="middle" letter-spacing=".06em">ASYMMETRY MODULE — DETAIL</text>
+          <rect class="ab" x="928" y="58" width="110" height="30" fill="rgba(140,124,196,.18)" stroke="#8E7FC0"/><text class="bx" x="983" y="78">Split</text>
+          <g><rect class="ab" x="818" y="132" width="92" height="30" fill="rgba(231,172,81,.13)" stroke="#E7AC51"/><rect class="ab" x="937" y="132" width="92" height="30" fill="rgba(231,172,81,.13)" stroke="#E7AC51"/><rect class="ab" x="1056" y="132" width="92" height="30" fill="rgba(231,172,81,.13)" stroke="#E7AC51"/></g>
+          <g class="bx"><text x="864" y="152">Linear</text><text x="983" y="152">Linear</text><text x="1102" y="152">Linear</text></g>
+          <g class="ar"><path d="M960,88 L864,88 L864,131"/><line x1="983" y1="88" x2="983" y2="131"/><path d="M1006,88 L1102,88 L1102,131"/></g>
+          <rect class="ab" x="818" y="206" width="330" height="30" fill="rgba(231,172,81,.16)" stroke="#E7AC51"/><text class="bx" x="983" y="226">Attention</text>
+          <g class="ar"><path d="M864,162 L864,186 L983,186 L983,205"/><path d="M983,162 L983,205" opacity="0"/><line x1="983" y1="162" x2="983" y2="205"/><path d="M1102,162 L1102,186 L983,186"/></g>
+          <rect class="ab" x="928" y="278" width="110" height="30" fill="rgba(217,120,91,.18)" stroke="#D9785B"/><text class="bx" x="983" y="298">Linear</text>
+          <line class="ar" x1="983" y1="236" x2="983" y2="277"/>
+        </svg>
+        <figcaption class="attr" style="margin-top:8px"><b>Redrawn in-theme from</b> Donnelly et al., "AsymMirai," Radiology 2024;310(3):e232780 · pubs.rsna.org/doi/10.1148/radiol.232780 &nbsp;·&nbsp; <span style="color:var(--cyan)">Interpretable AsymMirai 1-yr AUC 0.79 vs Mirai 0.84; 3-yr AUC 0.92 in stable tissue — a signal you can point to.</span></figcaption>
+      </figure>
+    </section>
+
+    <!-- 5 Clairity FDA-cleared -->
+    <section class="slide s-primer" data-note="And this is no longer research. In June 2025, Clairity received FDA De Novo authorization — the first tool to predict five-year breast-cancer risk from a routine screening mammogram alone, validated across about 77,000 mammograms from five sites, and it was added to the 2026 NCCN screening guidance. The path from research model to cleared product to guideline took under five years. There is not yet a primary peer-reviewed validation paper.">
+      <span class="eyebrow">Era III · 2026</span>
+      <h2>From research model to a <span class="am">cleared product.</span></h2>
+      <p><b>Clairity</b> — <b>FDA De Novo authorization, June 2025</b>: the first tool to predict 5-year breast-cancer risk from a routine screening mammogram alone.</p>
+      <div class="chips">
+        <div class="chip">validated across <b>~77,000 mammograms · 5 sites</b></div>
+        <div class="chip">added to <b>2026 NCCN</b> screening guidance</div>
+      </div>
+      <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">Research model to cleared product to guideline in under five years — though there is <b style="color:var(--ink-2)">no primary peer-reviewed validation paper yet.</b></p>
+      <div class="cite">Clairity — FDA De Novo 2025 · NCCN 2026 (AI-based risk assessment)</div>
     </section>
 
   </div>
