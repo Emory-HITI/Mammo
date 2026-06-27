@@ -26,9 +26,9 @@
 >
 > **[brief pause]**
 >
-> *"So over the next thirty minutes or so, I want to take you on a short journey of how we got here and where we can expect to go. We will move from the lesion, to the image, to the patient, and finally the population.*
+> *"So over the next thirty minutes or so, I want to take you on a short journey of how we got here and where we can expect to go. We will move from the lesion, to the image, and finally to the patient.*
 >
-> *For about thirty years, we built tools to help us find the lesion — to mark the spot. That was CAD. What's changing now is the scope of the question we ask: from the **lesion**, to the **image**, to the **patient**, to the **population**."*
+> *For about thirty years, we built tools to help us find the lesion — to mark the spot. That was CAD. What's changing now is the scope of the question we ask: from the **lesion**, to the **image**, to the **patient**.
 >
 > *"So let's begin with a cautionary tale — because this field has overpromised before."*
 
