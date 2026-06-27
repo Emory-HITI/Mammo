@@ -1,8 +1,7 @@
-# Section 2 — The Deep-Learning Turn & the Prospective Evidence
+# Section 2 — The Deep-Learning Turn
 ### ~8 minutes · spine stage: **LESION** (modern) · the present-day state of screening AI
 
-**Purpose:** Show how modern AI differs from CAD. The defining feature of this era is that AI is being forced to generate evidence before scaling, and we have some of that.
-
+**Purpose:** Show how modern AI differs from CAD. 
 ---
 
 The years is 2020, you're a radiologist and you've spent the last 4 years hearing about AI. Maybe you're impressed, maybe you're worried about job replacement. 
@@ -11,28 +10,21 @@ The problem is the radiologists are still feeling the burn from CAD, some are us
 
 So what does mammography AI look like and what is the evidence 
 
+Put the dream challenge into this slide, incldue the year, and first large scale development of AI models for breast cancer. We participated in this, and there was this incredible surge of optimism that this challenge would solve breast cancer AI, and the winning model had something like an AUC of (xx, look up from schaffter dream challenge paper), and there was a company that even spun out of this and was still around today.
 
+Retrospective performance (2020). McKinney et al., *Nature* 2020 (Google Health/DeepMind, UK + US): false positives down **5.7% (US)/1.2% (UK)**, false negatives down **9.4% (US)/2.7% (UK)**; AI AUC exceeded the average radiologist by **11.5%** absolute; reduced a simulated second reader's workload **88%**. *(Nature 577:89–94)*
 
-
-## Acts 1–3 — the path to validation (run as a brief ~2.5-min sequence, one slide each)
-
-**Act 1 — retrospective performance (2020).** McKinney et al., *Nature* 2020 (Google Health/DeepMind, UK + US): false positives down **5.7% (US)/1.2% (UK)**, false negatives down **9.4% (US)/2.7% (UK)**; AI AUC exceeded the average radiologist by **11.5%** absolute; reduced a simulated second reader's workload **88%**. *(Nature 577:89–94)*
-
-**Act 2 — the reproducibility critique (2020).** Haibe-Kains et al., *Nature* 2020: McKinney withheld code and model details, so the result was **not independently reproducible.** *(Nature 586:E14–E16)* This echoes CAD's adoption without verification; here the field raised the concern itself.
-
-**Act 3 — independent validation (2020).**
+independent validation (2020)
 - Salim et al., *JAMA Oncology* 2020 (Stockholm, 8,805 women): best algorithm **AUC 0.956**; AI + first reader reached **88.6% sensitivity at 93.0% specificity**, exceeding two human readers.
 
 > **Takeaway (one line):** *"Retrospective reader studies have well-known limitations — enriched case sets, lab conditions, no real workflow. They can show promise, but they are not the bar. The bar is prospective deployment in a screening program. That is where the rest of this section lives."*
-
-Put the dream challenge info back into this slide, incldue the year, and first large scale development of AI models for breast cancer. We participated in this, and there was this incredible surge of optimism that this challenge would solve breast cancer AI, and the winning model had something like an AUC of (xx, look up from schaffter dream challenge paper), and there was a company that even spun out of this and was still around today.
 
 ---
 
 It's now 2026, AI for breast imaging has been around for 6 years, and where do we stand. A 2024 ESR survey of 572 members found 48% of respondents currently use AI tools in clinical practice (up from 20% in 2018), with mammography cited by 75 respondents (13.1% of the total surveyed) as the modality for which they use certified AI tools. PubMed Central
 By contrast, a U.S. report estimated only ~2% of practices use AI today, indicating significant regional variation. IntuitionLabs
 
-## Act 4 — the prospective and randomized evidence (~5 min — this is what is new)
+Prospective and randomized evidence (~5 min — this is what is new)
 
 > **NUMBER LEAD (two slides):**
 > **"+29% cancer detection, with no increase in false positives."**
