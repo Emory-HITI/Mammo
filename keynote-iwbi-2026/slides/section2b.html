@@ -87,11 +87,15 @@
   .chips.lg{gap:12px}.chips.lg .chip{font-size:clamp(.84rem,1.25vw,1.02rem);padding:10px 16px}
   @media (max-width:720px){.s-divider,.s-caveat{flex-direction:column}.dv-view,.s-caveat .right,.s-fig .right{width:85%}.hint{display:none}}
   @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
+  .s-turn{flex-direction:column;justify-content:center;gap:clamp(15px,2.2vw,24px)}
+  .s-turn h2{font-size:clamp(1.5rem,2.9vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}.s-turn h2 .am{color:var(--amber)}
+  .s-turn p{font-size:clamp(.98rem,1.5vw,1.18rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-turn p b{color:var(--ink)}
+  .turn-line{font-size:clamp(1.05rem,1.8vw,1.35rem);line-height:1.42;color:var(--ink);font-weight:500;border-left:2px solid var(--amber);padding-left:16px;max-width:66ch}.turn-line b{color:var(--amber)}
 </style>
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era II · 2026</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 3</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 4</div>
 </div>
 
 <div class="stage">
@@ -148,6 +152,14 @@
         </div>
       </div>
       <figcaption style="font-family:var(--mono);font-size:.58rem;color:var(--ink-3);text-align:center;line-height:1.35;margin:0">Exam-level model-score distributions by imaging feature, across clinical outcome. <b style="color:var(--ink-2);font-weight:400">[your group], Nat Commun 2026 (DOI 10.1038/s41467-026-70637-3), Fig. 6.</b></figcaption>
+    </section>
+
+    <!-- 4 brink of Era III -->
+    <section class="slide s-turn" data-note="So detection works — we now have the prospective evidence. But here is what is striking: it is still 2026, and the very same mammogram — and the tissue that follows it — already tells us far more than whether there is a cancer today. From this one screening image we can read a woman's future risk and a cardiovascular signal; from her biopsy slide, a molecular recurrence score. We are standing at the brink of Era III — the shift from finding the lesion to characterizing the patient — and, remarkably, much of it is available right now.">
+      <span class="eyebrow">Era II · 2026 → Era III</span>
+      <h2>We are at the <span class="am">brink of Era III.</span></h2>
+      <p class="turn-line">Detection is proven. But the same 2026 image — and the tissue that follows it — already tells us more than <b>"is there cancer today?"</b></p>
+      <p>From one screening mammogram and its biopsy: a <b>future-risk</b> estimate, a <b>cardiovascular</b> signal, and a <b>molecular recurrence</b> score. The shift from finding the lesion to <b>characterizing the patient</b> — and much of it is available now.</p>
     </section>
 
   </div>
