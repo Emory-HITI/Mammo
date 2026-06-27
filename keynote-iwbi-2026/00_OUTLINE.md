@@ -36,11 +36,12 @@ How will these models change our practice as radiologists? How does the role of 
 | 2. The deep-learning turn + the prospective evidence, persistent failures in sugroup performance | 8m | `02_present_screening.md` |
 | **PART II — THE FUTURE - CLINICAL INTELLIGENCE** | **30 min** | |
 | 3. Image Based Risk | 6m | `03_future_risk.md` |
-| 4. The other half of the slide: computational pathology | 5m | `04_future_pathology.md` |
-| 5. Clinical intelligence: opportunistic biosensor | 7m | `05_future_clinical_intelligence.md` |
-| 6. The hard part: Governance and Deskilling | 5m | `06_future_equity_governance.md` |
-| 6b. The wildcard: will frontier models eat everything? | 3.5m | `06b_future_frontier_models.md` |
-| **7. Close — responsible optimism** | 3.5m | `07_close.md` |
+| 4. Image Based CVD risk |
+| 5. Clinical Intelligence: computational pathology | 5m | `04_future_pathology.md` |
+| 6. Clinical Intelligence Multimodal models | 7m | `05_future_clinical_intelligence.md` |
+| 7. The hard part: Governance and Deskilling | 5m | `06_future_equity_governance.md` |
+| 8. The wildcard: will frontier models eat everything? | 3.5m | `06b_future_frontier_models.md` |
+| **9. Close — responsible optimism** | 3.5m | `07_close.md` |
 
 
 ## The five compelling themes (the spine the audience should remember)
