@@ -196,18 +196,32 @@
       </div>
     </section>
 
-    <!-- image risk: Mirai -> Clairity (combined) -->
-    <section class="slide s-primer" data-note="The image itself carries risk. Yala and colleagues at MIT and MGH showed a deep network reading the mammogram out-predicts the questionnaire models — Mirai was externally validated across three countries at a C-index of 0.76 to 0.81, and among women who developed cancer within five years it flagged 41.5 percent as high-risk versus 22.9 percent for Tyrer-Cuzick. And this is no longer just research: in June 2025 Clairity received FDA De Novo authorization — the first tool to predict five-year breast-cancer risk from a routine screening mammogram alone, validated across about 77,000 mammograms from five sites and added to the 2026 NCCN guidance. Research model to cleared product to guideline in under five years. There is not yet a primary peer-reviewed validation paper for Clairity.">
+    <!-- image risk: Mirai -> Clairity (combined, condensed + figure) -->
+    <section class="slide s-caveat" data-note="The image itself carries risk. Yala and colleagues at MIT and MGH showed a deep network reading the mammogram out-predicts the questionnaire models — Mirai, externally validated across three countries at a C-index of 0.76 to 0.81. Among women who developed cancer within five years, it flagged 41.5 percent as high-risk versus 22.9 percent for Tyrer-Cuzick. And this is no longer just research: in June 2025 Clairity received FDA De Novo authorization — the first tool to predict five-year breast-cancer risk from a routine screening mammogram alone, and it was added to the 2026 NCCN guidance. Research model to cleared product to guideline in under five years. There is not yet a primary peer-reviewed validation paper for Clairity.">
       <span class="eyebrow">Era III · 2026</span>
-      <h2>Image-based risk: from a research model to an <span class="am">FDA-cleared product.</span></h2>
-      <p><b>Mirai</b> (Yala et al., MIT + MGH) — a deep network reading the mammogram out-predicts the questionnaire models, externally validated across three countries at <b>C-index 0.76–0.81.</b> Among women who developed cancer within five years, it flagged <b>41.5%</b> as high-risk vs <b>22.9%</b> for Tyrer-Cuzick.</p>
-      <p><b>Clairity</b> — <b>FDA De Novo authorization, June 2025</b>: the first tool to predict 5-year breast-cancer risk from a <b>routine screening mammogram alone</b> (~77,000 mammograms, 5 sites), now in the <b>2026 NCCN</b> guidance.</p>
-      <div class="chips">
-        <div class="chip">Mirai <b>C-index 0.76–0.81</b></div>
-        <div class="chip"><b>41.5%</b> vs 22.9% of 5-yr cancers flagged</div>
-        <div class="chip">research → cleared → guideline in <b>&lt;5 yr</b></div>
+      <div class="left">
+        <h2>Image-based risk: research model → <span class="am">cleared product.</span></h2>
+        <p class="gap"><b>Mirai</b> (Yala et al.) reads 5-year risk from the mammogram itself — validated across 3 countries. <b>Clairity</b> took it to <b>FDA clearance (2025)</b> and the <b>2026 NCCN</b> guidance: risk from a routine mammogram alone.</p>
+        <div style="display:flex;gap:clamp(22px,3.5vw,46px);margin-top:14px;flex-wrap:wrap">
+          <div><div style="font-size:clamp(1.4rem,2.3vw,1.95rem);font-weight:700;color:var(--amber);line-height:1">0.76–0.81</div><div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-top:5px">Mirai C-index · 3 countries</div></div>
+          <div><div style="font-size:clamp(1.4rem,2.3vw,1.95rem);font-weight:700;color:var(--amber);line-height:1">&lt; 5 yr</div><div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3);margin-top:5px">research → cleared → guideline</div></div>
+        </div>
+        <div class="cite">Yala et al., Sci Transl Med 2021 · Clairity FDA De Novo 2025; NCCN 2026 — no primary validation paper yet</div>
       </div>
-      <div class="cite">Yala et al., Sci Transl Med 2021 (Mirai) · Clairity FDA De Novo 2025; added to NCCN 2026 — no primary peer-reviewed validation paper yet</div>
+      <div class="right">
+        <svg class="barchart" viewBox="0 0 360 270" role="img" aria-label="Five-year cancers flagged high-risk: Mirai 41.5% vs Tyrer-Cuzick 22.9%">
+          <g font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#5C6975">
+            <line x1="58" y1="24" x2="58" y2="214" stroke="rgba(255,255,255,.14)"/><line x1="58" y1="214" x2="338" y2="214" stroke="rgba(255,255,255,.14)"/>
+            <line x1="58" y1="119" x2="338" y2="119" stroke="rgba(255,255,255,.06)"/>
+            <text x="52" y="218" text-anchor="end">0</text><text x="52" y="123" text-anchor="end">25%</text><text x="52" y="28" text-anchor="end">50%</text>
+          </g>
+          <rect x="104" y="48.6" width="78" height="165.4" rx="2" fill="#E7AC51"/>
+          <rect x="226" y="122.6" width="78" height="91.4" rx="2" fill="#5FB7C9"/>
+          <g font-size="15" font-weight="bold" fill="#ECEFF3" text-anchor="middle"><text x="143" y="40">41.5%</text><text x="265" y="114">22.9%</text></g>
+          <g font-size="11" fill="#9DA9B5" text-anchor="middle"><text x="143" y="232">Mirai</text><text x="265" y="232">Tyrer-Cuzick</text></g>
+          <text x="198" y="258" text-anchor="middle" font-size="10" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace">% of 5-yr cancers flagged high-risk</text>
+        </svg>
+      </div>
     </section>
 
     <!-- 4 AsymMirai architecture -->
