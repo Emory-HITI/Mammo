@@ -5,6 +5,9 @@ from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR
 from pptx.enum.shapes import MSO_SHAPE
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from pptxlib import embed_img
 
 BG    = RGBColor(0x0F,0x14,0x1A); PANEL = RGBColor(0x06,0x09,0x0C)
 INK   = RGBColor(0xEC,0xEF,0xF3); INK2 = RGBColor(0x9D,0xA9,0xB5); INK3 = RGBColor(0x5C,0x69,0x75)
@@ -66,14 +69,21 @@ s = slide()
 _, tf = box(s, 0.85, 0.72, 11.6, 0.4)
 p = para(tf, True)
 run(p, "ERA I · 1998 · LESION", 11, AMBER, bold=True, font=MONO)
-run(p, "    →    IMAGE    →    PATIENT    →    POPULATION", 11, INK3, font=MONO)
+run(p, "    →    IMAGE    →    PATIENT", 11, INK3, font=MONO)
 _, tf = box(s, 0.85, 2.5, 7.4, 1.7)
 p = para(tf, True); run(p, "The year is ", 50, INK, bold=True); run(p, "1998.", 50, AMBER, bold=True)
 _, tf = box(s, 0.85, 4.35, 7.2, 2.2)
 run(para(tf, True, line=1.3), "Computer-aided detection has just arrived — software that puts a mark on every mammogram to flag a possible cancer. A second set of eyes, automatically. It feels like the future.", 18, INK2)
-ph = card(s, 8.7, 1.5, 3.8, 4.6, fill=PANEL, edge=AMBERDP, edge_w=0.75)
-tf = ph.text_frame; tf.vertical_anchor = MSO_ANCHOR.BOTTOM; tf.word_wrap = True
-run(para(tf, True, align=PP_ALIGN.CENTER), "[ CAD-marked screening mammogram — Intelerad InteleViewer (placeholder) ]", 10, INK3, font=MONO)
+# real CAD-marked mammogram from the HTML deck (base64), if present
+import re as _re, base64 as _b64
+_h = open("/home/user/Mammo/keynote-iwbi-2026/slides/section1.html").read()
+_m = _re.search(r'src="(data:image/[^"]+)"', _h)
+if _m:
+    embed_img(s, _m.group(1), 8.55, 1.35, 4.0, 4.9, card_bg='black')
+else:
+    ph = card(s, 8.7, 1.5, 3.8, 4.6, fill=PANEL, edge=AMBERDP, edge_w=0.75)
+    tf = ph.text_frame; tf.vertical_anchor = MSO_ANCHOR.BOTTOM; tf.word_wrap = True
+    run(para(tf, True, align=PP_ALIGN.CENTER), "[ CAD-marked screening mammogram ]", 10, INK3, font=MONO)
 
 # ============ SLIDE 2 — adoption timeline ============
 s = slide(); eyebrow(s)
@@ -241,7 +251,7 @@ _, tf = box(s, 0.85, 4.75, 11.6, 1.8)
 run(para(tf, True, line=1.3), "The lesson from Era I: CAD was reimbursed before it was proven, and never shown to help. For two decades we taught machines to point at mammograms; the change was teaching them to read the image — and validating that before billing for it. The next section picks up sixteen years later.", 16, INK)
 
 import os
-out = "/home/user/Mammo/keynote-iwbi-2026/pptx/IWBI2026_Trivedi_section1_CAD.pptx"
+out = "/home/user/Mammo/keynote-iwbi-2026/pptx/IWBI2026_Trivedi_01_CAD.pptx"
 os.makedirs(os.path.dirname(out), exist_ok=True)
 prs.save(out)
 print("saved", out, "slides:", len(prs.slides._sldIdLst))
