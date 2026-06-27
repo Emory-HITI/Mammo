@@ -5,6 +5,28 @@
 
 **Purpose:** The **patient** stage completes here. Section 4 ended on the point that radiology and pathology can be analyzed together. This section covers the convergence: AI combining imaging, pathology, genomics, and history into one understanding of the patient, and in doing so addressing the divisions between radiology and pathology and between specialties. This is the block §4 noted would take the most time. **Three substantial beats plus a brief on-ramp.**
 
+https://aapm.onlinelibrary.wiley.com/cms/asset/b75d5f5a-be45-4e58-8d50-d4e2c611422c/acm270464-fig-0002-m.jpg
+an, Xu, Fang et al. — J Appl Clin Med Phys, Jan 18, 2026 DOI: 10.1002/acm2.70464
+One-liner: A two-stage MG+US fusion classifier with modality-specific attention and a stacking ensemble — a clean demonstration that fusion + attention each add measurable value.
+Slide bullets:
+
+Data: 663 patients with breast lesions (2018–2021): 384 benign, 279 malignant. Split 7:2:1 into training (464), validation (133), test (66). Nature
+Architecture: Two-stage model with modality-specific attention — efficient channel attention (ECA-Net) for ultrasound and convolutional block attention module (CBAM) for mammography. Fused features feed a stacking ensemble (logistic regression, SVM, random forest, Extra-Trees as base learners; MLP as meta-learner). Nature
+Headline result: AUC of 87.9% ± 0.21% — improvements of 13.4% and 15.6% over attention-enhanced mammography-only (74.5%) and ultrasound-only (72.3%) models. WISDOM Study
+Use this image: https://aapm.onlinelibrary.wiley.com/cms/asset/b75d5f5a-be45-4e58-8d50-d4e2c611422c/acm270464-fig-0002-m.jpg
+
+3. BINDS
+Nature Biomedical Engineering, May 2026
+
+DOI: 10.1038/s41551-026-01654-2
+One-liner: A staged US/MG → MRI diagnostic system that mirrors the real clinical escalation pathway, with a novel radiology–pathology alignment mechanism — the most workflow-faithful multimodal system to date.
+Slide bullets:
+
+Data: 27,048 participants from 8 centers plus 7 public datasets — the largest multi-center multimodal validation in this space. Springer
+Two-stage clinical workflow: Stage 1 — initial assessment with ultrasound and/or mammography. Stage 2 — comprehensive multimodal diagnosis incorporating MRI. This deliberately mirrors how a radiologist escalates from screening to supplemental imaging. PubMed Central
+Key innovation — radiology-pathology alignment: A pathology encoder is first pre-trained to classify histological subtypes from whole-slide image patches; the learned WSI-level features then guide the training of the radiological encoders, so the imaging model learns pathology-relevant features. This is the conceptual novelty — teaching the imaging model to "see like pathology." 
+Use this image: https://media.springernature.com/full/springer-static/image/art%3A10.1038%2Fs41551-026-01654-2/MediaObjects/41551_2026_1654_Fig4_HTML.png?as=webp
+
 ---
 
 ## On-ramp — the substrate: foundation models went generalist, fast (~1 min)
