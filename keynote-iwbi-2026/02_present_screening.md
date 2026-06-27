@@ -82,17 +82,8 @@ Ok so now we have the evidence we need right? Off to the races? Well not quite.
 > *"A few limitations, stated plainly."*
 
 1. **No mortality data yet.** Detection, recall, workload, sensitivity, and now interval cancer (a strong surrogate), but **not breast-cancer mortality.** Do not overclaim.
-2. **Generalizability.** The pivotal RCTs are predominantly **Swedish/European, single-vendor, double-reading.** The **US screens with a single reader**, so these workflow gains may not transfer directly. **MASAI did not collect race/ethnicity.**
-3. **Reproducibility** (Haibe-Kains): many models still lack open code; retrospective AUCs often decline under independent validation.
+2. **Generalizability.** The pivotal RCTs are predominantly **Swedish/European, single-vendor, double-reading.** The **US screens with a single reader**, so these workflow gains may not transfer directly. **MASAI did not collect race/ethnicity.** PRISM trial underway -  the first large-scale randomized controlled trial of AI in breast cancer screening in the United States, funded by a $16 million PCORI award and co-led by UCLA and UC Davis. It was announced September 23, 2025
 4. **In-situ / overdiagnosis** is not fully settled (MASAI in-situ ratio ~1.51).
-5. **The main driver is operational**, workforce capacity, as much as diagnostic superiority. This is a legitimate reason and worth stating directly.
 
-## Detection is already becoming risk (bridge to Era III)
 
-*The cleanest hand-off to the future: the detection score itself carries a forward signal.*
-
-- **Hickman et al., Radiology 2026;319(3):e251309** (VAI-B, Sweden; **31,394 individuals / 88,963 exams**; three commercial AI CAD systems — Vara, Lunit INSIGHT MMG, MammoScreen). For people later diagnosed with cancer, the **AI detection score is already elevated up to 10 years before diagnosis and rises steadily toward it**, while cancer-free individuals stay flat. ✓
-- **The numbers (proportion of future cancers flagged at the 90th-centile score):** ~13–17% at 10 yr → **19.0–19.7% at 6 yr → 23.3–25.2% at 4 yr → 35.4–39.3% at 2 yr → 42–48% at 1 yr.** Combined predictive AUC **0.63–0.67** across systems vs **0.57 for mammographic density** (all P<.001). *(DOI 10.1148/radiol.251309)*
-- *Why it matters:* this is the hinge from Era II to Era III. The model trained to find today's cancer is, in its score, already forecasting tomorrow's — detection blurring into risk. The chart on this slide is **redrawn from the paper's data (Table 2 / Fig 2A)** and cited; we don't reproduce the original figure.
-
-> **Bridge to Era III:** *"That is the lesion: finding today's cancer, now with evidence. But notice what just happened — that detection score was already rising years before the cancer was visible. The same normal mammogram holds more than today's cancer. We stop asking the image about the lesion and start asking it about the whole **image** — and about the patient."*
+> **Bridge to Era III:** *"That is the lesion: finding today's cancer, now with evidence. The same normal mammogram holds more than today's cancer. We stop asking the image about the lesion and start asking it about the whole **image** — and about the patient."*
