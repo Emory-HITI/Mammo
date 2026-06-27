@@ -91,7 +91,7 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era II</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 10</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 9</div>
 </div>
 
 <div class="stage">
@@ -132,7 +132,7 @@
     </section>
 
     <!-- 3 retrospective performance: McKinney -->
-    <section class="slide s-caveat" data-note="So what was the early evidence? In 2020, McKinney and colleagues at Google Health, in Nature, reported an AI that on US data cut false positives by 5.7% and false negatives by 9.4%, exceeded the average radiologist's AUC by over 11 points, and could cut a second reader's workload by 88%. The figure shows example cases the model localized. On paper, superhuman — but retrospective.">
+    <section class="slide s-caveat" data-note="So what was the early evidence? In 2020, McKinney and colleagues at Google Health, in Nature, reported an AI that on US data cut false positives by 5.7% and false negatives by 9.4%, exceeded the average radiologist's AUC by over 11 points, and could cut a second reader's workload by 88%. The figure shows example cases the model localized. On paper, superhuman — but only on clean, curated data.">
       <span class="eyebrow">Era II</span>
       <div class="left">
         <h2>2020: Google publishes its <span class="am">breast-cancer AI model.</span></h2>
@@ -143,7 +143,7 @@
           <div class="chip">AUC <b>+11.5%</b> vs avg radiologist</div>
           <div class="chip">2nd-reader workload <b>−88%</b></div>
         </div>
-        <p class="gap" style="color:var(--ink);font-weight:600;margin-top:14px">Results are promising — but again, only on retrospective, clean data.</p>
+        <p class="gap" style="color:var(--ink);font-weight:600;margin-top:14px">Results are promising — but again, only on clean, curated data.</p>
       </div>
       <div class="right" style="width:30%;max-width:300px">
         <figure style="margin:0">
@@ -180,20 +180,7 @@
       </div>
     </section>
 
-    <!-- 5 retrospective not the bar + adoption slow (combined) -->
-    <section class="slide s-act" data-note="But here is the discipline this talk runs on. Retrospective reader studies have well-known limits: enriched case sets, lab conditions, no real workflow. CAD had good retrospective numbers too. That kind of data is not enough to drive adoption. And it shows: a 2024 European survey found about 48% of radiologists use AI, but of those only 13.7% use it for breast imaging, about one in eight. In the US, by one estimate, only around 2% of practices use it at all.">
-      <span class="eyebrow">Era II</span>
-      <h2>Retrospective data isn't enough to <span class="am">drive adoption.</span></h2>
-      <p class="prompt">Enriched cases, lab conditions, no real workflow — CAD had good retrospective numbers too. The bar is prospective deployment, and real-world uptake has been slow.</p>
-      <div style="display:flex;gap:clamp(28px,5vw,72px);flex-wrap:wrap;align-items:flex-start;margin-top:8px">
-        <div style="flex:1 1 0;min-width:160px"><div style="font-size:clamp(3rem,7.5vw,5.6rem);font-weight:700;line-height:.9;color:var(--amber);font-variant-numeric:tabular-nums">48%</div><div style="font-family:var(--mono);font-size:clamp(.68rem,1.05vw,.82rem);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-top:12px;max-width:22ch;line-height:1.4">European radiologists use AI (2024) — up from 20% in 2018</div></div>
-        <div style="flex:1 1 0;min-width:160px"><div style="font-size:clamp(3rem,7.5vw,5.6rem);font-weight:700;line-height:.9;color:var(--amber);font-variant-numeric:tabular-nums">13.7%</div><div style="font-family:var(--mono);font-size:clamp(.68rem,1.05vw,.82rem);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-top:12px;max-width:22ch;line-height:1.4">of them, for breast imaging — <span style="color:var(--cyan)">about 1 in 8</span></div></div>
-        <div style="flex:1 1 0;min-width:160px"><div style="font-size:clamp(3rem,7.5vw,5.6rem);font-weight:700;line-height:.9;color:var(--amber);font-variant-numeric:tabular-nums">~2%</div><div style="font-family:var(--mono);font-size:clamp(.68rem,1.05vw,.82rem);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-top:12px;max-width:22ch;line-height:1.4">of US practices, by one estimate</div></div>
-      </div>
-      <div class="cite">ESR EuroAIM/EuSoMII survey, Insights Imaging 2024 (n=572) · US estimate: industry report</div>
-    </section>
-
-    <!-- 6 MASAI 2023 safety analysis -->
+        <!-- 6 MASAI 2023 safety analysis -->
     <section class="slide s-act" data-note="In 2023, MASAI published its clinical safety analysis — a randomized trial of about eighty thousand women, roughly forty thousand per arm. Cancer detection was 6.1 per thousand with AI versus 5.1 in controls, a ratio of 1.2, above the lowest acceptable safety limit. Recall was essentially identical, 2.2 versus 2.0 percent; the false-positive rate was 1.5 percent in both; and the positive predictive value of recall was higher with AI, 28 versus 25 percent. Three-quarters of detected cancers were invasive. So: safe, and detecting more — the green light to continue.">
       <span class="eyebrow">Era II</span>
       <h2>2023: MASAI publishes its <span class="am">safety analysis.</span></h2>
@@ -231,7 +218,7 @@
     <!-- 8 MASAI 2026 interval cancer -->
     <section class="slide s-act" data-note="And this year, the result everyone was waiting for: MASAI's interval-cancer study, about 105,000 women. The design is a triage — high-risk exams went to standard human double reading, low-risk exams to a single radiologist. The interval-cancer rate — the cancers that surface between screens — was 12 percent lower, non-inferior. Sensitivity was 80.5 percent with AI versus 73.8 in controls, a near seven-point gain, at the same specificity of 98.5 percent, and the results held across age and breast-density subgroups. This is the level-1 evidence CAD never had.">
       <span class="eyebrow">Era II</span>
-      <h2>Today: MASAI <span class="am">interval-cancer</span> result.</h2>
+      <h2>2026: MASAI <span class="am">interval-cancer</span> result.</h2>
       <p>~105,000 women. A <b>triage design</b>: high-risk exams → standard double reading; low-risk → a single radiologist.</p>
       <div class="twostat" style="margin-top:4px">
         <div class="statblock"><div class="num">−12%</div><div class="lab">interval-cancer rate — non-inferior (ratio 0.88)</div></div>
@@ -285,33 +272,17 @@
       </div>
     </section>
 
-    <!-- 9 bridge to Era III: Hickman -->
-    <section class="slide s-caveat" data-note="And one recent result points straight at the next era. Hickman and colleagues, in Radiology this year, ran three commercial detection systems across sequential screening mammograms. For people later diagnosed with cancer, the AI detection score is already elevated up to ten years before diagnosis and rises steadily toward it; in cancer-free people it stays flat. The score we trained to find today's cancer already carries a signal about tomorrow's. Detection is blurring into risk — and that is exactly where Era III begins. We stop asking the image about the lesion, and start asking it about the whole image, and the patient.">
-      <span class="eyebrow">Era II → Era III</span>
-      <div class="left">
-        <h2>The detection score rises for <span class="am">years before</span> the cancer is visible.</h2>
-        <p class="gap"><b>Hickman et al., Radiology 2026</b> — three detection systems across sequential screens (31,394 individuals). For future cancers the AI score is elevated up to <b>10 years</b> before diagnosis; cancer-free individuals stay flat.</p>
-        <p class="gap">Combined predictive AUC <b>0.63–0.67</b> vs 0.57 for breast density.</p>
-        <p class="gap" style="color:var(--ink);font-weight:600;margin-top:12px">Detection is blurring into risk. We stop asking the image about the lesion — and start asking it about the patient. <span style="color:var(--amber)">That is Era III.</span></p>
-        <p class="gap" style="color:var(--ink-3);font-family:var(--mono);font-size:.62rem">Chart redrawn from Hickman et al., Radiology 2026;319(3):e251309 (Table 2 / Fig 2A).</p>
+        <!-- adoption is slow (moved to end of section) -->
+    <section class="slide s-act" data-note="But here is the discipline this talk runs on. Reader studies have well-known limits: enriched case sets, lab conditions, no real workflow. CAD had good numbers too. That kind of data is not enough to drive adoption. And it shows: a 2024 European survey found about 48% of radiologists use AI, but of those only 13.7% use it for breast imaging, about one in eight. In the US, by one estimate, only around 2% of practices use it at all.">
+      <span class="eyebrow">Era II</span>
+      <h2>Data isn't enough to <span class="am">drive adoption.</span></h2>
+      <p class="prompt">Enriched cases, lab conditions, no real workflow — CAD had good numbers too. The bar is prospective deployment, and real-world uptake has been slow.</p>
+      <div style="display:flex;gap:clamp(28px,5vw,72px);flex-wrap:wrap;align-items:flex-start;margin-top:8px">
+        <div style="flex:1 1 0;min-width:160px"><div style="font-size:clamp(3rem,7.5vw,5.6rem);font-weight:700;line-height:.9;color:var(--amber);font-variant-numeric:tabular-nums">48%</div><div style="font-family:var(--mono);font-size:clamp(.68rem,1.05vw,.82rem);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-top:12px;max-width:22ch;line-height:1.4">European radiologists use AI (2024) — up from 20% in 2018</div></div>
+        <div style="flex:1 1 0;min-width:160px"><div style="font-size:clamp(3rem,7.5vw,5.6rem);font-weight:700;line-height:.9;color:var(--amber);font-variant-numeric:tabular-nums">13.7%</div><div style="font-family:var(--mono);font-size:clamp(.68rem,1.05vw,.82rem);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-top:12px;max-width:22ch;line-height:1.4">of them, for breast imaging — <span style="color:var(--cyan)">about 1 in 8</span></div></div>
+        <div style="flex:1 1 0;min-width:160px"><div style="font-size:clamp(3rem,7.5vw,5.6rem);font-weight:700;line-height:.9;color:var(--amber);font-variant-numeric:tabular-nums">~2%</div><div style="font-family:var(--mono);font-size:clamp(.68rem,1.05vw,.82rem);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);margin-top:12px;max-width:22ch;line-height:1.4">of US practices, by one estimate</div></div>
       </div>
-      <div class="right">
-        <svg class="barchart" viewBox="0 0 360 250" role="img" aria-label="Proportion of future cancers flagged rises as diagnosis nears">
-          <g font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#5C6975">
-            <line x1="52" y1="20" x2="52" y2="200" stroke="rgba(255,255,255,.14)"/><line x1="52" y1="200" x2="346" y2="200" stroke="rgba(255,255,255,.14)"/>
-            <text x="46" y="204" text-anchor="end">0</text><text x="46" y="114" text-anchor="end">25%</text><text x="46" y="24" text-anchor="end">50%</text>
-          </g>
-          <polyline points="70,146 116,144 162,129 208,114 254,65 300,38" fill="none" stroke="#E7AC51" stroke-width="2.6" stroke-linejoin="round"/>
-          <polyline points="70,164 300,164" fill="none" stroke="#5FB7C9" stroke-width="2.2" stroke-dasharray="6 5"/>
-          <g font-family="SFMono-Regular,Menlo,monospace" font-size="9.5" fill="#9DA9B5" text-anchor="middle">
-            <text x="70" y="216">10 yr</text><text x="162" y="216">6 yr</text><text x="208" y="216">4 yr</text><text x="254" y="216">2 yr</text><text x="300" y="216">1 yr</text>
-          </g>
-          <g font-size="10"><line x1="222" y1="30" x2="246" y2="30" stroke="#E7AC51" stroke-width="2.6"/><text x="251" y="34" fill="#ECEFF3" font-family="SFMono-Regular,Menlo,monospace">future cancer</text>
-          <line x1="222" y1="46" x2="246" y2="46" stroke="#5FB7C9" stroke-width="2.2" stroke-dasharray="6 5"/><text x="251" y="50" fill="#9DA9B5" font-family="SFMono-Regular,Menlo,monospace">cancer-free</text></g>
-          <text x="199" y="240" text-anchor="middle" font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#5C6975">% flagged at 90th-centile score · years before diagnosis</text>
-        </svg>
-        <div class="chcap">Detection score climbs toward diagnosis</div>
-      </div>
+      <div class="cite">ESR EuroAIM/EuSoMII survey, Insights Imaging 2024 (n=572) · US estimate: industry report</div>
     </section>
 
   </div>
