@@ -1,0 +1,191 @@
+<title>Frontier Models — Generalist vs Specialist</title>
+<style>
+  :root{
+    --floor:#080B0F;--bg:#0F141A;--bg-2:#151C24;--bg-3:#1B232D;
+    --ink:#ECEFF3;--ink-2:#9DA9B5;--ink-3:#5C6975;--line:rgba(255,255,255,.09);
+    --amber:#E7AC51;--amber-deep:#C98A2E;--cyan:#5FB7C9;--warn:#D9785B;
+    --sans:"Helvetica Neue",Arial,system-ui,sans-serif;--mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
+  body{background:var(--floor);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+  .topbar{width:100%;max-width:1180px;display:flex;justify-content:space-between;align-items:baseline;padding:24px 28px 16px;gap:16px}
+  .brand{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}.brand b{color:var(--amber);font-weight:600}
+  .counter{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink-3);font-variant-numeric:tabular-nums}.counter b{color:var(--amber);font-weight:600}
+  .stage{width:100%;max-width:1180px;padding:0 28px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:radial-gradient(120% 130% at 88% 12%,#18222C 0%,var(--bg) 46%,#0C1116 100%);border:1px solid var(--line);box-shadow:0 36px 80px -44px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.03)}
+  #motif{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .frame::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:6;background:linear-gradient(90deg,var(--amber),transparent 70%);opacity:.7}
+  .slide{position:absolute;inset:0;z-index:2;padding:clamp(28px,4.1vw,58px);display:flex;opacity:0;visibility:hidden;transition:opacity .4s ease}
+  .slide.active{opacity:1;visibility:visible}
+  .eyebrow{position:absolute;top:clamp(24px,3.1vw,34px);left:clamp(28px,4.1vw,58px);font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);opacity:.6}
+  .viewport{position:relative;background:#fff;border-radius:7px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.07),0 0 0 1px rgba(231,172,81,.10);display:flex;flex-direction:column}
+  .vp-head{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;border-bottom:1px solid rgba(0,0,0,.12);font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;color:#5C6975;flex:0 0 auto;background:#0F141A}
+  .vp-head span:first-child{color:rgba(236,239,243,.62)}.vp-head .tag{color:var(--cyan)}
+  .vp-body{position:relative;flex:1 1 auto;min-height:0;background:#fff}
+  img.uiimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#fff}
+  .s-divider{align-items:center;gap:clamp(24px,4vw,54px)}
+  .dv-copy{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:18px}
+  .s-divider .spine{display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);flex-wrap:wrap}
+  .s-divider .spine .on{color:var(--amber)}.s-divider .spine .sep{opacity:.5}
+  .s-divider h1{font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.03;letter-spacing:-.025em;font-weight:700;text-wrap:balance;max-width:16ch}
+  .s-divider h1 .am{color:var(--amber)}
+  .s-divider .sub{color:var(--ink-2);font-size:clamp(1rem,1.55vw,1.22rem);line-height:1.5;max-width:48ch}.s-divider .sub b{color:var(--ink)}
+  .s-primer{flex-direction:column;justify-content:center;gap:clamp(13px,2vw,20px)}
+  .s-primer h2{font-size:clamp(1.4rem,2.7vw,2.05rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;max-width:26ch}.s-primer h2 .am{color:var(--amber)}
+  .s-primer p{font-size:clamp(.95rem,1.45vw,1.15rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-primer p b{color:var(--ink)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink);border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:7px;padding:8px 13px;background:linear-gradient(180deg,var(--bg-3),var(--bg-2))}
+  .chip b{color:var(--cyan)}
+  .cite{font-family:var(--mono);font-size:.66rem;color:var(--ink-3);margin-top:8px}
+  .s-caveat{align-items:center;gap:clamp(22px,3.4vw,44px)}
+  .s-caveat .left{flex:1 1 0;min-width:0}.s-caveat .right{flex:0 0 auto;width:44%;max-width:480px}
+  .s-caveat h2{font-size:clamp(1.3rem,2.4vw,1.95rem);font-weight:700;letter-spacing:-.02em;line-height:1.14;margin-bottom:10px;text-wrap:balance}.s-caveat h2 .am{color:var(--amber)}
+  .s-caveat .gap{font-size:clamp(.86rem,1.28vw,1.04rem);line-height:1.42;color:var(--ink-2);margin-top:8px}.s-caveat .gap b{color:var(--ink)}
+  .barchart{width:100%;height:auto;display:block;overflow:visible}.chcap{font-family:var(--mono);font-size:.6rem;color:var(--ink-3);margin-top:8px;text-align:center}
+  figcaption.attr{font-family:var(--mono);font-size:.58rem;color:var(--ink-3);margin-top:7px;line-height:1.45;text-align:center}figcaption.attr b{color:var(--ink-2);font-weight:400}
+  .s-turn{flex-direction:column;justify-content:center;gap:clamp(16px,2.4vw,26px)}
+  .s-turn h2{font-size:clamp(1.5rem,2.9vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}.s-turn h2 .am{color:var(--amber)}
+  .turn-line{font-size:clamp(1.05rem,1.8vw,1.4rem);line-height:1.42;text-wrap:balance;color:var(--ink);font-weight:500;border-left:2px solid var(--amber);padding-left:16px;max-width:66ch}.turn-line b{color:var(--amber)}
+  .s-turn p{font-size:clamp(.98rem,1.5vw,1.18rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-turn p b{color:var(--ink)}
+  .speaker{width:100%;max-width:1180px;padding:2px 28px 0;display:flex;gap:13px;align-items:flex-start;min-height:56px}
+  .say{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--amber);font-weight:600;padding-top:3px;flex:0 0 auto}
+  .saytext{font-size:clamp(.9rem,1.35vw,1.02rem);line-height:1.5;color:var(--ink-2);max-width:66ch}
+  .controls{width:100%;max-width:1180px;padding:8px 28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .dots{display:flex;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#39434E;border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}.dot:hover{background:var(--ink-3)}.dot.on{background:var(--amber);transform:scale(1.2)}
+  .btns{display:flex;gap:10px}.btn{font-family:var(--sans);font-size:.74rem;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);padding:9px 17px;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s}.btn:hover{border-color:var(--amber);color:var(--amber)}.btn:disabled{color:var(--ink-3);opacity:.5;cursor:default}
+  .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}.hint{font-family:var(--mono);font-size:.64rem;color:var(--ink-3)}
+  @media (max-width:720px){.s-divider,.s-caveat{flex-direction:column}.s-caveat .right{width:90%}.hint{display:none}}
+  @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
+</style>
+
+<div class="topbar">
+  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Frontier models</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 7</div>
+</div>
+
+<div class="stage">
+  <div class="frame" id="frame">
+    <canvas id="motif"></canvas>
+
+    <!-- 1 divider -->
+    <section class="slide s-divider active" data-note="I said the outcome is decided by us, not by the technology. One factor will shape who us is. I have shown you a dozen specialist models — Mirai for risk, Transpara for detection, Virchow for tissue, the breast arterial calcium model. Each was built for one job. The general-purpose frontier models from the large labs — GPT, Gemini, Claude — were not built for radiology, yet they improve faster than any medical model, and each generation handles tasks we assumed required a custom build. So the question to end the body of the talk on: in five years, do we still build our own models, or do we ask the general one? And if it is the latter, who owns it?">
+      <div class="dv-copy">
+        <div class="spine"><span>Specialist</span><span class="sep">vs</span><span class="on">Generalist</span><span class="sep">·</span><span>an open question</span></div>
+        <h1>Will the generalists <span class="am">absorb the field?</span></h1>
+        <p class="sub">Every model in this talk was <b>purpose-built.</b> The frontier models from OpenAI, Google, and Anthropic were not built for medicine — yet they improve every few months. <b>Do we still build our own?</b></p>
+      </div>
+    </section>
+
+    <!-- 2 where generalists perform well -->
+    <section class="slide s-primer" data-note="Where do the generalists already perform well? On medical knowledge and text reasoning: frontier models score above ninety percent on USMLE-style exams — Med-Gemini at 91.1 — across the breadth of medicine. On report drafting in two dimensions: domain-adapted frontier models do well. Med-Gemini-2D chest-X-ray reports were rated equivalent to or better than the original radiologist's report in 43 to 96 percent of cases, depending on whether the film was abnormal or normal, and exceeded prior state of the art on 17 of 20 chest-X-ray tasks, in Google's 2024 work. And they adapt rapidly: fine-tuned on a small labeled set, foundation models often exceed bespoke task-specific models, and generalize better across sites, scanners, and populations — which is exactly the brittleness problem that limits the narrow models. I'll frame the current generation by trajectory, not by specific unpublished benchmark numbers.">
+      <span class="eyebrow">Frontier models</span>
+      <h2>Where the generalists <span class="am">already perform well.</span></h2>
+      <p><b>Medical knowledge:</b> frontier models score <b>~90%+ on USMLE-style exams</b> (Med-Gemini 91.1%), across the breadth of medicine. <b>Rapid adaptation:</b> fine-tuned on small labeled sets they often exceed bespoke models, and generalize better across sites, scanners, and populations.</p>
+      <div class="chips">
+        <div class="chip">USMLE-style: <b>~91%</b> (Med-Gemini)</div>
+        <div class="chip">2D CXR reports <b>"equivalent or better"</b> in <b>43–96%</b> of cases</div>
+        <div class="chip">exceeded prior SOTA on <b>17/20</b> CXR tasks</div>
+      </div>
+      <div class="cite">Med-Gemini — Yang et al., arXiv:2405.03162, 2024 (preprint)</div>
+    </section>
+
+    <!-- 3 where they fall short (bar chart) -->
+    <section class="slide s-caveat" data-note="Where do they still fall short, for now? Their strength is text, not image content — the general vision-language models' edge comes from text knowledge rather than from actually reading the image. On radiology interpretation, diagnostic accuracy across general vision-language models ranges only about 8 to 29 percent, in a systematic evaluation published in Life this year, and roughly 22 percent of the AI-generated reports contain factual errors or hallucinations. Specialists still perform better on the image itself: the purpose-built RadFM model outperforms GPT-4V on radiology tasks. And three dimensions and localization lag: Med-Gemini-3D CT reports were only 53 percent clinically acceptable — adequate for a 2D chest film, much less so for a CT volume.">
+      <span class="eyebrow">Frontier models</span>
+      <div class="left">
+        <h2>Where they still fall short — <span class="am">the image itself.</span></h2>
+        <p class="gap">Their strength is <b>text, not image content.</b> On radiology interpretation, general VLM diagnostic accuracy ranges only <b>~8–29%</b>, and roughly <b>22%</b> of generated reports contain factual errors.</p>
+        <p class="gap">Purpose-built <b>RadFM outperforms GPT-4V</b> on radiology tasks. And 3D lags: Med-Gemini-<b>3D</b> CT reports were only <b>53% clinically acceptable</b> — fine for a 2D film, less so for a volume.</p>
+        <div class="cite">Visual LLMs in Radiology, Life (MDPI) 2026;16(1):66 (PMID 41598221) · RadFM — Wu et al., Nat Commun 2025 · Med-Gemini, 2024</div>
+      </div>
+      <div class="right">
+        <svg class="barchart" viewBox="0 0 360 250" role="img" aria-label="General VLM radiology accuracy vs 3D acceptability">
+          <g font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#5C6975">
+            <line x1="56" y1="20" x2="56" y2="200" stroke="rgba(255,255,255,.14)"/><line x1="56" y1="200" x2="346" y2="200" stroke="rgba(255,255,255,.14)"/>
+            <line x1="56" y1="110" x2="346" y2="110" stroke="rgba(255,255,255,.07)"/>
+            <text x="50" y="204" text-anchor="end">0</text><text x="50" y="114" text-anchor="end">50%</text><text x="50" y="24" text-anchor="end">100%</text>
+          </g>
+          <rect x="92" y="153.6" width="56" height="46.4" rx="2" fill="#D9785B"/>
+          <rect x="232" y="104.8" width="56" height="95.2" rx="2" fill="#5FB7C9"/>
+          <g font-size="11" font-weight="bold" fill="#ECEFF3" text-anchor="middle"><text x="120" y="147">8–29%</text><text x="260" y="98">53%</text></g>
+          <g font-size="9" fill="#9DA9B5" text-anchor="middle"><text x="120" y="214">general VLM</text><text x="120" y="224">image dx</text><text x="260" y="214">Med-Gemini-3D</text><text x="260" y="224">CT acceptable</text></g>
+          <text x="200" y="240" text-anchor="middle" font-size="9.5" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace">~22% of generated reports contain factual errors</text>
+        </svg>
+        <div class="chcap">Text knowledge ≠ reading the image</div>
+      </div>
+    </section>
+
+    <!-- 4 counterintuitive result -->
+    <section class="slide s-primer" data-note="And a counterintuitive result that complicates the procurement instinct. Fine-tuning on medical data does not automatically make a model safer. On a hallucination benchmark, Med-HALT, in 2025, general-purpose models were hallucination-free 76.6 percent of the time, versus only 51.3 percent for the medically specialized models. Narrowing a model can erode its calibration. So the specialist-versus-generalist question is genuinely unsettled, and the procurement instinct — to buy the medical one — may be wrong.">
+      <span class="eyebrow">Frontier models</span>
+      <h2>Specializing a model <span class="am">does not make it safer.</span></h2>
+      <p>On a hallucination benchmark (Med-HALT, 2025), <b>general-purpose models were hallucination-free 76.6% of the time</b>, versus only <b>51.3% for medically "specialized" models.</b> Narrowing a model can erode its calibration.</p>
+      <div class="chips">
+        <div class="chip">general models: <b>76.6%</b> hallucination-free</div>
+        <div class="chip">"specialized" models: <b>51.3%</b></div>
+      </div>
+      <p class="turn-line" style="margin-top:6px;font-size:clamp(1rem,1.6vw,1.25rem)">The specialist-versus-generalist question is unsettled — and the instinct to <b>buy the medical one may be wrong.</b></p>
+      <div class="cite">Med-HALT (MIT Media Lab medical-hallucination eval, 2025; arXiv 2307.15343)</div>
+    </section>
+
+    <!-- 5 bitter lesson -->
+    <section class="slide s-turn" data-note="Here is the thesis to pose, Rich Sutton's bitter lesson, from his 2019 essay — and I attribute it as an argument, not a study. Sutton argues that over decades, general methods that scale with data and compute have repeatedly outperformed systems built on handcrafted domain knowledge — in chess, in computer vision, in language. Radiology AI has spent fifteen years handcrafting. The trajectory of those other fields suggests the generalists eventually take over perception as well. The open question is when, and what we should build in the meantime.">
+      <span class="eyebrow">Frontier models</span>
+      <h2>The thesis: <span class="am">the "bitter lesson."</span></h2>
+      <p class="turn-line">Over decades, <b>general methods that scale with data and compute</b> have repeatedly outperformed systems built on handcrafted domain knowledge — in chess, in vision, in language.</p>
+      <p>Radiology AI has spent fifteen years handcrafting. The trajectory of other fields suggests the generalists eventually take over perception too. <b>The open question is when — and what we build in the meantime.</b></p>
+      <div class="cite">Rich Sutton, "The Bitter Lesson," 2019 essay (an argument, not a study)</div>
+    </section>
+
+    <!-- 6 orchestration -->
+    <section class="slide s-primer" data-note="A likely answer is orchestration. The probable future is not a generalist simply replacing the specialist. It is a stack: a frontier model as the reasoning and orchestration layer — it reads the EHR, talks to the patient, writes the report, decides the next step — and the specialist models as the instruments it calls: the detector, the risk model, the breast-arterial-calcium quantifier, the tissue model. Because measurement still rewards purpose-built precision and calibration. Call it agentic radiology: the generalist conducts, and the specialists play. And increasingly the generalists are themselves domain-adapted, like Med-Gemini, rather than raw.">
+      <span class="eyebrow">Frontier models</span>
+      <h2>A likely answer: <span class="am">orchestration.</span></h2>
+      <p>The probable future is a <b>stack</b>, not a replacement. A <b>frontier model as the reasoning and orchestration layer</b> — it reads the EHR, talks to the patient, writes the report, decides the next step — calling <b>specialist models as instruments:</b> the detector, the risk model, the BAC quantifier, the tissue model.</p>
+      <div class="chips">
+        <div class="chip">generalist = reasoning &amp; orchestration</div>
+        <div class="chip">specialists = the instruments it calls</div>
+        <div class="chip">increasingly <b>domain-adapted</b> (Med-Gemini)</div>
+      </div>
+      <p>Measurement still rewards purpose-built precision and calibration. "Agentic radiology": the generalist conducts; the specialists play.</p>
+    </section>
+
+    <!-- 7 what it means + bridge to close -->
+    <section class="slide s-turn" data-note="So what does this mean for this room? Three things. First, the locus of value moves. If the model becomes a commodity, durable value shifts to what the frontier labs do not have: proprietary, diverse, well-labeled data; rigorous validation; clinical integration; and the care pathway. Compete on data and evidence, not architecture. Second, concentration is a governance problem. A handful of US tech companies controlling the frontier raises issues of cost, dependence, data sovereignty, and access — particularly for Europe and for low- and middle-income countries, which connects back to the equity argument. Who owns the intelligence that reads the world's mammograms? Third, the radiologist's role shifts, from primary detector toward validator, orchestrator, and the source of clinical context and accountability the model cannot supply. And the bridge to the close: whether the result is a specialist model or a frontier generalist, built in Palo Alto or in this room, it does not change what makes it safe. The bar is the same one CAD failed and MASAI cleared.">
+      <span class="eyebrow">Frontier models</span>
+      <h2>What it means <span class="am">for this room.</span></h2>
+      <div class="chips" style="margin-bottom:4px">
+        <div class="chip"><b>Value moves</b> to data, validation, integration — not architecture</div>
+        <div class="chip"><b>Concentration</b> is a governance problem: cost, sovereignty, access</div>
+        <div class="chip"><b>The radiologist</b> shifts toward validator &amp; orchestrator</div>
+      </div>
+      <p class="turn-line">Whether the result is a specialist model or a frontier generalist, built in Palo Alto or in this room, it does not change what makes it safe. <b>The bar is the same one CAD failed and MASAI cleared.</b></p>
+      <div class="cite">Connects to §6 equity · bridges to §7 — the close</div>
+    </section>
+
+  </div>
+  <div class="speaker"><span class="say">SAY</span><p class="saytext" id="note"></p></div>
+</div>
+
+<div class="controls">
+  <div class="dots" id="dots"></div>
+  <div class="hint">← → arrow keys</div>
+  <div class="btns"><button class="btn" id="prev">← Prev</button><button class="btn" id="next">Next →</button></div>
+</div>
+
+<script>
+(function(){"use strict";
+var slides=[].slice.call(document.querySelectorAll('.slide'));var i=0,n=slides.length;
+var curEl=document.getElementById('cur'),noteEl=document.getElementById('note'),prevB=document.getElementById('prev'),nextB=document.getElementById('next'),dotsWrap=document.getElementById('dots');
+var dots=slides.map(function(_,idx){var b=document.createElement('button');b.className='dot'+(idx===0?' on':'');b.setAttribute('aria-label','Slide '+(idx+1));b.addEventListener('click',function(){go(idx);});dotsWrap.appendChild(b);return b;});
+function show(idx){slides.forEach(function(s,k){s.classList.toggle('active',k===idx);});dots.forEach(function(d,k){d.classList.toggle('on',k===idx);});curEl.textContent=idx+1;noteEl.textContent=slides[idx].getAttribute('data-note')||'';prevB.disabled=idx===0;nextB.disabled=idx===n-1;}
+function go(idx){i=Math.max(0,Math.min(n-1,idx));show(i);}
+nextB.addEventListener('click',function(){go(i+1);});prevB.addEventListener('click',function(){go(i-1);});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(n-1);}});
+function drawMotif(c){var dpr=Math.min(window.devicePixelRatio||1,2);var r=c.getBoundingClientRect();var w=Math.max(8,Math.round(r.width*dpr)),h=Math.max(8,Math.round(r.height*dpr));c.width=w;c.height=h;var x=c.getContext('2d');x.clearRect(0,0,w,h);var fx=w*0.84,fy=h*0.20,rings=22;for(var k=1;k<=rings;k++){var rad=(k/rings)*Math.max(w,h)*0.95;var a=0.085*(1-k/rings)+0.012;x.beginPath();for(var t=0;t<=Math.PI*2+0.01;t+=0.18){var pert=1+0.10*Math.sin(t*3+k*0.5)+0.06*Math.cos(t*5-k*0.3);var px=fx+Math.cos(t)*rad*pert;var py=fy+Math.sin(t)*rad*pert*0.9;if(t===0)x.moveTo(px,py);else x.lineTo(px,py);}x.closePath();x.strokeStyle='rgba(231,172,81,'+a.toFixed(3)+')';x.lineWidth=1;x.stroke();}}
+function renderAll(){var m=document.getElementById('motif');if(m)drawMotif(m);}
+var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(renderAll,160);});requestAnimationFrame(function(){requestAnimationFrame(renderAll);});setTimeout(renderAll,300);
+show(0);
+})();
+</script>

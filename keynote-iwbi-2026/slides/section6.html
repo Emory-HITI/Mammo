@@ -1,0 +1,239 @@
+<title>Equity, Governance, and Trust</title>
+<style>
+  :root{
+    --floor:#080B0F;--bg:#0F141A;--bg-2:#151C24;--bg-3:#1B232D;
+    --ink:#ECEFF3;--ink-2:#9DA9B5;--ink-3:#5C6975;--line:rgba(255,255,255,.09);
+    --amber:#E7AC51;--amber-deep:#C98A2E;--cyan:#5FB7C9;--warn:#D9785B;
+    --sans:"Helvetica Neue",Arial,system-ui,sans-serif;--mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
+  body{background:var(--floor);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+  .topbar{width:100%;max-width:1180px;display:flex;justify-content:space-between;align-items:baseline;padding:24px 28px 16px;gap:16px}
+  .brand{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}.brand b{color:var(--amber);font-weight:600}
+  .counter{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink-3);font-variant-numeric:tabular-nums}.counter b{color:var(--amber);font-weight:600}
+  .stage{width:100%;max-width:1180px;padding:0 28px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:radial-gradient(120% 130% at 88% 12%,#18222C 0%,var(--bg) 46%,#0C1116 100%);border:1px solid var(--line);box-shadow:0 36px 80px -44px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.03)}
+  #motif{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .frame::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:6;background:linear-gradient(90deg,var(--amber),transparent 70%);opacity:.7}
+  .slide{position:absolute;inset:0;z-index:2;padding:clamp(28px,4.1vw,58px);display:flex;opacity:0;visibility:hidden;transition:opacity .4s ease}
+  .slide.active{opacity:1;visibility:visible}
+  .eyebrow{position:absolute;top:clamp(24px,3.1vw,34px);left:clamp(28px,4.1vw,58px);font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);opacity:.6}
+  .viewport{position:relative;background:#fff;border-radius:7px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.07),0 0 0 1px rgba(231,172,81,.10);display:flex;flex-direction:column}
+  .vp-head{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;border-bottom:1px solid rgba(0,0,0,.12);font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;color:#5C6975;flex:0 0 auto;background:#0F141A}
+  .vp-head span:first-child{color:rgba(236,239,243,.62)}.vp-head .tag{color:var(--cyan)}
+  .vp-body{position:relative;flex:1 1 auto;min-height:0;background:#fff}
+  img.uiimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#fff}
+  .s-divider{align-items:center;gap:clamp(24px,4vw,54px)}
+  .dv-copy{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:18px}
+  .s-divider .spine{display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);flex-wrap:wrap}
+  .s-divider .spine .on{color:var(--amber)}.s-divider .spine .sep{opacity:.5}
+  .s-divider h1{font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.03;letter-spacing:-.025em;font-weight:700;text-wrap:balance;max-width:16ch}
+  .s-divider h1 .am{color:var(--amber)}
+  .s-divider .sub{color:var(--ink-2);font-size:clamp(1rem,1.55vw,1.22rem);line-height:1.5;max-width:48ch}.s-divider .sub b{color:var(--ink)}
+  .s-primer{flex-direction:column;justify-content:center;gap:clamp(13px,2vw,20px)}
+  .s-primer h2{font-size:clamp(1.4rem,2.7vw,2.05rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;max-width:26ch}.s-primer h2 .am{color:var(--amber)}
+  .s-primer p{font-size:clamp(.95rem,1.45vw,1.15rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-primer p b{color:var(--ink)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink);border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:7px;padding:8px 13px;background:linear-gradient(180deg,var(--bg-3),var(--bg-2))}
+  .chip b{color:var(--cyan)}
+  .cite{font-family:var(--mono);font-size:.66rem;color:var(--ink-3);margin-top:8px}
+  .s-caveat{align-items:center;gap:clamp(22px,3.4vw,44px)}
+  .s-caveat .left{flex:1 1 0;min-width:0}.s-caveat .right{flex:0 0 auto;width:44%;max-width:480px}
+  .s-caveat h2{font-size:clamp(1.3rem,2.4vw,1.95rem);font-weight:700;letter-spacing:-.02em;line-height:1.14;margin-bottom:10px;text-wrap:balance}.s-caveat h2 .am{color:var(--amber)}
+  .s-caveat .gap{font-size:clamp(.86rem,1.28vw,1.04rem);line-height:1.42;color:var(--ink-2);margin-top:8px}.s-caveat .gap b{color:var(--ink)}
+  .barchart{width:100%;height:auto;display:block;overflow:visible}.chcap{font-family:var(--mono);font-size:.6rem;color:var(--ink-3);margin-top:8px;text-align:center}
+  figcaption.attr{font-family:var(--mono);font-size:.58rem;color:var(--ink-3);margin-top:7px;line-height:1.45;text-align:center}figcaption.attr b{color:var(--ink-2);font-weight:400}
+  .s-turn{flex-direction:column;justify-content:center;gap:clamp(16px,2.4vw,26px)}
+  .s-turn h2{font-size:clamp(1.5rem,2.9vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}.s-turn h2 .am{color:var(--amber)}
+  .turn-line{font-size:clamp(1.05rem,1.8vw,1.4rem);line-height:1.42;text-wrap:balance;color:var(--ink);font-weight:500;border-left:2px solid var(--amber);padding-left:16px;max-width:66ch}.turn-line b{color:var(--amber)}
+  .s-turn p{font-size:clamp(.98rem,1.5vw,1.18rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-turn p b{color:var(--ink)}
+  .speaker{width:100%;max-width:1180px;padding:2px 28px 0;display:flex;gap:13px;align-items:flex-start;min-height:56px}
+  .say{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--amber);font-weight:600;padding-top:3px;flex:0 0 auto}
+  .saytext{font-size:clamp(.9rem,1.35vw,1.02rem);line-height:1.5;color:var(--ink-2);max-width:66ch}
+  .controls{width:100%;max-width:1180px;padding:8px 28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .dots{display:flex;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#39434E;border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}.dot:hover{background:var(--ink-3)}.dot.on{background:var(--amber);transform:scale(1.2)}
+  .btns{display:flex;gap:10px}.btn{font-family:var(--sans);font-size:.74rem;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);padding:9px 17px;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s}.btn:hover{border-color:var(--amber);color:var(--amber)}.btn:disabled{color:var(--ink-3);opacity:.5;cursor:default}
+  .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}.hint{font-family:var(--mono);font-size:.64rem;color:var(--ink-3)}
+  @media (max-width:720px){.s-divider,.s-caveat{flex-direction:column}.s-caveat .right{width:90%}.hint{display:none}}
+  @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
+</style>
+
+<div class="topbar">
+  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Equity &amp; governance</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 8</div>
+</div>
+
+<div class="stage">
+  <div class="frame" id="frame">
+    <canvas id="motif"></canvas>
+
+    <!-- 1 divider -->
+    <section class="slide s-divider active" data-note="I started this talk by noting that this field deployed a technology before it proved it worked, and it cost us twenty years and four hundred million dollars a year. I want to close the future half of the talk with the same point. The next time we make that mistake, the cost will not be a wasted budget. It will be measured in lives, and in who gets left behind. So this section is about the hard part: equity, governance, and trust.">
+      <div class="dv-copy">
+        <div class="spine"><span>Lesion</span><span class="sep">→</span><span>Image</span><span class="sep">→</span><span>Patient</span><span class="sep">→</span><span class="on">Population</span></div>
+        <h1>Equity, governance, <span class="am">and trust.</span></h1>
+        <p class="sub">The CAD lesson, at population scale. Deploy without evidence, monitoring, and discipline, and the cost is no longer a wasted budget — it is <b>a wider global mortality gap.</b></p>
+      </div>
+    </section>
+
+    <!-- 2 the gap -->
+    <section class="slide s-caveat" data-note="Start with the gap. In 2022 there were about 2.3 million new female breast cancer cases worldwide and roughly 670,000 deaths — the most common cancer in women, and projected to exceed 6 million cases a year by 2050. But the burden is not shared evenly. Africa's mortality-to-incidence ratio is 0.51, the highest of any region: roughly half the women diagnosed there die, versus far lower ratios in high-income Europe and North America. The same disease has different survival, and that is determined largely by access rather than biology. The WHO Global Breast Cancer Initiative set a target of a two-and-a-half percent annual mortality reduction, which would avert about two and a half million deaths by 2040.">
+      <span class="eyebrow">Equity &amp; governance</span>
+      <div class="left">
+        <h2>The global gap: <span class="am">the same disease, different survival.</span></h2>
+        <p class="gap"><b>2.3 million</b> new female breast-cancer cases and <b>~670,000 deaths</b> worldwide in 2022 — the most common cancer in women, projected to exceed <b>6 million cases/year by 2050.</b></p>
+        <p class="gap">Africa's mortality-to-incidence ratio is <b>0.51</b>, the highest of any region — roughly half the women diagnosed die. The difference is largely <b>access, not biology.</b></p>
+        <div class="cite">GLOBOCAN 2022; Bray et al., CA Cancer J Clin 2024 · GCO 2022 (PMID 39874943) · WHO Global Breast Cancer Initiative 2021</div>
+      </div>
+      <div class="right">
+        <svg class="barchart" viewBox="0 0 360 250" role="img" aria-label="Mortality-to-incidence ratio by region">
+          <g font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#5C6975">
+            <line x1="56" y1="20" x2="56" y2="200" stroke="rgba(255,255,255,.14)"/><line x1="56" y1="200" x2="340" y2="200" stroke="rgba(255,255,255,.14)"/>
+            <line x1="56" y1="110" x2="340" y2="110" stroke="rgba(255,255,255,.07)"/>
+            <text x="50" y="204" text-anchor="end">0</text><text x="50" y="114" text-anchor="end">.30</text><text x="50" y="24" text-anchor="end">.60</text>
+          </g>
+          <rect x="100" y="30" width="64" height="170" rx="2" fill="#D9785B"/>
+          <rect x="210" y="120" width="64" height="80" rx="2" fill="#5FB7C9"/>
+          <g font-size="12.5" font-weight="bold" fill="#ECEFF3" text-anchor="middle"><text x="132" y="22">.51</text><text x="242" y="112">~.24</text></g>
+          <g font-size="9.5" fill="#9DA9B5" text-anchor="middle"><text x="132" y="216">Africa</text><text x="242" y="216">High-income</text></g>
+          <text x="198" y="240" text-anchor="middle" font-size="10" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace">Mortality : incidence ratio</text>
+        </svg>
+        <div class="chcap">Higher ratio = more women diagnosed who die</div>
+      </div>
+    </section>
+
+    <!-- 3 the double-edged framing -->
+    <section class="slide s-primer" data-note="Here is where AI's value is clearest, and where the danger sits. Over two-thirds of the world's population lacks reliable access to a radiologist; as many as fourteen African countries have none at all; many low- and middle-income countries have fewer than five mammography units and fewer than ten radiologists per million people. That count is advocacy-sourced, from RAD-AID and similar reporting, so I say as many as fourteen. The force-multiplier case is strongest where there is no reader at all. But here is the spine of this section: the same models that could bring screening to those fourteen countries were trained on data that largely excludes those countries' women. AI can narrow breast cancer outcome disparities, or it can widen them. The technology does not decide which. We do.">
+      <span class="eyebrow">Equity &amp; governance</span>
+      <h2>Force multiplier, <span class="am">or divide multiplier.</span></h2>
+      <p>The force-multiplier case is strongest where there is no reader at all. But the same models that could serve those countries were <b>trained on data that largely excludes those countries' women.</b></p>
+      <div class="chips">
+        <div class="chip">over <b>two-thirds</b> of the world lacks reliable radiologist access</div>
+        <div class="chip">as many as <b>14</b> African countries have <b>zero</b> radiologists</div>
+        <div class="chip">many LMICs: <b>&lt;5</b> mammography units / <b>&lt;10</b> radiologists per million</div>
+      </div>
+      <p class="turn-line" style="margin-top:6px;font-size:clamp(1rem,1.6vw,1.25rem)">AI can narrow breast-cancer outcome disparities or widen them. The technology does not decide which. <b>We do.</b></p>
+      <p style="font-size:clamp(.82rem,1.2vw,.95rem);color:var(--ink-3)">Access figures are advocacy-sourced (RAD-AID / global-radiology-gap reporting), not a single primary census — phrased as "as many as."</p>
+    </section>
+
+    <!-- 4 gap 1 subgroup performance (bar chart) -->
+    <section class="slide s-caveat" data-note="Between a strong AUC and a tool you can trust sit two gaps we have not closed. The first is subgroup performance: the aggregate number hides the failures. Our group's audits show this across two domains. In breast tomosynthesis, in Nature Communications this year, the overall AUC was 0.91 — but in-situ disease only 0.85 with sensitivity 0.55, calcifications 0.80 and 0.66, dense breasts 0.88 and 0.63. In intracranial hemorrhage, in npj Digital Medicine last year, overall sensitivity was 82.2 percent — but subacute bleeds 45.5 percent, chronic 54.8, outpatient 72.2. Both models were demographically robust; the blind spots were clinical, on the subtle cases where help is needed most. They are found only by looking. Subgroup-stratified performance should be a release criterion. I should confirm my co-authorship on these papers before I frame them in the first person.">
+      <span class="eyebrow">Equity &amp; governance</span>
+      <div class="left">
+        <h2>Gap 1: the aggregate number <span class="am">hides the failures.</span></h2>
+        <p class="gap"><b>Breast (DBT), Nat Commun 2026:</b> overall AUC <b>0.91</b>, but in-situ <b>0.85</b> (sens 0.55), calcifications <b>0.80</b> (0.66), dense breasts <b>0.88</b> (0.63).</p>
+        <p class="gap"><b>Neuro (ICH), npj Digit Med 2025:</b> overall sensitivity <b>82.2%</b>, but subacute <b>45.5%</b>, chronic <b>54.8%</b>, outpatient <b>72.2%.</b></p>
+        <p class="gap">Both were demographically robust; the blind spots were <b>clinical</b> — the subtle cases where help is needed most. <b>Subgroup-stratified performance should be a release criterion.</b></p>
+        <div class="cite">Nat Commun 2026 [your group] · npj Digit Med 2025 [your group] · [VERIFY: confirm co-authorship; double-check CIs]</div>
+      </div>
+      <div class="right">
+        <svg class="barchart" viewBox="0 0 360 250" role="img" aria-label="DBT overall vs subgroup AUC">
+          <g font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#5C6975">
+            <line x1="56" y1="20" x2="56" y2="200" stroke="rgba(255,255,255,.14)"/><line x1="56" y1="200" x2="346" y2="200" stroke="rgba(255,255,255,.14)"/>
+            <line x1="56" y1="110" x2="346" y2="110" stroke="rgba(255,255,255,.07)"/>
+            <text x="50" y="204" text-anchor="end">.50</text><text x="50" y="114" text-anchor="end">.75</text><text x="50" y="24" text-anchor="end">1.0</text>
+          </g>
+          <rect x="74" y="52.8" width="50" height="147.2" rx="2" fill="#E7AC51"/>
+          <rect x="142" y="76" width="50" height="124" rx="2" fill="#5FB7C9"/>
+          <rect x="210" y="92" width="50" height="108" rx="2" fill="#D9785B"/>
+          <rect x="278" y="60.8" width="50" height="139.2" rx="2" fill="#5FB7C9"/>
+          <g font-size="11.5" font-weight="bold" fill="#ECEFF3" text-anchor="middle"><text x="99" y="46">.91</text><text x="167" y="69">.85</text><text x="235" y="85">.80</text><text x="303" y="54">.88</text></g>
+          <g font-size="8.5" fill="#9DA9B5" text-anchor="middle"><text x="99" y="214">overall</text><text x="167" y="214">in-situ</text><text x="235" y="214">calc.</text><text x="303" y="214">dense</text></g>
+          <text x="200" y="238" text-anchor="middle" font-size="10" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace">DBT AUC by subgroup (Nat Commun 2026)</text>
+        </svg>
+        <div class="chcap">Sensitivity falls further than AUC on the same subgroups</div>
+      </div>
+    </section>
+
+    <!-- 5 gap 2 explainability + bias we cannot see -->
+    <section class="slide s-primer" data-note="The second gap is explainability: we usually cannot say why a model fails. When that tomosynthesis model misses an in-situ cancer, we mostly cannot explain it, so we cannot anticipate the next miss. AsymMirai, from earlier in the talk, showed models can be built to be interrogated; most deployed tools are not. Without explanation, subgroup auditing is the only check available, and most deployments skip it. Here is the sharpest version, a finding from our group. Gichoya and colleagues, in Lancet Digital Health in 2022, showed deep learning can predict a patient's self-reported race from medical images: AUC 0.81 on mammography, 0.91 to 0.99 on chest X-ray, even from corrupted, cropped, and noised images, and not through any known proxy — density gave an AUC of only 0.61. No human radiologist can see race on a mammogram. The model can, and we still do not fully know how. If a model can learn that, it can learn to act on it without anyone noticing. That is the hidden-bias problem in one experiment. I need to confirm my co-authorship before using the first-person frame.">
+      <span class="eyebrow">Equity &amp; governance</span>
+      <h2>Gap 2: we usually <span class="am">cannot say why.</span></h2>
+      <p>When a model misses an in-situ cancer, we mostly cannot explain it, so we cannot anticipate the next miss. <b>AsymMirai</b> showed models can be built to be interrogated; most deployed tools are not. Without explanation, <b>subgroup auditing is the only check</b> — and most deployments skip it.</p>
+      <p><b>Bias we cannot see:</b> deep learning predicts a patient's self-reported race from medical images — even from corrupted, cropped, and noised images, and <b>not through any known proxy</b> (density AUC only 0.61). No radiologist can see race on a mammogram; the model can, and we do not fully know how.</p>
+      <div class="chips">
+        <div class="chip">race from mammography: <b>AUC 0.81</b></div>
+        <div class="chip">chest X-ray: <b>AUC 0.91–0.99</b></div>
+        <div class="chip">density proxy: only <b>AUC 0.61</b></div>
+      </div>
+      <div class="cite">Gichoya et al., Lancet Digital Health 2022 (DOI 10.1016/S2589-7500(22)00063-2) · [VERIFY: confirm Trivedi co-authorship]</div>
+    </section>
+
+    <!-- 6 data fix + drift + de-skilling -->
+    <section class="slide s-caveat" data-note="Performance also does not transfer cleanly. Externally validated mammography AI degrades on under-represented groups — worse in Hispanic women, and in women with a prior breast cancer. Models trained on homogeneous high-income data are brittle. The fix begins with data: EMBED, from Jeong and colleagues in Radiology AI in 2023, is 3.4 million mammographic images from about 116,000 women, roughly 42 percent African American — but frameworks still do not require developers to disclose dataset composition. Then there is drift we do not monitor. Models are not static — new scanners and protocols, phenotype drift, concept drift all degrade real-world performance. The FDA had authorized about 1,250 AI/ML devices by early 2025, nearing 1,450 by mid-year, about 76 percent of them radiology, and finalized its Predetermined Change Control Plan guidance in December 2024 — yet few cleared devices carry one. A clearance is a snapshot, not a guarantee. And we de-skill the humans meant to be the safeguard. Dratsch and colleagues, in Radiology in 2023, showed that when a sometimes-wrong AI was present and was wrong, even very experienced readers dropped to about 46 percent accuracy, from over 80. Budzyn and colleagues, in Lancet Gastroenterology and Hepatology this year, measured de-skilling directly: after AI was introduced for colonoscopy, endoscopists' unaided detection fell from 28.4 to 22.4 percent. The EU AI Act mandates a human in the loop, but the human can be the weak link. Oversight is a design problem, not a checkbox.">
+      <span class="eyebrow">Equity &amp; governance</span>
+      <div class="left">
+        <h2>Brittle data, drift we don't monitor, <span class="am">humans we de-skill.</span></h2>
+        <p class="gap"><b>Transfer:</b> externally validated mammography AI degrades on under-represented groups (worse in Hispanic women, prior-cancer patients). The fix begins with data — <b>EMBED:</b> 3.4M images from ~116,000 women, ~42% African American (Jeong, Radiology: AI 2023).</p>
+        <p class="gap"><b>Drift:</b> FDA authorized <b>~1,250</b> AI/ML devices by early 2025 (~1,450 by mid-year, ~76% radiology) and finalized PCCP guidance (Dec 2024) — yet few carry one. A clearance is a snapshot, not a guarantee.</p>
+        <p class="gap"><b>De-skilling:</b> the human-in-the-loop can be the weak link. Oversight is a design problem, not a checkbox.</p>
+      </div>
+      <div class="right">
+        <svg class="barchart" viewBox="0 0 360 250" role="img" aria-label="Automation bias and de-skilling effects">
+          <g font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#5C6975">
+            <line x1="56" y1="20" x2="56" y2="200" stroke="rgba(255,255,255,.14)"/><line x1="56" y1="200" x2="346" y2="200" stroke="rgba(255,255,255,.14)"/>
+            <line x1="56" y1="110" x2="346" y2="110" stroke="rgba(255,255,255,.07)"/>
+            <text x="50" y="204" text-anchor="end">0</text><text x="50" y="114" text-anchor="end">50%</text><text x="50" y="24" text-anchor="end">100%</text>
+          </g>
+          <rect x="84" y="52.8" width="44" height="147.2" rx="2" fill="#5FB7C9"/>
+          <rect x="138" y="117.6" width="44" height="82.4" rx="2" fill="#D9785B"/>
+          <rect x="232" y="148.8" width="44" height="51.2" rx="2" fill="#5FB7C9"/>
+          <rect x="286" y="159.2" width="44" height="40.8" rx="2" fill="#D9785B"/>
+          <g font-size="11" font-weight="bold" fill="#ECEFF3" text-anchor="middle"><text x="106" y="46">~82%</text><text x="160" y="111">~46%</text><text x="254" y="142">28.4%</text><text x="308" y="153">22.4%</text></g>
+          <g font-size="8" fill="#9DA9B5" text-anchor="middle"><text x="106" y="213">expert</text><text x="106" y="223">baseline</text><text x="160" y="213">AI wrong</text><text x="254" y="213">unaided</text><text x="254" y="223">pre-AI</text><text x="308" y="213">unaided</text><text x="308" y="223">post-AI</text></g>
+          <text x="106" y="238" text-anchor="middle" font-size="8.5" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace">Dratsch 2023</text>
+          <text x="281" y="238" text-anchor="middle" font-size="8.5" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace">Budzyń 2025</text>
+        </svg>
+        <div class="chcap">Automation bias (L) · measured de-skilling (R)</div>
+      </div>
+    </section>
+
+    <!-- 7 governance -->
+    <section class="slide s-primer" data-note="Governance: Europe is writing the rules the world inherits. The EU AI Act came into force on the first of August 2024. Medical AI is largely classed high-risk — meaning risk management, data governance, transparency, human oversight, robustness, and post-market monitoring. The high-risk obligations apply from August 2026; AI medical devices under the Medical Device Regulation transition by August 2027. This is the most concrete governance framework relevant to this audience. There is a double-regulation burden: European medical AI must satisfy both the MDR or IVDR and the AI Act, with the compliance cost and the tension with innovation that implies. And reimbursement is not the same as clearance — a cleared model that no one pays for does not reach patients. The US still lacks a dedicated CMS pathway for most diagnostic AI; the NHS is taking a different approach with EDITH against roughly a thirty percent reader shortfall, though those figures are press-sourced. The ownership line, and a bridge toward the close: this audience of European regulators, clinicians, and scientists will write the governance model that much of the rest of the world inherits. Getting it right here sets the standard elsewhere.">
+      <span class="eyebrow">Equity &amp; governance</span>
+      <h2>Europe writes the rules <span class="am">the world inherits.</span></h2>
+      <p><b>EU AI Act</b> — in force 1 Aug 2024. Medical AI is largely <b>high-risk</b>: risk management, data governance, transparency, human oversight, robustness, post-market monitoring. High-risk obligations apply from <b>Aug 2026</b>; AI medical devices under MDR transition by <b>Aug 2027.</b></p>
+      <div class="chips">
+        <div class="chip">double regulation: <b>MDR/IVDR + AI Act</b></div>
+        <div class="chip">reimbursement <b>≠</b> clearance</div>
+        <div class="chip">NHS EDITH vs ~30% reader shortfall</div>
+      </div>
+      <p class="turn-line" style="margin-top:6px;font-size:clamp(1rem,1.6vw,1.25rem)">This audience will write the governance model much of the world inherits. <b>Getting it right here sets the standard elsewhere.</b></p>
+      <div class="cite">Reg (EU) 2024/1689 (EU AI Act) · NHS / EDITH figures press-sourced [VERIFY]</div>
+    </section>
+
+    <!-- 8 the choice (bridge to §7) -->
+    <section class="slide s-turn" data-note="So this is the choice, and it is the through-line of the whole section. Force multiplier, or divide multiplier. Same models, same evidence base. The difference is entirely in the choices we make about data, validation, monitoring, and access. The technology is neutral; the outcome is not. The next time this field deploys before it proves, the cost will be measured in lives and in who gets left behind — and that brings us to the principles, and to the close.">
+      <span class="eyebrow">Equity &amp; governance</span>
+      <h2>Force multiplier <span class="am">⟷</span> divide multiplier.</h2>
+      <p class="turn-line">Same models, same evidence base. The difference is in the choices we make about <b>data, validation, monitoring, and access.</b> The technology is neutral; the outcome is not.</p>
+      <p>The next time this field deploys before it proves, the cost is measured in lives — and in who gets left behind. The principles, and what to do, come next.</p>
+      <div class="cite">Bridges to §7 — principles and the close</div>
+    </section>
+
+  </div>
+  <div class="speaker"><span class="say">SAY</span><p class="saytext" id="note"></p></div>
+</div>
+
+<div class="controls">
+  <div class="dots" id="dots"></div>
+  <div class="hint">← → arrow keys</div>
+  <div class="btns"><button class="btn" id="prev">← Prev</button><button class="btn" id="next">Next →</button></div>
+</div>
+
+<script>
+(function(){"use strict";
+var slides=[].slice.call(document.querySelectorAll('.slide'));var i=0,n=slides.length;
+var curEl=document.getElementById('cur'),noteEl=document.getElementById('note'),prevB=document.getElementById('prev'),nextB=document.getElementById('next'),dotsWrap=document.getElementById('dots');
+var dots=slides.map(function(_,idx){var b=document.createElement('button');b.className='dot'+(idx===0?' on':'');b.setAttribute('aria-label','Slide '+(idx+1));b.addEventListener('click',function(){go(idx);});dotsWrap.appendChild(b);return b;});
+function show(idx){slides.forEach(function(s,k){s.classList.toggle('active',k===idx);});dots.forEach(function(d,k){d.classList.toggle('on',k===idx);});curEl.textContent=idx+1;noteEl.textContent=slides[idx].getAttribute('data-note')||'';prevB.disabled=idx===0;nextB.disabled=idx===n-1;}
+function go(idx){i=Math.max(0,Math.min(n-1,idx));show(i);}
+nextB.addEventListener('click',function(){go(i+1);});prevB.addEventListener('click',function(){go(i-1);});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(n-1);}});
+function drawMotif(c){var dpr=Math.min(window.devicePixelRatio||1,2);var r=c.getBoundingClientRect();var w=Math.max(8,Math.round(r.width*dpr)),h=Math.max(8,Math.round(r.height*dpr));c.width=w;c.height=h;var x=c.getContext('2d');x.clearRect(0,0,w,h);var fx=w*0.84,fy=h*0.20,rings=22;for(var k=1;k<=rings;k++){var rad=(k/rings)*Math.max(w,h)*0.95;var a=0.085*(1-k/rings)+0.012;x.beginPath();for(var t=0;t<=Math.PI*2+0.01;t+=0.18){var pert=1+0.10*Math.sin(t*3+k*0.5)+0.06*Math.cos(t*5-k*0.3);var px=fx+Math.cos(t)*rad*pert;var py=fy+Math.sin(t)*rad*pert*0.9;if(t===0)x.moveTo(px,py);else x.lineTo(px,py);}x.closePath();x.strokeStyle='rgba(231,172,81,'+a.toFixed(3)+')';x.lineWidth=1;x.stroke();}}
+function renderAll(){var m=document.getElementById('motif');if(m)drawMotif(m);}
+var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(renderAll,160);});requestAnimationFrame(function(){requestAnimationFrame(renderAll);});setTimeout(renderAll,300);
+show(0);
+})();
+</script>
