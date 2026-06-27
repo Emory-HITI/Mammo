@@ -1,4 +1,4 @@
-<title>Era III — From Detection to Risk (The mammogram as a biosensor)</title>
+<title>Era III — From Detection to Risk</title>
 <style>
   :root{
     --floor:#080B0F;--bg:#0F141A;--bg-2:#151C24;--bg-3:#1B232D;
@@ -129,30 +129,46 @@
   .hint{font-family:var(--mono);font-size:.64rem;color:var(--ink-3)}
   @media (max-width:720px){.s-divider,.s-quote,.figrow{flex-direction:column}.fnote{border-left:none;border-top:1px solid var(--line);padding-left:0;padding-top:14px}.hint{display:none}}
   @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
+
+  /* maturity gradient table */
+  .s-table{flex-direction:column;justify-content:center;gap:clamp(12px,1.7vw,18px)}
+  .s-table h2{font-size:clamp(1.35rem,2.5vw,2rem);font-weight:700;letter-spacing:-.02em}.s-table h2 .am{color:var(--amber)}
+  .mtbl{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:clamp(.74rem,1.05vw,.94rem)}
+  .mtbl th{text-align:left;font-family:var(--mono);font-size:.6rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);padding:8px 14px 8px 0;border-bottom:1px solid var(--line);font-weight:400}
+  .mtbl td{padding:9px 14px 9px 0;border-bottom:1px solid rgba(255,255,255,.05);color:var(--ink-2);vertical-align:top;line-height:1.3}
+  .mtbl td.s{color:var(--ink);font-weight:600;white-space:nowrap}
+  .mtbl td b{color:var(--cyan)}.mtbl tr.hl td.s{color:var(--amber)}
+  .s-table .punch{font-size:clamp(1rem,1.6vw,1.3rem);line-height:1.4;color:var(--ink);border-left:2px solid var(--amber);padding-left:15px;max-width:66ch;text-wrap:balance}
+  .s-table .punch b{color:var(--amber)}
 </style>
 
 <div class="topbar">
-  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era III · the future</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 9</div>
+  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era III · the image</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 10</div>
 </div>
 
 <div class="stage">
   <div class="frame" id="frame">
     <canvas id="motif"></canvas>
 
-    <!-- 1 divider: callback to the hook -->
-    <section class="slide s-divider active" data-note="Come back to today. Same reading room, a normal mammogram — two readers, both right, no cancer. But one model just flagged her: about a five-year risk. It was not looking for a lesion; there wasn't one. It was reading the tissue. There were hidden signals in the image. That is the turn this section is about — the mammogram stops being only a detector and becomes a biosensor. And this one is already FDA-cleared.">
-      <div class="dv-copy">
+    <!-- 1 divider: brink of Era III -->
+    <section class="slide s-divider active" data-note="We are now at the brink of Era III. Instead of looking for lesions, we start reading the whole image — and even the whole patient. Here is the normal mammogram I showed you at the start. Three more things come out of this one image: a tissue-based estimate of her breast-cancer risk, a cardiovascular signal from breast arterial calcification, and a recurrence score from her tissue. We will get to the heart and the tissue later. First, let's talk about risk.">
+      <div class="dv-copy" style="flex:1 1 0">
         <div class="spine"><span>Lesion</span><span class="sep">→</span><span class="on">Image</span><span class="sep">→</span><span>Patient</span><span class="sep">→</span><span>Population</span></div>
-        <h1>Hidden signals <span class="am">in the image.</span></h1>
-        <p class="sub">A normal mammogram. Two readers, both right — no cancer today. But a model reads the same pixels and forecasts her five-year risk. The question changes: from <b style="color:var(--ink)">"is there cancer now?"</b> to <b style="color:var(--ink)">"what is her risk, and how hard should we look?"</b></p>
-        <p class="sub" style="color:var(--ink-3);font-size:clamp(.9rem,1.3vw,1.05rem)">The mammogram stops being only a detector. It becomes a biosensor — and this one is already cleared by the FDA.</p>
+        <h1>From detection <span class="am">to risk.</span></h1>
+        <p class="sub">We're at the brink of Era III — no longer just finding the lesion, but reading the whole image, and the whole patient. The same normal mammogram from the start holds <b style="color:var(--ink)">three more things:</b></p>
+        <div class="chips">
+          <div class="chip"><b>1</b> &nbsp;tissue-based 5-year risk</div>
+          <div class="chip"><b>2</b> &nbsp;cardiovascular risk (BAC)</div>
+          <div class="chip"><b>3</b> &nbsp;a recurrence score</div>
+        </div>
+        <p class="sub" style="color:var(--ink-3)">We'll come back to the heart (§5) and the tissue (§4). First — risk.</p>
       </div>
     </section>
 
     <!-- 2 the old world -->
-    <section class="slide s-quote" data-note="For forty years our only imaging risk marker was density — a coarse, subjective category. The questionnaire models we layered on top were weak: Tyrer-Cuzick predicts five-year risk at an AUC around 0.62, barely better than a coin flip at the individual level. We were sorting women into risk tiers with tools that could not really tell them apart.">
-      <span class="eyebrow">Era III · the old world</span>
+    <section class="slide s-quote" data-note="For forty years the only risk signal we could read off the image was breast density — coarse and subjective. The questionnaire models we layered on top were weak: Tyrer-Cuzick predicts five-year risk at an AUC around 0.62, barely better than chance at the level of the individual.">
+      <span class="eyebrow">Era III</span>
       <div class="qmain">
         <blockquote>For forty years, the only risk signal we could read off the image was <span style="color:var(--amber)">density</span> — coarse, subjective, and a weak predictor.</blockquote>
         <div class="qcite">Tyrer-Cuzick, Gail, BCSC — questionnaire-and-density models</div>
@@ -160,28 +176,28 @@
       <div class="qside">
         <div class="qstat"><div class="n">~0.62</div><div class="l">Tyrer-Cuzick v8 · 5-yr AUC</div></div>
         <div class="qstat"><div class="n">~0.59–0.61</div><div class="l">density-augmented Gail / TC</div></div>
-        <div class="qstat"><div class="n" style="color:var(--ink-2);font-weight:400;font-size:1rem">Strong at the population level.<br>Weak for the woman in front of you.</div></div>
+        <div class="qstat"><div class="n" style="color:var(--ink-2);font-weight:400;font-size:1rem">Strong across a population.<br>Weak for the woman in front of you.</div></div>
       </div>
     </section>
 
-    <!-- 3 the pivot: image-based DL reads risk -->
-    <section class="slide s-primer" data-note="Then the pixels turned out to carry risk. Yala and colleagues at MIT and MGH showed a deep network reading the mammogram itself beat the questionnaire models. Mirai, the next version, was built to predict across time, tolerate missing risk-factor data, and stay consistent across machines. Externally validated in three countries, C-index 0.76 to 0.81. Among women who went on to develop cancer within five years, Mirai flagged 41 percent as high-risk — versus 23 percent for Tyrer-Cuzick.">
-      <span class="eyebrow">Era III · the pivot</span>
-      <h2>Deep-learning models predict risk from the <span class="am">mammogram itself.</span></h2>
-      <p>Yala et al. (Radiology 2019) showed a network reading the image itself out-predicted the classical models. <b>Mirai</b> (Yala et al., Science Translational Medicine 2021) was built to predict across time points, tolerate missing risk-factor data, and stay consistent across scanners.</p>
+    <!-- 3 the pivot -->
+    <section class="slide s-primer" data-note="Then the image itself turned out to carry risk. Yala and colleagues at MIT and MGH showed a deep network reading the mammogram out-predicted the questionnaire models. Mirai, the next version, was built to predict across time, tolerate missing risk-factor data, and stay consistent across machines. Externally validated in three countries, C-index 0.76 to 0.81. Among women who developed cancer within five years, Mirai flagged 41.5 percent as high-risk, versus 22.9 percent for Tyrer-Cuzick.">
+      <span class="eyebrow">Era III</span>
+      <h2>The image itself <span class="am">carries risk</span> — beyond density.</h2>
+      <p><b>Yala et al. (Radiology 2019)</b> showed a network reading the image out-predicted the classical models. <b>Mirai</b> (Yala et al., Sci Transl Med 2021) predicts across time points, tolerates missing risk-factor data, and stays consistent across scanners.</p>
       <div class="chips">
-        <div class="chip"><b>C-index 0.76 / 0.81 / 0.79</b> — validated US · Sweden · Taiwan</div>
+        <div class="chip">C-index <b>0.76 / 0.81 / 0.79</b> — US · Sweden · Taiwan</div>
         <div class="chip"><b>41.5%</b> of future cancers flagged high-risk <span style="color:var(--ink-3)">(vs 22.9% Tyrer-Cuzick)</span></div>
       </div>
-      <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">But a number like 0.81 is a <b style="color:var(--ink-2)">black box</b> answer. For a screening program, "it works" is not enough — we have to know <b style="color:var(--ink-2)">why</b>.</p>
-      <div class="cite">Yala et al., Radiology 2019 · Mirai — Yala et al., Sci Transl Med 2021 (DOI 10.1126/scitranslmed.aba4373)</div>
+      <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">But a C-index is a <b style="color:var(--ink-2)">black-box</b> number. For a screening program, we have to know <b style="color:var(--ink-2)">why</b> it works.</p>
+      <div class="cite">Yala et al., Radiology 2019 · Mirai — Sci Transl Med 2021 (DOI 10.1126/scitranslmed.aba4373)</div>
     </section>
 
-    <!-- 4 ARCHITECTURE FIGURE SLOT (AsymMirai vs Mirai) -->
-    <section class="slide s-fig" data-note="Here is why explainability matters and what it looks like done right. On the right is Mirai: four images into CNNs, pooled, through a transformer and a risk-factor predictor, out come five years of risk. A black box. On the left is AsymMirai — our group's work with Duke. We asked what Mirai was actually keying on, and the answer was surprisingly simple: local bilateral dissimilarity, the difference between left and right breast tissue in the same region. A transparent model built only on that asymmetry nearly matched the black box: one-year AUC 0.79 versus 0.84. A signal you can point to on the image.">
-      <span class="eyebrow">Era III · explainability done right</span>
+    <!-- 4 AsymMirai architecture -->
+    <section class="slide s-fig" data-note="Here is explainability done right, and it is our group's work with Duke. We asked what Mirai was actually keying on. The answer was surprisingly simple: local bilateral dissimilarity — the difference between left and right breast tissue in the same region. A transparent model built only on that asymmetry nearly matched the black box: one-year AUC 0.79 versus 0.84, and in stable-tissue subgroups three-year AUC 0.92. A risk signal you can point to on the image, and audit for where it fails.">
+      <span class="eyebrow">Era III</span>
       <div class="fhead">AsymMirai: much of the signal is <span class="am">local bilateral asymmetry.</span></div>
-      <p class="fsub">Mirai is accurate but opaque. <b>AsymMirai</b> (Donnelly et al., Radiology 2024 — Duke + Emory) reverse-engineered what it keys on: the left-vs-right tissue difference. A transparent model on that signal alone nearly matched the black box.</p>
+      <p class="fsub"><b>AsymMirai</b> (Donnelly et al., Radiology 2024 — Duke + Emory, EMBED 210,067 mammograms) reverse-engineered Mirai's signal: the left-vs-right tissue difference. A transparent model on that alone nearly matched the black box — <b>1-yr AUC 0.79 vs 0.84; 3-yr AUC 0.92</b> in stable tissue. Performance you can explain is performance you can audit.</p>
       <figure style="margin:6px 0 0;flex:1 1 auto;min-height:0;display:flex;flex-direction:column">
         <svg viewBox="0 0 1180 392" style="width:100%;height:auto;max-height:100%;display:block;overflow:visible" font-family="var(--sans)">
           <defs><marker id="ah3" markerWidth="7" markerHeight="7" refX="5.2" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5C6975"/></marker></defs>
@@ -262,83 +278,85 @@
       </figure>
     </section>
 
-    <!-- 5 LONGITUDINAL FIGURE SLOT -->
-    <section class="slide s-fig" data-note="And the signal is visible early. This is one patient, left MLO, the same region tracked over three screening rounds. In 2014, at age 69, the model's attention sits on a subtle asymmetry the readers called normal. Seventeen months later it intensifies. By 2017 it is unmistakable — and that is where the cancer arose. The risk score was rising for years before the diagnosis. This is the same phenomenon Hickman described in the detection models: the signal builds on the image long before we call it cancer.">
-      <span class="eyebrow">Era III · the signal builds early</span>
-      <div class="fhead">The asymmetry was present <span class="am">years before</span> the diagnosis.</div>
-      <p class="fsub">One patient, left MLO, same region across three screening rounds. The model's attention localizes to a growing asymmetry the readers reasonably called normal — and that is where the cancer arose.</p>
-      <div class="figrow">
-        <figure class="figslot" style="margin:0;flex:1.7 1 0">
-          <div class="figframe">
-            <!-- Replace this block with: <img src="data:image/jpeg;base64,..." alt="AsymMirai longitudinal case 2014/2015/2017"> -->
-            <div class="ph-ic">▢</div>
-            <div class="ph-t">Longitudinal case — 2014 / 2015 / 2017</div>
-            <div class="ph-s">drop the triptych here (L MLO, age 69 → 17 mo → 21 mo; red box on the localized asymmetry that became cancer)</div>
-          </div>
-          <figcaption class="attr"><b>Source:</b> Donnelly et al., "AsymMirai," Radiology 2024;310(3):e232780 · pubs.rsna.org/doi/10.1148/radiol.232780</figcaption>
-        </figure>
-        <div class="fnote">
-          <div class="pt">Risk is a trajectory, not a snapshot.<span>The score was rising <b>for years</b> before the diagnosis.</span></div>
-          <div class="pt">Same phenomenon as detection.<span>Hickman (§2): detection scores also climb across a decade <b>before</b> we call it cancer.</span></div>
-        </div>
+    <!-- 5 Clairity FDA-cleared -->
+    <section class="slide s-primer" data-note="And this is no longer research. In June 2025, Clairity received FDA De Novo authorization — the first tool to predict five-year breast-cancer risk from a routine screening mammogram alone, validated across about 77,000 mammograms from five sites, and it was added to the 2026 NCCN screening guidance. The path from research model to cleared product to guideline took under five years. There is not yet a primary peer-reviewed validation paper.">
+      <span class="eyebrow">Era III</span>
+      <h2>From research model to a <span class="am">cleared product.</span></h2>
+      <p><b>Clairity</b> — <b>FDA De Novo authorization, June 2025</b>: the first tool to predict 5-year breast-cancer risk from a routine screening mammogram alone.</p>
+      <div class="chips">
+        <div class="chip">validated across <b>~77,000 mammograms · 5 sites</b></div>
+        <div class="chip">added to <b>2026 NCCN</b> screening guidance</div>
       </div>
+      <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">Research model to cleared product to guideline in under five years — though there is <b style="color:var(--ink-2)">no primary peer-reviewed validation paper yet.</b></p>
+      <div class="cite">Clairity — FDA De Novo 2025 · NCCN 2026 (AI-based risk assessment)</div>
     </section>
 
     <!-- 6 the trap: population != individual -->
-    <section class="slide s-primer" data-note="Now the caveat, and it is the whole ballgame for using these clinically. Every number I just showed — 0.76, 0.81, 0.84 — is a population number. An AUC tells you how a model sorts a million women; it tells you little about the one in your clinic. Discrimination is not calibration: whether a predicted eight-percent risk really means eight percent is a separate, less-reported property. And the image model and the clinical model flag different women. Arasu showed the AI's top-risk decile and the clinical model's overlapped only partially. For a large share of women, the old number and the new number disagree — and that disagreement, not the average AUC, is the decision in front of you.">
-      <span class="eyebrow">Era III · the trap in a good AUC</span>
+    <section class="slide s-primer" data-note="Now the caveat, and it is the whole ballgame for using these clinically. Every number I just showed — 0.76, 0.81, 0.84 — is a population number. An AUC tells you how a model sorts a million women; it tells you little about the one in your clinic. Discrimination is not calibration: whether a predicted eight-percent risk really means eight percent is a separate, less-reported property, and it is the one that governs whether she gets an MRI.">
+      <span class="eyebrow">Era III</span>
       <h2>A population AUC is not an <span class="am">individual</span> prediction.</h2>
-      <p><b>Discrimination ≠ calibration.</b> An AUC measures how well a model <i>ranks</i> a million women. Whether a predicted "8% risk" actually means 8% — calibration — is a separate property, less often reported, and it is the one that governs <i>her</i> decision.</p>
-      <div class="chips">
-        <div class="chip"><b>~28%</b> of future cancers in the AI top decile</div>
-        <div class="chip"><b>~21%</b> in the clinical-model top decile</div>
-        <div class="chip">the two high-risk groups <b>overlap only partially</b></div>
-      </div>
-      <p style="font-size:clamp(.9rem,1.3vw,1.05rem)">The image model and the clinical model flag <b>different women</b>. That disagreement — not the average AUC — is the decision in front of you.</p>
-      <div class="cite">Arasu et al., Radiology 2023;307(5):e222733</div>
+      <p>An AUC measures how well a model <i>ranks</i> a million women. <b>Discrimination ≠ calibration:</b> whether a predicted "8% risk" actually means 8% is a separate property — less often reported — and it is the one that governs <i>her</i> decision to get an MRI.</p>
+      <p style="font-size:clamp(.9rem,1.3vw,1.05rem)">Image models discriminate well. Their <b>calibration</b> across sites, scanners, and subgroups is the under-reported, harder problem.</p>
     </section>
 
     <!-- 7 four quadrants -->
-    <section class="slide s-quad" data-note="So picture the real decision as a two-by-two. The classical model on one axis, the image model on the other. When they agree, management is easy: both low, standardize or extend the interval; both high, escalate to MRI. The interesting cells are the disagreements. Classical-low but image-high: the tissue is doing something the questionnaire never captured — look harder now, short-interval follow-up, a second read of this mammogram. And the dangerous cell, classical-high but image-low: a BRCA carrier with a quiet-looking image. The reassuring image must not override known germline risk. De-escalating there would be the most consequential error this technology invites. The models measure different things — inherited risk versus current tissue state — and each carries its own action.">
-      <span class="eyebrow">Era III · the clinically relevant view</span>
-      <h2>Image-based and clinical risk models often flag <span class="am">different women.</span></h2>
+    <section class="slide s-quad" data-note="So picture the real decision as a two-by-two: the classical or genetic model on one axis, the image model on the other. When they agree, management is easy. The interesting cells are the disagreements. Classical-low but image-high: the tissue is doing something the questionnaire never captured — look harder now. And the dangerous cell, classical-high but image-low: a BRCA carrier, or a high polygenic-score patient, with a quiet-looking image. The reassuring image must not override known inherited risk — and a high-PRS patient is in exactly the same position as the BRCA carrier. They measure different things: the genome asks what she inherited; the image asks what her tissue is doing now.">
+      <span class="eyebrow">Era III</span>
+      <h2>Two models, <span class="am">two questions</span> — match the action to the axis.</h2>
       <div class="quadwrap">
         <div class="qlabel"></div>
         <div class="qlabel">Image model · LOW</div>
         <div class="qlabel">Image model · HIGH</div>
-
-        <div class="qlabel vert">Classical · HIGH</div>
-        <div class="qcell warn"><div class="qtag">⚠ discordant</div><div class="qt">Germline risk, quiet image</div><div class="qd">BRCA / strong family history, low image score. The image was not trained on inherited risk — do <b>not</b> de-escalate. Highest-stakes error.</div></div>
+        <div class="qlabel vert">Classical / genetic · HIGH</div>
+        <div class="qcell warn"><div class="qtag">⚠ discordant</div><div class="qt">Inherited risk, quiet image</div><div class="qd">BRCA carrier <b>or high PRS</b>, low image score. The image was not trained on inherited risk — do <b>not</b> de-escalate. Highest-stakes error.</div></div>
         <div class="qcell ok"><div class="qtag">✓ concordant high</div><div class="qt">Escalate</div><div class="qd">Supplemental MRI, short interval. Both axes agree.</div></div>
-
-        <div class="qlabel vert">Classical · LOW</div>
+        <div class="qlabel vert">Classical / genetic · LOW</div>
         <div class="qcell ok"><div class="qtag">✓ concordant low</div><div class="qt">Standardize / de-escalate</div><div class="qd">Routine screening, consider longer interval.</div></div>
-        <div class="qcell act"><div class="qtag">★ the new signal</div><div class="qt">"Average" by questionnaire, high by image</div><div class="qd">Tissue-state signal the form missed. Strongest near-term — <b>look harder now</b>: short interval, supplemental imaging, a second look at <i>this</i> exam.</div></div>
+        <div class="qcell act"><div class="qtag">★ the new signal</div><div class="qt">"Average" by questionnaire, high by image</div><div class="qd">A tissue-state signal the form missed — strongest near-term. <b>Look harder now:</b> short interval, supplemental imaging.</div></div>
       </div>
     </section>
 
-    <!-- 8 FDA-cleared + risk-adapted screening -->
-    <section class="slide s-primer" data-note="And this is no longer hypothetical. Clairity Breast — Constance Lehman's company — received FDA De Novo authorization in June 2025: the first tool to predict five-year risk from a routine screening mammogram alone, and it was added to the 2026 NCCN screening guidance. The path from research model to cleared product to guideline took under five years. Meanwhile the trials are testing whether to screen by risk instead of by age. WISDOM, reported in JAMA this year, found risk-based screening non-inferior for advanced cancers with about 3,800 fewer mammograms per hundred-thousand person-years — and 89 percent of women offered the choice picked it. MyPeBS, 85,000 women across six countries, will give the definitive answer.">
-      <span class="eyebrow">Era III · already cleared, already in trials</span>
-      <h2>From research model to <span class="am">FDA clearance</span> and screening guidelines.</h2>
-      <p><b>Clairity Breast</b> (FDA De Novo, June 2025) — the first tool to predict 5-year risk from a routine screening mammogram alone; added to the <b>2026 NCCN</b> screening guidance.</p>
+    <!-- 8 risk-adapted screening: WISDOM -->
+    <section class="slide s-primer" data-note="This is where risk becomes a screening program. WISDOM, reported in JAMA, randomized about 28,000 women to risk-based screening — a gene panel plus polygenic score plus a clinical model, sorting women into regimens from six-monthly MRI down to deferring — versus annual. Risk-based was non-inferior for advanced cancers, with about 3,800 fewer mammograms per hundred-thousand person-years, and 89 percent of women offered the choice took it. It did not reduce biopsies. Meanwhile the 2026 NCCN guideline already recommends considering MRI at a 1.7 percent five-year AI risk — the practice is running ahead of the prospective trial, MIRAI-MRI, which is still reading out.">
+      <span class="eyebrow">Era III</span>
+      <h2>Risk-adapted screening: <span class="am">less for most, more for the few.</span></h2>
+      <p><b>WISDOM</b> (Esserman et al., JAMA 2026; 28,372 women) — risk-based screening (gene panel + polygenic score + clinical model → regimens from 6-monthly MRI down to <i>defer</i>) vs annual.</p>
       <div class="chips">
-        <div class="chip"><b>WISDOM</b> (JAMA 2026): risk-based non-inferior for stage ≥IIB · ~3,800 fewer mammograms /100k person-yr · <b>89%</b> chose risk-based</div>
-        <div class="chip"><b>MyPeBS</b>: ~85,000 women · 6 countries · screen-by-risk vs by-age · <b>ongoing</b></div>
+        <div class="chip"><b>non-inferior</b> for advanced (stage ≥IIB) cancers</div>
+        <div class="chip"><b>~3,800 fewer</b> mammograms /100k person-yr</div>
+        <div class="chip"><b>89%</b> chose risk-based</div>
+        <div class="chip" style="border-left-color:var(--warn)">did <b style="color:var(--warn)">not</b> reduce biopsies</div>
       </div>
-      <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">Today the trials triage on genetics and classical models. The image-derived score is the second axis they have not yet switched on.</p>
-      <div class="cite">Clairity — FDA De Novo 2025 (no primary validation paper yet) · WISDOM — Esserman et al., JAMA 2026;335(9):763–774 · MyPeBS — BMC Cancer 2022</div>
+      <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">NCCN 2026 already recommends MRI at <b style="color:var(--ink-2)">≥1.7% 5-yr AI risk</b> — practice running ahead of the MIRAI-MRI trial readout.</p>
+      <div class="cite">WISDOM — JAMA 2026;335(9):763–774 · NCCN 2026 · MIRAI-MRI (NCT05968157)</div>
     </section>
 
-    <!-- 9 bridge to §4 -->
-    <section class="slide s-turn" data-note="So the image can now tell us when to look and how hard. But once we find something, the question changes again — from is there cancer and what is her risk, to what is this cancer and what will it do? That answer is not in radiology. It is across the hospital, on a glass slide. To understand the patient, we move to the pathology lab — where AI does something our images cannot.">
+    <!-- 9 maturity gradient table -->
+    <section class="slide s-table" data-note="Step back and line these up as a maturity gradient — from concept, to simulation, to randomized trial. TEMPO personalizes the interval with an image-based engine, but it is retrospective and simulated. Mirai-interval, also image-based, retrospective. ScreenTrustMRI personalizes the modality and is a randomized trial, but on a secondary endpoint. And WISDOM is the pragmatic RCT with a primary endpoint — but it personalizes on genetic and clinical risk, not the image. So here is the punchline: the largest randomized evidence uses genetic and clinical risk, while the most sophisticated engines are image-based but have never been tested in a prospective interval-modification trial. The two haven't met yet. That's the open frontier.">
+      <span class="eyebrow">Era III</span>
+      <h2>A maturity gradient: <span class="am">concept → simulation → RCT.</span></h2>
+      <table class="mtbl">
+        <thead><tr><th>Study</th><th>Personalizes</th><th>Engine</th><th>Evidence tier</th></tr></thead>
+        <tbody>
+          <tr><td class="s">TEMPO (2022)</td><td>Interval</td><td>Image (Mirai) + RL</td><td>Retrospective / simulated</td></tr>
+          <tr><td class="s">Mirai-interval (2025)</td><td>Supplemental flag</td><td>Image-based</td><td>Retrospective</td></tr>
+          <tr><td class="s">ScreenTrustMRI (2024)</td><td>Modality (MRI)</td><td>Image (AISmartDensity)</td><td>RCT — secondary endpoint</td></tr>
+          <tr class="hl"><td class="s">WISDOM (2025)</td><td>Interval + start age</td><td>Clinical + genetic (BCSC+PRS)</td><td>Pragmatic RCT — primary</td></tr>
+        </tbody>
+      </table>
+      <p class="punch">The largest RCT evidence (WISDOM) uses <b>genetic/clinical</b> risk; the most sophisticated engines (TEMPO, Mirai) are <b>image-based</b> but untested in a prospective interval RCT. <b>The two haven't met yet — that's the open frontier.</b></p>
+      <div class="cite">TEMPO: 25% fewer mammograms (Karolinska) · ScreenTrustMRI: AI ~4× more efficient than density (64.4 vs 16.5 cancers /1,000 MRIs) · 30% of high-risk-variant carriers had no family history</div>
+    </section>
+
+    <!-- 10 bridge to §4 -->
+    <section class="slide s-turn" data-note="So the image can tell us when to look and how hard. But once we find something, the question changes again — from is there cancer and what is her risk, to what is this cancer and what will it do? That answer is not in radiology. It is across the hospital, on a glass slide. To understand the patient, we move to the pathology lab, where AI does something our images cannot.">
       <span class="eyebrow">Era III · image → patient</span>
-      <h2>The risk score guides <span class="am">when and how closely</span> to screen.</h2>
-      <p class="turn-line">Once we find something, the question changes again: from <b>"is there cancer, and what is her risk?"</b> to <b>"what is this cancer, and what will it do?"</b></p>
+      <h2>The image tells us <span class="am">when</span> to look and <span class="am">how hard.</span></h2>
+      <p class="turn-line">Once we find something, the question changes: from <b>"is there cancer, and what is her risk?"</b> to <b>"what is this cancer, and what will it do?"</b></p>
       <div class="spine" style="display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);flex-wrap:wrap">
         <span>Lesion</span><span style="opacity:.5">→</span><span style="color:var(--amber)">Image ✓</span><span style="opacity:.5">→</span><span style="color:var(--amber)">Patient →</span><span style="opacity:.5">→</span><span>Population</span>
       </div>
-      <p style="font-size:clamp(1rem,1.55vw,1.22rem);color:var(--ink-2);line-height:1.5;max-width:60ch">That answer is not in radiology. It is across the hospital, on a glass slide. We move to the <b style="color:var(--ink)">pathology lab</b> — where AI does something our images cannot.</p>
+      <p style="font-size:clamp(1rem,1.55vw,1.22rem);color:var(--ink-2);line-height:1.5;max-width:60ch">That answer is on a glass slide. We move to the <b style="color:var(--ink)">pathology lab</b> — where AI does something our images cannot.</p>
     </section>
 
   </div>
