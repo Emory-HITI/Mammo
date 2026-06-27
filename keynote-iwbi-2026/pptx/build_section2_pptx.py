@@ -17,13 +17,15 @@ DREAM, MCK, SALIM = (imgs+[None,None,None])[:3]
 
 prs=new_prs()
 
-# ---- 1 divider 2016 ----
+# ---- 1 divider 2016 (with time-machine graphic) ----
 s=slide(prs); note(s, notes[0])
 _,tf=box(s,0.85,0.62,9,0.4); run(para(tf,True),"ERA II",11,AMBER,bold=True,font=MONO)
-_,tf=box(s,0.85,2.6,11.5,1.6)
-p=para(tf,True); run(p,"The year is ",52,INK,bold=True); run(p,"2016.",52,AMBER,bold=True)
-_,tf=box(s,0.85,4.5,9.5,1.4)
-p=para(tf,True,line=1.3); run(p,"You're beginning to hear about AI — and still ",20,INK2); run(p,"feeling the burn from CAD.",20,INK,bold=True)
+_,tf=box(s,0.85,2.5,6.7,1.6)
+p=para(tf,True); run(p,"The year is ",50,INK,bold=True); run(p,"2016.",50,AMBER,bold=True)
+_,tf=box(s,0.85,4.35,6.6,1.6)
+p=para(tf,True,line=1.3); run(p,"You're beginning to hear about AI — and still ",19,INK2); run(p,"feeling the burn from CAD.",19,INK,bold=True)
+_m=re.search(r'<svg[\s\S]*?</svg>', H)
+if _m: embed_svg(s, _m.group(0), 7.7, 1.45, 5.0, 5.0)
 
 # ---- 2 DREAM ----
 s=slide(prs); note(s,notes[1]); eyebrow(s,"Era II")

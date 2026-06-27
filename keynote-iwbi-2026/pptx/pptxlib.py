@@ -108,12 +108,20 @@ def _fit(ar, maxw, maxh):
 
 def embed_svg(s, svg_el_or_str, l, t, maxw, maxh, bg='#0F141A', center=True):
     svg=str(svg_el_or_str)
+    # restore camelCase that an HTML parser may have lowercased (cairosvg is case-sensitive)
+    for a,b in [('viewbox=','viewBox='),('radialgradient','radialGradient'),
+                ('lineargradient','linearGradient'),('gradientunits','gradientUnits'),
+                ('stop-color','stop-color'),('text-anchor','text-anchor'),('stroke-opacity','stroke-opacity')]:
+        svg=svg.replace(a,b)
+    # strip the root <svg> inline style (cairosvg can't parse CSS like width:min(...))
+    svg=re.sub(r'(<svg\b[^>]*?)\s+style="[^"]*"', r'\1', svg, count=1)
     if 'xmlns' not in svg[:80]:
         svg=svg.replace('<svg','<svg xmlns="http://www.w3.org/2000/svg"',1)
-    m=re.search(r'viewBox="([\d.\- ]+)"', svg)
+    m=re.search(r'viewBox="([\d.\- ]+)"', svg, re.I)
     if m:
         vb=m.group(1).split(); ar=float(vb[2])/float(vb[3])
-    else: ar=1.6
+    else:
+        vb=['0','0','560','320']; ar=560/320
     key=hashlib.md5(svg.encode()).hexdigest()[:10]
     p=os.path.join(TMP,'svg_%s.png'%key)
     cairosvg.svg2png(bytestring=svg.encode(), write_to=p,
