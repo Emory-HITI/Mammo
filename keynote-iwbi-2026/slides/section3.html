@@ -144,7 +144,7 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era III · the image</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 10</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 8</div>
 </div>
 
 <div class="stage">
@@ -289,31 +289,6 @@
       </div>
       <p style="font-size:clamp(.9rem,1.3vw,1.05rem);color:var(--ink-3)">Research model to cleared product to guideline in under five years — though there is <b style="color:var(--ink-2)">no primary peer-reviewed validation paper yet.</b></p>
       <div class="cite">Clairity — FDA De Novo 2025 · NCCN 2026 (AI-based risk assessment)</div>
-    </section>
-
-    <!-- 6 the trap: population != individual -->
-    <section class="slide s-primer" data-note="Now the caveat, and it is the whole ballgame for using these clinically. Every number I just showed — 0.76, 0.81, 0.84 — is a population number. An AUC tells you how a model sorts a million women; it tells you little about the one in your clinic. Discrimination is not calibration: whether a predicted eight-percent risk really means eight percent is a separate, less-reported property, and it is the one that governs whether she gets an MRI.">
-      <span class="eyebrow">Era III</span>
-      <h2>A population AUC is not an <span class="am">individual</span> prediction.</h2>
-      <p>An AUC measures how well a model <i>ranks</i> a million women. <b>Discrimination ≠ calibration:</b> whether a predicted "8% risk" actually means 8% is a separate property — less often reported — and it is the one that governs <i>her</i> decision to get an MRI.</p>
-      <p style="font-size:clamp(.9rem,1.3vw,1.05rem)">Image models discriminate well. Their <b>calibration</b> across sites, scanners, and subgroups is the under-reported, harder problem.</p>
-    </section>
-
-    <!-- 7 four quadrants -->
-    <section class="slide s-quad" data-note="So picture the real decision as a two-by-two: the classical or genetic model on one axis, the image model on the other. When they agree, management is easy. The interesting cells are the disagreements. Classical-low but image-high: the tissue is doing something the questionnaire never captured — look harder now. And the dangerous cell, classical-high but image-low: a BRCA carrier, or a high polygenic-score patient, with a quiet-looking image. The reassuring image must not override known inherited risk — and a high-PRS patient is in exactly the same position as the BRCA carrier. They measure different things: the genome asks what she inherited; the image asks what her tissue is doing now.">
-      <span class="eyebrow">Era III</span>
-      <h2>Two models, <span class="am">two questions</span> — match the action to the axis.</h2>
-      <div class="quadwrap">
-        <div class="qlabel"></div>
-        <div class="qlabel">Image model · LOW</div>
-        <div class="qlabel">Image model · HIGH</div>
-        <div class="qlabel vert">Classical / genetic · HIGH</div>
-        <div class="qcell warn"><div class="qtag">⚠ discordant</div><div class="qt">Inherited risk, quiet image</div><div class="qd">BRCA carrier <b>or high PRS</b>, low image score. The image was not trained on inherited risk — do <b>not</b> de-escalate. Highest-stakes error.</div></div>
-        <div class="qcell ok"><div class="qtag">✓ concordant high</div><div class="qt">Escalate</div><div class="qd">Supplemental MRI, short interval. Both axes agree.</div></div>
-        <div class="qlabel vert">Classical / genetic · LOW</div>
-        <div class="qcell ok"><div class="qtag">✓ concordant low</div><div class="qt">Standardize / de-escalate</div><div class="qd">Routine screening, consider longer interval.</div></div>
-        <div class="qcell act"><div class="qtag">★ the new signal</div><div class="qt">"Average" by questionnaire, high by image</div><div class="qd">A tissue-state signal the form missed — strongest near-term. <b>Look harder now:</b> short interval, supplemental imaging.</div></div>
-      </div>
     </section>
 
     <!-- 8 risk-adapted screening: WISDOM -->

@@ -1,0 +1,130 @@
+<title>Era III — Cardiovascular & Opportunistic Screening (BAC)</title>
+<style>
+  :root{
+    --floor:#080B0F;--bg:#0F141A;--bg-2:#151C24;--bg-3:#1B232D;
+    --ink:#ECEFF3;--ink-2:#9DA9B5;--ink-3:#5C6975;--line:rgba(255,255,255,.09);
+    --amber:#E7AC51;--amber-deep:#C98A2E;--cyan:#5FB7C9;--warn:#D9785B;
+    --sans:"Helvetica Neue",Arial,system-ui,sans-serif;--mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
+  body{background:var(--floor);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+  .topbar{width:100%;max-width:1180px;display:flex;justify-content:space-between;align-items:baseline;padding:24px 28px 16px;gap:16px}
+  .brand{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}.brand b{color:var(--amber);font-weight:600}
+  .counter{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink-3);font-variant-numeric:tabular-nums}.counter b{color:var(--amber);font-weight:600}
+  .stage{width:100%;max-width:1180px;padding:0 28px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:radial-gradient(120% 130% at 88% 12%,#18222C 0%,var(--bg) 46%,#0C1116 100%);border:1px solid var(--line);box-shadow:0 36px 80px -44px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.03)}
+  #motif{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .frame::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:6;background:linear-gradient(90deg,var(--amber),transparent 70%);opacity:.7}
+  .slide{position:absolute;inset:0;z-index:2;padding:clamp(28px,4.1vw,58px);display:flex;opacity:0;visibility:hidden;transition:opacity .4s ease}
+  .slide.active{opacity:1;visibility:visible}
+  .eyebrow{position:absolute;top:clamp(24px,3.1vw,34px);left:clamp(28px,4.1vw,58px);font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);opacity:.6}
+  .s-divider{align-items:center;gap:clamp(24px,4vw,54px)}
+  .dv-copy{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:18px}
+  .s-divider .spine{display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);flex-wrap:wrap}
+  .s-divider .spine .on{color:var(--amber)}.s-divider .spine .sep{opacity:.5}
+  .s-divider h1{font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.03;letter-spacing:-.025em;font-weight:700;text-wrap:balance;max-width:17ch}
+  .s-divider h1 .am{color:var(--amber)}
+  .s-divider .sub{color:var(--ink-2);font-size:clamp(1rem,1.55vw,1.22rem);line-height:1.5;max-width:48ch}.s-divider .sub b{color:var(--ink)}
+  .s-primer{flex-direction:column;justify-content:center;gap:clamp(13px,2vw,20px)}
+  .s-primer h2{font-size:clamp(1.4rem,2.7vw,2.05rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;max-width:28ch}.s-primer h2 .am{color:var(--amber)}
+  .s-primer p{font-size:clamp(.95rem,1.45vw,1.15rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-primer p b{color:var(--ink)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink);border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:7px;padding:8px 13px;background:linear-gradient(180deg,var(--bg-3),var(--bg-2))}
+  .chip b{color:var(--cyan)}
+  .cite{font-family:var(--mono);font-size:.66rem;color:var(--ink-3);margin-top:8px}
+  .s-stat{flex-direction:column;justify-content:center;gap:6px}
+  .s-stat .statnum{font-size:clamp(3.4rem,10vw,7rem);font-weight:700;letter-spacing:-.04em;line-height:.9;color:var(--amber);font-variant-numeric:tabular-nums}
+  .s-stat .statlabel{font-family:var(--mono);font-size:clamp(.78rem,1.3vw,.98rem);letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-top:14px}
+  .s-stat .statctx{color:var(--ink-2);font-size:clamp(.98rem,1.5vw,1.18rem);line-height:1.5;max-width:54ch;margin-top:14px}.s-stat .statctx b{color:var(--ink)}
+  .s-stat .cite{margin-top:14px}
+  .s-turn{flex-direction:column;justify-content:center;gap:clamp(16px,2.4vw,26px)}
+  .s-turn h2{font-size:clamp(1.5rem,2.9vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}.s-turn h2 .am{color:var(--amber)}
+  .turn-line{font-size:clamp(1.05rem,1.8vw,1.4rem);line-height:1.42;text-wrap:balance;color:var(--ink);font-weight:500;border-left:2px solid var(--amber);padding-left:16px;max-width:66ch}.turn-line b{color:var(--amber)}
+  .s-turn p{font-size:clamp(.98rem,1.5vw,1.18rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-turn p b{color:var(--ink)}
+  .speaker{width:100%;max-width:1180px;padding:2px 28px 0;display:flex;gap:13px;align-items:flex-start;min-height:56px}
+  .say{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--amber);font-weight:600;padding-top:3px;flex:0 0 auto}
+  .saytext{font-size:clamp(.9rem,1.35vw,1.02rem);line-height:1.5;color:var(--ink-2);max-width:66ch}
+  .controls{width:100%;max-width:1180px;padding:8px 28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .dots{display:flex;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#39434E;border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}.dot:hover{background:var(--ink-3)}.dot.on{background:var(--amber);transform:scale(1.2)}
+  .btns{display:flex;gap:10px}.btn{font-family:var(--sans);font-size:.74rem;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);padding:9px 17px;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s}.btn:hover{border-color:var(--amber);color:var(--amber)}.btn:disabled{color:var(--ink-3);opacity:.5;cursor:default}
+  .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}.hint{font-family:var(--mono);font-size:.64rem;color:var(--ink-3)}
+  @media (max-width:720px){.s-divider{flex-direction:column}.hint{display:none}}
+  @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
+</style>
+
+<div class="topbar">
+  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Cardiovascular &amp; opportunistic</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 4</div>
+</div>
+
+<div class="stage">
+  <div class="frame" id="frame">
+    <canvas id="motif"></canvas>
+
+    <!-- 1 divider: the mammogram as a whole-body biosensor -->
+    <section class="slide s-divider active" data-note="Convergence is not only radiology and pathology. The same mammogram a woman gets for cancer is a biosensor for her whole body. Start with the heart — this closes the second model from our opening. Breast arterial calcification, treated as an incidental finding for forty years, is a sex-specific cardiovascular signal that goes unread on millions of mammograms. Iribarren showed it carries a hazard ratio around 1.5 for atherosclerotic disease, independent of the usual risk factors.">
+      <div class="dv-copy">
+        <div class="spine"><span>Lesion</span><span class="sep">→</span><span>Image</span><span class="sep">→</span><span class="on">Patient</span><span class="sep">→</span><span>Population</span></div>
+        <h1>The mammogram as a <span class="am">whole-body biosensor.</span></h1>
+        <p class="sub">The same image she came in for holds more than cancer. <b>Breast arterial calcification (BAC)</b> — discarded as an incidental finding for 40 years — is a sex-specific cardiovascular signal that goes unread on millions of mammograms.</p>
+        <div class="chips"><div class="chip">BAC → ASCVD <b>HR 1.51</b>, independent of usual risk factors <span style="color:var(--ink-3)">(Iribarren 2022)</span></div></div>
+      </div>
+    </section>
+
+    <!-- 2 our BAC paper: Dapamede -->
+    <section class="slide s-stat" data-note="This is our work. Dapamede and colleagues at Emory and Mayo, in the European Heart Journal this year, studied 123,762 women with no known heart disease — the largest study of its kind. A transformer model segments the breast arterial calcification and reports its burden as an area, in square millimeters, and finds a continuous, dose-dependent association with major cardiac events and all-cause mortality, stepping up from zero to over 25 square millimeters. Severe calcification carries a hazard ratio around 2.2 internally, 1.8 externally, and it adds prognostic value on top of the standard AHA PREVENT score. Our group also built the segmentation model behind this, SCU-Net.">
+      <span class="eyebrow">Cardiovascular &amp; opportunistic</span>
+      <div class="statnum">123,762</div>
+      <div class="statlabel">women, no known CVD — AI-quantified BAC → cardiovascular risk</div>
+      <p class="statctx"><b>Dapamede et al. (Emory + Mayo), European Heart Journal 2026</b> — the largest to date. A transformer segments BAC and reports burden (mm²) with a <b>continuous, dose-dependent</b> association with MACE and all-cause mortality. <b>Severe BAC → HR ~2.2 (internal) / ~1.8 (external)</b>, adding prognostic value on top of the AHA PREVENT score.</p>
+      <div class="cite">Dapamede, Eur Heart J 2026;47(18):2206–2220 · segmentation: Guo et al. (SCU-Net), Med Phys 2021 — your group</div>
+    </section>
+
+    <!-- 3 beyond the calcium: whole-image CVD + caveats -->
+    <section class="slide s-primer" data-note="And it is not the calcium alone. Barraclough and colleagues, on routine mammograms, predicted cardiovascular risk at a C-index around 0.72 — comparable to established clinical risk equations — without isolating the calcification. The breast tissue itself, not only the calcium, carries the signal. Two honest caveats: BAC is not coronary calcium, the correlation is only modest, so it is an independent risk marker, not a substitute for a CT calcium score. And any opportunistic prediction needs its own prospective validation and a care pathway — a cardiovascular score is useless if no one owns the abnormal result.">
+      <span class="eyebrow">Cardiovascular &amp; opportunistic</span>
+      <h2>Beyond the calcium: the <span class="am">whole image</span> predicts cardiovascular risk.</h2>
+      <p><b>Barraclough et al. (Heart 2026)</b> — DeepSurv on routine mammograms predicts CVD risk in ~49,000 women at <b>C-index ~0.72</b>, comparable to clinical risk equations, without isolating BAC. The tissue itself carries the signal.</p>
+      <p style="font-size:clamp(.88rem,1.25vw,1.02rem);color:var(--ink-3)"><b style="color:var(--warn)">Caveats:</b> BAC is not coronary calcium (modest correlation) — an independent marker, not a substitute for CT calcium scoring. And opportunistic predictions need their own prospective validation and a care pathway: a score is useless if no one owns the abnormal result.</p>
+      <div class="cite">Barraclough et al., Heart 2026 (~49,000 women) · BAC vs coronary calcium: Saccenti 2024 (AUC ~0.64)</div>
+    </section>
+
+    <!-- 4 other opportunistic screening + bridge -->
+    <section class="slide s-turn" data-note="And this is not specific to mammography. The same pattern appears across modalities. From a retinal photo, deep learning reads age, sex, blood pressure, and major cardiac events — signals no ophthalmologist reads. A ten-second ECG detects asymptomatic low ejection fraction at an AUC of 0.93. Routine CT yields bone density and aortic calcium. Every medical image is a richer biosensor than the question we ordered it to answer — AI is the first tool that can read the rest of it. We can now offer tens of millions of women a cardiovascular screen from an image they already came for, at no added cost and no added radiation. Who gets that, and who is left out, is the question we turn to next.">
+      <span class="eyebrow">Cardiovascular &amp; opportunistic</span>
+      <h2>Every image is a richer biosensor than its <span class="am">indication.</span></h2>
+      <div class="chips">
+        <div class="chip">Retina → age, sex (AUC 0.97), cardiac events 0.70 <span style="color:var(--ink-3)">(Poplin 2018)</span></div>
+        <div class="chip">ECG → asymptomatic low EF <b>AUC 0.93</b> <span style="color:var(--ink-3)">(Attia 2019)</span></div>
+        <div class="chip">CT → bone density, aortic calcium <span style="color:var(--ink-3)">(Pickhardt 2020)</span></div>
+      </div>
+      <p class="turn-line">We can offer tens of millions of women a <b>cardiovascular screen from an image they already came for</b> — at no added cost and no added radiation.</p>
+      <p>Who gets that capacity, and who is left out, is a question of access and equity — where we go next.</p>
+    </section>
+
+  </div>
+  <div class="speaker"><span class="say">SAY</span><p class="saytext" id="note"></p></div>
+</div>
+
+<div class="controls">
+  <div class="dots" id="dots"></div>
+  <div class="hint">← → arrow keys</div>
+  <div class="btns"><button class="btn" id="prev">← Prev</button><button class="btn" id="next">Next →</button></div>
+</div>
+
+<script>
+(function(){"use strict";
+var slides=[].slice.call(document.querySelectorAll('.slide'));var i=0,n=slides.length;
+var curEl=document.getElementById('cur'),noteEl=document.getElementById('note'),prevB=document.getElementById('prev'),nextB=document.getElementById('next'),dotsWrap=document.getElementById('dots');
+var dots=slides.map(function(_,idx){var b=document.createElement('button');b.className='dot'+(idx===0?' on':'');b.setAttribute('aria-label','Slide '+(idx+1));b.addEventListener('click',function(){go(idx);});dotsWrap.appendChild(b);return b;});
+function show(idx){slides.forEach(function(s,k){s.classList.toggle('active',k===idx);});dots.forEach(function(d,k){d.classList.toggle('on',k===idx);});curEl.textContent=idx+1;noteEl.textContent=slides[idx].getAttribute('data-note')||'';prevB.disabled=idx===0;nextB.disabled=idx===n-1;}
+function go(idx){i=Math.max(0,Math.min(n-1,idx));show(i);}
+nextB.addEventListener('click',function(){go(i+1);});prevB.addEventListener('click',function(){go(i-1);});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(n-1);}});
+function drawMotif(c){var dpr=Math.min(window.devicePixelRatio||1,2);var r=c.getBoundingClientRect();var w=Math.max(8,Math.round(r.width*dpr)),h=Math.max(8,Math.round(r.height*dpr));c.width=w;c.height=h;var x=c.getContext('2d');x.clearRect(0,0,w,h);var fx=w*0.84,fy=h*0.20,rings=22;for(var k=1;k<=rings;k++){var rad=(k/rings)*Math.max(w,h)*0.95;var a=0.085*(1-k/rings)+0.012;x.beginPath();for(var t=0;t<=Math.PI*2+0.01;t+=0.18){var pert=1+0.10*Math.sin(t*3+k*0.5)+0.06*Math.cos(t*5-k*0.3);var px=fx+Math.cos(t)*rad*pert;var py=fy+Math.sin(t)*rad*pert*0.9;if(t===0)x.moveTo(px,py);else x.lineTo(px,py);}x.closePath();x.strokeStyle='rgba(231,172,81,'+a.toFixed(3)+')';x.lineWidth=1;x.stroke();}}
+function renderAll(){var m=document.getElementById('motif');if(m)drawMotif(m);}
+var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(renderAll,160);});requestAnimationFrame(function(){requestAnimationFrame(renderAll);});setTimeout(renderAll,300);
+show(0);
+})();
+</script>
