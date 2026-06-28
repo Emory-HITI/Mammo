@@ -1,0 +1,106 @@
+<title>The Adoption Problem — one model is the wrong goal</title>
+<style>
+  :root{
+    --floor:#080B0F;--bg:#0F141A;--bg-2:#151C24;--bg-3:#1B232D;
+    --ink:#ECEFF3;--ink-2:#9DA9B5;--ink-3:#5C6975;--line:rgba(255,255,255,.09);
+    --amber:#E7AC51;--amber-deep:#C98A2E;--cyan:#5FB7C9;--warn:#D9785B;
+    --sans:"Helvetica Neue",Arial,system-ui,sans-serif;--mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
+  body{background:var(--floor);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+  .topbar{width:100%;max-width:1180px;display:flex;justify-content:space-between;align-items:baseline;padding:24px 28px 16px;gap:16px}
+  .brand{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}.brand b{color:var(--amber);font-weight:600}
+  .counter{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink-3);font-variant-numeric:tabular-nums}.counter b{color:var(--amber);font-weight:600}
+  .stage{width:100%;max-width:1180px;padding:0 28px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:radial-gradient(120% 130% at 88% 12%,#18222C 0%,var(--bg) 46%,#0C1116 100%);border:1px solid var(--line);box-shadow:0 36px 80px -44px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.03)}
+  #motif{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .frame::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:6;background:linear-gradient(90deg,var(--amber),transparent 70%);opacity:.7}
+  .slide{position:absolute;inset:0;z-index:2;padding:clamp(28px,4.1vw,58px);display:flex;opacity:0;visibility:hidden;transition:opacity .4s ease}
+  .slide.active{opacity:1;visibility:visible}
+  .eyebrow{position:absolute;top:clamp(24px,3.1vw,34px);left:clamp(28px,4.1vw,58px);font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);opacity:.6}
+  .s-primer{flex-direction:column;justify-content:center;gap:clamp(13px,2vw,20px)}
+  .s-primer h2{font-size:clamp(1.4rem,2.7vw,2.05rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;max-width:30ch}.s-primer h2 .am{color:var(--amber)}
+  .s-primer .lead{font-size:clamp(.95rem,1.45vw,1.13rem);color:var(--ink-2);line-height:1.5;max-width:70ch}.s-primer .lead b{color:var(--ink)}
+  .reqs{display:flex;flex-direction:column;gap:10px;margin-top:2px;max-width:84ch}
+  .req{display:flex;gap:14px;align-items:baseline}
+  .req .rn{font-family:var(--mono);color:var(--amber);font-weight:600;flex:0 0 auto;font-size:.82rem}
+  .req .rt{font-size:clamp(.9rem,1.38vw,1.1rem);color:var(--ink-2);line-height:1.42}.req .rt b{color:var(--ink)}.req .rt .cy{color:var(--cyan)}
+  .pullquote{font-size:clamp(1.05rem,1.85vw,1.42rem);line-height:1.4;text-wrap:balance;color:var(--ink);font-weight:500;border-left:2px solid var(--amber);padding-left:18px;max-width:64ch;margin-top:4px}
+  .pullquote b{color:var(--amber)}
+  .reframe{font-size:clamp(.96rem,1.5vw,1.16rem);line-height:1.46;color:var(--ink);border-left:2px solid var(--cyan);padding-left:18px;max-width:78ch;margin-top:4px;background:linear-gradient(90deg,rgba(95,183,201,.06),transparent 80%);padding-top:10px;padding-bottom:10px;border-radius:0 7px 7px 0}
+  .reframe .h{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:6px}
+  .reframe b{color:var(--amber)}.reframe .cy{color:var(--cyan)}
+  .cite{font-family:var(--mono);font-size:.62rem;color:var(--ink-3);margin-top:10px;line-height:1.5;max-width:90ch}
+  .speaker{width:100%;max-width:1180px;padding:2px 28px 0;display:flex;gap:13px;align-items:flex-start;min-height:56px}
+  .say{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--amber);font-weight:600;padding-top:3px;flex:0 0 auto}
+  .saytext{font-size:clamp(.9rem,1.35vw,1.02rem);line-height:1.5;color:var(--ink-2);max-width:66ch}
+  .controls{width:100%;max-width:1180px;padding:8px 28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .dots{display:flex;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#39434E;border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}.dot:hover{background:var(--ink-3)}.dot.on{background:var(--amber);transform:scale(1.2)}
+  .btns{display:flex;gap:10px}.btn{font-family:var(--sans);font-size:.74rem;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);padding:9px 17px;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s}.btn:hover{border-color:var(--amber);color:var(--amber)}.btn:disabled{color:var(--ink-3);opacity:.5;cursor:default}
+  .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}.hint{font-family:var(--mono);font-size:.64rem;color:var(--ink-3)}
+  @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
+</style>
+
+<div class="topbar">
+  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Adoption</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 2</div>
+</div>
+
+<div class="stage">
+  <div class="frame" id="frame">
+    <canvas id="motif"></canvas>
+
+    <!-- 1 the specification -->
+    <section class="slide s-primer active" data-note="Everything I have shown you works. But working in a paper is not the bar for getting into the clinic. Look at what we ask a single model to do, all at once: hold up across every scanner and vendor in the field; perform in women of all ages, all densities, all risk types; serve both the expert breast radiologist and the generalist who reads mammography one day a week; and fire at one operating point that everyone agrees on — when no two readers even agree how many false positives are worth one more cancer found. A single model that satisfies all of these is not a hard engineering problem. It is a malformed one.">
+      <span class="eyebrow">Adoption</span>
+      <h2>One model for everything is <span class="am">the wrong goal.</span></h2>
+      <p class="lead">We chased better detection for three decades. But look at what we ask a <b>single</b> model to do at once:</p>
+      <div class="reqs">
+        <div class="req"><span class="rn">01</span><span class="rt">Hold up across <b>every scanner and vendor</b> in the field</span></div>
+        <div class="req"><span class="rn">02</span><span class="rt">Perform in women of <b>all ages, all densities, all risk types</b></span></div>
+        <div class="req"><span class="rn">03</span><span class="rt">Serve both the <b>expert breast radiologist</b> and the <b>generalist who reads mammo one day a week</b></span></div>
+        <div class="req"><span class="rn">04</span><span class="rt">Fire at an operating point <b>everyone agrees on</b> — when no two readers agree how many false positives are worth one more cancer</span></div>
+      </div>
+      <p class="pullquote">A single model that satisfies all of these is not a hard engineering problem. It is a <b>malformed one.</b></p>
+    </section>
+
+    <!-- 2 four walls + reframe -->
+    <section class="slide s-primer" data-note="There are four walls. First, generalization: the model that excels at one site quietly degrades at the next. A multi-vendor study across 275,900 mammograms — four vendors, seven sites, two countries — found the generalization evidence still lacking, and fairness gains in one population often trade away performance in another. Second, the operating point: there is no single right threshold. Sensitivity versus false positives is a value judgment, not a setting — and the expert and the once-a-week reader do not want the same one. Third, predictions in a vacuum: the image-only model lacks the chart the radiologist has, so its misses look foolish and trust erodes fast; adoption tracks interpretability, not just AUC. Fourth, the integration tax: even a perfect model dies if it cannot get into PACS — custom one-off integrations do not scale, and overloaded IT means onboarding only happens through a platform you already run. So stop asking whether the model will work everywhere. The future is a portfolio — locally validated, locally tuned, multimodal, delivered inside existing workflow. The winning system is not the most accurate in a paper; it is the one the radiologist trusts, that knows what they know, and that fires inside PACS without an IT ticket.">
+      <span class="eyebrow">Adoption</span>
+      <h2>Four walls — and <span class="am">the reframe.</span></h2>
+      <div class="reqs">
+        <div class="req"><span class="rn">1</span><span class="rt"><b>Generalization.</b> The model that excels at one site degrades at the next. Across <b class="cy">275,900 mammograms</b> (4 vendors, 7 sites, 2 countries), generalization evidence was still lacking — fairness in one population can cost performance in another.</span></div>
+        <div class="req"><span class="rn">2</span><span class="rt"><b>Operating point.</b> No single right threshold. Sensitivity vs. false positives is a <b>value judgment</b>, not a setting — the expert and the once-a-week reader don't want the same one.</span></div>
+        <div class="req"><span class="rn">3</span><span class="rt"><b>Predictions in a vacuum.</b> The image-only model lacks the chart, so its misses look foolish and trust erodes. Adoption tracks <b>interpretability</b>, not just AUC.</span></div>
+        <div class="req"><span class="rn">4</span><span class="rt"><b>The integration tax.</b> A perfect model dies if it can't reach PACS. One-off integrations don't scale; onboarding happens through a platform you already run.</span></div>
+      </div>
+      <p class="reframe"><span class="h">The reframe</span>The future isn't <i>the</i> model that works everywhere — it's a <b>portfolio</b>: locally validated, locally tuned, <b class="cy">multimodal</b> (image + clinical + risk), delivered <b>inside existing workflow.</b> The winning system is the one the radiologist trusts, that knows what they know, and that fires inside PACS without an IT ticket.</p>
+      <div class="cite">Sharma N, et al. BMC Cancer 2023;23:460 (275,900 mammograms) · Eisemann N, et al. Nat Med 2025;31:917–924 (PRAIM) · Tejani AS, et al. Radiology 2024;311:e232653 · Allen B, et al. Mayo Clin Proc Digit Health 2024;2(4)</div>
+    </section>
+
+  </div>
+  <div class="speaker"><span class="say">SAY</span><p class="saytext" id="note"></p></div>
+</div>
+
+<div class="controls">
+  <div class="dots" id="dots"></div>
+  <div class="hint">← → arrow keys</div>
+  <div class="btns"><button class="btn" id="prev">← Prev</button><button class="btn" id="next">Next →</button></div>
+</div>
+
+<script>
+(function(){"use strict";
+var slides=[].slice.call(document.querySelectorAll('.slide'));var i=0,n=slides.length;
+var curEl=document.getElementById('cur'),noteEl=document.getElementById('note'),prevB=document.getElementById('prev'),nextB=document.getElementById('next'),dotsWrap=document.getElementById('dots');
+var dots=slides.map(function(_,idx){var b=document.createElement('button');b.className='dot'+(idx===0?' on':'');b.setAttribute('aria-label','Slide '+(idx+1));b.addEventListener('click',function(){go(idx);});dotsWrap.appendChild(b);return b;});
+function show(idx){slides.forEach(function(s,k){s.classList.toggle('active',k===idx);});dots.forEach(function(d,k){d.classList.toggle('on',k===idx);});curEl.textContent=idx+1;noteEl.textContent=slides[idx].getAttribute('data-note')||'';prevB.disabled=idx===0;nextB.disabled=idx===n-1;}
+function go(idx){i=Math.max(0,Math.min(n-1,idx));show(i);}
+nextB.addEventListener('click',function(){go(i+1);});prevB.addEventListener('click',function(){go(i-1);});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(n-1);}});
+function drawMotif(c){var dpr=Math.min(window.devicePixelRatio||1,2);var r=c.getBoundingClientRect();var w=Math.max(8,Math.round(r.width*dpr)),h=Math.max(8,Math.round(r.height*dpr));c.width=w;c.height=h;var x=c.getContext('2d');x.clearRect(0,0,w,h);var fx=w*0.84,fy=h*0.20,rings=22;for(var k=1;k<=rings;k++){var rad=(k/rings)*Math.max(w,h)*0.95;var a=0.085*(1-k/rings)+0.012;x.beginPath();for(var t=0;t<=Math.PI*2+0.01;t+=0.18){var pert=1+0.10*Math.sin(t*3+k*0.5)+0.06*Math.cos(t*5-k*0.3);var px=fx+Math.cos(t)*rad*pert;var py=fy+Math.sin(t)*rad*pert*0.9;if(t===0)x.moveTo(px,py);else x.lineTo(px,py);}x.closePath();x.strokeStyle='rgba(231,172,81,'+a.toFixed(3)+')';x.lineWidth=1;x.stroke();}}
+function renderAll(){var m=document.getElementById('motif');if(m)drawMotif(m);}
+var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(renderAll,160);});requestAnimationFrame(function(){requestAnimationFrame(renderAll);});setTimeout(renderAll,300);
+show(0);
+})();
+</script>
