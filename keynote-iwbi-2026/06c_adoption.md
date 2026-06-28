@@ -30,8 +30,6 @@ Not one model imposed everywhere — three reframes:
 
 **3. The integration tax** *(unchanged).* Even a perfect model dies if it can't get into PACS. Custom one-off integrations *don't scale* (RSNA); overloaded IT means onboarding only happens through a platform or vendor you already run.
 
-> **The reframe:** The winning system isn't the most accurate in a paper; it's the one tuned to the reader, that knows what they know, and that fires inside the workflow.
-
 ---
 
 ### References
