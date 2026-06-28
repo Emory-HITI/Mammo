@@ -1,0 +1,218 @@
+<title>Era III — 2035: Prevention (alternate)</title>
+<style>
+  :root{
+    --floor:#080B0F;--bg:#0F141A;--bg-2:#151C24;--bg-3:#1B232D;
+    --ink:#ECEFF3;--ink-2:#9DA9B5;--ink-3:#5C6975;--line:rgba(255,255,255,.09);
+    --amber:#E7AC51;--amber-deep:#C98A2E;--cyan:#5FB7C9;--warn:#D9785B;
+    --sans:"Helvetica Neue",Arial,system-ui,sans-serif;--mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}html,body{height:100%}
+  body{background:var(--floor);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;display:flex;flex-direction:column;align-items:center;min-height:100vh}
+  .topbar{width:100%;max-width:1180px;display:flex;justify-content:space-between;align-items:baseline;padding:24px 28px 16px;gap:16px}
+  .brand{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}.brand b{color:var(--amber);font-weight:600}
+  .counter{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink-3);font-variant-numeric:tabular-nums}.counter b{color:var(--amber);font-weight:600}
+  .stage{width:100%;max-width:1180px;padding:0 28px;display:flex;flex-direction:column;align-items:center;gap:16px}
+  .frame{position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;background:radial-gradient(120% 130% at 88% 12%,#18222C 0%,var(--bg) 46%,#0C1116 100%);border:1px solid var(--line);box-shadow:0 36px 80px -44px rgba(0,0,0,.9),inset 0 0 0 1px rgba(255,255,255,.03)}
+  #motif{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+  .frame::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:6;background:linear-gradient(90deg,var(--amber),transparent 70%);opacity:.7}
+  .slide{position:absolute;inset:0;z-index:2;padding:clamp(28px,4.1vw,58px);display:flex;opacity:0;visibility:hidden;transition:opacity .4s ease}
+  .slide.active{opacity:1;visibility:visible}
+  .eyebrow{position:absolute;top:clamp(24px,3.1vw,34px);left:clamp(28px,4.1vw,58px);font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);opacity:.6}
+  .viewport{position:relative;background:#fff;border-radius:7px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(0,0,0,.7),inset 0 0 0 1px rgba(255,255,255,.07),0 0 0 1px rgba(231,172,81,.10);display:flex;flex-direction:column}
+  .vp-head{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;border-bottom:1px solid rgba(0,0,0,.12);font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;color:#5C6975;flex:0 0 auto;background:#0F141A}
+  .vp-head span:first-child{color:rgba(236,239,243,.62)}.vp-head .tag{color:var(--cyan)}
+  .vp-body{position:relative;flex:1 1 auto;min-height:0;background:#fff}
+  img.uiimg{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#fff}
+  .s-divider{align-items:center;gap:clamp(24px,4vw,54px)}
+  .dv-copy{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:18px}
+  .s-divider .spine{display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);flex-wrap:wrap}
+  .s-divider .spine .on{color:var(--amber)}.s-divider .spine .sep{opacity:.5}
+  .s-divider h1{font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.03;letter-spacing:-.025em;font-weight:700;text-wrap:balance;max-width:16ch}
+  .s-divider h1 .am{color:var(--amber)}
+  .s-divider .sub{color:var(--ink-2);font-size:clamp(1rem,1.55vw,1.22rem);line-height:1.5;max-width:48ch}.s-divider .sub b{color:var(--ink)}
+  .s-primer{flex-direction:column;justify-content:center;gap:clamp(13px,2vw,20px)}
+  .s-primer h2{font-size:clamp(1.4rem,2.7vw,2.05rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;max-width:26ch}.s-primer h2 .am{color:var(--amber)}
+  .s-primer p{font-size:clamp(.95rem,1.45vw,1.15rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-primer p b{color:var(--ink)}
+  .chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px}
+  .chip{font-family:var(--mono);font-size:.7rem;letter-spacing:.04em;color:var(--ink);border:1px solid var(--line);border-left:2px solid var(--cyan);border-radius:7px;padding:8px 13px;background:linear-gradient(180deg,var(--bg-3),var(--bg-2))}
+  .chip b{color:var(--cyan)}
+  .cite{font-family:var(--mono);font-size:.66rem;color:var(--ink-3);margin-top:8px}
+  .s-caveat{align-items:center;gap:clamp(22px,3.4vw,44px)}
+  .s-caveat .left{flex:1 1 0;min-width:0}.s-caveat .right{flex:0 0 auto;width:44%;max-width:480px}
+  .s-caveat h2{font-size:clamp(1.3rem,2.4vw,1.95rem);font-weight:700;letter-spacing:-.02em;line-height:1.14;margin-bottom:10px;text-wrap:balance}.s-caveat h2 .am{color:var(--amber)}
+  .s-caveat .gap{font-size:clamp(.86rem,1.28vw,1.04rem);line-height:1.42;color:var(--ink-2);margin-top:8px}.s-caveat .gap b{color:var(--ink)}
+  .barchart{width:100%;height:auto;display:block;overflow:visible}.chcap{font-family:var(--mono);font-size:.6rem;color:var(--ink-3);margin-top:8px;text-align:center}
+  figcaption.attr{font-family:var(--mono);font-size:.58rem;color:var(--ink-3);margin-top:7px;line-height:1.45;text-align:center}figcaption.attr b{color:var(--ink-2);font-weight:400}
+  .s-turn{flex-direction:column;justify-content:center;gap:clamp(16px,2.4vw,26px)}
+  .s-turn h2{font-size:clamp(1.5rem,2.9vw,2.3rem);font-weight:700;letter-spacing:-.02em;line-height:1.1}.s-turn h2 .am{color:var(--amber)}
+  .turn-line{font-size:clamp(1.05rem,1.8vw,1.4rem);line-height:1.42;text-wrap:balance;color:var(--ink);font-weight:500;border-left:2px solid var(--amber);padding-left:16px;max-width:66ch}.turn-line b{color:var(--amber)}
+  .s-turn p{font-size:clamp(.98rem,1.5vw,1.18rem);color:var(--ink-2);line-height:1.5;max-width:64ch}.s-turn p b{color:var(--ink)}
+  .speaker{width:100%;max-width:1180px;padding:2px 28px 0;display:flex;gap:13px;align-items:flex-start;min-height:56px}
+  .say{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--amber);font-weight:600;padding-top:3px;flex:0 0 auto}
+  .saytext{font-size:clamp(.9rem,1.35vw,1.02rem);line-height:1.5;color:var(--ink-2);max-width:66ch}
+  .controls{width:100%;max-width:1180px;padding:8px 28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .dots{display:flex;gap:8px}.dot{width:8px;height:8px;border-radius:50%;background:#39434E;border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}.dot:hover{background:var(--ink-3)}.dot.on{background:var(--amber);transform:scale(1.2)}
+  .btns{display:flex;gap:10px}.btn{font-family:var(--sans);font-size:.74rem;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);padding:9px 17px;border-radius:7px;cursor:pointer;transition:border-color .2s,color .2s}.btn:hover{border-color:var(--amber);color:var(--amber)}.btn:disabled{color:var(--ink-3);opacity:.5;cursor:default}
+  .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}.hint{font-family:var(--mono);font-size:.64rem;color:var(--ink-3)}
+  @media (max-width:720px){.s-divider,.s-caveat{flex-direction:column}.s-caveat .right{width:90%}.hint{display:none}}
+  @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
+</style>
+
+<div class="topbar">
+  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era III · 2035 · prevention</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 5</div>
+</div>
+
+<div class="stage">
+  <div class="frame" id="frame">
+    <canvas id="motif"></canvas>
+
+    <section class="slide s-caveat active" data-note="PRS alone is not enough, and the evidence is now unambiguous. The PRS313 score established the genomic baseline, and women in the top PRS decile reach the average 50-year-old's five-year risk by their mid-thirties — so a uniform age-40 start is biologically indefensible. But PRS and germline testing measure almost entirely different populations: in a WISDOM secondary analysis (Shieh, JAMA Oncology 2026), only 0.9 percent of high-penetrance pathogenic-variant carriers — BRCA1, BRCA2, PALB2 — would have been correctly assigned to high-risk screening by clinical risk plus PRS alone. PRS catches one population, germline another, clinical risk a third — all three layers are non-negotiable. The PRS architecture itself is being rebuilt: PRS-Net (Li, Genome Research 2025) is a graph neural network modeling gene-gene interactions and epistasis, a fundamental shift from the additive PRS313. And imaging and genomics update each other: Rothwell (Br J Cancer 2026) showed Mirai plus PRS313 beats either alone. WISDOM (JAMA 2025, 46,000 women) was non-inferior on advanced cancers with a one-third reduction in Stage IIB in the personalized arm, and PERSPECTIVE I&I showed risk communication did not raise anxiety. Extrapolated to 2035: at 30, one workup returns a non-linear genomic score, a germline panel, and a clinical integration; at every mammogram the imaging engine updates the genomic baseline and sets the next appointment — 7 months for top-quintile risk, longer for persistently low risk. Never again driven by a calendar.">
+      <span class="eyebrow">Era III · 2035 · prevention</span>
+      <div class="left">
+        <h2>She knows her risk <span class="am">before she ever lies down.</span></h2>
+        <p class="gap">Risk in 2035 is built from <b>three independent biological layers</b> — polygenic, germline, and clinical — fused into one engine and updated at every scan.</p>
+        <div style="display:flex;gap:clamp(18px,2.6vw,34px);margin-top:14px;flex-wrap:wrap"><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">0.9%</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">of BRCA/PALB2 carriers caught by PRS + clinical alone (WISDOM)</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">⅓</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">fewer Stage IIB cancers, personalized arm (WISDOM)</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#5FB7C9;line-height:1">mid-30s</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">when top-decile PRS reaches an average 50-yr-old's risk</div></div></div>
+        <div class="cite">Shieh et al., JAMA Oncol 2026 · Esserman (WISDOM), JAMA 2025 · Li (PRS-Net), Genome Res 2025 · Rothwell, Br J Cancer 2026</div>
+      </div>
+      <div class="right"><svg viewBox="0 0 380 330" style="width:100%;height:auto" role="img" aria-label="Three largely non-overlapping risk populations fused into one engine">
+  <g fill-opacity=".14" stroke-width="2">
+    <circle cx="125" cy="95" r="62" fill="#5FB7C9" stroke="#5FB7C9"/>
+    <circle cx="255" cy="95" r="62" fill="#E7AC51" stroke="#E7AC51"/>
+    <circle cx="190" cy="170" r="62" fill="#D9785B" stroke="#D9785B"/>
+  </g>
+  <g font-family="SFMono-Regular,Menlo,monospace" font-weight="bold" text-anchor="middle">
+    <text x="100" y="78" font-size="13" fill="#5FB7C9">PRS</text>
+    <text x="280" y="78" font-size="13" fill="#E7AC51">Germline</text>
+    <text x="190" y="200" font-size="13" fill="#D9785B">Clinical</text>
+  </g>
+  <text x="190" y="123" text-anchor="middle" font-size="10" fill="#ECEFF3" font-family="SFMono-Regular,Menlo,monospace">overlap &lt; 1%</text>
+  <g stroke="#5C6975" stroke-width="1.5" fill="none"><path d="M190 238 L190 262" marker-end="url(#a1)"/></g>
+  <defs><marker id="a1" markerWidth="9" markerHeight="9" refX="4" refY="6" orient="auto"><path d="M1 1 L4 6 L7 1" fill="none" stroke="#5C6975" stroke-width="1.5"/></marker></defs>
+  <rect x="70" y="265" width="240" height="50" rx="9" fill="#1B232D" stroke="#C98A2E"/>
+  <text x="190" y="287" text-anchor="middle" font-size="12" font-weight="bold" fill="#ECEFF3">Fused risk engine</text>
+  <text x="190" y="304" text-anchor="middle" font-size="9.5" fill="#9DA9B5" font-family="SFMono-Regular,Menlo,monospace">one trajectory, updated at every scan</text>
+</svg></div>
+    </section>
+
+    <section class="slide s-caveat" data-note="Double reading has been replaced by convergent evidence across health systems on four continents. MASAI (Sweden, 105,934 women, Lancet 2026): 44 percent workload reduction, 29 percent more cancers, 12 percent fewer interval cancers. PRAIM (Germany, 463,094, Nature Medicine 2025): 17.6 percent higher detection, lower recall. Elías-Cabot (Spain, 31,301, Nature Medicine 2026): partially autonomous triage, CDR up 15.2 percent, workload down 63.6 percent. Plus AI-STREAM (Korea), GEMINI (Scotland), ScreenTrustCAD (Sweden/Denmark) — independent programs, vendors, and reading cultures, same conclusion. The mechanism: AI triages about two-thirds of cases away from the queue automatically; at a background prevalence near 6 per 1,000 the negative predictive value of AI-normal triage is about 99.9 percent. Combined with Mirai-class risk, high-risk women come back sooner — in a UK triennial program the top 20 percent of Mirai scores captured 42.4 percent of interval cancers. What this gives back to the radiologist is time and focus: she reviews the third the AI flagged, biopsies what AI localized, and consults the high-risk women the system has watched for years. The endgame was never replacement — it was practising at the top of her licence.">
+      <span class="eyebrow">Era III · 2035 · prevention</span>
+      <div class="left">
+        <h2>The second reader is now <span class="am">software.</span></h2>
+        <p class="gap">Double reading has been replaced — not by one study, but by <b>convergent RCT evidence across four continents</b>. AI clears roughly two-thirds of normal screens; the radiologist takes the rest.</p>
+        <div style="display:flex;gap:clamp(18px,2.6vw,34px);margin-top:14px;flex-wrap:wrap"><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">−44% / +29%</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">workload / cancers detected — MASAI (Lancet 2026)</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">−63.6%</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">radiologist workload — Elías-Cabot (Nat Med 2026)</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#5FB7C9;line-height:1">~99.9%</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">NPV of AI-normal triage at ~6/1,000 prevalence</div></div></div>
+        <div class="cite">MASAI, Lancet 2026 · PRAIM, Nat Med 2025 · Elías-Cabot, Nat Med 2026 · AI-STREAM · GEMINI · ScreenTrustCAD</div>
+      </div>
+      <div class="right"><svg viewBox="0 0 380 320" style="width:100%;height:auto" role="img" aria-label="Reading queue before and after AI triage">
+  <g font-family="SFMono-Regular,Menlo,monospace" font-size="10" fill="#9DA9B5"><text x="70" y="22" text-anchor="middle">BEFORE · double read</text><text x="285" y="22" text-anchor="middle">2035 · AI triage</text></g>
+  <g><rect x="46" y="40" width="48" height="16" rx="2" fill="#39434E"/><rect x="46" y="64" width="48" height="16" rx="2" fill="#39434E"/><rect x="46" y="88" width="48" height="16" rx="2" fill="#39434E"/><rect x="46" y="112" width="48" height="16" rx="2" fill="#39434E"/><rect x="46" y="136" width="48" height="16" rx="2" fill="#39434E"/><rect x="46" y="160" width="48" height="16" rx="2" fill="#39434E"/><rect x="46" y="184" width="48" height="16" rx="2" fill="#39434E"/><rect x="46" y="208" width="48" height="16" rx="2" fill="#39434E"/><rect x="46" y="232" width="48" height="16" rx="2" fill="#39434E"/><rect x="46" y="256" width="48" height="16" rx="2" fill="#39434E"/></g>
+  <path d="M120 160 L150 160" stroke="#5C6975" stroke-width="1.5" marker-end="url(#a2)"/>
+  <defs><marker id="a2" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto"><path d="M1 1 L6 4 L1 7" fill="none" stroke="#5C6975" stroke-width="1.5"/></marker></defs>
+  <g><rect x="210" y="40" width="44" height="13" rx="2" fill="#1B232D" stroke="#2A333D"/><rect x="210" y="58" width="44" height="13" rx="2" fill="#1B232D" stroke="#2A333D"/><rect x="210" y="76" width="44" height="13" rx="2" fill="#1B232D" stroke="#2A333D"/><rect x="210" y="94" width="44" height="13" rx="2" fill="#1B232D" stroke="#2A333D"/><rect x="210" y="112" width="44" height="13" rx="2" fill="#1B232D" stroke="#2A333D"/><rect x="210" y="130" width="44" height="13" rx="2" fill="#1B232D" stroke="#2A333D"/><rect x="210" y="148" width="44" height="13" rx="2" fill="#1B232D" stroke="#2A333D"/></g>
+  <text x="232" y="180" text-anchor="middle" font-size="8.5" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace">~⅔ cleared → normal</text>
+  <g><rect x="300" y="44" width="48" height="20" rx="2" fill="#E7AC51"/><rect x="300" y="72" width="48" height="20" rx="2" fill="#E7AC51"/><rect x="300" y="100" width="48" height="20" rx="2" fill="#E7AC51"/></g>
+  <rect x="296" y="40" width="56" height="6" rx="2" fill="#D9785B"/>
+  <text x="324" y="150" text-anchor="middle" font-size="8.5" fill="#9DA9B5" font-family="SFMono-Regular,Menlo,monospace">⅓ → expert</text>
+  <text x="324" y="36" text-anchor="middle" font-size="8" fill="#D9785B" font-family="SFMono-Regular,Menlo,monospace">high-risk first</text>
+</svg></div>
+    </section>
+
+    <section class="slide s-caveat" data-note="Ultrasound and MRI each have their own AI evidence base. BMU-Net (Yang, Nat Biomed Eng 2024) fused B-mode, Doppler, and elastography with mammography and metadata across 5,025 patients, matching radiologists and degrading gracefully when modalities are missing. ScreenTrustMRI (Salim, Nat Med 2024) scored every negative mammogram and offered the top 6.9 percent an MRI — 64 cancers per 1,000 MRI exams versus 16.5 in the density-based comparator, nearly four times more efficient. Density no longer decides who gets MRI; the AI score does. Pathology is the fifth modality: foundation models pretrained on 100,000+ whole-slide images (UNI, Chen, Nat Med 2024) underpin tissue inference, and models on H&E plus metadata predict pathological complete response to neoadjuvant chemo at AUC about 0.87 to 0.90 — treatment intelligence off the same slide that makes the diagnosis. BINDS (Wang, Nat Biomed Eng 2026; 27,048 participants, 8 centres) unifies it into a two-stage workflow — US and mammography first, MRI when the model decides it changes the assessment — with radiology-pathology alignment built in. Genomics is always present as a prior: a dense breast with high PRS is read differently than one with average PRS. By 2035 a unified multimodal model presents the most informative combination; modality selection has become a model parameter.">
+      <span class="eyebrow">Era III · 2035 · prevention</span>
+      <div class="left">
+        <h2>The mammogram was <span class="am">just the beginning.</span></h2>
+        <p class="gap">Five modalities, five validated AI layers — and <b>no modality is ordered unless the model already knows it will change the answer.</b></p>
+        <div style="display:flex;gap:clamp(18px,2.6vw,34px);margin-top:14px;flex-wrap:wrap"><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">64 vs 16.5</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">cancers / 1,000 MRI — AI vs density triage (ScreenTrustMRI)</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">27,048</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">patients, 8 centres — BINDS multimodal system</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#5FB7C9;line-height:1">~0.87–0.90</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">AUC, pCR to neoadjuvant chemo from H&E</div></div></div>
+        <div class="cite">Salim (ScreenTrustMRI), Nat Med 2024 · Yang (BMU-Net), Nat Biomed Eng 2024 · Wang (BINDS), Nat Biomed Eng 2026 · Chen (UNI), Nat Med 2024</div>
+      </div>
+      <div class="right"><svg viewBox="0 0 380 340" style="width:100%;height:auto" role="img" aria-label="Conditional five-layer multimodal pipeline">
+  <defs><marker id="a3" markerWidth="9" markerHeight="9" refX="4" refY="6" orient="auto"><path d="M1 1 L4 6 L7 1" fill="none" stroke="#5C6975" stroke-width="1.4"/></marker></defs>
+  <rect x="60" y="300" width="260" height="30" rx="7" fill="#1B232D" stroke="#5FB7C9"/><text x="190" y="319" text-anchor="middle" font-size="11" fill="#5FB7C9" font-family="SFMono-Regular,Menlo,monospace">GENOMICS · always-on prior</text>
+  <g font-family="Arial" font-size="12" font-weight="bold" fill="#ECEFF3" text-anchor="middle">
+    <rect x="120" y="240" width="140" height="34" rx="7" fill="#1B232D" stroke="#2A333D"/><text x="190" y="262">Mammography</text>
+    <rect x="120" y="186" width="140" height="34" rx="7" fill="#1B232D" stroke="#2A333D"/><text x="190" y="208">Ultrasound</text>
+    <rect x="120" y="132" width="140" height="34" rx="7" fill="#1B232D" stroke="#2A333D"/><text x="190" y="154">MRI</text>
+    <rect x="120" y="78" width="140" height="34" rx="7" fill="#1B232D" stroke="#2A333D"/><text x="190" y="100">Pathology</text>
+  </g>
+  <g stroke="#5C6975" fill="none">
+    <path d="M190 300 L190 276" stroke-width="3" marker-end="url(#a3)"/>
+    <path d="M190 240 L190 222" stroke-width="2.4" marker-end="url(#a3)"/>
+    <path d="M190 186 L190 168" stroke-width="1.6" marker-end="url(#a3)"/>
+    <path d="M190 132 L190 114" stroke-width="1.2" marker-end="url(#a3)"/>
+  </g>
+  <rect x="95" y="24" width="190" height="38" rx="9" fill="#1B232D" stroke="#C98A2E"/><text x="190" y="47" text-anchor="middle" font-size="12" font-weight="bold" fill="#E7AC51" font-family="Arial">Unified risk + diagnosis</text>
+  <path d="M190 78 L190 64" stroke="#5C6975" stroke-width="2" fill="none" marker-end="url(#a3)"/>
+  <text x="300" y="200" text-anchor="middle" font-size="8.5" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace" transform="rotate(90 300 200)">each layer conditional on the last</text>
+</svg></div>
+    </section>
+
+    <section class="slide s-caveat" data-note="The cardiovascular signal was there all along. AI-quantified breast arterial calcification predicts MACE and all-cause mortality beyond the PREVENT score across 123,762 women at Emory and Mayo, with severe BAC carrying about a 2.8-fold five-year mortality risk (Dapamede, European Heart Journal 2026 — our paper). Independently, Barraclough (Heart 2026) predicted cardiovascular events from mammographic image features alone — no labs — across 49,196 women over 8.8 years, with concordance comparable to the Pooled Cohort Equations. The breast architecture encodes vascular health; we already have the cardiovascular visit — we call it a mammogram. Foundation models also read biological age: Mammo-AGE (Pan, Nat Commun 2025; 95,826 mammograms) estimates breast age, and the age gap stratifies cancer risk independent of density — the mammographic analog of CXR-Age. Diabetes, kidney, and metabolic risk are the emerging frontier (framed honestly as next, not established). And the equity payoff is the close: ~40 million US mammograms a year, plus mobile units reaching rural communities — for women who will never see a cardiologist, the mammogram is the only reliable preventive touchpoint. We came for the cancer; we found the heart; we discovered the body.">
+      <span class="eyebrow">Era III · 2035 · prevention</span>
+      <div class="left">
+        <h2>The mammogram is now a <span class="am">whole-body health visit.</span></h2>
+        <p class="gap">We built a cancer screen and discovered a window into the entire body. In 2035, <b>that window is open.</b></p>
+        <div style="display:flex;gap:clamp(18px,2.6vw,34px);margin-top:14px;flex-wrap:wrap"><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">2.8×</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">5-yr mortality, severe BAC — Dapamede, 123,762 (Eur Heart J 2026)</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">49,196</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">women: CVD from the image alone — Barraclough (Heart 2026)</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#5FB7C9;line-height:1">biological age</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">from the mammogram — Mammo-AGE, 95,826</div></div></div>
+        <div class="cite">Dapamede, Eur Heart J 2026 (Emory/Mayo — our paper) · Barraclough, Heart 2026 · Pan (Mammo-AGE), Nat Commun 2025 · CXR-Age, Nat Aging 2021</div>
+      </div>
+      <div class="right"><svg viewBox="0 0 380 320" style="width:100%;height:auto" role="img" aria-label="One mammogram, five health output streams">
+  <path d="M70 60 C70 30 120 30 120 70 C120 150 110 250 80 250 C60 250 70 150 70 60 Z" fill="#151C24" stroke="#9DA9B5" stroke-width="1.5"/>
+  <text x="95" y="285" text-anchor="middle" font-size="10" fill="#9DA9B5" font-family="SFMono-Regular,Menlo,monospace">one mammogram</text>
+  <defs><marker id="a5" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto"><path d="M1 1 L6 4 L1 7" fill="none" stroke="#5C6975" stroke-width="1.4"/></marker></defs>
+  <g font-family="Arial" font-size="12" font-weight="bold">
+    <path d="M125 70 L235 50" stroke="#E7AC51" stroke-width="2" marker-end="url(#a5)"/><text x="245" y="54" fill="#E7AC51">Cancer risk</text>
+    <path d="M125 105 L235 110" stroke="#E7AC51" stroke-width="2" marker-end="url(#a5)"/><text x="245" y="114" fill="#E7AC51">Cardiovascular</text>
+    <path d="M125 140 L235 165" stroke="#E7AC51" stroke-width="2" marker-end="url(#a5)"/><text x="245" y="169" fill="#E7AC51">Biological age</text>
+    <path d="M125 175 L235 218" stroke="#5C6975" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#a5)"/><text x="245" y="222" fill="#9DA9B5">Metabolic *</text>
+    <path d="M120 210 L235 268" stroke="#5C6975" stroke-width="2" stroke-dasharray="4 4" marker-end="url(#a5)"/><text x="245" y="272" fill="#9DA9B5">Kidney *</text>
+  </g>
+  <text x="300" y="300" text-anchor="middle" font-size="8.5" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace">* models still learning</text>
+</svg></div>
+    </section>
+
+    <section class="slide s-caveat" data-note="VLMs and foundation models did not unlock medical AI by ingesting mountains of dirty data — they made high-quality curation possible at scale. Quality beats quantity has been proven and repeatedly ignored: DataComp-LM discards 99 percent of raw data through filtering; Sambasivan (CHI 2021) documented that everyone wants the model work, not the data work. For a decade the rate-limiting step was generating structured labels from the unstructured archives health systems already had — every radiology report encodes clinical knowledge as prose, but extracting it required slow expert annotation. LLMs crossed the human threshold for that around 2024-25: GPT-based labeling hit average F1 0.90 across 14 thoracic pathologies, approaching CheXbert; the Data Scaling Laws work built its whole pipeline on GPT-4o-extracted labels including arterial calcification, radiologist-validated. The virtuous cycle: LLMs curate the data that trains the model that curates better data (ScaleMAI's EM loop; Mammo-CLIP for mammography). None of the datasets behind the prior slides — BINDS 27,048, BMU-Net 5,025, Mammo-AGE 95,826, Barraclough 49,196 — existed as clean training sets before the teams built them from archives. EMBED, 3.5 million exams with labels extracted from reports, is our example; the Emory AI Image Extraction Core does exactly this. The pipeline that made it possible was a language model reading a report a radiologist wrote years ago, not knowing it would train an AI. In 2035, every mammogram ever performed is in the training set.">
+      <span class="eyebrow">Era III · 2035 · prevention</span>
+      <div class="left">
+        <h2>The magic wand doesn&rsquo;t exist. <span class="am">The pipeline does.</span></h2>
+        <p class="gap">Foundation models didn't win by ingesting dirty data — they made <b>high-quality curation possible at scale.</b> The model was never the bottleneck. The label was.</p>
+        <div style="display:flex;gap:clamp(18px,2.6vw,34px);margin-top:14px;flex-wrap:wrap"><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">F1 0.90</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">LLM report labeling across 14 pathologies (vs CheXbert)</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#E7AC51;line-height:1">3.5M</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">EMBED exams — labels extracted from reports (our work)</div></div><div><div style="font-size:clamp(1.3rem,2.1vw,1.8rem);font-weight:700;color:#5FB7C9;line-height:1">the label</div><div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:20ch;line-height:1.4">was the rate-limiting step — not the architecture</div></div></div>
+        <div class="cite">Ng, data-centric AI 2021 · Sambasivan (data cascades), CHI 2021 · Abdullah & Kim, JMIR Med Inform 2025 · ScaleMAI 2025 · Mammo-CLIP, ECCV 2024</div>
+      </div>
+      <div class="right"><svg viewBox="0 0 380 320" style="width:100%;height:auto" role="img" aria-label="Data-centric virtuous cycle: LLM labels the archive that trains the model">
+  <defs><marker id="a6" markerWidth="9" markerHeight="9" refX="6" refY="4" orient="auto"><path d="M1 1 L6 4 L1 7" fill="none" stroke="#5C6975" stroke-width="1.4"/></marker></defs>
+  <rect x="30" y="120" width="96" height="70" rx="8" fill="#1B232D" stroke="#2A333D"/><text x="78" y="150" text-anchor="middle" font-size="10.5" fill="#9DA9B5" font-family="Arial">archive:</text><text x="78" y="166" text-anchor="middle" font-size="9.5" fill="#9DA9B5" font-family="Arial">images +</text><text x="78" y="180" text-anchor="middle" font-size="9.5" fill="#9DA9B5" font-family="Arial">old reports</text>
+  <path d="M126 155 L150 155" stroke="#5C6975" stroke-width="1.6" fill="none" marker-end="url(#a6)"/>
+  <rect x="152" y="128" width="78" height="54" rx="8" fill="#1B232D" stroke="#5FB7C9"/><text x="191" y="159" text-anchor="middle" font-size="12" font-weight="bold" fill="#5FB7C9" font-family="Arial">LLM</text>
+  <path d="M230 155 L254 155" stroke="#5C6975" stroke-width="1.6" fill="none" marker-end="url(#a6)"/>
+  <rect x="256" y="120" width="96" height="70" rx="8" fill="#1B232D" stroke="#C98A2E"/><text x="304" y="150" text-anchor="middle" font-size="11" font-weight="bold" fill="#E7AC51" font-family="Arial">Foundation</text><text x="304" y="167" text-anchor="middle" font-size="11" font-weight="bold" fill="#E7AC51" font-family="Arial">model</text>
+  <path d="M304 120 C304 60 78 60 78 118" stroke="#5C6975" stroke-width="1.6" stroke-dasharray="5 4" fill="none" marker-end="url(#a6)"/>
+  <text x="191" y="78" text-anchor="middle" font-size="9.5" fill="#9DA9B5" font-family="SFMono-Regular,Menlo,monospace">model improves the next labels</text>
+  <text x="191" y="210" text-anchor="middle" font-size="9.5" fill="#5C6975" font-family="SFMono-Regular,Menlo,monospace">structured label ⟶ image-label pair</text>
+</svg></div>
+    </section>
+
+  </div>
+  <div class="speaker"><span class="say">SAY</span><p class="saytext" id="note"></p></div>
+</div>
+
+<div class="controls">
+  <div class="dots" id="dots"></div>
+  <div class="hint">← → arrow keys</div>
+  <div class="btns"><button class="btn" id="prev">← Prev</button><button class="btn" id="next">Next →</button></div>
+</div>
+
+<script>
+(function(){"use strict";
+var slides=[].slice.call(document.querySelectorAll('.slide'));var i=0,n=slides.length;
+var curEl=document.getElementById('cur'),noteEl=document.getElementById('note'),prevB=document.getElementById('prev'),nextB=document.getElementById('next'),dotsWrap=document.getElementById('dots');
+var dots=slides.map(function(_,idx){var b=document.createElement('button');b.className='dot'+(idx===0?' on':'');b.setAttribute('aria-label','Slide '+(idx+1));b.addEventListener('click',function(){go(idx);});dotsWrap.appendChild(b);return b;});
+function show(idx){slides.forEach(function(s,k){s.classList.toggle('active',k===idx);});dots.forEach(function(d,k){d.classList.toggle('on',k===idx);});curEl.textContent=idx+1;noteEl.textContent=slides[idx].getAttribute('data-note')||'';prevB.disabled=idx===0;nextB.disabled=idx===n-1;}
+function go(idx){i=Math.max(0,Math.min(n-1,idx));show(i);}
+nextB.addEventListener('click',function(){go(i+1);});prevB.addEventListener('click',function(){go(i-1);});
+document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(n-1);}});
+function drawMotif(c){var dpr=Math.min(window.devicePixelRatio||1,2);var r=c.getBoundingClientRect();var w=Math.max(8,Math.round(r.width*dpr)),h=Math.max(8,Math.round(r.height*dpr));c.width=w;c.height=h;var x=c.getContext('2d');x.clearRect(0,0,w,h);var fx=w*0.84,fy=h*0.20,rings=22;for(var k=1;k<=rings;k++){var rad=(k/rings)*Math.max(w,h)*0.95;var a=0.085*(1-k/rings)+0.012;x.beginPath();for(var t=0;t<=Math.PI*2+0.01;t+=0.18){var pert=1+0.10*Math.sin(t*3+k*0.5)+0.06*Math.cos(t*5-k*0.3);var px=fx+Math.cos(t)*rad*pert;var py=fy+Math.sin(t)*rad*pert*0.9;if(t===0)x.moveTo(px,py);else x.lineTo(px,py);}x.closePath();x.strokeStyle='rgba(231,172,81,'+a.toFixed(3)+')';x.lineWidth=1;x.stroke();}}
+function renderAll(){var m=document.getElementById('motif');if(m)drawMotif(m);}
+var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(renderAll,160);});requestAnimationFrame(function(){requestAnimationFrame(renderAll);});setTimeout(renderAll,300);
+show(0);
+})();
+</script>
