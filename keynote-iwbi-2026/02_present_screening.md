@@ -16,7 +16,7 @@ On-slide: **The year is 2016.** You're beginning to hear about AI — but still 
 
 The optimism wasn't new in 2020. Back in 2016 came the first large-scale effort to build breast-cancer AI: the Digital Mammography DREAM Challenge. Over a thousand participants, 126 teams from 44 countries, on roughly 640,000 mammograms; we took part. There was an incredible surge of optimism that this would simply solve breast AI.
 
-On the held-out evaluation set, the best single model reached an **AUC of 0.858**; the **ensemble** of the eight best models reached **0.895**; and the **ensemble plus a single radiologist** reached **0.942**. The winner, Therapixel, spun out a company whose product, MammoScreen, is still in clinical use today.
+On the held-out evaluation set, the best single model reached an **AUC of 0.858**; the **ensemble** of the eight best models reached **0.895**; and the **ensemble plus a single radiologist** reached **0.942**.
 
 - **1,000+ participants · 126 teams · 44 countries · ~640,000 mammograms**
 - Best model **AUC 0.858** → ensemble **0.895** → ensemble + a radiologist **0.942**
