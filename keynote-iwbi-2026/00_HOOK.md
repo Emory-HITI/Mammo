@@ -30,17 +30,11 @@ On-slide: **A normal screening mammogram — read as normal.**
 
 ---
 
-### Slide 3 — What are we not seeing?
+### Slide 3 — What are we not seeing? (with the mammogram)
 
-> *"Two radiologists read this and were right — there is no cancer to see today. So the question I want to pose is: what are we not seeing?"*
-
-On-slide: **What are we not seeing?**
-
----
-
-### Slide 4 — AI reads the same mammogram
-
-> *"What I want to describe by the end of this talk is how AI models — past, present, and future — read this same mammogram, and her eventual biopsy slide, and extract information that is not visible to us.*
+> *"Two radiologists read this and were right — there is no cancer to see today. So the question I want to pose is: what are we not seeing?*
+>
+> *What I want to describe by the end of this talk is how AI models — past, present, and future — read this same mammogram, and her eventual biopsy slide, and extract information that is not visible to us.*
 >
 > *The **first** estimates a high probability of breast cancer within about five years — which she did develop.*
 >
@@ -50,11 +44,11 @@ On-slide: **What are we not seeing?**
 >
 > *None of these is hypothetical. Each is published and externally validated, and one is already in this year's screening guidelines."*
 
-On-slide (heading only): **AI reads this same mammogram and her biopsy slide — and gives us not just information about the lesion, but about the patient.** *(The three findings — image-based risk, cardiovascular disease, recurrence prediction — are spoken, not shown on the slide.)*
+On-slide (mammogram + title): **What are we not seeing?** — answered beneath: *AI reads this same mammogram and her biopsy slide — not just the lesion, but the patient.* *(The three findings — image-based risk, cardiovascular disease, recurrence prediction — are spoken, not shown.)*
 
 ---
 
-### Slide 5 — The spine: from lesions to patients
+### Slide 4 — The spine: from lesions to patients
 
 > *"So over the next thirty minutes or so, I want to take you on a short journey of how we got here and where we can expect to go: from the lesion, to the image, to the patient. And I'll start with a cautionary tale, because this field has overpromised before."*
 
@@ -65,7 +59,7 @@ On-slide — **From lesions to patients.**
 
 ---
 
-### Slide 6 — Time machine to 1998
+### Slide 5 — Time machine to 1998
 
 > *"To understand where this is going, we have to start with where it has been — because this field has overpromised before. So let's step into a time machine and go back to the beginning, to 1998."*
 
