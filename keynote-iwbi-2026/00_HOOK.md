@@ -50,11 +50,7 @@ On-slide: **What are we not seeing?**
 >
 > *None of these is hypothetical. Each is published and externally validated, and one is already in this year's screening guidelines."*
 
-On-slide heading: **AI reads this same mammogram and her biopsy slide — and gives us not just information about the lesion, but about the patient.**
-- **Image-based risk:** high probability of cancer within **~5 years**, which she developed
-- **Cardiovascular disease:** breast arterial calcification, an independent risk marker with a dose-response relationship
-- **Recurrence prediction:** a genomic recurrence score from the biopsy slide
-- *None of these is hypothetical. Each is published and externally validated — and one is already in this year's screening guidelines.*
+On-slide (heading only): **AI reads this same mammogram and her biopsy slide — and gives us not just information about the lesion, but about the patient.** *(The three findings — image-based risk, cardiovascular disease, recurrence prediction — are spoken, not shown on the slide.)*
 
 ---
 
