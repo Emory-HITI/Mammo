@@ -78,6 +78,30 @@
       </div>
     </section>
 
+    <!-- risk retrospective: 2022 -> 2026 -> 2030 -->
+    <section class="slide s-primer" data-note="Start with risk, and look at how far it came. In 2022, Mirai showed that a deep network reading the mammogram could predict five-year risk far better than the old questionnaire models — but it was a research tool. By 2026 it was real: Clairity was FDA-cleared to read risk from a routine mammogram alone and entered the NCCN guidelines, and our AsymMirai work made that risk interpretable. And by 2030 — this is the part we imagine from 2035 — risk was simply computed for every woman at the time of screening: her interval and whether she needed MRI were set by her risk, not her age. High-risk cancers were caught earlier; low-risk women were spared unnecessary imaging. Her risk was known before she ever entered the scanner.">
+      <span class="eyebrow">Era III · 2035 · looking back</span>
+      <h2>Looking back: how image-based <span class="am">risk</span> changed the patient's path.</h2>
+      <div style="display:flex;gap:clamp(14px,1.8vw,24px);margin-top:8px;align-items:stretch">
+        <div style="flex:1 1 0;background:linear-gradient(180deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-top:2px solid var(--cyan);border-radius:10px;padding:clamp(14px,1.6vw,18px)">
+          <div style="font-family:var(--mono);font-size:clamp(1.3rem,2vw,1.7rem);font-weight:700;color:var(--cyan);line-height:1">2022</div>
+          <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:6px 0 9px">Research</div>
+          <p style="font-size:clamp(.84rem,1.2vw,1rem);color:var(--ink-2);line-height:1.45;margin:0"><b style="color:var(--ink)">Mirai</b> reads 5-year risk from the mammogram itself — out-predicting the old questionnaire models. A research tool.</p>
+        </div>
+        <div style="flex:1 1 0;background:linear-gradient(180deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-top:2px solid var(--amber);border-radius:10px;padding:clamp(14px,1.6vw,18px)">
+          <div style="font-family:var(--mono);font-size:clamp(1.3rem,2vw,1.7rem);font-weight:700;color:var(--amber);line-height:1">2026</div>
+          <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:6px 0 9px">Clinical</div>
+          <p style="font-size:clamp(.84rem,1.2vw,1rem);color:var(--ink-2);line-height:1.45;margin:0"><b style="color:var(--ink)">Clairity</b> is FDA-cleared to read risk from a routine mammogram and enters NCCN; <b style="color:var(--ink)">AsymMirai</b> makes it interpretable.</p>
+        </div>
+        <div style="flex:1 1 0;background:rgba(231,172,81,.05);border:1.5px dashed var(--amber-deep);border-radius:10px;padding:clamp(14px,1.6vw,18px)">
+          <div style="font-family:var(--mono);font-size:clamp(1.3rem,2vw,1.7rem);font-weight:700;color:var(--amber);line-height:1">2030</div>
+          <div style="font-family:var(--mono);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);margin:6px 0 9px">What we imagine</div>
+          <p style="font-size:clamp(.84rem,1.2vw,1rem);color:var(--ink-2);line-height:1.45;margin:0">Risk is computed for <b style="color:var(--ink)">every woman at screening</b> — interval and MRI set by risk, not age. High-risk caught earlier, low-risk spared.</p>
+        </div>
+      </div>
+      <p class="turn-line" style="margin-top:14px">Her risk is known <b>before she ever enters the scanner.</b></p>
+    </section>
+
     <!-- 2 fusion beats unimodal -->
     <section class="slide s-primer" data-note="The core evidence: fusing modalities beats any single one. Chen and colleagues, in PORPOISE, fused whole-slide images with molecular data across 14 cancers — multimodal beat unimodal in 12 of them. The honest caveat, from Howard, Kather and Pearson, is that some of that gain reflected dataset batch effects; under site-preserved validation the advantage shrinks. Schmauch showed the modalities partly encode each other — you can predict the molecular profile from the H&E alone. And in breast, fusing clinical data with MRI predicts neoadjuvant treatment response at an AUC near 0.89.">
       <span class="eyebrow">Era III · multimodal fusion</span>
@@ -140,16 +164,7 @@
       </div>
     </section>
 
-    <!-- 5 digital twin -->
-    <section class="slide s-turn" data-note="Where this is heading is the medical digital twin: the patient's imaging, pathology, genome, and history fused into one model that updates with every visit and lets us weigh the consequences of a decision before we make it. Sadée and colleagues at Stanford laid out the concept in Lancet Digital Health this year. A patient-level model spanning imaging, pathology, and genomics.">
-      <span class="eyebrow">Era III · multimodal fusion</span>
-      <h2>The endpoint: a <span class="am">digital twin</span> of the patient.</h2>
-      <p class="turn-line">Her imaging, pathology, genome, and history fused into <b>one model</b> that updates with every visit — and lets us weigh the consequences of a decision before we make it.</p>
-      <p>A patient-level model spanning imaging, pathology, and genomics — the concrete form of "the patient, not the pixel."</p>
-      <div class="cite">Sadée et al. (Gevaert, Stanford), Lancet Digital Health 2025 — medical digital twins</div>
-    </section>
-
-  </div>
+      </div>
   <div class="speaker"><span class="say">SAY</span><p class="saytext" id="note"></p></div>
 </div>
 
