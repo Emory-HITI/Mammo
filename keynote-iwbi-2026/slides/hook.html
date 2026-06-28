@@ -94,7 +94,7 @@
   .s-report .report{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(8px,1.15vw,12px)}
   .s-report h2{font-size:clamp(1.1rem,1.9vw,1.58rem);line-height:1.2;font-weight:700;letter-spacing:-.015em;text-wrap:balance;max-width:24ch;margin-bottom:3px}
   .s-report h2 .q{color:var(--amber)}
-  .finding{display:grid;grid-template-columns:auto 1fr;gap:15px;align-items:start;
+  .finding{display:grid;grid-template-columns:1fr;gap:15px;align-items:start;
     background:linear-gradient(180deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-left:2px solid var(--amber);
     border-radius:8px;padding:clamp(10px,1.25vw,14px) clamp(13px,1.5vw,18px)}
   .finding .ix{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--amber);padding-top:.15em;font-variant-numeric:tabular-nums}
@@ -211,18 +211,12 @@
         <div class="vp-body"><canvas class="mammo"></canvas></div>
       </div>
       <div class="report">
-        <h2>AI reads this <span class="q">same mammogram</span> — and her eventual biopsy slide — for information not visible to us.</h2>
-        <div class="finding"><span class="ix">01</span><span class="out"><span class="v">Image-based risk</span> — high probability of cancer within ~5 years<span>which she developed</span></span></div>
-        <div class="finding"><span class="ix">02</span><span class="out"><span class="v">Cardiovascular disease</span> — breast arterial calcification<span>an independent risk marker, with a dose-response relationship</span></span></div>
-        <div class="finding"><span class="ix">03</span><span class="out"><span class="v">Recurrence prediction</span> — a genomic recurrence score from the biopsy slide</span></div>
+        <h2>AI reads this <span class="q">same mammogram</span> and her biopsy slide — and gives us not just information about the <b>lesion</b>, but about the <span class="q">patient.</span></h2>
+        <div class="finding"><span class="out"><span class="v">Image-based risk</span> — high probability of cancer within ~5 years<span>which she developed</span></span></div>
+        <div class="finding"><span class="out"><span class="v">Cardiovascular disease</span> — breast arterial calcification<span>an independent risk marker, with a dose-response relationship</span></span></div>
+        <div class="finding"><span class="out"><span class="v">Recurrence prediction</span> — a genomic recurrence score from the biopsy slide</span></div>
         <p class="foot">None of these is hypothetical. Each is published and externally validated — and <b>one is already in this year's screening guidelines.</b></p>
       </div>
-    </section>
-
-    <section class="slide s-pivot" data-note="For about thirty years, we built tools to help us find the lesion — to mark the spot. That was CAD. What's changing now is the scope of the question we ask.">
-      <div class="pivot-line was"><span class="k">~30 yrs</span><span class="v">We built tools to <b>find the lesion</b> — to mark the spot. That was CAD.</span></div>
-      <div class="pivot-rule"></div>
-      <div class="pivot-line now"><span class="k">Now</span><span class="v">What's changing is the <b>scope of the question</b> we ask.</span></div>
     </section>
 
     <section class="slide s-spine" data-note="So over the next thirty minutes or so, I want to take you on a short journey of how we got here and where we can expect to go: from the lesion, to the image, to the patient. And I'll start with a cautionary tale, because this field has overpromised before.">

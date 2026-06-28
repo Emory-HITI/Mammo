@@ -50,23 +50,15 @@ On-slide: **What are we not seeing?**
 >
 > *None of these is hypothetical. Each is published and externally validated, and one is already in this year's screening guidelines."*
 
-On-slide:
-- **01 — Image-based risk:** high probability of cancer within **~5 years**, which she developed
-- **02 — Cardiovascular disease:** breast arterial calcification, an independent risk marker with a dose-response relationship
-- **03 — Recurrence prediction:** a genomic recurrence score from the biopsy slide
+On-slide heading: **AI reads this same mammogram and her biopsy slide — and gives us not just information about the lesion, but about the patient.**
+- **Image-based risk:** high probability of cancer within **~5 years**, which she developed
+- **Cardiovascular disease:** breast arterial calcification, an independent risk marker with a dose-response relationship
+- **Recurrence prediction:** a genomic recurrence score from the biopsy slide
 - *None of these is hypothetical. Each is published and externally validated — and one is already in this year's screening guidelines.*
 
 ---
 
-### Slide 5 — The pivot
-
-> *"For about thirty years, we built tools to help us find the lesion — to mark the spot. That was CAD. What's changing now is the scope of the question we ask."*
-
-On-slide: **~30 yrs** — We built tools to **find the lesion** (to mark the spot; that was CAD). **Now** — what's changing is the **scope of the question** we ask.
-
----
-
-### Slide 6 — The spine: from lesions to patients
+### Slide 5 — The spine: from lesions to patients
 
 > *"So over the next thirty minutes or so, I want to take you on a short journey of how we got here and where we can expect to go: from the lesion, to the image, to the patient. And I'll start with a cautionary tale, because this field has overpromised before."*
 
@@ -77,7 +69,7 @@ On-slide — **From lesions to patients.**
 
 ---
 
-### Slide 7 — Time machine to 1998
+### Slide 6 — Time machine to 1998
 
 > *"To understand where this is going, we have to start with where it has been — because this field has overpromised before. So let's step into a time machine and go back to the beginning, to 1998."*
 
