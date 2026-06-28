@@ -78,13 +78,13 @@ The conclusion is worth reading verbatim. It had been foreshadowed years earlier
 
 ## Slide 6 — What went wrong.
 
-Why did it fail? Three reasons. It flagged the cancers we already catch, so it mostly added noise. It marked most normal studies, so readers learned to ignore it. And as an imperfect second reader, it pulled good radiologists toward its mistakes — the over-dependence Lehman described.
+Why did it fail? Three reasons. First, it could only flag what we already know how to describe — the features were hand-tuned, so it was limited to what we could design, and it added marks rather than new information. Second, it marked most normal studies — 70–85% carried at least one false-positive mark — so readers learned to ignore it, and trust eroded. And third, the deeper problem: it was deployed at scale, reimbursed and run on nearly every screening mammogram in the country, before it was ever validated. The definitive accuracy study didn't arrive until 2015 — and found no benefit.
 
-1. **It flagged what we already catch.** Hand-tuned rules aimed at the cancers radiologists already find. So it added marks, not new information.
-2. **Readers learned to ignore it.** **70–85% of normal mammograms** carried a false mark with conventional CAD. After enough false alarms, you stop trusting the marks.
-3. **It made good readers worse.** As an imperfect second reader, it pulled attention toward its marks and lowered sensitivity (**OR 0.53**).
+1. **It flagged only what we can already describe.** **Hand-tuned features** are limited to what we can design — so it added marks, not new information.
+2. **Readers learned to ignore it.** **70–85% of normal exams** carried at least one false-positive mark — eroding trust.
+3. **It was deployed at scale before it was ever validated.** Reimbursed in 2002 and run on **~92% of US screening mammograms** by 2016; the definitive accuracy study didn't arrive until 2015 — and found no benefit.
 
-*Citation: Kohli & Jha, "Why CAD Failed in Mammography," JACR 2018;15(3 Pt B):535–537; PMID 29398499; DOI 10.1016/j.jacr.2017.12.029.*
+*Citations: Lehman CD, et al. JAMA Intern Med 2015;175(11):1828–1837 (definitive accuracy study; PMID 26414882) · Keen JD, et al. J Am Coll Radiol 2018 (adoption ~92%) · Kohli & Jha, "Why CAD Failed in Mammography," JACR 2018;15(3 Pt B):535–537; PMID 29398499; DOI 10.1016/j.jacr.2017.12.029.*
 
 ---
 
