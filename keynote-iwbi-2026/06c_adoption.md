@@ -6,32 +6,31 @@
 
 ---
 
-## Slide 1 — The Specification Is Almost Impossible
+## Slide 1 — One Model for Everything Is the Wrong Goal
 
 We chase better detection for three decades. But look at what we ask a *single* model to do at once:
 
 - Hold up across **every scanner and vendor** in the field
 - Perform in women of **all ages, all densities, all risk types**
 - Serve both the **expert breast radiologist** and the **generalist who reads mammo one day a week**
-- Fire at an operating point **everyone agrees on** — when no two readers agree how many false positives are worth one more cancer
 
-> A single model that satisfies all of these is not a hard engineering problem. It is a malformed one.
+> We should seriously reframe how we consider **mammography-model deployment**.
 
-**Speaker note:** Pivot from "the technology works" to "working in a paper is not the bar." The four constraints above are the spine of the next slide.
+**Speaker note:** Pivot from "the technology works" to "working in a paper is not the bar." Asking one model to satisfy all of these at once is the wrong goal; the reframe sets up the next slide.
 
 ---
 
-## Slide 2 — Four Walls, and the Reframe
+## Slide 2 — How We Should Deploy Instead
 
-**1. Generalization.** The model that excels at one site quietly degrades at the next. A multi-vendor study across **275,900 mammograms** (4 vendors, 7 sites, 2 countries) found generalization evidence *still lacking* — and fairness gains in one population often trade away performance in another.
+Not one model imposed everywhere — three reframes:
 
-**2. Operating point.** There is no single right threshold. Sensitivity vs. false positives is a *value judgment*, not a setting — and the expert and the once-a-week reader don't want the same one.
+**1. Operating points, not one threshold.** Sensitivity vs. false positives is a *value judgment*, not a setting. Let a model run at a range of operating points, **tailored to the site and the individual radiologist** — the expert and the once-a-week reader don't want the same one.
 
-**3. Predictions in a vacuum.** The image-only model lacks the chart the radiologist has, so its misses look stupid and trust erodes fast. Adoption tracks interpretability, not just AUC.
+**2. Multimodal — and soon.** A model that operates only on imaging data, or **imaging plus basic clinical data**, will end in user frustration. The model a radiologist will actually trust pulls in **image, clinical context, risk, and history** together. This needs to happen as soon as possible.
 
-**4. The integration tax.** Even a perfect model dies if it can't get into PACS. Custom one-off integrations *don't scale* (RSNA); overloaded IT means onboarding only happens through a platform or vendor you already run.
+**3. The integration tax** *(unchanged).* Even a perfect model dies if it can't get into PACS. Custom one-off integrations *don't scale* (RSNA); overloaded IT means onboarding only happens through a platform or vendor you already run.
 
-> **The reframe:** Stop asking "will *the* model work everywhere?" The future is a **portfolio** — locally validated, locally tuned, **multimodal** (image + clinical + risk), delivered **inside existing workflow**. The winning system isn't the most accurate in a paper; it's the one the radiologist trusts, that knows what they know, and that fires inside PACS without an IT ticket.
+> **The reframe:** The winning system isn't the most accurate in a paper; it's the one tuned to the reader, that knows what they know, and that fires inside the workflow.
 
 ---
 
