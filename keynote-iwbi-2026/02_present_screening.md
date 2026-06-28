@@ -8,6 +8,8 @@
 
 The year is 2016. You're a radiologist, you're just beginning to hear about AI for breast imaging — and the reading room is still feeling the burn from CAD. So what does mammography AI actually look like, and what is the evidence?
 
+On-slide: **The year is 2016.** You're beginning to hear about AI — but still **feeling the burn from CAD.**
+
 ---
 
 ## Slide 2 — 2016: the first large-scale push — and a surge of optimism

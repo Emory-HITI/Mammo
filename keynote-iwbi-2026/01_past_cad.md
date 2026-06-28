@@ -88,11 +88,11 @@ Why did it fail? Three reasons. First, it could only flag what we already know h
 
 ---
 
-## Slide 7 — Traditional CAD vs modern deep learning.
+## Slide 7 — A paradigm shift.
 
 The lesson from Era I is that CAD was reimbursed before it was proven, and was never shown to help. Around **2012** the technology changed. Traditional CAD was programmed — we wrote the rules. Modern deep learning is trained — it learns the patterns from the images. Traditional CAD pointed at spots; modern models can read the image. Sixteen years later.
 
+On-slide title: **A paradigm shift.** (bottom blurb removed; the two boxes remain)
+
 - **Traditional CAD — Programmed:** We wrote the rules for what cancer looks like. It **pointed** at spots for a human to check.
 - **Modern deep learning — Trained:** The model learns the patterns from the images themselves. It can **read** the image — as a second reader, or on its own.
-
-*The lesson from Era I: CAD was reimbursed before it was proven, and never shown to help. For two decades we taught machines to point at mammograms; the change was teaching them to read the image — and validating that before billing for it. The next section picks up sixteen years later.*
