@@ -1,121 +1,98 @@
-# Section 1 — The Cautionary Tale of CAD
+# Section 1 — Era I: The Cautionary Tale of CAD
+
 ### ~5 minutes · spine stage: **Lesion** (Era I) · sets the talk's standard of evidence
 
 **Purpose:** Open plainly. CAD is the reason to weigh the modern evidence carefully — we know what failure looked like, and what it cost. The standard set here (prove it before scaling it) is the standard the rest of the talk is held to.
 
 ---
 
-## The start (picks up from the hook's last line)
+## Slide 1 — The year is 1998.
 
-The year is **1998** — the year the FDA cleared the first CAD system for mammography (R2 ImageChecker).
+The year is **1998** — the year the FDA cleared the first CAD system for mammography. Computer-aided detection has just arrived: software that puts a mark on every mammogram to flag a possible cancer. A second set of eyes, automatically. It feels like the future.
 
-*The hook ends: "this field has overpromised before, and I'll start there." Go straight to the numbers.*
+*On-slide:* "Computer-aided detection has just arrived — a mark on every mammogram flagging a possible cancer. A second set of eyes, automatically. It feels like the future."
 
-> *(Slide: one number.)*
->
-> **"$400 million a year."**
->
-> *"That's roughly what the U.S. spent each year on computer-aided detection for mammography — about one dollar of every ten thousand spent on U.S. health care. It ran on most screening mammograms in the country. When the definitive study was finally done, radiologists using CAD were no more accurate, and by one measure less."*
->
-> Mammography sensitivity was 85.3% (95% CI, 83.6%-86.9%) with and 87.3% (95% CI, 84.5%-89.7%) without CAD. Specificity was 91.6% (95% CI, 91.0%-92.2%) with and 91.4% (95% CI, 90.6%-92.0%) without CAD.
->
-> *(Slide: **OR 0.53**.)*
-> 
-> *"Among radiologists who read both with and without it, sensitivity was lower with CAD on."* Include table from Lehman Paper. In fact radiologists had a 47% lower odds of detecting a malignant lesion with CAD on than off, which is quite remarkable 
->
-> *"I start here for a simple reason: the field has overpromised before. Everything in the next 30 minutes should clear the bar CAD did not."*
-
-For the radiologists in the audience, I know that every breast radiologist I have spoken with essentially ignores the cad markings or finds them to be disruptive, so I dont think this paper was much of a surprise to anyone.
+*Source: Intelerad InteleViewer documentation (inteleviewer.documentation.intelerad.com)*
 
 ---
 
-## The rise (1998–2016): technology outrunning evidence
+## Slide 2 — Within a decade, CAD was used on most US mammograms.
 
-- **1998 (June):** FDA approves the first CAD system — R2 Technology's **ImageChecker M1000** — for film-screen screening. *(CancerNetwork; SPIE)*
-- **2002:** CMS reimburses CAD separately. This — not outcome data — is what drove adoption. *(Lehman et al., 2015)*
-- **By 2008: ~74%** of US screening mammograms were read with CAD. **By 2016: ~92%.** *(review, PMC6927034, 2020)*
+And within a decade, it is everywhere. A reimbursement code in 2002 — not an outcomes trial — drove adoption from nothing to about **74% of US screening mammograms by 2008, and 92% by 2016.** We adopted it on a billing code, not a clinical trial.
 
-> **The reimbursement-before-evidence gap:** adopted on a billing code in 2002, scaled to nearly every mammogram in America — and the definitive accuracy study didn't land until 2015, concluding it never improved accuracy.
+- **1998:** FDA approval
+- **2002:** CMS reimbursement
+- **74%** by 2008 → **92%** by 2016
+- **2015 — the verdict: no benefit.** The definitive study landed in 2015, after CAD already ran on ~9 in 10 mammograms.
 
-> **[VISUAL — to build later]** A timeline bar: 1998 approval → 2002 reimbursement → adoption curve climbing to ~92% → 2015 the verdict lands (in red). One slide that shows adoption racing *ahead* of evidence. *(I'll create this when we move to visuals — flagged, not built yet.)*
-
----
-
-## The evidence that it didn't work
-
-**Lehman et al., JAMA Internal Medicine 2015** — the landmark, in the **digital** era. 323,973 women, **625,625 digital mammograms**, 271 radiologists, 66 facilities.
-- Sensitivity **85.3% with CAD vs 87.3% without.** Specificity **91.6% vs 91.4%.** Cancer detection **4.1/1,000 in both** — identical.
-- Among the 107 radiologists who read both with and without CAD, sensitivity was **lower with CAD on (OR 0.53; 95% CI 0.29–0.97).**
-- *DOI: 10.1001/jamainternmed.2015.5231*
-
-> **Slide — "the evidence" (after the verdict quote):** the pooled ROC (271 radiologists; **pAUC 0.88 without CAD vs 0.84 with**) plus a condensed Table 2 — cancers detected /1000 (4.1 = 4.1), sensitivity (85.3 vs 87.3), specificity (91.6 vs 91.4), recall /100 (8.7 vs 9.1), with adjusted ORs (none favors CAD). Redrawn in-theme from Lehman 2015 Fig. + Table 2.
-
-> **Quote (on-screen, verbatim):**
-> *"Computer-aided detection does not improve diagnostic accuracy of mammography. These results suggest that insurers pay more for CAD with no established benefit to women."*
-> — Lehman CD et al., *JAMA Internal Medicine* 2015
-
-The authors offered a plausible mechanism, worth quoting because it foreshadows automation bias (§6): *"radiologists reading with CAD are overly dependent on the technology and ignore suspicious lesions if they are not marked by CAD"* (Lehman, 2015). The companion editorial was titled *"Is It Time to Stop Paying for Computer-Aided Mammography?"* (JAMA Intern Med 2015).
-
-The signal had been there for years. **Fenton et al. (NEJM 2007; JNCI 2011)** found CAD lowered specificity (90.2%→87.2%) and raised the biopsy rate (+19.7%) with no gain in cancers detected; the small, non-significant sensitivity change in 2007 was driven mostly by extra DCIS. *Honest caveat to state:* the 2007 study has been criticized because CAD was actually used at only 7 of 43 facilities — which is why the 2015 digital-era study (where CAD was near-universal) is the stronger evidence.
+*A 2002 reimbursement code drove adoption — not evidence of benefit.*
 
 ---
 
-## Why it failed (the technical reasons)
+## Slide 3 — Conventional CAD put a false-positive mark on most normal exams.
 
-Traditional CAD was a rule-based system: humans specified the image features and pixel patterns, and a classifier flagged regions. Three reasons it didn't help:
-- **It targeted the cancers we already find well.** So it added marks, not new information. *(Kohli & Jha, JACR 2018; DOI 10.1016/j.jacr.2017.12.029. Treat the "~84%" as context from the original device claim, not a quotable statistic.)*
-- **Readers learned to ignore it.** Across independent series, **~70–85% of normal mammograms carried at least one false-positive mark** with conventional CAD
--
-- Non-dense breast (n = 61)	Dense breast (n = 39)	Mann–Whitney test p value
-Mean	Median (interquartile range)	Mean	Median (interquartile range)
-V 5.0
-All marks	2.6	2.0 (1.0, 4.0)	2.0	2.0 (0.0, 3.0)	0.23
-Marks on masses	1.7	1.0 (0.0, 2.0)	1.4	1.0 (0.0, 2.0)	0.33
-Marks on calcifications	0.9	0.0 (0.0, 1.0)	0.6	0.0 (0.0, 1.0)	0.21
-V 7.2
-All marks	2.6	2.0 (1.0, 4.0)	1.8	1.0 (1.0, 3.0)	0.05
-Marks on masses	2.0	2.0 (1.0, 3.0)	1.5	1.0 (1.0, 3.0)	0.12
-Marks on calcifications	0.6	0.0 (0.0, 1.0)	0.3	0.0 (0.0, 0.0)	0.14
-https://pmc.ncbi.nlm.nih.gov/articles/PMC3180536/table/Tab4/
+And the reading room is not convinced — because conventional CAD produced false positives constantly. Across independent series, **seventy to eighty-five percent of normal mammograms carried at least one false-positive mark:** Kim seventy, Mahoney up to eighty-five, Watanabe eighty-three — versus fifty-two percent for an AI-based CAD. In per-image terms that is roughly **half a mark to one and a half false marks on every image** — about 2–4 per 4-view case. Mahoney measured about two to three false marks on a normal case — and more on non-dense breasts, where there is more to flag. After enough false alarms, radiologists learned to tune the marks out.
 
+- **70–85%** of normal mammograms had ≥1 false positive
+- **0.5–1.5** false positives per image — about 2–4 per 4-view case
 
-  Mahoney MC & Meganathan K, J Digit Imaging 2011, PMID 21547517; Leon SM et al., J Digit Imaging 2009, PMID 18704581; Watanabe et al., J Digit Imaging 2019, PMC6646646)*
-- **It could lower a good reader's sensitivity** — the over-dependence Lehman described.
+**Mean false-positive marks per case · ImageChecker v7.2 (Mahoney & Meganathan, Table 4):**
 
-> Kohli & Jha titled their 2018 JACR review *"Why CAD Failed in Mammography,"* and noted that AI skeptics cite this history. Section 2 is the response.
-
----
-
-## The turn (the bridge to Section 2)
-
-- **2012 — AlexNet** wins ImageNet; the deep-learning era begins.
-- **~2016–2017** — CNNs reach mammography research in earnest.
-- **The difference:** old CAD was *programmed* — humans specified what cancer looks like. Modern deep learning is *trained* — the model learns the features from labeled images. Old CAD **pointed** at regions for a human to check; modern AI can **read** the image, as a second reader or on its own.
-
-> **Transition line:** *"For two decades we taught computers to point at mammograms. The change was teaching them to read — and this time, validating it before billing for it."*
-
----
-
-## Key numbers (slide-ready)
-
-| Fact | Number | Source |
+| | Non-dense | Dense |
 |---|---|---|
-| First CAD FDA approval (R2 ImageChecker) | June 1998 | CancerNetwork/SPIE |
-| CMS reimbursement for CAD | 2002 | Lehman 2015 |
-| CAD use of US screening mammograms | ~74% (2008) → ~92% (2016) | PMC6927034 |
-| Annual US CAD cost | >$400M/yr | Lehman 2015 |
-| JAMA IM 2015 within-reader sensitivity | **OR 0.53** (worse with CAD) | Lehman 2015 |
-| NEJM 2007 accuracy | AUC 0.871 (CAD) vs 0.919 | Fenton 2007 |
-| CAD aimed at cancers radiologists already find well | (context, not a hard stat) | Kohli & Jha 2018 |
-| Normal mammograms with ≥1 false CAD mark | **~70–85%** (Kim 70%; Mahoney 77–85%; Watanabe 83%) | PMID 19863409 / 21547517 / PMC6646646 |
-| False CAD marks per image (conventional) | ~0.5–1.5/image (Leon 0.52–0.55; Kim 1.5/exam) | PMID 18704581 / 19863409 |
+| All marks | 2.6 | 1.8 |
+| Masses | 2.0 | 1.5 |
+| Calcifications | 0.6 | 0.3 |
 
-## ✓ VERIFIED (agent pass) — all confirmed exact
-- Lehman 2015 (sens 85.3 vs 87.3%, spec 91.6 vs 91.4%, within-reader OR 0.53, CDR 4.1/1000, >$400M/yr; PMID 26414882) + verbatim conclusion quote — confirmed.
-- Fenton NEJM 2007 (spec 90.2→87.2%, biopsy +19.7%, AUC 0.871 vs 0.919, PPV 4.1→3.2%; PMID 17409321) — confirmed.
-- Kohli & Jha JACR 2018;15(3 Pt B):535–537 (PMID 29398499; **DOI added: 10.1016/j.jacr.2017.12.029**) — confirmed.
-- R2 ImageChecker FDA June 1998 (P970058); CMS 2002; CAD ~74% (2008) → ~92% (2016) per Keen, JACR 2018 — confirmed.
+*~2–3 false marks on a normal case; more on non-dense breasts.*
 
-## [VERIFY — still open]
-- The "~84%" is **context** (echoes the R2 device's original ~80→88/100 claim), not a quotable stat — keep as framing, no hard number on a slide.
-- AlexNet "2012" / DL-reaches-mammography "2016–17" are framing dates, anchored by McKinney 2020.
+*Citations: Kim 2009 · Mahoney 2011 · Watanabe 2019 · Leon 2009. Mahoney MC & Meganathan K, J Digit Imaging 2011, PMID 21547517 (Table 4, PMC3180536); Kim PMID 19863409; Leon SM et al., J Digit Imaging 2009, PMID 18704581; Watanabe et al., J Digit Imaging 2019, PMC6646646.*
+
+---
+
+## Slide 4 — $400M/yr; −47% odds with CAD on.
+
+Then the data came in. The United States was spending over **four hundred million dollars a year** — roughly one dollar of every ten thousand in US healthcare. And among radiologists who read both with and without CAD, the **odds of detecting a malignant lesion were 47 percent lower with CAD on** — same readers, same images. That is quite remarkable. For the radiologists in the audience: every breast radiologist I have spoken with essentially ignores the CAD marks, or finds them disruptive — so this paper was not much of a surprise.
+
+- **$400M/yr** — U.S. spend ≈ $1 of every $10,000 in health care
+- **−47% odds** of detecting a malignant lesion — CAD on vs off, same readers (**OR 0.53**)
+
+*When the definitive study finally ran, CAD added cost and, for the same readers, lowered the odds of catching a cancer.*
+
+*Citation: Lehman et al., JAMA Internal Medicine 2015 · 323,973 women · 271 radiologists. DOI: 10.1001/jamainternmed.2015.5231; PMID 26414882.*
+
+---
+
+## Slide 5 — The verdict, verbatim.
+
+The conclusion is worth reading verbatim. It had been foreshadowed years earlier — **Fenton, in the New England Journal in 2007,** already showed CAD lowered accuracy and raised the biopsy rate.
+
+> "Computer-aided detection does not improve diagnostic accuracy of mammography. These results suggest that insurers pay more for CAD with no established benefit to women."
+> — Lehman et al., JAMA Internal Medicine 2015
+
+- **85.3%** vs **87.3%** sensitivity — with vs without CAD
+- **4.1 = 4.1** /1,000 cancer detection — identical
+- **0.871** vs **0.919** AUC — with vs without (Fenton, NEJM 2007; PMID 17409321)
+
+---
+
+## Slide 6 — What went wrong.
+
+Why did it fail? Three reasons. It flagged the cancers we already catch, so it mostly added noise. It marked most normal studies, so readers learned to ignore it. And as an imperfect second reader, it pulled good radiologists toward its mistakes — the over-dependence Lehman described.
+
+1. **It flagged what we already catch.** Hand-tuned rules aimed at the cancers radiologists already find. So it added marks, not new information.
+2. **Readers learned to ignore it.** **70–85% of normal mammograms** carried a false mark with conventional CAD. After enough false alarms, you stop trusting the marks.
+3. **It made good readers worse.** As an imperfect second reader, it pulled attention toward its marks and lowered sensitivity (**OR 0.53**).
+
+*Citation: Kohli & Jha, "Why CAD Failed in Mammography," JACR 2018;15(3 Pt B):535–537; PMID 29398499; DOI 10.1016/j.jacr.2017.12.029.*
+
+---
+
+## Slide 7 — Traditional CAD vs modern deep learning.
+
+The lesson from Era I is that CAD was reimbursed before it was proven, and was never shown to help. Around **2012** the technology changed. Traditional CAD was programmed — we wrote the rules. Modern deep learning is trained — it learns the patterns from the images. Traditional CAD pointed at spots; modern models can read the image. Sixteen years later.
+
+- **Traditional CAD — Programmed:** We wrote the rules for what cancer looks like. It **pointed** at spots for a human to check.
+- **Modern deep learning — Trained:** The model learns the patterns from the images themselves. It can **read** the image — as a second reader, or on its own.
+
+*The lesson from Era I: CAD was reimbursed before it was proven, and never shown to help. For two decades we taught machines to point at mammograms; the change was teaching them to read the image — and validating that before billing for it. The next section picks up sixteen years later.*

@@ -1,59 +1,83 @@
-# Section 7 — Close: Responsible Optimism
-### ~3.5 minutes · closing
+# Section 7 — Close
 
-**Purpose:** Resolve the arc. Pick up §6b's handoff (*"bet on the discipline, not the architecture"*), name that discipline, reprise the spine, return to the opening hook, and close on a line for an international, mixed audience. No new material and no new citations on screen; this is a return.
-
----
-
-## Open by catching §6b's handoff
-
-> *"I ended that last question, generalist or specialist, big tech or this room, by saying: don't bet on the architecture, bet on the discipline. Let me say what that discipline is, because it is what this talk has been about."*
+### closing
 
 ---
 
-## Reprise the spine (one slide, four words)
+## Slide 1 — What thirty years taught us. (divider)
 
-> *"We started at the **lesion**: teaching machines to find the spot and draw the circle. That was CAD, and it failed. We learned to read the whole **image**, and, validated in randomized trials, it works. We are learning to understand the **patient**, combining image, tissue, gene, and history into one picture. And the **population** is the next step: using all of it to decide who we screen, how, and whether everyone, everywhere, gets to be read."*
+**On-slide:** Lesion → Image → Patient
 
-> **Final callback to the hook:** *"Recall the normal mammogram we opened with — the one full of hidden signals. The image hasn't changed. What we can read from it has. Our job is to make sure every woman gets to be read."*
+# What thirty years taught us.
 
----
+Technology is fallible. We keep getting better at looking ahead — but the consequences of what we deploy are not always ones we foresee.
 
-## The discipline (the takeaway slide) — six principles
+**Script:**
 
-CAD's failure was a failure of **evidence, monitoring, and discipline** rather than of algorithms. That is the through-line from the first slide to this one. The discipline that turns clinical intelligence into better outcomes:
-
-1. **Prove it before you scale it.** Prospective, randomized, population-level evidence; MASAI is the bar, not a retrospective AUC. *(This time we have it. Insist on it.)*
-2. **Audit the blind spots; explainability and subgroup performance are release criteria, not afterthoughts.** A headline AUC is a sales number. Ask for subgroup-stratified performance (clinical *and* demographic), a model you can interrogate, and validation in the deployment population *before* go-live. *Caveat emptor.*
-3. **Govern the whole lifecycle.** Continuous monitoring and drift detection; operationalize the EU AI Act and PCCP. Clearance is a snapshot, not a guarantee.
-4. **Protect the human.** Design against automation bias and deskilling; the clinician should stay a clinician, not a rubber stamp.
-5. **Address cost and access.** Reimbursement and LMIC deployment are part of the evidence base, not a footnote.
-6. **Aim at the gap.** Measure success by the WHO 2.5%/year mortality target and the mortality-to-incidence ratio in the *worst-served* settings, not by AUC in the best-served ones.
+> *"So what have thirty years taught us? First, that the technology is fallible — CAD cost us two decades learning it. Second, that we are getting genuinely better at looking ahead: reading a woman's risk, her cardiovascular signal, her tumor biology years before they would declare themselves. And third, a hard-won humility — the consequences of what we deploy are not always the ones we foresee. Hold those together, and the arc of the field comes into focus: lesion, image, patient."*
 
 ---
 
-## Closing lines (pick one)
+## Slide 2 — Lesion, image, patient.
 
-**Primary (architecture-agnostic, Europe-framed; ties §6b and §6 together):**
-> *"'From CAD to clinical intelligence' is more than a technical upgrade. Whether AI becomes a great equalizer of breast cancer outcomes or a great amplifier of disparities will not be decided by which model wins or which company builds it. It will be decided by our choices about evidence, equity, and governance, many of which are being written now, here in Europe. So let us build the validation, not just the models. Thank you."*
+**Eyebrow:** Close
 
-**Alternative (biosensor / the-image-already-knew motif):**
-> *"Twenty-five years ago we paid for a tool before we proved it worked. Today we have the proof, and a single mammogram that can forecast a woman's cancer, flag her heart disease, and connect to her pathology and her genome. The image never changed. What we can read from it has. Our job is to make sure everyone, everywhere, gets to be read. Thank you."*
+## Lesion, image, patient.
 
-**Alternative (shortest):**
-> *"The algorithms are now the easy part. The hard part, evidence, equity, and trust, is the part that was always about medicine. That part is ours. Thank you."*
+**On-slide:**
 
----
+- **Lesion — Find the spot.** CAD failed at it; whole-image detection later earned the randomized evidence CAD never had.
+- **Image — Beyond the lesion.** The whole image reads a woman's future risk and a cardiovascular signal — from the same mammogram.
+- **Patient — The whole person.** Image, tissue, gene, and history together — risk known before she enters the scanner.
 
-## Optional final slide (under the closing line)
+**Script:**
 
-The anchor evidence in one frame: **MASAI +29% detection / 44% workload · PRAIM +17.6% · Mirai C-index 0.76–0.81 · Clairity FDA-cleared 2025 · BAC→MACE 123k women**, beneath the words:
-> **"The evidence is in place. Now make it reach everyone."**
+> *"Look at the arc through the spine of this talk — lesion, image, patient — across the decades. For most of these years the goal was the lesion: find the spot. CAD failed at it, and only later did whole-image detection earn randomized evidence. Then we learned to read the whole image, beyond the lesion — a woman's future risk, and a cardiovascular signal, from the same mammogram. And now the patient: image, tissue, gene, and history combined, with risk known before she enters the scanner. Lesion, image, patient — that is how the field moved."*
 
 ---
 
-## Delivery notes
-- A return, not new material; no new citations on screen.
-- **3.5-min cut if running long:** §6b handoff (15s), spine reprise plus hook callback (60s), six principles as one slide read quickly (75s), primary closing line (30s).
-- **First-person note:** much of the referenced work is the speaker's own (AsymMirai, Gichoya, EMBED, the DBT/ICH subgroup audits, the Emory cardio-mammography work). Optional line: *"Some of this is work my own group has been part of, and the discipline matters more than any single result."*
-- Deliver the last line, then stop. Do not add a thank-you-slides coda after the closing line; let it sit.
+## Slide 3 — The discipline, in three lines.
+
+**Eyebrow:** Close
+
+## The discipline, in three lines.
+
+**On-slide:**
+
+- **01 — Prove it before you scale it.** Prospective, randomized evidence — MASAI is the bar, not a retrospective AUC.
+- **02 — Audit the blind spots.** Explainability and subgroup performance are release criteria — a headline AUC is a sales number.
+- **03 — Preserve clinical judgment; guard against de-skilling.** Design against automation bias — the clinician should stay a clinician, not a rubber stamp.
+
+**Script:**
+
+> *"CAD did not fail because the math was bad. It failed for a lack of evidence, monitoring, and discipline. That is the through-line from the first slide to this one. So if you take one thing away, take the discipline that turns clinical intelligence into better outcomes. First: prove it before you scale it — prospective, randomized evidence; MASAI is the bar, not a retrospective AUC, and this time we have it. Second: audit the blind spots — explainability and subgroup performance are release criteria, not afterthoughts; a headline AUC is a sales number. Third: preserve clinical judgment and guard against de-skilling — design against automation bias; the clinician should stay a clinician, not a rubber stamp."*
+
+---
+
+## Slide 4 — The image hasn't changed — what we read from it will.
+
+**Eyebrow:** Close
+
+## The image hasn't changed — what we read from it will.
+
+**On-slide:** Twenty-five years ago we could barely mark a suspicious spot. From that same image today: a woman's cancer risk years ahead, her cardiovascular risk, and a link to her tissue and genome.
+
+**Script:**
+
+> *"Recall the normal mammogram we opened with — the one I said was full of hidden signals. The image has not changed — what we read from it will. Twenty-five years ago we could barely mark a suspicious spot. Today, from that same image, we can forecast a woman's cancer years ahead, flag her cardiovascular risk, and connect it to her tissue and her genome."*
+
+---
+
+## Slide 5 — Thank you.
+
+# Thank you.
+
+**On-slide:**
+
+- EMORY — Radiology & Imaging Sciences
+- HITI Lab — [ logo to be added ]
+- Hari Trivedi, MD · Emory University · IWBI 2026
+
+**Script:**
+
+> *"Thank you."*
