@@ -111,7 +111,7 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era II · 2026</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 16</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 17</div>
 </div>
 
 <div class="stage">
@@ -229,6 +229,27 @@
       <p style="font-size:clamp(.84rem,1.2vw,1rem);max-width:80ch">An FDA-cleared model (<b style="color:var(--ink)">510(k): 94.9% sens</b>) on two years of real-world CTPA: <b style="color:var(--ink)">86.8%</b> overall — but far lower for non-acute, small (subsegmental), left-sided, and <b style="color:var(--ink)">incidental</b> clots.</p>
       <svg viewBox="0 0 620 250" style="width:100%;max-width:600px;height:auto;margin:0 auto" role="img" aria-label="PE model sensitivity by subgroup vs FDA clearance, axis 60 to 100 percent"><g font-family="SFMono-Regular,Menlo,monospace"><line x1="20" y1="205" x2="606" y2="205" stroke="#26303B" stroke-width="1"/><text x="14" y="208" text-anchor="end" font-size="9.5" fill="#5C6975">60%</text><line x1="20" y1="43.6" x2="606" y2="43.6" stroke="#5C6975" stroke-width="1" stroke-dasharray="5 4"/><text x="606" y="38.6" text-anchor="end" font-size="10.5" fill="#9DA9B5">FDA 510(k): 94.9%</text><rect x="34" y="81.1" width="80" height="123.9" rx="3" fill="#E7AC51"/><text x="74" y="73.1" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">86.8%</text><text x="74" y="223" text-anchor="middle" font-size="10" fill="#9DA9B5">Overall</text><rect x="148" y="180.5" width="80" height="24.5" rx="3" fill="#D9785B"/><text x="188" y="172.5" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">65.3%</text><text x="188" y="223" text-anchor="middle" font-size="10" fill="#9DA9B5">Non-acute</text><rect x="262" y="145.3" width="80" height="59.7" rx="3" fill="#D9785B"/><text x="302" y="137.3" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">72.9%</text><text x="302" y="223" text-anchor="middle" font-size="10" fill="#9DA9B5">Subsegmental</text><rect x="376" y="156.4" width="80" height="48.6" rx="3" fill="#D9785B"/><text x="416" y="148.4" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">70.5%</text><text x="416" y="223" text-anchor="middle" font-size="10" fill="#9DA9B5">Left-sided</text><rect x="490" y="142.6" width="80" height="62.4" rx="3" fill="#5FB7C9"/><text x="530" y="134.6" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">73.5%</text><text x="530" y="223" text-anchor="middle" font-size="10" fill="#9DA9B5">Incidental</text><text x="313" y="246" text-anchor="middle" font-size="9" fill="#5C6975">sensitivity (%), axis 60&ndash;100</text></g></svg>
       <div class="cite">Sensitivity vs FDA 510(k) clearance. [your group], unpublished — Aidoc PE / iPE triage evaluation, 30,678 CTPA + 37,272 routine CT (2023–2025).</div>
+    </section>
+
+    <!-- 7b EMBED open-data plug -->
+    <section class="slide" style="align-items:center;gap:clamp(22px,3.2vw,42px);padding-top:clamp(46px,6vw,66px)" data-note="Before we cross into Era III, one plug. All of this work runs on EMBED — the Emory Breast Imaging Dataset — which we have made free to researchers worldwide through the AWS Open Data Program. The first release is described in our Radiology: Artificial Intelligence paper. And we are finishing EMBED version two: nearly 300,000 patients, about a million exams, both 2D and tomosynthesis, 50,000 ultrasound and 25,000 MRI studies, outcomes harmonized with state and local cancer registries, the free-text radiology reports, and patient risk data. The map gives a sense of the reach — researchers on every continent are already using it.">
+      <span class="eyebrow">Era II &middot; 2026 &middot; open data</span>
+      <div style="flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(11px,1.6vw,16px)">
+        <h2 style="font-size:clamp(1.3rem,2.4vw,1.95rem);font-weight:700;letter-spacing:-.02em;line-height:1.1">EMBED &mdash; <span style="color:var(--amber)">open data, used worldwide.</span></h2>
+        <p style="font-size:clamp(.86rem,1.25vw,1.04rem);color:var(--ink-2);line-height:1.45;max-width:46ch">The <b style="color:var(--ink)">Emory Breast Imaging Dataset</b> is free to researchers through the <b style="color:var(--ink)">AWS Open Data Program.</b></p>
+        <div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber);margin-top:2px">EMBED v2 &mdash; in progress</div>
+        <div class="chips" style="margin-top:0"><div class="chip">~300,000 <b>patients</b></div><div class="chip">~1,000,000 <b>exams</b></div><div class="chip">2D + <b>DBT</b></div><div class="chip">Ultrasound <b>50k</b></div><div class="chip">MRI <b>25k</b></div><div class="chip">Free-text <b>reports</b></div><div class="chip">Patient <b>risk data</b></div><div class="chip">Outcomes <b>registry-harmonized</b></div></div>
+        <div class="cite" style="margin-top:6px">v1: [your group], Radiology: Artificial Intelligence 2023 (Fig. 1). &mdash; aws.amazon.com/opendata</div>
+      </div>
+      <div style="flex:0 0 auto;width:50%;align-self:stretch;min-height:0;display:flex;flex-direction:column;gap:8px;margin:clamp(36px,4.6vw,54px) 0 8px">
+        <div style="flex:1 1 auto;border:1.5px dashed var(--amber-deep);border-radius:10px;background:rgba(231,172,81,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+          <div style="font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)">Map &mdash; EMBED users by country</div>
+          <div style="font-family:var(--mono);font-size:.62rem;color:var(--ink-3)">[ drop in PNG ]</div>
+        </div>
+        <div style="flex:0 0 auto;border:1.5px dashed #5C6975;border-radius:8px;padding:9px;display:flex;align-items:center;justify-content:center">
+          <div style="font-family:var(--mono);font-size:.6rem;color:var(--ink-3)">opt: EMBED v1 schematic &mdash; Radiology: AI, Fig. 1</div>
+        </div>
+      </div>
     </section>
 
     <!-- 4 brink of Era III -->
