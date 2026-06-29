@@ -111,7 +111,7 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era II · 2026</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 14</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 17</div>
 </div>
 
 <div class="stage">
@@ -215,6 +215,82 @@
         </div>
       </div>
       <figcaption style="font-family:var(--mono);font-size:.58rem;color:var(--ink-3);text-align:center;line-height:1.35;margin:0">Exam-level model-score distributions by imaging feature, across clinical outcome. <b style="color:var(--ink-2);font-weight:400">[your group], Nat Commun 2026 (DOI 10.1038/s41467-026-70637-3), Fig. 6.</b></figcaption>
+    </section>
+
+    <!-- 8c not only breast: cross-modality framing -->
+    <section class="slide s-primer" data-note="And I want to be clear that this is not a breast-imaging quirk. The same pattern shows up wherever these models are audited carefully: a strong headline number, and a quiet collapse in the subtle, the less common, or the harder cases. We have seen it in two other modalities in our own work — intracranial hemorrhage on head CT, and pulmonary embolism on chest CT. Same story, different organ.">
+      <span class="eyebrow">Era II · 2026</span>
+      <h2>This is <span class="am">not only breast.</span></h2>
+      <p style="max-width:74ch">The same pattern recurs wherever AI is audited carefully — a strong average, and a quiet collapse in the subtle, rarer, or harder cases. We have seen it in two other modalities in our own work.</p>
+      <div class="chips" style="margin-top:6px">
+        <div class="chip">Neuro — <b>intracranial hemorrhage</b> (head CT)</div>
+        <div class="chip">Chest — <b>pulmonary embolism</b> (CT)</div>
+      </div>
+    </section>
+
+    <!-- 8d ICH subgroup paper -->
+    <section class="slide s-primer" style="justify-content:flex-start;padding-top:clamp(52px,7vw,76px);gap:clamp(12px,1.8vw,18px)" data-note="First, intracranial hemorrhage on head CT. A commercial detection model looked strong overall — 82.2 percent sensitivity. But broken down by the age of the bleed, it collapsed: subacute hemorrhages were caught only 45.5 percent of the time, chronic ones 54.8 percent. And in the outpatient setting, where bleeds are subtler, sensitivity fell to 72.2 percent. The same shape as breast: strong average, weak where it matters.">
+      <span class="eyebrow">Era II · 2026 · not only breast</span>
+      <h2 style="font-size:clamp(1.3rem,2.4vw,1.9rem)">Head CT: <span class="am">intracranial hemorrhage.</span></h2>
+      <p style="font-size:clamp(.86rem,1.25vw,1.04rem);max-width:76ch">A commercial ICH detector looked strong overall — but sensitivity collapsed for <b style="color:var(--ink)">subacute and chronic</b> bleeds, and fell in the <b style="color:var(--ink)">outpatient</b> setting.</p>
+      <svg viewBox="0 0 470 250" style="width:100%;max-width:460px;height:auto;margin:0 auto" role="img" aria-label="ICH model sensitivity by subgroup">
+        <g font-family="SFMono-Regular,Menlo,monospace">
+          <line x1="24" y1="200" x2="452" y2="200" stroke="#26303B" stroke-width="1"/>
+          <!-- Overall 82.2 amber -->
+          <rect x="34" y="52" width="78" height="148" rx="3" fill="#E7AC51"/>
+          <text x="73" y="44" text-anchor="middle" font-size="14" font-weight="bold" fill="#ECEFF3">82.2%</text>
+          <text x="73" y="218" text-anchor="middle" font-size="10.5" fill="#9DA9B5">Overall</text>
+          <!-- Subacute 45.5 warn -->
+          <rect x="140" y="118" width="78" height="82" rx="3" fill="#D9785B"/>
+          <text x="179" y="110" text-anchor="middle" font-size="14" font-weight="bold" fill="#ECEFF3">45.5%</text>
+          <text x="179" y="218" text-anchor="middle" font-size="10.5" fill="#9DA9B5">Subacute</text>
+          <!-- Chronic 54.8 warn -->
+          <rect x="246" y="101" width="78" height="99" rx="3" fill="#D9785B"/>
+          <text x="285" y="93" text-anchor="middle" font-size="14" font-weight="bold" fill="#ECEFF3">54.8%</text>
+          <text x="285" y="218" text-anchor="middle" font-size="10.5" fill="#9DA9B5">Chronic</text>
+          <!-- Outpatient 72.2 cyan -->
+          <rect x="352" y="70" width="78" height="130" rx="3" fill="#5FB7C9"/>
+          <text x="391" y="62" text-anchor="middle" font-size="14" font-weight="bold" fill="#ECEFF3">72.2%</text>
+          <text x="391" y="218" text-anchor="middle" font-size="10.5" fill="#9DA9B5">Outpatient</text>
+        </g>
+      </svg>
+      <div class="cite">Sensitivity by subgroup. [your group], npj Digital Medicine 2025.</div>
+    </section>
+
+    <!-- 8e PE paper -->
+    <section class="slide s-primer" style="justify-content:flex-start;padding-top:clamp(52px,7vw,76px);gap:clamp(12px,1.6vw,16px)" data-note="Second, pulmonary embolism on chest CT — our own evaluation, not yet published. An FDA-cleared model was cleared at 94.9 percent sensitivity. Across two years of real-world data — about thirty thousand dedicated CT angiograms — it reached 86.8 percent overall. But again it fell apart in the hard cases: non-acute clots 65.3 percent, the small subsegmental clots 72.9 percent, left-sided 70.5 percent. And on routine CTs done for other reasons, incidental PE was caught only 73.5 percent of the time — 354 of 538. Same story, different organ: the clearance number is not the number you get on the cases that are easy to miss.">
+      <span class="eyebrow">Era II · 2026 · not only breast</span>
+      <h2 style="font-size:clamp(1.3rem,2.4vw,1.9rem)">Chest CT: <span class="am">pulmonary embolism.</span></h2>
+      <p style="font-size:clamp(.84rem,1.2vw,1rem);max-width:80ch">An FDA-cleared model (<b style="color:var(--ink)">510(k): 94.9% sens</b>) on two years of real-world CTPA: <b style="color:var(--ink)">86.8%</b> overall — but far lower for non-acute, small (subsegmental), left-sided, and <b style="color:var(--ink)">incidental</b> clots.</p>
+      <svg viewBox="0 0 620 250" style="width:100%;max-width:600px;height:auto;margin:0 auto" role="img" aria-label="PE model sensitivity by subgroup vs FDA clearance">
+        <g font-family="SFMono-Regular,Menlo,monospace">
+          <line x1="20" y1="200" x2="606" y2="200" stroke="#26303B" stroke-width="1"/>
+          <!-- 510k reference dashed at 94.9 -> y=200-94.9/100*180=29.2 -->
+          <line x1="20" y1="29" x2="606" y2="29" stroke="#5C6975" stroke-width="1" stroke-dasharray="5 4"/>
+          <text x="606" y="24" text-anchor="end" font-size="10.5" fill="#9DA9B5">FDA 510(k): 94.9%</text>
+          <!-- Overall 86.8 amber: h=156 top44 -->
+          <rect x="34" y="44" width="80" height="156" rx="3" fill="#E7AC51"/>
+          <text x="74" y="36" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">86.8%</text>
+          <text x="74" y="218" text-anchor="middle" font-size="10" fill="#9DA9B5">Overall</text>
+          <!-- Non-acute 65.3 warn: h=117.5 top82.5 -->
+          <rect x="148" y="83" width="80" height="117" rx="3" fill="#D9785B"/>
+          <text x="188" y="75" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">65.3%</text>
+          <text x="188" y="218" text-anchor="middle" font-size="10" fill="#9DA9B5">Non-acute</text>
+          <!-- Subsegmental 72.9 warn: h=131.2 top68.8 -->
+          <rect x="262" y="69" width="80" height="131" rx="3" fill="#D9785B"/>
+          <text x="302" y="61" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">72.9%</text>
+          <text x="302" y="218" text-anchor="middle" font-size="10" fill="#9DA9B5">Subsegmental</text>
+          <!-- Left-sided 70.5 warn: h=126.9 top73.1 -->
+          <rect x="376" y="73" width="80" height="127" rx="3" fill="#D9785B"/>
+          <text x="416" y="65" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">70.5%</text>
+          <text x="416" y="218" text-anchor="middle" font-size="10" fill="#9DA9B5">Left-sided</text>
+          <!-- iPE 73.5 cyan: h=132.3 top67.7 -->
+          <rect x="490" y="68" width="80" height="132" rx="3" fill="#5FB7C9"/>
+          <text x="530" y="60" text-anchor="middle" font-size="13.5" font-weight="bold" fill="#ECEFF3">73.5%</text>
+          <text x="530" y="218" text-anchor="middle" font-size="10" fill="#9DA9B5">Incidental</text>
+        </g>
+      </svg>
+      <div class="cite">Sensitivity vs FDA 510(k) clearance. [your group], unpublished — Aidoc PE / iPE triage evaluation, 30,678 CTPA + 37,272 routine CT (2023–2025).</div>
     </section>
 
     <!-- 4 brink of Era III -->
