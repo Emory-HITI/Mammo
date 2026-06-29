@@ -111,7 +111,7 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era II · 2026</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 12</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 14</div>
 </div>
 
 <div class="stage">
@@ -157,10 +157,57 @@
       <p class="turn-line" style="margin-top:6px">A third is underway: <b>PRISM</b> — the first large randomized trial of screening AI in the United States (Transpara; $16M PCORI; 7 sites; announced Sept 2025, recruiting). Results are years away, but it tests the <b>US single-reader workflow</b> directly.</p>
     </section>
 
-    <!-- 8 subgroup performance: imaging-feature score distributions (Fig 6) -->
-    <section class="slide" style="flex-direction:column;justify-content:flex-start;gap:8px;padding-top:clamp(54px,7.5vw,80px);padding-bottom:clamp(14px,1.8vw,24px)" data-note="So it is 2026 — where do we actually stand? The averages look strong, but a single AUC says nothing about where a model fails. In our audit of a commercial DBT model across 163,000 exams from EMBED, the overall AUC was 0.91 — but look at how the scores break down by imaging feature. Masses, asymmetries, and calcifications are correctly predicted negative in 60 to 81 percent of exams. But architectural distortions behave very differently: even screen-detected cancers split into a bimodal high-and-low distribution, and many benign distortions score high — so the model both misses cancers and over-flags benign findings in that one category. Performance depends on what the finding looks like, not just the headline AUC. The two gaps that remain: subgroup performance, and explainability.">
+    <!-- 8a label assignment + outcome-definition challenge -->
+    <section class="slide s-primer" style="justify-content:flex-start;padding-top:clamp(52px,7vw,76px);gap:clamp(10px,1.6vw,18px)" data-note="Before we ask where the model fails, we have to ask a harder question: what are we even measuring against? A screening mammogram carries no label in the image — the ground truth comes from what happens next. We link each exam to follow-up imaging and to pathology, and only then assign an outcome. But that assignment is full of judgment calls. How long do you follow a woman before you are willing to call an exam truly negative? A high-risk lesion — atypical ductal hyperplasia, LCIS, a papilloma — is neither clearly benign nor cancer; which bucket does it go in? Do you pool DCIS, which is non-invasive, with invasive cancer, when their clinical meaning is so different? Every one of these choices changes the denominator, and therefore every AUC, every sensitivity, every subgroup number that follows. Defining the outcome is the hard part — and it is rarely shown.">
       <span class="eyebrow">Era II · 2026</span>
-      <h2 style="font-size:clamp(1.2rem,2.2vw,1.72rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;max-width:none;margin:0">2026: the averages look strong — so where do these models <span class="am">still fail?</span></h2>
+      <h2 style="font-size:clamp(1.3rem,2.4vw,1.9rem)">The averages look strong — but <span class="am">what counts as the truth?</span></h2>
+      <p style="font-size:clamp(.86rem,1.25vw,1.04rem);max-width:78ch">Our audit of a commercial DBT model ran across <b style="color:var(--ink)">~163,000 EMBED exams</b> at an overall <b style="color:var(--ink)">AUC 0.91</b>. But before any subgroup, the label itself is a choice: the outcome is not in the image — it comes from follow-up and pathology.</p>
+      <svg viewBox="0 0 1020 210" style="width:100%;max-width:960px;height:auto;margin:2px auto 0" role="img" aria-label="Label-assignment workflow: screening exam to outcome label">
+        <defs><marker id="ahw" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10 z" fill="#5FB7C9"/></marker></defs>
+        <g font-family="SFMono-Regular,Menlo,monospace">
+          <rect x="6" y="58" width="190" height="84" rx="9" fill="#1B232D" stroke="#26303B"/>
+          <text x="101" y="94" text-anchor="middle" font-size="15" font-weight="bold" fill="#ECEFF3">Screening exam</text>
+          <text x="101" y="117" text-anchor="middle" font-size="11.5" fill="#9DA9B5">no label in the image</text>
+          <line x1="202" y1="100" x2="240" y2="100" stroke="#5FB7C9" stroke-width="2" marker-end="url(#ahw)"/>
+          <rect x="244" y="58" width="228" height="84" rx="9" fill="#1B232D" stroke="#26303B"/>
+          <text x="358" y="94" text-anchor="middle" font-size="15" font-weight="bold" fill="#ECEFF3">Follow-up window</text>
+          <text x="358" y="117" text-anchor="middle" font-size="11.5" fill="#9DA9B5">imaging + biopsy / pathology</text>
+          <line x1="478" y1="100" x2="516" y2="100" stroke="#5FB7C9" stroke-width="2" marker-end="url(#ahw)"/>
+          <rect x="520" y="58" width="176" height="84" rx="9" fill="#1B232D" stroke="#26303B"/>
+          <text x="608" y="94" text-anchor="middle" font-size="15" font-weight="bold" fill="#ECEFF3">Adjudicate</text>
+          <text x="608" y="117" text-anchor="middle" font-size="11.5" fill="#9DA9B5">assign an outcome</text>
+          <line x1="702" y1="100" x2="744" y2="100" stroke="#E7AC51" stroke-width="2" marker-end="url(#ahw)"/>
+        </g>
+        <g font-family="SFMono-Regular,Menlo,monospace" font-size="12.5">
+          <rect x="750" y="4" width="266" height="35" rx="6" fill="#1B232D" stroke="#26303B"/><text x="766" y="26" fill="#9DA9B5">Normal</text>
+          <rect x="750" y="44" width="266" height="35" rx="6" fill="#1B232D" stroke="#26303B"/><text x="766" y="66" fill="#9DA9B5">Benign</text>
+          <rect x="750" y="84" width="266" height="35" rx="6" fill="rgba(231,172,81,.10)" stroke="#C98A2E"/><text x="766" y="106" fill="#E7AC51">High-risk lesion (HRL)&#8201;?</text>
+          <rect x="750" y="124" width="266" height="35" rx="6" fill="rgba(231,172,81,.10)" stroke="#C98A2E"/><text x="766" y="146" fill="#E7AC51">DCIS &mdash; non-invasive&#8201;?</text>
+          <rect x="750" y="164" width="266" height="35" rx="6" fill="#1B232D" stroke="#26303B"/><text x="766" y="186" fill="#ECEFF3">Invasive cancer</text>
+        </g>
+      </svg>
+      <p class="turn-line" style="font-size:clamp(.92rem,1.5vw,1.18rem)">The two amber categories are judgment calls — and how you assign them <b>propagates into every downstream number.</b></p>
+    </section>
+
+    <!-- 8b performance across cancer types (figure placeholder) -->
+    <section class="slide s-primer" style="justify-content:flex-start;padding-top:clamp(52px,7vw,76px);gap:clamp(12px,1.8vw,20px)" data-note="Once the labels are set, the first place the average breaks down is by cancer type. Non-invasive disease — DCIS — high-risk lesions, and invasive cancer are not detected equally by the model. [Figure and per-category numbers to be dropped in.] The point for the talk: a single headline AUC averages over categories the model handles very differently.">
+      <span class="eyebrow">Era II · 2026</span>
+      <h2 style="font-size:clamp(1.3rem,2.4vw,1.9rem)">Performance across <span class="am">cancer types.</span></h2>
+      <p style="font-size:clamp(.86rem,1.25vw,1.04rem);max-width:78ch">The model does not detect every kind of cancer equally — non-invasive disease, high-risk lesions, and invasive cancer behave differently behind the same headline AUC.</p>
+      <div style="flex:0 0 auto;width:100%;max-width:860px;margin:4px auto 0;border:1.5px dashed #C98A2E;border-radius:10px;background:rgba(231,172,81,.04);padding:clamp(20px,3vw,34px);display:flex;flex-direction:column;align-items:center;gap:14px">
+        <div style="font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)">figure — detection by cancer type</div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+          <div class="chip">Non-invasive (DCIS)</div><div class="chip">High-risk lesion (HRL)</div><div class="chip">Invasive</div>
+        </div>
+        <div style="font-family:var(--mono);font-size:.62rem;color:var(--ink-3)">[ drop in score distributions / AUCs per category ]</div>
+      </div>
+      <div class="cite">[your group], Nat Commun 2026 (DOI 10.1038/s41467-026-70637-3).</div>
+    </section>
+
+    <!-- 8 subgroup performance: imaging-feature score distributions (Fig 6) -->
+    <section class="slide" style="flex-direction:column;justify-content:flex-start;gap:8px;padding-top:clamp(54px,7.5vw,80px);padding-bottom:clamp(14px,1.8vw,24px)" data-note="The second breakdown is by imaging feature. Look at how the same model's scores split by what the finding looks like. Masses, asymmetries, and calcifications are correctly predicted negative in 60 to 81 percent of exams. But architectural distortions behave very differently: even screen-detected cancers split into a bimodal high-and-low distribution, and many benign distortions score high — so the model both misses cancers and over-flags benign findings in that one category. Performance depends on what the finding looks like, not just the headline AUC.">
+      <span class="eyebrow">Era II · 2026</span>
+      <h2 style="font-size:clamp(1.2rem,2.2vw,1.72rem);font-weight:700;letter-spacing:-.02em;line-height:1.12;max-width:none;margin:0">Performance across <span class="am">imaging findings.</span></h2>
       <p style="font-size:clamp(.8rem,1.18vw,.98rem);color:var(--ink-2);line-height:1.4;max-width:none;margin:0">Overall AUC <b style="color:var(--ink)">0.91</b> — but performance depends on the <b style="color:var(--ink)">imaging feature.</b> Masses, asymmetries, calcifications are called negative in 60&ndash;81% of exams; <b style="color:var(--ink)">architectural distortions behave erratically</b> &mdash; even cancers split bimodally, and many benign distortions score high.</p>
       <div style="flex:1 1 auto;min-height:0;display:flex;justify-content:center;align-items:center;width:100%">
         <div style="background:#fff;border-radius:8px;padding:8px;height:100%;display:inline-flex;align-items:center;box-shadow:0 18px 40px -18px rgba(0,0,0,.7),inset 0 0 0 1px rgba(231,172,81,.10)">
