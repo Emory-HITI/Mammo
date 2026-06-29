@@ -165,17 +165,17 @@
     </section>
 
     <!-- 4 independent validation: 3 commercial models, 8,800 women + Salim ROC figure -->
-    <section class="slide s-caveat s-fig" data-note="And it held up independently. Salim and colleagues, in JAMA Oncology, took three commercial AI algorithms and tested them on an external Stockholm cohort of about 8,800 women. The best — Algorithm 1 here — reached an AUC of 0.956, and combined with a first reader it reached 88.6% sensitivity at 93% specificity, exceeding two human readers. Three different vendors, external data — the evidence is looking good.">
+    <section class="slide s-caveat s-fig" data-note="And it held up independently. Salim and colleagues, in JAMA Oncology, took three commercial AI algorithms and tested them on an external Stockholm cohort of about 8,800 women. The AUC for cancer detection was 0.956 for AI-1, 0.922 for AI-2, and 0.920 for AI-3. To compare against radiologists fairly, they fixed the decision threshold at the radiologists' own level — the mean specificity of the first-reader radiologists, 96.6%. At that matched specificity, AI-1 reached 81.9% sensitivity, against the first readers' mean of 77.4%, in a simulated population of 113,663 screening examinations derived from the original 8,805 women. Combining AI with a first reader added detection, but at a cost: roughly 77% more abnormal calls for about 8% more cancers detected. That recall cost is the operating-point tension in miniature.">
       <span class="eyebrow">Era II</span>
       <div class="left">
         <h2>2020: three commercial models, independently validated on <span class="am">8,800 women.</span></h2>
         <p class="gap"><b>Salim et al., JAMA Oncology 2020</b> tested three commercial algorithms on an external Stockholm cohort.</p>
         <div class="chips lg" style="margin-top:14px">
-          <div class="chip">best (Algorithm 1) <b>AUC 0.956</b></div>
-          <div class="chip">AI + first reader <b>88.6% sens @ 93% spec</b></div>
-          <div class="chip">exceeded <b>two human readers</b></div>
+          <div class="chip">AUC — AI-1 <b>0.956</b> · AI-2 <b>0.922</b> · AI-3 <b>0.920</b></div>
+          <div class="chip">at radiologists' specificity (<b>96.6%</b>): AI-1 <b>81.9%</b> sens vs readers <b>77.4%</b></div>
+          <div class="chip">AI + reader: <b>+77%</b> abnormal calls for <b>+8%</b> detection</div>
         </div>
-        <p class="gap" style="color:var(--ink);font-weight:600;margin-top:14px">Three vendors, external data — the evidence is looking good.</p>
+        <p class="gap" style="color:var(--ink);font-weight:600;margin-top:14px">The combination's recall cost is the <span class="am">operating-point tension in miniature.</span></p>
       </div>
       <div class="right">
         <figure style="margin:0">

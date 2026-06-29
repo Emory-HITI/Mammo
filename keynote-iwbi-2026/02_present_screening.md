@@ -40,13 +40,14 @@ So what was the early evidence? In 2020, McKinney and colleagues at Google Healt
 
 ## Slide 4 — 2020: three commercial models, independently validated on 8,800 women
 
-And it held up independently. Salim and colleagues, in *JAMA Oncology*, took three commercial AI algorithms and tested them on an external Stockholm cohort of about 8,800 women. The best — Algorithm 1 — reached an **AUC of 0.956**, and combined with a first reader it reached **88.6% sensitivity at 93% specificity**, exceeding two human readers. Three different vendors, external data — the evidence is looking good.
+And it held up independently. Salim and colleagues, in *JAMA Oncology*, took three commercial AI algorithms and tested them on an external Stockholm cohort of about 8,800 women. The AUC for cancer detection was **0.956 for AI-1, 0.922 for AI-2, and 0.920 for AI-3**. To compare against radiologists fairly, they fixed the decision threshold at the radiologists' own level — the **mean specificity of the first-reader radiologists, 96.6%**. At that matched specificity, **AI-1 reached 81.9% sensitivity**, against the **first readers' mean of 77.4%**, in a simulated population of **113,663 screening examinations** derived from the original 8,805 women. Combining AI with a first reader added detection, but at a cost: roughly **+77% abnormal calls for +8% more cancers detected**. That recall cost is the operating-point tension in miniature.
 
-- Best (Algorithm 1) **AUC 0.956**
-- AI + first reader **88.6% sensitivity @ 93% specificity** — exceeded two human readers
-- **n = 8,805**
+- AUC for cancer detection — **AI-1 0.956 · AI-2 0.922 · AI-3 0.920**
+- At the radiologists' matched specificity (**96.6%**): **AI-1 81.9% sensitivity** vs **first readers 77.4%**
+- AI + first reader: **+77% abnormal calls for +8% detection** — the operating-point tension in miniature
+- Simulated population **113,663** screening exams (from **n = 8,805** women)
 
-**Citation:** Salim et al., *JAMA Oncology* 2020.
+**Citation:** Salim et al., *JAMA Oncology* 2020 (PMID 32852536).
 
 ---
 
