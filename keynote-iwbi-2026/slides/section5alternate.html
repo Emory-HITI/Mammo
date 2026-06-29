@@ -61,14 +61,36 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Era III · 2035 · prevention</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 5</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 6</div>
 </div>
 
 <div class="stage">
   <div class="frame" id="frame">
     <canvas id="motif"></canvas>
 
-    <section class="slide s-caveat active" data-note="PRS alone is not enough, and the evidence is now unambiguous. The PRS313 score established the genomic baseline, and women in the top PRS decile reach the average 50-year-old's five-year risk by their mid-thirties — so a uniform age-40 start is biologically indefensible. But PRS and germline testing measure almost entirely different populations: in a WISDOM secondary analysis (Shieh, JAMA Oncology 2026), only 0.9 percent of high-penetrance pathogenic-variant carriers — BRCA1, BRCA2, PALB2 — would have been correctly assigned to high-risk screening by clinical risk plus PRS alone. PRS catches one population, germline another, clinical risk a third — all three layers are non-negotiable. The PRS architecture itself is being rebuilt: PRS-Net (Li, Genome Research 2025) is a graph neural network modeling gene-gene interactions and epistasis, a fundamental shift from the additive PRS313. And imaging and genomics update each other: Rothwell (Br J Cancer 2026) showed Mirai plus PRS313 beats either alone. WISDOM (JAMA 2025, 46,000 women) was non-inferior on advanced cancers with a one-third reduction in Stage IIB in the personalized arm, and PERSPECTIVE I&I showed risk communication did not raise anxiety. Extrapolated to 2035: at 30, one workup returns a non-linear genomic score, a germline panel, and a clinical integration; at every mammogram the imaging engine updates the genomic baseline and sets the next appointment — 7 months for top-quintile risk, longer for persistently low risk. Never again driven by a calendar.">
+    
+    <section class="slide s-caveat active" data-note="And this is the capability imaging simply does not have — the third model from the opening. Oncotype DX, the 21-gene recurrence score, costs about four thousand dollars and takes one to two weeks. Orpheus, trained on 6,172 cases across three institutions, infers that Recurrence Score directly from the H&E slide — and it not only flags high-risk disease better than a leading nomogram, it predicts recurrence even among low-score patients, beating the score itself. And because it is built on segmented tissue, you can see what it keys on — tumor cells, lymphocytes, stroma. Morphology to molecular identity, read straight off the glass.">
+      <span class="eyebrow">Era III · 2026</span>
+      <div class="left">
+        <h2>Estimating the Oncotype DX score from the <span class="am">H&amp;E slide.</span></h2>
+        <p class="gap"><b>Orpheus</b> (6,172 cases, 3 institutions) infers the 21-gene Recurrence Score <b>directly from the H&amp;E</b> — what imaging cannot do: morphology → molecular identity. Oncotype DX itself costs <b>~$4,000</b> and takes 1–2 weeks.</p>
+        <div style="display:flex;gap:clamp(22px,3.5vw,46px);margin-top:12px;flex-wrap:wrap">
+          <div><div style="font-size:clamp(1.4rem,2.3vw,1.9rem);font-weight:700;color:var(--amber);line-height:1">0.89 <span style="font-size:.55em;color:var(--ink-3);font-weight:400">vs 0.73</span></div><div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:22ch;line-height:1.4">flags high-risk (RS&gt;25) vs leading nomogram</div></div>
+          <div><div style="font-size:clamp(1.4rem,2.3vw,1.9rem);font-weight:700;color:var(--amber);line-height:1">0.75 <span style="font-size:.55em;color:var(--ink-3);font-weight:400">vs 0.49</span></div><div style="font-family:var(--mono);font-size:.62rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-3);margin-top:6px;max-width:22ch;line-height:1.4">predicts recurrence in low-RS patients</div></div>
+        </div>
+        <div class="cite">Boehm et al. ("Orpheus"), Nat Commun 2025;16:2106 · concept: Kather et al., Nat Cancer 2020</div>
+      </div>
+      <div class="right">
+        <div style="aspect-ratio:1/0.92;border:1.5px dashed var(--amber-deep);border-radius:8px;background:rgba(231,172,81,.04);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:18px">
+          <div style="font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)">Fig. 4 e–h</div>
+          <div style="font-size:.92rem;color:var(--ink-2);line-height:1.4;max-width:26ch">Cell-segmentation micrographs — tumor cells, lymphocytes, stroma</div>
+          <div style="font-family:var(--mono);font-size:.62rem;color:var(--ink-3)">[ image to be added ]</div>
+        </div>
+        <figcaption style="font-family:var(--mono);font-size:.58rem;color:var(--ink-3);text-align:center;margin-top:7px;line-height:1.4">Boehm et al., Nat Commun 2025, Fig. 4e–h — segmented cell types underlying the risk model.</figcaption>
+      </div>
+    </section>
+
+    <section class="slide s-caveat" data-note="PRS alone is not enough, and the evidence is now unambiguous. The PRS313 score established the genomic baseline, and women in the top PRS decile reach the average 50-year-old's five-year risk by their mid-thirties — so a uniform age-40 start is biologically indefensible. But PRS and germline testing measure almost entirely different populations: in a WISDOM secondary analysis (Shieh, JAMA Oncology 2026), only 0.9 percent of high-penetrance pathogenic-variant carriers — BRCA1, BRCA2, PALB2 — would have been correctly assigned to high-risk screening by clinical risk plus PRS alone. PRS catches one population, germline another, clinical risk a third — all three layers are non-negotiable. The PRS architecture itself is being rebuilt: PRS-Net (Li, Genome Research 2025) is a graph neural network modeling gene-gene interactions and epistasis, a fundamental shift from the additive PRS313. And imaging and genomics update each other: Rothwell (Br J Cancer 2026) showed Mirai plus PRS313 beats either alone. WISDOM (JAMA 2025, 46,000 women) was non-inferior on advanced cancers with a one-third reduction in Stage IIB in the personalized arm, and PERSPECTIVE I&I showed risk communication did not raise anxiety. Extrapolated to 2035: at 30, one workup returns a non-linear genomic score, a germline panel, and a clinical integration; at every mammogram the imaging engine updates the genomic baseline and sets the next appointment — 7 months for top-quintile risk, longer for persistently low risk. Never again driven by a calendar.">
       <span class="eyebrow">Era III · 2035 · prevention</span>
       <div class="left">
         <h2>She knows her risk <span class="am">before she ever lies down.</span></h2>

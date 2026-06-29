@@ -4,6 +4,18 @@
 
 ---
 
+## Slide 1 — Estimating the Oncotype DX score from the H&E slide. *(moved from §2b — opens this section)*
+
+And this is the capability imaging simply does not have — the third model from the opening. Oncotype DX, the 21-gene recurrence score, **costs about $4,000 and takes 1–2 weeks**. **Orpheus**, trained on **6,172 cases across three institutions**, infers that Recurrence Score directly from the H&E slide — and it not only flags high-risk disease better than a leading nomogram, it predicts recurrence even among low-score patients, beating the score itself: **AUC 0.89 vs 0.73** for flagging high-risk (RS > 25), and **0.75 vs 0.49** for predicting recurrence in low-RS patients. And because it is built on segmented tissue, you can see what it keys on — tumor cells, lymphocytes, stroma. Morphology to molecular identity, read straight off the glass.
+
+*On-slide:* Cell-segmentation micrographs — tumor cells, lymphocytes, stroma (Fig. 4 e–h).
+
+*Citation: Boehm et al. ("Orpheus"), Nat Commun 2025;16:2106 · concept: Kather et al., Nat Cancer 2020.*
+
+---
+
+---
+
 ## SLIDE 1
 ### She knows her risk before she ever lies down
 
