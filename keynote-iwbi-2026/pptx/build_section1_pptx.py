@@ -33,10 +33,13 @@ def img_of(i):
 
 prs = Presentation(); prs.slide_width = Inches(13.333); prs.slide_height = Inches(7.5)
 BLANK = prs.slide_layouts[6]
+BGIMG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "bg_motif.png")
 
 def slide(note_idx=None):
     s = prs.slides.add_slide(BLANK)
     s.background.fill.solid(); s.background.fill.fore_color.rgb = BG
+    if os.path.exists(BGIMG):                       # full-bleed gradient + contour motif
+        s.shapes.add_picture(BGIMG, Inches(0), Inches(0), Inches(13.333), Inches(7.5))
     bar = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(6), Pt(3))
     bar.fill.solid(); bar.fill.fore_color.rgb = AMBER; bar.line.fill.background(); bar.shadow.inherit = False
     if note_idx is not None: s.notes_slide.notes_text_frame.text = NOTES[note_idx] or ""
