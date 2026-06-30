@@ -18,6 +18,12 @@ BGIMG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "bg_m
 ALIGN = {"left": PP_ALIGN.LEFT, "center": PP_ALIGN.CENTER, "right": PP_ALIGN.RIGHT,
          "justify": PP_ALIGN.JUSTIFY, "start": PP_ALIGN.LEFT, "end": PP_ALIGN.RIGHT}
 
+from pptx.oxml.ns import qn
+def _dash(shape):
+    ln = shape.line._get_or_add_ln()
+    for old in ln.findall(qn('a:prstDash')): ln.remove(old)
+    ln.append(ln.makeelement(qn('a:prstDash'), {'val': 'dash'}))
+
 def rgb(css):
     m = re.match(r'rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)', css or "")
     if not m: return RGBColor(0xEC, 0xEF, 0xF3)
@@ -60,6 +66,18 @@ def build(name):
         bar.fill.solid(); bar.fill.fore_color.rgb = RGBColor(0xE7, 0xAC, 0x51); bar.line.fill.background(); bar.shadow.inherit = False
         for u in slide["units"]:
             r = u["rect"]; x = r["x"] * SW; y = r["y"] * SH; w = max(0.1, r["w"] * SW); h = max(0.05, r["h"] * SH)
+            if u["type"] == "box":
+                pxin = SW / slide["W"]
+                shp = s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE if u.get("rx", 0) * pxin > 0.04 else MSO_SHAPE.RECTANGLE,
+                                         Inches(x), Inches(y), Inches(w), Inches(h))
+                if u.get("bg"): shp.fill.solid(); shp.fill.fore_color.rgb = rgb(u["bg"])
+                else: shp.fill.background()
+                if u.get("bw", 0) > 0.5:
+                    shp.line.color.rgb = rgb(u.get("bc")); shp.line.width = Pt(u["bw"] * 0.75)
+                    if u.get("dash") == "dashed": _dash(shp)
+                else: shp.line.fill.background()
+                shp.shadow.inherit = False
+                continue
             if u["type"] == "svg":
                 try:
                     p = svg_png(u["html"]); s.shapes.add_picture(p, Inches(x), Inches(y), Inches(w), Inches(h))
@@ -71,6 +89,7 @@ def build(name):
                 pt = u["fontPx"] * 960.0 / slide["W"]
                 lh = (u.get("linePx") or u["fontPx"] * 1.2) / u["fontPx"]
                 pxin = SW / slide["W"]          # inches per CSS px
+                x_outer = x                      # element left before border/padding inset
                 bordL = u.get("bordL", 0) * pxin
                 padL = u.get("padL", 0) * pxin
                 if bordL > 0.005:               # left-border accent (callouts / turn-lines)
@@ -80,10 +99,16 @@ def build(name):
                 # single-line elements: widen so a slightly different font can't force a wrap
                 line_in = pt * lh / 72.0
                 nlines = max(1, round(h / line_in)) if line_in > 0 else 1
-                if pt >= 22:                       # titles: give full width so they stay on one line
-                    w = SW - x - 0.2
-                elif nlines <= 1:                  # other single-line text: small headroom
-                    w = min(SW - x - 0.2, w + 1.0)
+                if nlines <= 1:                    # only widen text that is ONE line in the HTML
+                    w = (SW - x - 0.2) if pt >= 22 else min(SW - x - 0.2, w + 1.0)
+                # multi-line text keeps its exact HTML width (preserves intended wrapping)
+                # bullet/marker (::before) drawn at the element's outer-left
+                mk = u.get("marker")
+                if mk:
+                    mw = mk.get("w", 4) * pxin; mh = mk.get("h", 4) * pxin
+                    my = y + line_in * 0.5 - mh / 2
+                    bar = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(x_outer), Inches(my), Inches(max(mw, 0.04)), Inches(max(mh, 0.02)))
+                    bar.fill.solid(); bar.fill.fore_color.rgb = rgb(mk.get("bg")); bar.line.fill.background(); bar.shadow.inherit = False
                 tb = s.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h + 0.05)); tf = tb.text_frame
                 tf.word_wrap = True
                 try: tf.auto_size = MSO_AUTO_SIZE.NONE
@@ -118,7 +143,8 @@ def build(name):
 MAP = {"hook": "IWBI2026_Trivedi_00_hook.pptx", "section1": "IWBI2026_Trivedi_01_CAD.pptx",
        "section2": "IWBI2026_Trivedi_02_EraII.pptx", "section2b": "IWBI2026_Trivedi_02b_EraII_2026.pptx",
        "section5alternate": "IWBI2026_Trivedi_05_EraIII_prevention.pptx", "section6b": "IWBI2026_Trivedi_06b_frontier.pptx",
-       "section_adoption": "IWBI2026_Trivedi_06c_adoption.pptx", "section7": "IWBI2026_Trivedi_07_close.pptx"}
+       "section_adoption": "IWBI2026_Trivedi_06c_adoption.pptx", "section7": "IWBI2026_Trivedi_07_close.pptx",
+       "slide_imagenet_2012": "IWBI2026_Trivedi_ImageNet2012.pptx"}
 
 if __name__ == "__main__":
     build(sys.argv[1])

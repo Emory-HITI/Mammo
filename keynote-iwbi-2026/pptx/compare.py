@@ -21,7 +21,8 @@ CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 MAP = {"hook": "IWBI2026_Trivedi_00_hook.pptx", "section1": "IWBI2026_Trivedi_01_CAD.pptx",
        "section2": "IWBI2026_Trivedi_02_EraII.pptx", "section2b": "IWBI2026_Trivedi_02b_EraII_2026.pptx",
        "section5alternate": "IWBI2026_Trivedi_05_EraIII_prevention.pptx", "section6b": "IWBI2026_Trivedi_06b_frontier.pptx",
-       "section_adoption": "IWBI2026_Trivedi_06c_adoption.pptx", "section7": "IWBI2026_Trivedi_07_close.pptx"}
+       "section_adoption": "IWBI2026_Trivedi_06c_adoption.pptx", "section7": "IWBI2026_Trivedi_07_close.pptx",
+       "slide_imagenet_2012": "IWBI2026_Trivedi_ImageNet2012.pptx"}
 
 def html_slides(name):
     """Per-slide HTML frame screenshots, hidden slides dropped (match the pptx)."""

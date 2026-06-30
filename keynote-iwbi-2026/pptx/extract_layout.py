@@ -38,11 +38,29 @@ JS = r"""
       if(tag==='CANVAS') continue;
       if(isLeafTextBlock(c)){
         const cs=getComputedStyle(c); const r=rectOf(c);
+        // ::before marker (e.g. amber list-item dash)
+        let marker=null;
+        const bef=getComputedStyle(c,'::before');
+        const bm=(bef.backgroundColor||'').match(/rgba?\(([^)]+)\)/);
+        const bOpa=bm?(bm[1].split(',').length>3?parseFloat(bm[1].split(',')[3]):1):0;
+        const mw=parseFloat(bef.width); const mh=parseFloat(bef.height);
+        if(bOpa>0.2 && mw>0 && mw<40 && mh>0){ marker={bg:bef.backgroundColor, w:mw, h:mh}; }
         units.push({type:'text', rect:r, fontPx:parseFloat(cs.fontSize), linePx:parseFloat(cs.lineHeight)||parseFloat(cs.fontSize)*1.2,
                     align:cs.textAlign, family:cs.fontFamily, transform:cs.textTransform,
                     padL:parseFloat(cs.paddingLeft)||0, bordL:parseFloat(cs.borderLeftWidth)||0, bordC:cs.borderLeftColor,
-                    runs:runsOf(c)});
-      } else { rec(c); }
+                    marker:marker, runs:runsOf(c)});
+      } else {
+        const cs2=getComputedStyle(c);
+        const bw=parseFloat(cs2.borderTopWidth)||0; const bg=cs2.backgroundColor;
+        const am=(bg||'').match(/rgba?\(([^)]+)\)/); const aOpa=am?(am[1].split(',').length>3?parseFloat(am[1].split(',')[3]):1):0;
+        const hasBg = aOpa >= 0.15;
+        if(bw>0.5 || hasBg){
+          units.push({type:'box', rect:rectOf(c), bw:bw, bc:cs2.borderTopColor,
+                      dash:cs2.borderTopStyle, rx:parseFloat(cs2.borderTopLeftRadius)||0,
+                      bg: hasBg?bg:null});
+        }
+        rec(c);
+      }
     }
   })(document.querySelector('.slide.active') || document.querySelector('.slide'));
   return {W:W, H:H, units:units};
