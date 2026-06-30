@@ -85,12 +85,28 @@ The extractor renders at viewport 1920 wide so vw-clamped fonts hit their design
 max (matches presentation width). Single-line/title elements are widened so a
 slightly different font can't force a wrap.
 
-## QA (LibreOffice does NOT work in this env)
-Use the PIL proxy renderer: `python3 pptx/render_pptx.py <file.pptx> <out.png>`
-→ a contact sheet of all slides. **Caveat:** it uses DejaVu (wider than
-PowerPoint's Arial), so long one-line titles can *look* wrapped/overlapping in the
-proxy but are fine in real PowerPoint. Trust positions; treat wrap-overlaps on
-long titles as proxy artifacts. Verify text content, colors, figure placement.
+## Verification loop — MANDATORY (do NOT ask the user for screenshots)
+After building or editing any section's PPTX, **self-check it against the HTML
+and iterate until they match** — this is the step that was missing before and
+caused the user to paste screenshots repeatedly. Do not deliver until done.
+
+```
+python3 pptx/compare.py <section>        # e.g. section_adoption
+```
+This renders the **HTML (reference, left)** and the **generated PPTX (right)**
+side by side, one row per slide, into `compare_<section>.png`. **View that image
+yourself**, scan every slide for mismatches in font size, spacing, color,
+position, wrapping, and missing elements; fix the builder; rebuild the section;
+re-run `compare.py`; repeat until the two columns are visually identical. Then
+deliver. (LibreOffice does NOT work in this env, hence the PIL proxy.)
+
+**Proxy caveat:** the right column uses DejaVu (wider than PowerPoint's Arial),
+so a long one-line title can *look* wrapped/overlapping in the proxy yet be fine
+in real PowerPoint — the exact-layout builder widens single-line/title boxes to
+prevent real wraps. Treat long-title wrap-overlaps as proxy artifacts; trust
+positions, colors, content. `render_pptx.py <file> <out>` (whole-deck contact
+sheet) and `render_html.py <section> <dir>` (HTML-only) are the lower-level tools
+`compare.py` is built from.
 
 ## Figures
 - SVG charts authored in the HTML → embedded **transparent** (gradient shows

@@ -42,10 +42,10 @@ def wrap(draw, text, fnt, maxw):
     if cur: lines.append(cur)
     return lines
 
-def render(path, out):
+def render_slides(path):
+    """Return a list of per-slide PIL images (proxy render of the .pptx)."""
     prs=Presentation(path)
     W=px(prs.slide_width/EMU); H=px(prs.slide_height/EMU)
-    n=len(prs.slides._sldIdLst); cols=1
     imgs=[]
     for s in prs.slides:
         im=Image.new("RGB",(W,H),(15,20,26)); d=ImageDraw.Draw(im)
@@ -118,7 +118,12 @@ def render(path, out):
         # frame border
         d.rectangle([0,0,W-1,H-1],outline=(38,48,59))
         imgs.append(im)
-    # contact sheet
+    return imgs
+
+def render(path, out):
+    imgs=render_slides(path)
+    if not imgs: print("no slides"); return
+    W,H=imgs[0].size
     perrow=2; rows=(len(imgs)+perrow-1)//perrow
     pad=10; tw=W//2; th=H//2
     sheet=Image.new("RGB",(perrow*(tw+pad)+pad, rows*(th+pad)+pad),(0,0,0))
