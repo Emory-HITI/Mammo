@@ -4,18 +4,6 @@
 
 ---
 
-## Slide 1 — Estimating the Oncotype DX score from the H&E slide. *(moved from §2b — opens this section)*
-
-And this is the capability imaging simply does not have — the third model from the opening. Oncotype DX, the 21-gene recurrence score, **costs about $4,000 and takes 1–2 weeks**. **Orpheus**, trained on **6,172 cases across three institutions**, infers that Recurrence Score directly from the H&E slide — and it not only flags high-risk disease better than a leading nomogram, it predicts recurrence even among low-score patients, beating the score itself: **AUC 0.89 vs 0.73** for flagging high-risk (RS > 25), and **0.75 vs 0.49** for predicting recurrence in low-RS patients. And because it is built on segmented tissue, you can see what it keys on — tumor cells, lymphocytes, stroma. Morphology to molecular identity, read straight off the glass.
-
-*On-slide:* Cell-segmentation micrographs — tumor cells, lymphocytes, stroma (Fig. 4 e–h).
-
-*Citation: Boehm et al. ("Orpheus"), Nat Commun 2025;16:2106 · concept: Kather et al., Nat Cancer 2020.*
-
----
-
----
-
 ## SLIDE 1
 ### She knows her risk before she ever lies down
 
@@ -135,26 +123,44 @@ Genomics (germline PRS + ctDNA MRD, always-on / longitudinal prior) → Clinical
 
 ---
 
-## SLIDE 5
-### The mammogram is now a whole-body health visit
+## SLIDE 5 — The mammogram is now a whole-body health visit. *(rebuilt; prior version kept but hidden in final)*
 
-**We built a cancer screening system. We discovered it was a window into the entire body. In 2035, that window is open.**
+*We built a cancer-screening system. We discovered a window into the entire body — and we are not the only ones who found one. The question is what that window shows today, and what it shows if we move it forward ten years.*
 
-- **The cardiovascular signal was there all along.** AI-quantified breast arterial calcification (BAC) predicts MACE and all-cause mortality beyond the PREVENT score in 123,762 women across Emory and Mayo — severe BAC associated with a **2.8× increased risk of death within five years** (Dapamede et al., *Eur Heart J*, 2026). Barraclough et al. predicted cardiovascular events from mammographic image features alone across 49,196 women over 8.8 years, with concordance comparable to the Pooled Cohort Equations (*Heart*, February 2026)
+- **The cardiovascular signal was there all along.**
+  - *Now (2025):* AI-quantified BAC predicts MACE and all-cause mortality beyond the PREVENT score across **123,762 women** (Emory + Mayo); severe BAC → **2.8× higher 5-yr risk of death** (Dapamede et al., *Eur Heart J* 2026). Barraclough et al. predicted CV events from mammographic image features alone in **49,196 women**, concordance rivaling the Pooled Cohort Equations (*Heart* 2026).
+  - *2035:* a cardiovascular estimate is an automatic, **reimbursed** output of every screening mammogram, written back to the chart and routing the high-risk woman straight into a primary-prevention pathway.
 
-- **Foundation models read biological age.** Mammo-AGE (Pan et al., *Nat Commun*, December 2025): trained on 95,826 mammograms from 44,497 women; estimates breast age (MAE 4.2–6.1 yr), and the breast age gap stratifies cancer risk independent of density. The mammographic analog of CXR-Age (*Nat Aging*, 2021)
+- **The image also encodes biological age.**
+  - *Now (2025):* Mammo-AGE estimates breast age to within **4–6 years**; the breast-age gap stratifies cancer risk independent of density (Pan et al., *Nat Commun* 2025) — the mammographic analog of CXR-Age (Raghu et al., *Nat Aging* 2021).
+  - *2035:* an imaging-derived biological age is reported next to chronological age and used to personalize screening intervals and prevention intensity.
 
-- **Diabetes, kidney, and metabolic risk are the emerging frontier.** BAC correlates with diabetes, hypertension, and hypercholesterolemia; the Emory/Mayo team has named peripheral artery and kidney disease as next applications (*ACC 2025*). Framed honestly as emerging, not established
+- **The mammogram is not alone — every routine image is becoming a whole-body biomarker.**
+  - *Now (2025):* chest X-ray estimates 10-yr CV risk (CXR CVD-Risk, Weiss et al., *Ann Intern Med* 2024); abdominal CT yields a longevity model from muscle, fat, bone, aortic plaque (Pickhardt et al., *Nat Commun* 2025); a retinal foundation model reads CV, renal, and neurodegenerative risk from one photo (RETFound, Zhou et al., *Nature* 2023). The 2026 AJR Forum calls opportunistic imaging a maturing discipline (Magudia, Pickhardt et al., *AJR* 2026).
+  - *2035:* the modality stops mattering — one multimodal foundation model ingests whatever images a patient already has and returns a single longitudinal systemic-risk profile; the mammogram is one node in a converging field.
 
-- **The equity implication is transformative.** ~40 million US mammograms a year, plus mobile units reaching rural communities. For women who will never see a cardiologist, the mammogram is the only preventive health touchpoint the system reliably delivers
+- **Metabolic and renal risk are the next frontier — emerging, not yet established.**
+  - *Now (2025):* BAC correlates with diabetes, hypertension, and hypercholesterolemia; the Emory/Mayo team has named peripheral-artery and kidney disease as next targets (ACC 2025). Associations, not validated predictors.
+  - *2035:* if validation holds, the mammogram opportunistically flags metabolic and kidney risk too — the most cautious bullet, most dependent on prospective evidence we don't yet have.
 
-*[Visual: A single mammogram with five annotated output streams — cancer risk / cardiovascular risk / biological age / metabolic (dotted) / kidney (dotted).]*
+- **The equity implication is why it matters.**
+  - *Now (2025):* ~**40 million** US mammograms/yr, plus mobile units reaching rural communities — for the woman who will never see a cardiologist, the mammogram is often the only preventive touchpoint the system reliably delivers, yet the extra signals mostly go unused.
+  - *2035:* the screening visit becomes a genuine whole-body prevention checkpoint that **closes** access gaps rather than widening them — a design choice, since these models can also learn demographic shortcuts.
+
+*[Visual: a single mammogram with five annotated output streams — cancer risk / cardiovascular / biological age / metabolic (dotted) / kidney (dotted); faint in the periphery, chest X-ray · abdominal CT · retinal photo emit the same streams — the mammogram as one node in a converging field.]*
+
+**Speaker note (the frontier — name it so "the modality stops mattering" has evidence):** Whole-body MRI models learn one representation and predict many diseases at once; **Merlin** reads 3D CT as fluently as language; **OCTCube-M** takes one eye scan and predicts seven systemic diseases; **MOSCARD** fuses chest X-ray with ECG. Stop asking what the scan was ordered for; ask what it tells us about the whole patient. *Close:* "Mammography proved the principle at population scale. The next decade is foundation models that pull systemic risk from any routine image — and mammography starts ahead, because it already reaches 40 million women a year, including the ones the rest of the system never sees."
 
 **Slide 5 citations:**
-- Dapamede T et al. AI-based quantification of breast arterial calcifications … *Eur Heart J.* 2026:ehag128. [Emory/Mayo, 123,762 women — Hari's paper]
-- Barraclough JY et al. Predicting cardiovascular events from routine mammograms using ML. *Heart.* 2026;112(5):261–269. PMID: 40957672
-- Pan X et al. Mammo-AGE: deep learning estimation of breast age from mammograms. *Nat Commun.* 2025;16:11157
-- Raghu VK et al. Deep learning to estimate biological age from chest radiographs (CXR-Age). *Nat Aging.* 2021;1:1094–1100
+- Dapamede T et al. AI-quantified BAC predicts MACE/mortality beyond PREVENT. *Eur Heart J.* 2026 (Emory/Mayo, 123,762 — our paper).
+- Barraclough JY et al. Predicting CV events from routine mammograms. *Heart.* 2026;112(5):261–269. PMID 40957672.
+- Pan X et al. Mammo-AGE: breast age from mammograms. *Nat Commun.* 2025;16:11157.
+- Raghu VK et al. CXR-Age. *Nat Aging.* 2021;1:1094–1100.
+- Weiss J et al. CXR CVD-Risk. *Ann Intern Med.* 2024.
+- Pickhardt PJ et al. Abdominal-CT longevity model. *Nat Commun.* 2025.
+- Zhou Y et al. RETFound. *Nature.* 2023.
+- Magudia K, Pickhardt PJ et al. Opportunistic imaging forum. *AJR.* 2026.
+- Frontier (notes only; verify venues): Whole-body MRI representation learning, arXiv 2025 (2508.02307); Merlin CT VLM, *Nature* 2026 (verify); non-contrast-CT breast+lung screening FM, *Nature Health* 2026 (verify); OCTCube-M, arXiv 2024 (2408.11227); MOSCARD, arXiv 2025 (2506.19174).
 
 ---
 
