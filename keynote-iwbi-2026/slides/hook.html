@@ -165,6 +165,18 @@
   .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
   .hint{font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;color:var(--ink-3)}
 
+  /* disclosures */
+  .s-discl{flex-direction:column;justify-content:center;gap:clamp(14px,2.1vw,26px)}
+  .s-discl h1{font-size:clamp(1.9rem,3.9vw,3rem);font-weight:700;letter-spacing:-.025em;line-height:1.02}
+  .discl-grid{display:flex;gap:clamp(26px,4.4vw,64px);align-items:flex-start;flex-wrap:wrap}
+  .discl-roles{flex:0 0 auto;display:flex;flex-direction:column;gap:clamp(12px,1.7vw,20px);min-width:230px}
+  .discl-support{flex:1 1 320px;min-width:290px}
+  .drole-k{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:5px}
+  .drole-v{font-size:clamp(.95rem,1.45vw,1.18rem);color:var(--ink);line-height:1.45}
+  .dsupp-k{font-family:var(--mono);font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cyan);font-weight:600;margin-bottom:11px}
+  .dchips{display:flex;flex-wrap:wrap;gap:7px}
+  .dchip{font-family:var(--mono);font-size:clamp(.66rem,.95vw,.74rem);letter-spacing:.02em;color:var(--ink-2);border:1px solid var(--line);border-radius:6px;padding:5px 10px;background:linear-gradient(180deg,var(--bg-3),var(--bg-2))}
+
   @media (max-width:720px){
     .s-open,.s-report{flex-direction:column;justify-content:center;gap:18px}
     .s-open .viewport,.s-report .viewport{height:auto;width:50%;max-width:210px;aspect-ratio:3/4}
@@ -175,7 +187,7 @@
 
 <div class="topbar">
   <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Opening</div>
-  <div class="counter">SLIDE <b id="cur">1</b> / 5</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 6</div>
 </div>
 
 <div class="stage">
@@ -188,6 +200,24 @@
         <h1>Thirty Years,<br><span class="am">Three Eras.</span></h1>
         <p class="t-sub">AI in Breast Imaging — from CAD to Clinical Intelligence</p>
         <p class="t-by"><b>Hari Trivedi, MD</b> &nbsp;·&nbsp; Emory University</p>
+      </div>
+    </section>
+
+    <section class="slide s-discl" data-note="Quickly, my disclosures. I'm a founder of Avera AI and Lightbox AI, Associate CMIO at HOPPR, and I advise Solis Mammography, Sirona Medical, Flatiron Health, Coefficient, Verily Life Sciences, and the Biodata Consortium. My research and the work in this talk have received industry and foundation support from the organizations listed on the right. None of these relationships dictated the content of this talk.">
+      <span class="eyebrow">Disclosures</span>
+      <h1>Disclosures</h1>
+      <div class="discl-grid">
+        <div class="discl-roles">
+          <div><div class="drole-k">Founder</div><div class="drole-v">Avera AI · Lightbox AI</div></div>
+          <div><div class="drole-k">Associate CMIO</div><div class="drole-v">HOPPR</div></div>
+          <div><div class="drole-k">Advisor</div><div class="drole-v">Solis Mammography · Sirona Medical · Flatiron Health · Coefficient · Verily Life Sciences · Biodata Consortium</div></div>
+        </div>
+        <div class="discl-support">
+          <div class="dsupp-k">Industry / Foundation Support</div>
+          <div class="dchips">
+            <span class="dchip">Simbiosys</span><span class="dchip">HOPPR</span><span class="dchip">Clairity</span><span class="dchip">Lunit</span><span class="dchip">DeepLook Medical</span><span class="dchip">Kheiron Medical</span><span class="dchip">GE</span><span class="dchip">IBIS</span><span class="dchip">Radicait</span><span class="dchip">Voio</span><span class="dchip">Appelai</span><span class="dchip">Georgia CTSA</span><span class="dchip">RSNA</span><span class="dchip">SIR</span><span class="dchip">Nightingale Open Science</span><span class="dchip">Lacuna Fund</span><span class="dchip">Meridian Foundation</span><span class="dchip">Gates Ventures</span>
+          </div>
+        </div>
       </div>
     </section>
 
