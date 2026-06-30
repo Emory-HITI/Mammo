@@ -39,7 +39,9 @@ JS = r"""
       if(isLeafTextBlock(c)){
         const cs=getComputedStyle(c); const r=rectOf(c);
         units.push({type:'text', rect:r, fontPx:parseFloat(cs.fontSize), linePx:parseFloat(cs.lineHeight)||parseFloat(cs.fontSize)*1.2,
-                    align:cs.textAlign, family:cs.fontFamily, runs:runsOf(c)});
+                    align:cs.textAlign, family:cs.fontFamily, transform:cs.textTransform,
+                    padL:parseFloat(cs.paddingLeft)||0, bordL:parseFloat(cs.borderLeftWidth)||0, bordC:cs.borderLeftColor,
+                    runs:runsOf(c)});
       } else { rec(c); }
     }
   })(document.querySelector('.slide.active') || document.querySelector('.slide'));
@@ -52,7 +54,7 @@ def extract(name):
     out = []
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path=CHROME, args=["--no-sandbox"])
-        pg = b.new_page(viewport={"width": 1400, "height": 900}, device_scale_factor=1)
+        pg = b.new_page(viewport={"width": 1920, "height": 1140}, device_scale_factor=1)
         pg.goto(url); pg.wait_for_timeout(700)
         n = pg.eval_on_selector_all(".slide", "e=>e.length")
         for i in range(n):

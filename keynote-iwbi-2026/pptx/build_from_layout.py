@@ -70,13 +70,32 @@ def build(name):
             elif u["type"] == "text":
                 pt = u["fontPx"] * 960.0 / slide["W"]
                 lh = (u.get("linePx") or u["fontPx"] * 1.2) / u["fontPx"]
+                pxin = SW / slide["W"]          # inches per CSS px
+                bordL = u.get("bordL", 0) * pxin
+                padL = u.get("padL", 0) * pxin
+                if bordL > 0.005:               # left-border accent (callouts / turn-lines)
+                    bar = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(x), Inches(y), Inches(max(bordL, 0.03)), Inches(h))
+                    bar.fill.solid(); bar.fill.fore_color.rgb = rgb(u.get("bordC")); bar.line.fill.background(); bar.shadow.inherit = False
+                x += bordL + padL; w = max(0.1, w - bordL - padL)
+                # single-line elements: widen so a slightly different font can't force a wrap
+                line_in = pt * lh / 72.0
+                nlines = max(1, round(h / line_in)) if line_in > 0 else 1
+                if pt >= 22:                       # titles: give full width so they stay on one line
+                    w = SW - x - 0.2
+                elif nlines <= 1:                  # other single-line text: small headroom
+                    w = min(SW - x - 0.2, w + 1.0)
                 tb = s.shapes.add_textbox(Inches(x), Inches(y), Inches(w), Inches(h + 0.05)); tf = tb.text_frame
                 tf.word_wrap = True
                 try: tf.auto_size = MSO_AUTO_SIZE.NONE
                 except Exception: pass
                 tf.margin_left = 0; tf.margin_right = 0; tf.margin_top = 0; tf.margin_bottom = 0
+                tt = u.get("transform", "none")
                 paras = [[]]
                 for rn in u["runs"]:
+                    txt = rn["t"]
+                    if tt == "uppercase": txt = txt.upper()
+                    elif tt == "lowercase": txt = txt.lower()
+                    rn = dict(rn); rn["t"] = txt
                     seg = rn["t"].split("\n")
                     for j, piece in enumerate(seg):
                         if j > 0: paras.append([])
