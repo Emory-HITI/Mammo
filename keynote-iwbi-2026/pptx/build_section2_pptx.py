@@ -23,7 +23,7 @@ _,tf=box(s,0.85,0.62,9,0.4); run(para(tf,True),"ERA II",11,AMBER,bold=True,font=
 _,tf=box(s,0.85,2.5,6.7,1.6)
 p=para(tf,True); run(p,"The year is ",50,INK,bold=True); run(p,"2016.",50,AMBER,bold=True)
 _,tf=box(s,0.85,4.35,6.6,1.6)
-p=para(tf,True,line=1.3); run(p,"You're beginning to hear about AI — and still ",19,INK2); run(p,"feeling the burn from CAD.",19,INK,bold=True)
+p=para(tf,True,line=1.3); run(p,"You're beginning to hear about AI — but still ",19,INK2); run(p,"feeling the burn from CAD.",19,INK,bold=True)
 _m=re.search(r'<svg[\s\S]*?</svg>', H)
 if _m: embed_svg(s, _m.group(0), 7.7, 1.45, 5.0, 5.0)
 
@@ -31,35 +31,41 @@ if _m: embed_svg(s, _m.group(0), 7.7, 1.45, 5.0, 5.0)
 s=slide(prs); note(s,notes[1]); eyebrow(s,"Era II")
 _,tf=box(s,0.85,1.15,6.4,1.5)
 p=para(tf,True,line=1.12); run(p,"2016: the first large-scale push — and a ",26,INK,bold=True); run(p,"surge of optimism.",26,AMBER,bold=True)
-_,tf=box(s,0.85,3.0,6.4,1.2)
-run(para(tf,True,line=1.35),"The Digital Mammography DREAM Challenge was the first large-scale effort to build breast-cancer AI — and we took part. The hope: a crowdsourced competition would simply solve it.",14,INK2)
-chip(s,0.85,4.45,6.2,"1,000+ participants · 126 teams · 44 countries")
-chip(s,0.85,4.95,6.2,"~640,000 mammograms")
-_,tf=box(s,0.85,5.65,6.4,1.0)
-p=para(tf,True,line=1.35); run(p,"Best model ",13.5,INK2); run(p,"AUC 0.858",13.5,INK,bold=True); run(p," → ensemble ",13.5,INK2); run(p,"0.895",13.5,INK,bold=True); run(p," → + a radiologist ",13.5,INK2); run(p,"0.942.",13.5,INK,bold=True); run(p," Winner Therapixel spun out MammoScreen — still in use.",13.5,INK2)
-_,tf=box(s,0.85,6.7,6.4,0.4); run(para(tf,True),"Schaffter et al., JAMA Network Open 2020;3(3):e200265.",10,INK3,font=MONO)
+_,tf=box(s,0.85,3.1,6.4,1.6)
+run(para(tf,True,line=1.4),"The Digital Mammography DREAM Challenge was the first large-scale effort to build breast-cancer AI — and we took part. The hope was that a crowdsourced competition would simply solve it.",14.5,INK2)
+chip(s,0.85,5.05,6.2,"1,000+ participants · 126 teams · 44 countries")
+chip(s,0.85,5.55,6.2,"~640,000 mammograms")
+_,tf=box(s,0.85,6.4,6.4,0.4); run(para(tf,True),"Schaffter et al., JAMA Network Open 2020;3(3):e200265.",10,INK3,font=MONO)
 if DREAM: embed_img(s,DREAM,7.7,1.2,5.0,5.6,card_bg='white')
 
 # ---- 3 McKinney ----
 s=slide(prs); note(s,notes[2]); eyebrow(s,"Era II")
 _,tf=box(s,0.85,1.15,6.3,1.4)
 p=para(tf,True,line=1.12); run(p,"2020: Google publishes its ",26,INK,bold=True); run(p,"breast-cancer AI model.",26,AMBER,bold=True)
+_,tf=box(s,0.85,2.55,6.4,0.9)
+p=para(tf,True,line=1.35); run(p,"McKinney et al., Nature 2020",14,INK,bold=True); run(p," (Google Health, UK + US) — a deep-learning system read screening mammograms stand-alone.",14,INK2)
 stats=[("−5.7% / −1.2%","false positives (US / UK)"),("−9.4% / −2.7%","false negatives (US / UK)"),
        ("+11.5%","AUC over the average radiologist"),("−88%","simulated second-reader workload")]
-sy=2.9
+sy=3.55
 for big,lab in stats:
-    _,tf=box(s,0.85,sy,6.2,0.5); run(para(tf,True),big,21,AMBER,bold=True)
-    _,tf=box(s,0.85,sy+0.46,6.2,0.4); run(para(tf,True),lab,11.5,INK2,font=MONO); sy+=0.95
-_,tf=box(s,0.85,6.75,6.3,0.5); run(para(tf,True),"McKinney et al., Nature 2020;577:89–94 — promising, but only on clean, curated data.",10,INK3,font=MONO)
+    _,tf=box(s,0.85,sy,6.2,0.42); run(para(tf,True),big,19,AMBER,bold=True)
+    _,tf=box(s,0.85,sy+0.40,6.2,0.34); run(para(tf,True),lab,11,INK2,font=MONO); sy+=0.78
+_,tf=box(s,0.85,6.78,6.3,0.4); run(para(tf,True),"Results are promising — but again, only on clean, curated data. · McKinney et al., Nature 2020;577:89–94.",9.5,INK3,font=MONO)
 if MCK: embed_img(s,MCK,7.7,1.5,5.0,5.0,card_bg='white')
 
 # ---- 4 Salim ----
 s=slide(prs); note(s,notes[3]); eyebrow(s,"Era II")
 _,tf=box(s,0.85,1.15,6.4,1.6)
 p=para(tf,True,line=1.12); run(p,"2020: three commercial models, independently validated on ",24,INK,bold=True); run(p,"8,800 women.",24,AMBER,bold=True)
-_,tf=box(s,0.85,3.2,6.4,1.6)
-p=para(tf,True,line=1.35); run(p,"Best algorithm ",15,INK2); run(p,"AUC 0.956",15,INK,bold=True); run(p,". AI + first reader reached ",15,INK2); run(p,"88.6% sensitivity at 93.0% specificity",15,INK,bold=True); run(p," — exceeding two human readers.",15,INK2)
-_,tf=box(s,0.85,5.2,6.4,0.5); run(para(tf,True),"Salim et al., JAMA Oncology 2020 (Stockholm, 8,805 women).",10,INK3,font=MONO)
+_,tf=box(s,0.85,3.0,6.4,0.8)
+p=para(tf,True,line=1.35); run(p,"Salim et al., JAMA Oncology 2020",14,INK,bold=True); run(p," tested three commercial algorithms on an external Stockholm cohort.",14,INK2)
+_,tf=box(s,0.85,3.95,6.4,0.5)
+p=para(tf,True,line=1.3); run(p,"AUC — AI-1 ",14,INK2); run(p,"0.956",14,AMBER,bold=True); run(p," · AI-2 ",14,INK2); run(p,"0.922",14,AMBER,bold=True); run(p," · AI-3 ",14,INK2); run(p,"0.920",14,AMBER,bold=True)
+_,tf=box(s,0.85,4.6,6.4,0.7)
+p=para(tf,True,line=1.3); run(p,"At readers' specificity (",14,INK2); run(p,"96.6%",14,INK,bold=True); run(p,"): AI-1 ",14,INK2); run(p,"81.9%",14,INK,bold=True); run(p," sensitivity vs readers ",14,INK2); run(p,"77.4%",14,INK,bold=True); run(p,".",14,INK2)
+_,tf=box(s,0.85,5.3,6.4,0.6)
+p=para(tf,True,line=1.3); run(p,"AI + reader: ",14,INK2); run(p,"+77%",14,AMBER,bold=True); run(p," abnormal calls for ",14,INK2); run(p,"+8%",14,AMBER,bold=True); run(p," detection — the operating-point tension in miniature.",14,INK2)
+_,tf=box(s,0.85,6.55,6.4,0.5); run(para(tf,True),"Salim et al., JAMA Oncology 2020 (Stockholm, 8,805 women).",10,INK3,font=MONO)
 if SALIM: embed_img(s,SALIM,7.7,1.4,5.0,5.2,card_bg='white')
 
 # ---- 5 MASAI 2023 safety ----
@@ -81,11 +87,14 @@ _,tf=box(s,0.85,1.25,11.6,1.0)
 p=para(tf,True,line=1.1); run(p,"Data isn't enough to ",30,INK,bold=True); run(p,"drive adoption.",30,AMBER,bold=True)
 _,tf=box(s,0.85,2.5,11.4,0.7)
 run(para(tf,True,line=1.3),"Enriched cases, lab conditions, no real workflow — CAD had good numbers too. The bar is prospective deployment, and real-world uptake has been slow.",15,INK2)
-trip=[("48%","of European radiologists use AI (2024)"),("13.7%","of them, for breast imaging"),("~2%","of US practices, by one estimate")]
+trip=[("48%","European radiologists use AI (2024) — up from 20% in 2018"),("13.7%","of them, for breast imaging — about 1 in 8"),("~2%","of US practices, by one estimate")]
 tx=0.85
 for big,lab in trip:
     _,tf=box(s,tx,3.7,3.6,1.0); run(para(tf,True),big,46,AMBER,bold=True)
-    _,tf=box(s,tx,4.85,3.6,1.0); run(para(tf,True,line=1.25),lab,11.5,INK,font=MONO); tx+=4.0
+    _,tf=box(s,tx,4.85,3.6,1.4); run(para(tf,True,line=1.3),lab,11.5,INK,font=MONO); tx+=4.0
 _,tf=box(s,0.85,6.6,11.5,0.4); run(para(tf,True),"ESR EuroAIM/EuSoMII survey, Insights Imaging 2024 (n=572) · US estimate: industry report.",10,INK3,font=MONO)
 
-save(prs, "/home/user/Mammo/keynote-iwbi-2026/pptx/IWBI2026_Trivedi_02_EraII.pptx")
+import os
+out="/home/user/Mammo/keynote-iwbi-2026/pptx/sections/IWBI2026_Trivedi_02_EraII.pptx"
+os.makedirs(os.path.dirname(out), exist_ok=True)
+save(prs, out)
