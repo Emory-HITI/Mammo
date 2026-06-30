@@ -164,31 +164,45 @@ Genomics (germline PRS + ctDNA MRD, always-on / longitudinal prior) → Clinical
 
 ---
 
-## SLIDE 6
-### The magic wand doesn't exist. The pipeline does.
+## SLIDE 6 — Era III · 2035
+### The frontier plateaued. The specialists compounded. *(rebuilt; prior "magic wand / pipeline" version kept but hidden in final)*
 
-**Foundation models did not unlock the next era of medical AI by ingesting mountains of dirty data. They unlocked it by making high-quality data curation possible at scale. The model was never the bottleneck. The label was.**
+**Thesis:** Frontier models continue to lag behind specialist models. By 2035 that stopped being a research footnote and became the market structure.
 
-- **Quality over quantity, demonstrated and ignored.** Andrew Ng's data-centric AI paradigm (2021); DataComp-LM discards 99% of raw data through quality filtering; Sambasivan et al. (*CHI 2021*) documented "everyone wants to do the model work, not the data work" in high-stakes medical AI
+**Look past the leaderboard (2024–2026).** Frontier models posted spectacular exam scores — and then degraded the moment they touched real clinical data. The gap was structural, not cosmetic:
 
-- **For a decade the rate-limiting step was generating high-quality structured labels from the unstructured archives health systems already possessed.** Every radiology report encodes structured knowledge as prose; extracting it accurately required slow, expensive expert annotation (Zhang et al., *Data-Centric Foundation Models in Computational Healthcare*, arXiv:2401.02458)
+- **The benchmark mirage.** A systematic review of 39 medical LLM benchmarks found knowledge-based exam tasks held **85–93%** accuracy, but practice-based real-world tasks collapsed to **45–69%** — and safety-critical scenarios sat at **40–50%** (Wu et al., *JMIR* 2025, e84120). "It's time to bench the medical exam benchmark" became the field's refrain (Raji, Daneshjou & Alsentzer, *NEJM AI* 2025).
 
-- **LLMs crossed the human-level threshold for structured label extraction around 2024–2025.** GPT-based labeling reached average F1 0.90 across 14 thoracic pathologies (Abdullah & Kim, *JMIR Med Inform*, 2025); the Data Scaling Laws for Radiology Foundation Models pipeline (arXiv:2509.12818) built training on GPT-4o-extracted labels including arterial calcification, radiologist-validated
+- **Hallucination didn't go away — it hid in the findings.** In diagnostic imaging, **~22%** of VLM-generated reports still contained factual errors, with high NLP scores masking low clinical utility (VLM imaging review, *Int J Med Inform* 2025); high-performing report generators hallucinated findings in **~40%** of sentences (RadFlag, arXiv:2411.00299) — because text-heavy pretraining made them pattern-match priors instead of reading the image.
 
-- **The virtuous cycle.** ScaleMAI (arXiv:2501.03410) formalized an EM loop — model trains on current labels, flags divergence for targeted human review, retrains. Mammo-CLIP (Ghosh et al., ECCV 2024) applied this to mammography, improving data efficiency and robustness
+- **Guideline adherence broke under real cases.** Across **12,197** diagnostic outputs, frontier models omitted relevant clinical guidelines in up to **46%** of cases and hallucinated non-existent ones up to **9%** — and the error rate shifted with patient sex, ethnicity, and location (clinical guideline omission/hallucination study, 2026).
 
-**→ The implication:** None of the datasets behind the prior slides (BINDS 27,048; BMU-Net 5,025; Mammo-AGE 95,826; Barraclough 49,196) existed as clean, model-ready training sets before the teams built them — from archives and the unstructured reports that accompanied them. EMBED (3.5M exams; the Emory AI Image Extraction Core) is the local example. In 2035, every mammogram ever performed is in the training set — we just needed a way to read the labels that were always there
+- **Citation accuracy stayed the worst task family** — frontier models fabricated DOIs, titles, and authors at rates an order of magnitude above their factual-recall floor. The irony writes itself: the models pitched to generate the labels couldn't reliably cite them.
 
-*[Visual: Two columns — "What we had" (archive of imaging + unstructured reports) and "What changed" (LLM reads report → extracts label → image-label pair → foundation model → loops back to improve label extraction).]*
+**The generalist bubble burst.** The Anthropic and OpenAI growth stories assumed one model could do everything — write Shakespeare, price a derivative, and read a mammogram — and that assumption never survived contact with a health system's budget, a reading room's latency, or the failure rates above. As the giants deflated, a leaner generation replaced them: smaller, cheaper, medically-focused LLMs built for one job — reading the archive.
+
+That shift never made the generalists better doctors. It made them better librarians. Their lasting contribution was never diagnosis — it was turning decades of unstructured reports into clean, structured, model-ready labels at a scale and cost expert annotation could never reach, **with a human in the loop holding the floor on quality. The model was never the bottleneck. The label was.**
+
+**The two-tier architecture that won:**
+
+- **Medical LLMs do the data work** — extract, harmonize, and label the archive; human-in-the-loop validation keeps them calibrated. (GPT-based labeling reached avg F1 **0.90** across 14 thoracic pathologies — Abdullah & Kim, *JMIR Med Inform* 2025; Data Scaling Laws pipeline trained on GPT-4o-extracted, radiologist-validated labels — arXiv:2509.12818)
+- **Domain foundation models do the disease work** — trained on those labels, they understand one disease end to end rather than the whole internet shallowly.
+- **The virtuous cycle:** ScaleMAI (arXiv:2501.03410) formalized the EM loop — train on current labels, flag divergence for targeted human review, retrain. Mammo-CLIP (Ghosh et al., ECCV 2024) brought it to mammography.
+
+**→ What we extrapolate to 2035:** The benchmark–practice gap never closed by scaling generalists — scale was no silver bullet, because the failure was architectural: a model trained on the whole internet reasons from text priors, not from the pixels in front of it. So the labor split hardened. Generalists won the data tier — extraction, harmonization, grounding — where retrieval cut their citation errors **75–90%** and a human still signs off. The disease tier went to domain foundation models that genuinely reason over one disease end to end. None of the datasets behind the prior slides (BINDS 27,048; BMU-Net 5,025; Mammo-AGE 95,826; Barraclough 49,196) existed as clean training sets before the teams built them — from archives and the reports that accompanied them. EMBED (3.5M exams; the Emory AI Image Extraction Core) is the local example. In 2035, every mammogram ever performed is in the training set — **we just needed the medical LLMs to read the labels that were always there.**
+
+*[Visual: Archive → DATA TIER (Medical LLMs: extract · harmonize · label, human-in-loop) → clean labels → DISEASE TIER (Domain foundation models: one disease, end to end), with a dashed EM-loop feedback arrow back up.]*
 
 **Slide 6 citations:**
-- Sambasivan N et al. "Everyone wants to do the model work, not the data work": data cascades in high-stakes AI. *CHI 2021*
-- Zhang Y et al. Data-centric foundation models in computational healthcare: a survey. *arXiv:2401.02458*
+- Wu et al. Systematic review of medical LLM benchmarks. *JMIR* 2025;e84120
+- Raji ID, Daneshjou R, Alsentzer E. It's time to bench the medical exam benchmark. *NEJM AI* 2025
+- VLM diagnostic imaging review (factual error rate). *Int J Med Inform* 2025
+- RadFlag: hallucination flagging in report generation. *arXiv:2411.00299*
+- Clinical guideline omission/hallucination across 12,197 outputs. 2026
 - Abdullah A, Kim ST. Automated radiology report labeling … LLM framework. *JMIR Med Inform.* 2025;13:e68618
 - Goel S et al. Data scaling laws for radiology foundation models. *arXiv:2509.12818*
 - Yuan R et al. ScaleMAI. *arXiv:2501.03410*
 - Ghosh S et al. Mammo-CLIP. *arXiv:2405.12255 / ECCV 2024*
-- Ng A. Data-centric AI. Stanford / DeepLearning.AI, 2021
 
 ---
 
