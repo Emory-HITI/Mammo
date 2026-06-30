@@ -280,6 +280,68 @@ def add_table(s,x,y,w,tbl):
                     r.font.color.rgb=AMBER if ri==0 else (INK if ci==0 else INK2)
     return h
 
+# ---------- special card layouts ----------
+def card_shape(s,l,t,w,h,fill,edge,edge_w=1.25):
+    sh=s.shapes.add_shape(MSO_SHAPE.ROUNDED_RECTANGLE,Inches(l),Inches(t),Inches(w),Inches(h))
+    sh.fill.solid(); sh.fill.fore_color.rgb=fill; sh.line.color.rgb=edge; sh.line.width=Pt(edge_w); sh.shadow.inherit=False
+    return sh
+
+def render_spine(s, sec, title_runs):
+    # title
+    textbox(s,LX,1.45,11.6,1.0,title_runs,44,default=INK,leading=1.04)
+    steps=sec.select('.step')
+    AMBDK=RGBColor(0x3A,0x2E,0x16); DARK=RGBColor(0x1A,0x12,0x06); DARK2=RGBColor(0x2A,0x1E,0x0A); DARK3=RGBColor(0x40,0x30,0x14)
+    fills=[CARD,AMBDK,AMBER]; edges=[LINE,AMBERDP,AMBERDP]
+    sx_l, sw_w, gap, sy, sh_h = LX, 3.75, 0.275, 3.35, 2.5
+    for i,st in enumerate(steps):
+        l=sx_l+i*(sw_w+gap); solid=(i==len(steps)-1 and len(steps)==3)
+        c=card_shape(s,l,sy,sw_w,sh_h,fills[i] if i<len(fills) else CARD,edges[i] if i<len(edges) else LINE)
+        bar=s.shapes.add_shape(MSO_SHAPE.RECTANGLE,Inches(l+0.25),Inches(sy+0.22),Inches(0.45),Pt(2.5))
+        bar.fill.solid(); bar.fill.fore_color.rgb=(DARK if solid else AMBER); bar.line.fill.background(); bar.shadow.inherit=False
+        def g(cls):
+            d=st.select_one('.'+cls); return d.get_text(' ',strip=True) if d else ''
+        tf=c.text_frame; tf.word_wrap=True; tf.vertical_anchor=MSO_ANCHOR.TOP
+        tf.margin_left=Inches(0.28); tf.margin_right=Inches(0.24); tf.margin_top=Inches(0.42); tf.margin_bottom=Inches(0.2)
+        ink_w=DARK if solid else INK; ink_e=DARK if solid else AMBER; ink_d=DARK2 if solid else INK2; ink_x=DARK3 if solid else INK3
+        run(_p(tf,True),g('sx'),11,ink_x,font=MONO)
+        run(_p(tf,before=4),g('se').upper(),10,ink_e,bold=True,font=MONO)
+        run(_p(tf,before=6),g('sw'),26,ink_w,bold=True)
+        run(_p(tf,before=6,line=1.25),g('sd'),12.5,ink_d)
+
+def render_turngrid(s, sec, title_runs):
+    textbox(s,LX,1.35,11.6,0.9,title_runs,26,default=INK,leading=1.05)
+    cols=sec.select('.tcol')
+    cw=5.4; gap=0.8; cy=2.7; ch=3.6
+    xs=[LX, LX+cw+gap]
+    for i,col in enumerate(cols[:2]):
+        new=('new' in (col.get('class',[]) or [])); x=xs[i]
+        c=card_shape(s,x,cy,cw,ch,CARD,AMBERDP if new else LINE,1.25 if new else 1.0)
+        tf=c.text_frame; tf.word_wrap=True; tf.vertical_anchor=MSO_ANCHOR.TOP
+        tf.margin_left=Inches(0.3); tf.margin_right=Inches(0.26); tf.margin_top=Inches(0.28); tf.margin_bottom=Inches(0.2)
+        th=col.select_one('.th'); verb=col.select_one('.verb'); pp=col.find('p')
+        run(_p(tf,True),(th.get_text(' ',strip=True) if th else '').upper(),11,AMBER if new else INK3,bold=True,font=MONO)
+        run(_p(tf,before=8),verb.get_text(' ',strip=True) if verb else '',24,INK if new else INK2,bold=True)
+        if pp:
+            p=_p(tf,before=8,line=1.3)
+            for t,b,c2 in runs_of(pp): run(p,t,13,(c2 or INK2),bold=b)
+    # arrow between
+    ar=s.shapes.add_textbox(Inches(LX+cw),Inches(cy+ch/2-0.35),Inches(gap),Inches(0.7))
+    tf=ar.text_frame; tf.vertical_anchor=MSO_ANCHOR.MIDDLE
+    pr=tf.paragraphs[0]; pr.alignment=PP_ALIGN.CENTER
+    r=pr.add_run(); r.text="→"; r.font.size=Pt(28); r.font.color.rgb=AMBER; r.font.name=SANS
+
+def _p(tf, first=False, align=PP_ALIGN.LEFT, before=0, line=1.0):
+    p=tf.paragraphs[0] if first else tf.add_paragraph()
+    p.alignment=align
+    if before: p.space_before=Pt(before)
+    try: p.line_spacing=line
+    except Exception: pass
+    return p
+
+def run(p, text, size, color, bold=False, font=SANS):
+    r=p.add_run(); r.text=text; f=r.font; f.size=Pt(size); f.bold=bold; f.name=font; f.color.rgb=color
+    return r
+
 # ---------- slide ----------
 def build_slide(prs, sec):
     s=prs.slides.add_slide(prs.slide_layouts[6])
@@ -292,6 +354,14 @@ def build_slide(prs, sec):
     eb=sec.select_one('.eyebrow')
     if eb:
         textbox(s,LX,0.45,9.5,0.4,[(eb.get_text(' ',strip=True).upper(),True,AMBER)],SZ['eyebrow'],default=AMBER,font=MONO)
+
+    # ---- special card layouts ----
+    h=sec.find(['h1','h2'])
+    title_runs=runs_of(h) if h else []
+    if sec.select_one('.spine-row'):
+        render_spine(s, sec, title_runs); return s
+    if sec.select_one('.turn-grid'):
+        render_turngrid(s, sec, title_runs); return s
 
     # figure
     fig=None; ar=1.4; card=None
