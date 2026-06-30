@@ -98,7 +98,7 @@ _, tf = box(s, 0.85, 1.2, 11.6, 1.1)
 p = para(tf, True, line=1.05)
 run(p, "Within a decade, CAD was used on ", 30, INK, bold=True); run(p, "most US mammograms.", 30, AMBER, bold=True)
 sv = svg_of(1)
-if sv: embed_svg(s, sv, 1.3, 2.45, 10.7, 3.5, center=True)
+if sv: embed_svg(s, sv, 1.3, 2.45, 10.7, 3.5, center=True, bg=None)  # transparent → gradient shows through
 _, tf = box(s, 0.85, 6.2, 11.6, 0.8)
 p = para(tf, True, line=1.3)
 run(p, "A 2002 reimbursement code drove adoption — not evidence of benefit. ", 13, INK2)
