@@ -73,11 +73,12 @@ def chiprun(s, x, y, runs, fs=10.5):
 
 def divider(i, yr, sub_a, sub_b, eb="Era II · 2026"):
     s = slide(prs); note(s, NOTES[i])
-    _, tf = box(s, 0.85, 0.62, 9, 0.4); run(para(tf, True), eb.upper(), 11, AMBER, bold=True, font=MONO)
-    _, tf = box(s, 0.85, 2.5, 6.7, 1.6); p = para(tf, True); run(p, "The year is ", 50, INK, bold=True); run(p, yr + ".", 50, AMBER, bold=True)
-    _, tf = box(s, 0.85, 4.35, 6.6, 1.6); p = para(tf, True, line=1.3); run(p, sub_a, 19, INK2); run(p, sub_b, 19, INK, bold=True)
+    # eyebrow + title + subtitle as one tight, vertically-centred block (matches HTML flexbox)
+    _, tf = box(s, 0.85, 2.45, 9, 0.34); run(para(tf, True), eb.upper(), 11, AMBER, bold=True, font=MONO)
+    _, tf = box(s, 0.85, 2.85, 6.9, 0.95); p = para(tf, True, line=1.0); run(p, "The year is ", 44, INK, bold=True); run(p, yr + ".", 44, AMBER, bold=True)
+    _, tf = box(s, 0.85, 3.95, 6.3, 1.3); p = para(tf, True, line=1.4); run(p, sub_a, 17, INK2); run(p, sub_b, 17, INK, bold=True)
     sv = svgs(i)
-    if sv: embed_svg(s, sv[0], 7.7, 1.45, 5.0, 5.0)
+    if sv: embed_svg(s, sv[0], 7.8, 1.05, 4.9, 4.7)
     return s
 
 # ===== 0 divider 2026 =====

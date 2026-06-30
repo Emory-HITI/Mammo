@@ -47,13 +47,13 @@ def cmp_table(s, x, y, rows, w_meas=4.2, w_val=1.6):
 
 # ---- 1 divider 2016 (with time-machine graphic) ----
 s=slide(prs); note(s, notes[0])
-_,tf=box(s,0.85,0.62,9,0.4); run(para(tf,True),"ERA II",11,AMBER,bold=True,font=MONO)
-_,tf=box(s,0.85,2.5,6.7,1.6)
-p=para(tf,True); run(p,"The year is ",50,INK,bold=True); run(p,"2016.",50,AMBER,bold=True)
-_,tf=box(s,0.85,4.35,6.6,1.6)
-p=para(tf,True,line=1.3); run(p,"You're beginning to hear about AI — but still ",19,INK2); run(p,"feeling the burn from CAD.",19,INK,bold=True)
+_,tf=box(s,0.85,2.45,9,0.34); run(para(tf,True),"ERA II",11,AMBER,bold=True,font=MONO)
+_,tf=box(s,0.85,2.85,6.9,0.95)
+p=para(tf,True,line=1.0); run(p,"The year is ",44,INK,bold=True); run(p,"2016.",44,AMBER,bold=True)
+_,tf=box(s,0.85,3.95,6.3,1.3)
+p=para(tf,True,line=1.4); run(p,"You're beginning to hear about AI — but still ",17,INK2); run(p,"feeling the burn from CAD.",17,INK,bold=True)
 _m=re.search(r'<svg[\s\S]*?</svg>', H)
-if _m: embed_svg(s, _m.group(0), 7.7, 1.45, 5.0, 5.0)
+if _m: embed_svg(s, _m.group(0), 7.8, 1.05, 4.9, 4.7)
 
 # ---- 2 DREAM ----
 s=slide(prs); note(s,notes[1]); eyebrow(s,"Era II")
