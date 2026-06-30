@@ -123,7 +123,7 @@ p = para(tf, True, line=1.25); run(p, "false positives ", 12, WARN, bold=True); 
 _, tf = box(s, 0.85, 6.5, 6.0, 0.4)
 run(para(tf, True), "Kim 2009 · Mahoney 2011 · Watanabe 2019 · Leon 2009", 10, INK3, font=MONO)
 sv = svg_of(2)
-if sv: embed_svg(s, sv, 6.7, 1.4, 6.0, 4.4, center=True)
+if sv: embed_svg(s, sv, 6.7, 1.4, 6.0, 4.4, center=True, bg=None)
 _, tf = box(s, 6.7, 5.95, 6.0, 0.8)
 run(para(tf, True, align=PP_ALIGN.CENTER, line=1.3), "Mean false-positive marks per case · ImageChecker v7.2 — Mahoney & Meganathan, J Digit Imaging 2011 (Table 4) · PMC3180536.", 9, INK3, font=MONO)
 

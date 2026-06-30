@@ -20,6 +20,7 @@ WHITE = RGBColor(0xFF,0xFF,0xFF); BLACK = RGBColor(0x00,0x00,0x00)
 SANS, MONO = "Arial", "Consolas"
 SW, SH = 13.333, 7.5
 TMP = tempfile.mkdtemp()
+BGIMG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "bg_motif.png")
 
 def new_prs():
     prs = Presentation(); prs.slide_width = Inches(SW); prs.slide_height = Inches(SH)
@@ -28,6 +29,8 @@ def new_prs():
 def slide(prs, hidden=False, barw=6.0):
     s = prs.slides.add_slide(prs.slide_layouts[6])
     s.background.fill.solid(); s.background.fill.fore_color.rgb = BG
+    if os.path.exists(BGIMG):                       # full-bleed gradient + contour motif
+        s.shapes.add_picture(BGIMG, Inches(0), Inches(0), Inches(SW), Inches(SH))
     bar = s.shapes.add_shape(MSO_SHAPE.RECTANGLE, Inches(0), Inches(0), Inches(barw), Pt(3))
     bar.fill.solid(); bar.fill.fore_color.rgb = AMBER; bar.line.fill.background(); bar.shadow.inherit = False
     if hidden:
@@ -106,7 +109,7 @@ def _fit(ar, maxw, maxh):
     if h>maxh: h=maxh; w=h*ar
     return w,h
 
-def embed_svg(s, svg_el_or_str, l, t, maxw, maxh, bg='#0F141A', center=True):
+def embed_svg(s, svg_el_or_str, l, t, maxw, maxh, bg=None, center=True):
     svg=str(svg_el_or_str)
     # restore camelCase that an HTML parser may have lowercased (cairosvg is case-sensitive)
     for a,b in [('viewbox=','viewBox='),('radialgradient','radialGradient'),
