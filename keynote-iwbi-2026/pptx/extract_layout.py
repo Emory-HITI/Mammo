@@ -37,7 +37,20 @@ JS = r"""
       if(tag==='IMG'){ const src=c.getAttribute('src')||''; if(src.startsWith('data:')){ const r=rectOf(c); units.push({type:'img', rect:r, src:src}); } continue; }
       if(tag==='CANVAS') continue;
       if(isLeafTextBlock(c)){
-        const cs=getComputedStyle(c); const r=rectOf(c);
+        const cs=getComputedStyle(c);
+        // flex row with >=2 element children (e.g. key <-> value, justify-content:space-between):
+        // emit each child at its own measured rect so the layout is preserved instead of concatenated
+        const elemKids=[...c.children].filter(k=>INLINE.has(k.tagName)&&vis(k)&&k.textContent.replace(/\s/g,'')!=='');
+        if(cs.display.indexOf('flex')>=0 && elemKids.length>=2){
+          for(const k of elemKids){
+            const kc=getComputedStyle(k);
+            units.push({type:'text', rect:rectOf(k), fontPx:parseFloat(kc.fontSize), linePx:parseFloat(kc.lineHeight)||parseFloat(kc.fontSize)*1.2,
+                        align:kc.textAlign, family:kc.fontFamily, transform:kc.textTransform,
+                        padL:0, bordL:0, bordC:kc.borderLeftColor, marker:null, runs:runsOf(k)});
+          }
+          continue;
+        }
+        const r=rectOf(c);
         // ::before marker (e.g. amber list-item dash)
         let marker=null;
         const bef=getComputedStyle(c,'::before');

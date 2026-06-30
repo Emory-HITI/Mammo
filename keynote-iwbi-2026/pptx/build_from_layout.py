@@ -144,7 +144,8 @@ MAP = {"hook": "IWBI2026_Trivedi_00_hook.pptx", "section1": "IWBI2026_Trivedi_01
        "section2": "IWBI2026_Trivedi_02_EraII.pptx", "section2b": "IWBI2026_Trivedi_02b_EraII_2026.pptx",
        "section5alternate": "IWBI2026_Trivedi_05_EraIII_prevention.pptx", "section6b": "IWBI2026_Trivedi_06b_frontier.pptx",
        "section_adoption": "IWBI2026_Trivedi_06c_adoption.pptx", "section7": "IWBI2026_Trivedi_07_close.pptx",
-       "slide_imagenet_2012": "IWBI2026_Trivedi_ImageNet2012.pptx"}
+       "slide_imagenet_2012": "IWBI2026_Trivedi_ImageNet2012.pptx",
+       "slide_sbi_survey": "IWBI2026_Trivedi_SBI_survey.pptx"}
 
 if __name__ == "__main__":
     build(sys.argv[1])
