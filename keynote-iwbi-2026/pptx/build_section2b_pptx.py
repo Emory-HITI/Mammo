@@ -38,6 +38,39 @@ def stat(s, x, y, big, lab, w=2.8, bigsz=30, bigcol=AMBER, labw=None):
     _, tf = box(s, x, y, w, 0.55); run(para(tf, True), big, bigsz, bigcol, bold=True)
     _, tf = box(s, x, y + bigsz / 100.0 + 0.10, labw or w, 0.6); run(para(tf, True, line=1.2), lab, 11, INK2, font=MONO)
 
+from pptx.oxml.ns import qn
+def _dash(shape):
+    ln = shape.line._get_or_add_ln()
+    for old in ln.findall(qn('a:prstDash')): ln.remove(old)
+    d = ln.makeelement(qn('a:prstDash'), {'val': 'dash'}); ln.append(d)
+
+def placeholder(s, x, y, w, h, label, sub):
+    c = card(s, x, y, w, h, fill=BG, edge=AMBERDP, edge_w=1.0); _dash(c)
+    try: c.fill.background()
+    except Exception: pass
+    tf = c.text_frame; tf.word_wrap = True; tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    run(para(tf, True, align=PP_ALIGN.CENTER), label, 11, AMBER, font=MONO)
+    run(para(tf, align=PP_ALIGN.CENTER, before=3), sub, 9, INK3, font=MONO)
+
+def leftbar(s, x, y, w, runs, sz=14, h=0.9, col=AMBER):
+    b = rect(s, x, y, 0.03, h, col)
+    _, tf = box(s, x + 0.2, y, w - 0.2, h); p = para(tf, True, line=1.35)
+    for t, c, bold in runs: run(p, t, sz, c, bold=bold)
+
+def statline(s, x, y, big, lab, bigcol=AMBER, bigsz=24, w=6.4):
+    _, tf = box(s, x, y, w, 0.5, anchor=MSO_ANCHOR.MIDDLE)
+    p = para(tf, True)
+    run(p, big, bigsz, bigcol, bold=True); run(p, "   " + lab, 13, INK2)
+
+def chiprun(s, x, y, runs, fs=10.5):
+    chars = sum(len(t) for t, _ in runs); w = chars * fs * 0.0082 + 0.42
+    c = card(s, x, y, w, 0.42, fill=CARD, edge=LINE, edge_w=0.75); rect(s, x, y, 0.045, 0.42, CYAN)
+    tf = c.text_frame; tf.word_wrap = False; tf.vertical_anchor = MSO_ANCHOR.MIDDLE
+    tf.margin_left = Inches(0.15); tf.margin_right = Inches(0.10); tf.margin_top = Pt(0); tf.margin_bottom = Pt(0)
+    p = para(tf, True)
+    for t, bold in runs: run(p, t, fs, (CYAN if bold else INK), bold=bold, font=MONO)
+    return w
+
 def divider(i, yr, sub_a, sub_b, eb="Era II · 2026"):
     s = slide(prs); note(s, NOTES[i])
     _, tf = box(s, 0.85, 0.62, 9, 0.4); run(para(tf, True), eb.upper(), 11, AMBER, bold=True, font=MONO)
@@ -52,27 +85,26 @@ divider(0, "2026", "Ten years on, the early promise has been put to the test —
 
 # ===== 1 two prospective studies =====
 s = slide(prs); note(s, NOTES[1]); eyebrow(s, "Era II · 2026")
-title2(s, 1.1, 11.6, "2026: two prospective studies show ", "AI screening works.", sz=28)
-def studycard(x, head, lines, cit):
-    c = card(s, x, 2.35, 5.7, 3.0, fill=CARD, edge=AMBERDP, edge_w=1.1)
-    tf = c.text_frame; tf.word_wrap = True; tf.margin_left = Inches(0.28); tf.margin_right = Inches(0.24); tf.margin_top = Inches(0.22)
-    run(para(tf, True), head, 12, AMBER, bold=True, font=MONO)
-    for runs in lines:
-        p = para(tf, before=8, line=1.3)
-        for t, col, b in runs: run(p, t, 14, col, bold=b)
-    run(para(tf, before=10), cit, 9.5, INK3, font=MONO)
+title2(s, 1.05, 11.6, "2026: two prospective studies show ", "AI screening works.", sz=27)
+def studycard(x, head, headline, sub, cit):
+    c = card(s, x, 2.35, 5.7, 2.55, fill=CARD, edge=LINE, edge_w=0.75); rect(s, x, 2.35, 0.05, 2.55, CYAN)
+    tf = c.text_frame; tf.word_wrap = True; tf.margin_left = Inches(0.3); tf.margin_right = Inches(0.24); tf.margin_top = Inches(0.2)
+    run(para(tf, True), head, 11, CYAN, font=MONO)
+    p = para(tf, before=8, line=1.18)
+    for t, col, b in headline: run(p, t, 16, col, bold=b)
+    p = para(tf, before=7, line=1.3)
+    for t, col, b in sub: run(p, t, 13, col, bold=b)
+    run(para(tf, before=9), cit, 9, INK3, font=MONO)
 studycard(0.85, "MASAI · SWEDEN · RCT (~105,000)",
-          [[("Interval cancers ", INK2, False), ("non-inferior", INK, True), (" (ratio 0.88)", INK2, False)],
-           [("Sensitivity ", INK2, False), ("80.5%", AMBER, True), (" vs 73.8% at matched specificity", INK2, False)],
-           [("~44%", AMBER, True), (" less reading workload", INK2, False)]],
+          [("Interval cancers non-inferior", INK, True), (" (ratio 0.88)", INK3, False)],
+          [("Sensitivity ", INK2, False), ("80.5%", INK, True), (" vs 73.8% at matched specificity · ", INK2, False), ("~44%", INK, True), (" less reading workload.", INK2, False)],
           "Gommers/Lång et al., Lancet 2026;407:505–514")
 studycard(6.75, "PRAIM · GERMANY · REAL-WORLD (463,000)",
-          [[("+17.6%", AMBER, True), (" cancers detected", INK2, False)],
-           [("Recall ", INK2, False), ("non-inferior", INK, True), (" · 6.7 vs 5.7 CDR / 1,000", INK2, False)],
-           [("12 sites · 119 radiologists", INK2, False)]],
+          [("+17.6%", AMBER, True), (" cancers detected", INK, True)],
+          [("Recall ", INK2, False), ("non-inferior", INK, True), (" · 6.7 vs 5.7 CDR / 1,000 · 12 sites, 119 radiologists.", INK2, False)],
           "Eisemann et al., Nature Medicine 2025")
-body(s, 5.7, 11.6, [("A third is underway: ", INK2, False), ("PRISM", AMBER, True),
-     (" — the first large randomized trial of screening AI in the US (Transpara; $16M PCORI; 7 sites; recruiting). It tests the US single-reader workflow directly.", INK2, False)], sz=13, line=1.35)
+leftbar(s, 0.85, 5.35, 11.6, [("A third is underway: ", INK2, False), ("PRISM", INK, True),
+     (" — the first large randomized trial of screening AI in the United States (Transpara; $16M PCORI; 7 sites; announced Sept 2025, recruiting). It tests the ", INK2, False), ("US single-reader workflow", INK, True), (" directly.", INK2, False)], sz=13.5, h=1.3)
 
 # ===== 2 what counts as truth (EMBED cascade fig) =====
 s = slide(prs); note(s, NOTES[2]); eyebrow(s, "Era II · 2026")
@@ -102,14 +134,14 @@ cite(s, 6.5, "[your group], Nat Commun 2026 (DOI 10.1038/s41467-026-70637-3), Fi
 
 # ===== 5 Head CT ICH =====
 s = slide(prs); note(s, NOTES[5]); eyebrow(s, "Era II · 2026 · not only breast")
-title2(s, 1.1, 11.6, "Head CT: ", "intracranial hemorrhage.", sz=26)
-body(s, 2.3, 11.2, [("A commercial ICH detector looked strong overall — but sensitivity ", INK2, False), ("collapsed for subacute and chronic", INK, True), (" bleeds, and fell in the ", INK2, False), ("outpatient", INK, True), (" setting.", INK2, False)], sz=15, h=0.9)
-quad = [("82.2%", "Overall sensitivity", AMBER), ("45.5%", "Subacute bleeds", WARN), ("54.8%", "Chronic bleeds", WARN), ("72.2%", "Outpatient setting", AMBER)]
-qx = 0.85
-for big, lab, col in quad:
-    _, tf = box(s, qx, 3.7, 2.9, 0.7); run(para(tf, True), big, 40, col, bold=True)
-    _, tf = box(s, qx, 4.6, 2.9, 0.6); run(para(tf, True, line=1.2), lab, 11.5, INK2, font=MONO); qx += 3.0
-cite(s, 5.9, "[your group], npj Digital Medicine 2025.")
+title2(s, 1.5, 6.4, "Head CT: ", "intracranial hemorrhage.", sz=26)
+body(s, 2.7, 6.0, [("A commercial ICH detector looked strong overall — but sensitivity ", INK2, False), ("collapsed for subacute and chronic", INK, True), (" bleeds, and fell in the ", INK2, False), ("outpatient", INK, True), (" setting.", INK2, False)], sz=14, h=1.2)
+rows = [("82.2%", "Overall sensitivity", AMBER), ("45.5%", "Subacute bleeds", WARN), ("54.8%", "Chronic bleeds", WARN), ("72.2%", "Outpatient setting", CYAN)]
+ry = 4.15
+for big, lab, col in rows:
+    statline(s, 0.85, ry, big, lab, bigcol=col, bigsz=24); ry += 0.62
+cite(s, 6.75, "[your group], npj Digital Medicine 2025.", w=6.0)
+placeholder(s, 7.2, 1.3, 5.6, 5.2, "GIF", "[ to be added ]")
 
 # ===== 6 Chest PE (bar chart svg) =====
 s = slide(prs); note(s, NOTES[6]); eyebrow(s, "Era II · 2026 · not only breast")
@@ -121,15 +153,22 @@ if sv: embed_svg(s, sv[0], 7.0, 1.5, 5.8, 4.6)
 
 # ===== 7 EMBED open data =====
 s = slide(prs); note(s, NOTES[7]); eyebrow(s, "Era II · 2026 · open data")
-title2(s, 1.1, 11.6, "Emory Breast Imaging Dataset ", "(EMBED).", sz=26)
-body(s, 2.4, 11.0, [("Free to researchers through the ", INK2, False), ("AWS Open Data Program.", INK, True), ("  EMBED v2 is in progress.", INK2, False)], sz=15, h=0.7)
-chips = ["~300,000 patients", "~1M exams (2D · DBT · US · MRI)", "Free-text reports", "Patient risk data", "Outcomes registry-harmonized"]
-cx = 0.85; cy = 3.5
-for it in chips:
-    w = len(it) * 0.092 + 0.3
-    if cx + w > 12.5: cx = 0.85; cy += 0.55
-    chip(s, cx, cy, w, it); cx += w + 0.15
-cite(s, 6.4, "v1: [your group], Radiology: Artificial Intelligence 2023 (Fig. 1) · aws.amazon.com/opendata")
+title2(s, 1.1, 6.4, "Emory Breast Imaging Dataset ", "(EMBED).", sz=26)
+body(s, 2.3, 6.2, [("Free to researchers through the ", INK2, False), ("AWS Open Data Program.", INK, True)], sz=15, h=0.7)
+_, tf = box(s, 0.85, 3.05, 6.4, 0.35); run(para(tf, True), "EMBED V2 — IN PROGRESS", 11.5, AMBER, bold=True, font=MONO)
+embed_chips = [[("~300,000 ", False), ("patients", True)],
+               [("~1M ", False), ("exams", True), (" (2D · DBT · US · MRI)", False)],
+               [("Free-text ", False), ("reports", True)],
+               [("Patient ", False), ("risk data", True)],
+               [("Outcomes ", False), ("registry-harmonized", True)]]
+cx = 0.85; cy = 3.55
+for runs in embed_chips:
+    w = sum(len(t) for t, _ in runs) * 10.5 * 0.0082 + 0.42
+    if cx + w > 7.25: cx = 0.85; cy += 0.55
+    chiprun(s, cx, cy, runs); cx += w + 0.16
+cite(s, 6.45, "v1: [your group], Radiology: Artificial Intelligence 2023 (Fig. 1) · aws.amazon.com/opendata", w=6.4)
+placeholder(s, 7.2, 1.3, 5.6, 4.9, "MAP — EMBED USERS BY COUNTRY", "[ drop in PNG ]")
+_, tf = box(s, 7.2, 6.3, 5.6, 0.3); run(para(tf, True, align=PP_ALIGN.CENTER), "opt: EMBED v1 schematic — Radiology: AI, Fig. 1", 9, INK3, font=MONO)
 
 # ===== 8 brink of Era III (turn) =====
 s = slide(prs); note(s, NOTES[8]); eyebrow(s, "Era II · 2026 → Era III")
@@ -138,10 +177,12 @@ body(s, 3.2, 11.4, [("Detection is proven. But the same 2026 image — and the t
 
 # ===== 9 density / Gail / TC (quote-stat) =====
 s = slide(prs); note(s, NOTES[9]); eyebrow(s, "Era III · 2026")
-body(s, 1.5, 11.4, [("For 40 years, the only risk signal we could read off the image was ", INK2, False), ("density.", INK, True), (" The clinical models layered on top — ", INK2, False), ("Gail", INK, True), (" and ", INK2, False), ("Tyrer-Cuzick", INK, True), (" — were hardly better than a coin flip.", INK2, False)], sz=22, line=1.3, h=2.4)
-stat(s, 0.85, 4.1, "~0.62", "Tyrer-Cuzick v8 · 5-yr AUC", w=5.0, bigsz=44)
-stat(s, 6.5, 4.1, "~0.55–0.58", "Gail model · 5-yr AUC", w=5.5, bigsz=44)
-body(s, 5.8, 11.4, [("Coin flip is 0.50. ", INK, True), ("For the woman in front of you, barely above it.", INK2, False)], sz=15, h=0.6)
+body(s, 2.0, 6.7, [("For 40 years, the only risk signal we could read off the image was ", INK2, False), ("density", AMBER, False), (". The clinical models layered on top — ", INK2, False), ("Gail", AMBER, False), (" and ", INK2, False), ("Tyrer-Cuzick", AMBER, False), (" — were hardly better than a coin flip.", INK2, False)], sz=24, line=1.32, h=3.2)
+cite(s, 5.6, "Gail · Tyrer-Cuzick · BCSC — questionnaire + density models", w=6.7)
+ln = rect(s, 8.0, 2.2, 0.012, 2.4, LINE); ln.width = Pt(1)
+stat(s, 8.4, 2.35, "~0.62", "Tyrer-Cuzick v8 · 5-yr AUC", w=4.6, bigsz=22, bigcol=INK)
+stat(s, 8.4, 3.25, "~0.55–0.58", "Gail model · 5-yr AUC", w=4.6, bigsz=22, bigcol=INK)
+body(s, 4.25, 4.6, [("Coin flip is 0.50. ", INK, False), ("For the woman in front of you, barely above it.", INK2, False)], sz=13, x=8.4, line=1.35, h=0.9)
 
 # ===== 10 image-based risk (Mirai bar svg) =====
 s = slide(prs); note(s, NOTES[10]); eyebrow(s, "Era III · 2026")
@@ -204,13 +245,22 @@ if im: embed_img(s, im[0], 7.1, 1.4, 5.7, 4.8, card_bg='white')
 
 # ===== 17 BAC and costochondral calcification (table) =====
 s = slide(prs); note(s, NOTES[17]); eyebrow(s, "Era III · 2026")
-_, tf = box(s, 0.85, 1.1, 9.0, 1.2); p = para(tf, True); run(p, "BAC and ", 26, INK, bold=True); run(p, "costochondral calcification.", 26, AMBER, bold=True)
-body(s, 2.4, 11.4, [("A ", INK2, False), ("non-vascular", INK, True), (" marker — calcification in the costal cartilage on chest CT (", INK2, False), ("n=1,311", INK, True), ("). Correlated with BAC (ρ=0.089, p=0.001). ", INK2, False), ("Vascular + valvular + skeletal — one free mammographic finding.", INK, True)], sz=15, h=1.2)
-rows = [("High BAC vs zero (ΔCCC)", "adj. p", "Δ"),
-        ("Median (q0.50)", "0.47 (NS)", "—"),
-        ("75th pct (q0.75)", "<0.001", "+3,408 mm³")]
-native_table(s, rows, 0.85, 4.1, 8.5, col0=4.2, fs=13)
-cite(s, 6.0, "[your group], RSNA 2026 abstract (BAC–CCC) · quantile regression, adj. age + DM.")
+_, tf = box(s, 0.85, 1.1, 6.4, 1.2); p = para(tf, True); run(p, "BAC and ", 26, INK, bold=True); run(p, "costochondral calcification.", 26, AMBER, bold=True)
+body(s, 2.35, 6.2, [("A ", INK2, False), ("non-vascular", INK, True), (" marker — calcification in the costal cartilage on chest CT (", INK2, False), ("n=1,311", INK, True), ("). Correlated with BAC (ρ=0.089, p=0.001).", INK2, False)], sz=14, h=1.4)
+# 2-col table
+tx, tw, c1, rh, ty = 0.85, 5.6, 3.9, 0.5, 3.95
+rect(s, tx, ty, tw, rh, CARD)  # header bg
+_, tf = box(s, tx + 0.12, ty, c1, rh, anchor=MSO_ANCHOR.MIDDLE); run(para(tf, True), "HIGH BAC VS ZERO (ΔCCC)", 10, INK2, font=MONO)
+_, tf = box(s, tx + c1, ty, tw - c1 - 0.12, rh, anchor=MSO_ANCHOR.MIDDLE); run(para(tf, True, align=PP_ALIGN.RIGHT), "ADJ. P", 10, INK2, font=MONO)
+_, tf = box(s, tx + 0.12, ty + rh, c1, rh, anchor=MSO_ANCHOR.MIDDLE); run(para(tf, True), "Median (q0.50)", 13, INK2)
+_, tf = box(s, tx + c1, ty + rh, tw - c1 - 0.12, rh, anchor=MSO_ANCHOR.MIDDLE); run(para(tf, True, align=PP_ALIGN.RIGHT), "NS · 0.47", 13, INK2)
+rect(s, tx, ty + 2 * rh, tw, rh, RGBColor(0x22, 0x2C, 0x37))  # highlight row
+_, tf = box(s, tx + 0.12, ty + 2 * rh, c1, rh, anchor=MSO_ANCHOR.MIDDLE); p = para(tf, True); run(p, "75th pct (q0.75)  ", 13, INK, bold=True); run(p, "+3,408 mm³", 13, AMBER, bold=True)
+_, tf = box(s, tx + c1, ty + 2 * rh, tw - c1 - 0.12, rh, anchor=MSO_ANCHOR.MIDDLE); run(para(tf, True, align=PP_ALIGN.RIGHT), "<0.001", 13, INK, bold=True)
+leftbar(s, 0.85, 5.7, 6.2, [("Vascular + valvular + skeletal — one free mammographic finding.", INK, False)], sz=13.5, h=0.7)
+cite(s, 6.55, "[your group], RSNA 2026 abstract (BAC–CCC) · quantile regression, adj. age + DM.", w=6.4)
+placeholder(s, 7.5, 1.3, 5.3, 5.0, "COSTOCHONDRAL CALCIFICATION", "[ drop in — confirm reuse rights ]")
+_, tf = box(s, 7.5, 6.4, 5.3, 0.3); run(para(tf, True, align=PP_ALIGN.CENTER), "Illustrative. Source: Sarıyıldız et al., via ResearchGate.", 9, INK3, font=MONO)
 
 # ===== 18 I-BAC pragmatic trial (fig) =====
 s = slide(prs); note(s, NOTES[18]); eyebrow(s, "Era III · 2026")
