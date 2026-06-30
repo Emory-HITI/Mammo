@@ -1,0 +1,134 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 540" width="440" height="540" role="img" aria-label="T-800 endoskeleton skull">
+  <defs>
+    <!-- chrome steel: cool top light, dark recess -->
+    <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D6DEE6"/>
+      <stop offset=".42" stop-color="#8B97A3"/>
+      <stop offset=".78" stop-color="#414B56"/>
+      <stop offset="1" stop-color="#2A333D"/>
+    </linearGradient>
+    <linearGradient id="steelSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#2A333D"/>
+      <stop offset=".5" stop-color="#9AA6B2"/>
+      <stop offset="1" stop-color="#3A434E"/>
+    </linearGradient>
+    <radialGradient id="recess" cx="50%" cy="38%" r="70%">
+      <stop offset="0" stop-color="#0B0E12"/>
+      <stop offset=".7" stop-color="#161C23"/>
+      <stop offset="1" stop-color="#222A33"/>
+    </radialGradient>
+    <radialGradient id="eye" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#FFE7B0"/>
+      <stop offset=".18" stop-color="#FF7A55"/>
+      <stop offset=".55" stop-color="#D9785B"/>
+      <stop offset="1" stop-color="#7A1E12"/>
+    </radialGradient>
+    <linearGradient id="tooth" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E7ECF1"/>
+      <stop offset="1" stop-color="#7E8A96"/>
+    </linearGradient>
+    <linearGradient id="amberRim" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E7AC51" stop-opacity="0"/>
+      <stop offset="1" stop-color="#E7AC51" stop-opacity=".9"/>
+    </linearGradient>
+    <filter id="eyeGlow" x="-120%" y="-120%" width="340%" height="340%">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.1"/>
+    </filter>
+  </defs>
+
+  <!-- ============ CRANIUM ============ -->
+  <!-- amber rim light behind skull edge (right side) -->
+  <path d="M220 28 C300 28 360 96 366 188 C370 250 352 300 332 338
+           L108 338 C88 300 70 250 74 188 C80 96 140 28 220 28 Z"
+        fill="url(#amberRim)" opacity=".55" transform="translate(6 -4)"/>
+
+  <!-- skull dome -->
+  <path d="M220 30 C298 30 356 96 362 186 C366 244 350 292 330 330
+           C322 346 300 354 276 354 L164 354 C140 354 118 346 110 330
+           C90 292 74 244 78 186 C84 96 142 30 220 30 Z"
+        fill="url(#steel)" stroke="#1C232B" stroke-width="2"/>
+
+  <!-- cranial seam plates -->
+  <path d="M220 34 L220 150" stroke="#26303A" stroke-width="2.5" opacity=".7"/>
+  <path d="M150 60 C176 92 196 110 220 116 C244 110 264 92 290 60"
+        fill="none" stroke="#26303A" stroke-width="2" opacity=".6"/>
+  <path d="M120 150 C150 138 290 138 320 150" fill="none"
+        stroke="#26303A" stroke-width="2" opacity=".55"/>
+  <!-- chrome highlight on dome -->
+  <path d="M168 64 C150 92 142 128 146 168" fill="none"
+        stroke="#EEF3F8" stroke-width="6" stroke-linecap="round" opacity=".55" filter="url(#soft)"/>
+
+  <!-- ============ BROW & EYES ============ -->
+  <!-- brow ridge -->
+  <path d="M104 196 C150 172 180 168 210 170 L210 196
+           C182 196 150 200 116 214 Z" fill="url(#steelSide)" stroke="#1C232B" stroke-width="1.6"/>
+  <path d="M336 196 C290 172 260 168 230 170 L230 196
+           C258 196 290 200 324 214 Z" fill="url(#steelSide)" stroke="#1C232B" stroke-width="1.6"/>
+
+  <!-- eye sockets -->
+  <path d="M118 214 C150 198 182 198 196 220 C204 234 200 256 182 266
+           C158 278 128 270 116 250 C108 236 110 222 118 214 Z" fill="url(#recess)" stroke="#0B0E12" stroke-width="2"/>
+  <path d="M322 214 C290 198 258 198 244 220 C236 234 240 256 258 266
+           C282 278 312 270 324 250 C332 236 330 222 322 214 Z" fill="url(#recess)" stroke="#0B0E12" stroke-width="2"/>
+
+  <!-- glowing eyes -->
+  <g filter="url(#eyeGlow)">
+    <circle cx="158" cy="234" r="15" fill="url(#eye)"/>
+    <circle cx="282" cy="234" r="15" fill="url(#eye)"/>
+    <circle cx="154" cy="230" r="4.5" fill="#FFF3DC"/>
+    <circle cx="278" cy="230" r="4.5" fill="#FFF3DC"/>
+  </g>
+
+  <!-- ============ MIDFACE ============ -->
+  <!-- nasal cavity -->
+  <path d="M220 246 L206 300 C212 308 228 308 234 300 Z"
+        fill="url(#recess)" stroke="#0B0E12" stroke-width="1.6"/>
+  <!-- cheek struts -->
+  <path d="M120 262 C132 286 150 306 176 320" fill="none" stroke="#26303A" stroke-width="3" opacity=".7"/>
+  <path d="M320 262 C308 286 290 306 264 320" fill="none" stroke="#26303A" stroke-width="3" opacity=".7"/>
+
+  <!-- ============ JAW + TEETH ============ -->
+  <!-- hydraulic pistons along the jaw (iconic) -->
+  <g stroke="#1C232B" stroke-width="1.4">
+    <rect x="92"  y="300" width="14" height="64" rx="5" fill="url(#steelSide)"/>
+    <rect x="96"  y="312" width="6"  height="44" rx="3" fill="#11161C"/>
+    <rect x="334" y="300" width="14" height="64" rx="5" fill="url(#steelSide)"/>
+    <rect x="338" y="312" width="6"  height="44" rx="3" fill="#11161C"/>
+  </g>
+
+  <!-- upper teeth row -->
+  <g stroke="#1C232B" stroke-width="1.2">
+    <path d="M150 330 C180 322 260 322 290 330 L286 352 L154 352 Z" fill="#1B222A"/>
+  </g>
+  <g fill="url(#tooth)" stroke="#5A6470" stroke-width="1">
+    <rect x="156" y="332" width="17" height="22" rx="2"/>
+    <rect x="175" y="331" width="17" height="23" rx="2"/>
+    <rect x="194" y="330" width="17" height="24" rx="2"/>
+    <rect x="213" y="330" width="17" height="24" rx="2"/>
+    <rect x="232" y="331" width="17" height="23" rx="2"/>
+    <rect x="251" y="332" width="17" height="22" rx="2"/>
+  </g>
+
+  <!-- mandible -->
+  <path d="M150 356 C150 410 184 452 220 452 C256 452 290 410 290 356
+           C260 372 180 372 150 356 Z" fill="url(#steel)" stroke="#1C232B" stroke-width="2"/>
+  <!-- chin seam -->
+  <path d="M220 372 L220 430" stroke="#26303A" stroke-width="2.2" opacity=".7"/>
+
+  <!-- lower teeth row -->
+  <g fill="url(#tooth)" stroke="#5A6470" stroke-width="1">
+    <rect x="162" y="356" width="16" height="20" rx="2"/>
+    <rect x="180" y="357" width="16" height="21" rx="2"/>
+    <rect x="198" y="358" width="16" height="22" rx="2"/>
+    <rect x="216" y="358" width="16" height="22" rx="2"/>
+    <rect x="234" y="357" width="16" height="21" rx="2"/>
+    <rect x="252" y="356" width="16" height="20" rx="2"/>
+  </g>
+  <!-- jaw chrome highlight -->
+  <path d="M168 392 C182 420 200 436 220 440" fill="none"
+        stroke="#EEF3F8" stroke-width="4" stroke-linecap="round" opacity=".4" filter="url(#soft)"/>
+</svg>
