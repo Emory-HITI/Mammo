@@ -69,30 +69,69 @@ And this is the capability imaging simply does not have — the third model from
 
 ---
 
-## SLIDE 3
-### The mammogram was just the beginning
+## SLIDE 4 — From one score to a multimodal recurrence — and detection — engine.
+*(rebuilt; replaces the earlier "mammogram was just the beginning" slide, which is kept in the file but hidden in the final deck)*
 
-**Five modalities. Five validated AI layers. In 2035, no single image makes the call — and no modality is ordered without the model already knowing whether it will change the answer.**
+**Subhead:** Here's what each layer does today — and where ten years takes it. By 2035 no single image makes the call, and no modality is acquired unless the model already expects it to change the answer.
 
-- **Ultrasound and MRI each now have their own AI evidence base.** BMU-Net (Yang et al., *Nat Biomed Eng*, December 2024): trimodal US fusion (B-mode, Doppler, elastography) + mammography + clinical metadata in 5,025 patients; matched radiologists, degrades gracefully when modalities are missing. ScreenTrustMRI (Salim et al., *Nat Med*, September 2024): scoring every negative mammogram and offering the top 6.9% an MRI yielded **64 cancers per 1,000 MRI exams vs 16.5 per 1,000** in the density-based comparator. The AI score, not density, decides who gets MRI
+### LEFT — input modalities
 
-- **Pathology is the fifth modality.** Foundation models pretrained on 100,000+ whole-slide images (UNI, Chen et al., *Nat Med*, 2024) underpin tissue-level inference; models on H&E + clinical metadata predict pathological complete response to neoadjuvant chemo at AUC ~0.87–0.90 (Ataraxis AI, clinical validation ongoing). Treatment intelligence off the same slide that makes the diagnosis
+**Pathology · H&E**
+- *Now (2025):* Foundation models pretrained on 100,000+ whole-slide images (UNI — Chen et al., Nat Med 2024;30:850–862) drive tissue-level inference; H&E + clinical predict pCR at AUC ~0.87–0.90 (Ataraxis AI, validation ongoing).
+- *2035:* The diagnostic slide is also the treatment slide — one pass yields diagnosis, molecular subtype, and response prediction; path foundation models co-trained with imaging so rad–path agreement is built in, not reconciled after.
 
-- **BINDS unifies it into one architecture.** Wang et al. (*Nat Biomed Eng*, May 2026): 27,048 participants, 8 centres — a two-stage system (US + MG first, MRI when the AI determines it will change the assessment), with radiology–pathology alignment built in. Every fusion modality outperformed any single modality alone
+**MRI**
+- *Now (2025):* ScreenTrustMRI (Salim et al., Nat Med 2024;30(9):2623–2630; PMID 38977914) — an AI score, not density, selects the top 6.9% of negative mammograms for MRI: **64 cancers/1,000 vs 16.5/1,000**.
+- *2035:* MRI is never ordered blind — it fires only when the fusion model predicts it changes management; abbreviated and low/zero-contrast protocols routine.
 
-- **Genomics completes the stack.** PRS-Net and the Rothwell BJC 2026 additivity result mean the genomic layer is always present as a prior. A dense breast with high PRS is read differently than a dense breast with average PRS
+**Ultrasound**
+- *Now (2025):* BMU-Net (Yang et al., Nat Biomed Eng 2024;8:1551–1564) — trimodal fusion (B-mode, Doppler, elastography) + mammography + clinical, 5,025 patients; matches radiologists, degrades gracefully when inputs are missing.
+- *2035:* AI-guided acquisition turns US into a low-cost first-line in resource-limited settings.
 
-**→ Extrapolated to 2035:** A unified multimodal foundation model ingests all available inputs at each encounter and outputs a single integrated risk-and-diagnosis recommendation. Modality selection has become a model parameter — informed by, and accountable to, two decades of multimodal AI validation
+**Clinical**
+- *Now (2025):* Structured chart context (age, density, hormonal/family history, prior pathology) fused with imaging for risk stratification and modality selection (NCCN-2026-aligned).
+- *2035:* The model reads the longitudinal EHR like a colleague; modality selection becomes a learned parameter, not a fixed protocol.
 
-*[Visual: A five-layer pipeline diagram — genomics (always-on) → MG (entry) → US (conditional) → MRI (conditional) → pathology (at biopsy) — feeding a single unified risk output, with weighted connections.]*
+**Genomics (NEW)**
+- *Now (2025):* Germline — PRS-Net (Li et al., Genome Research 2025;35(1):178) and Rothwell et al. (Br J Cancer 2026): image-only DL risk and PRS are additive. Somatic — WGS-powered ctDNA MRD (Garcia-Murillas/Turner et al., Ann Oncol 2025;36(6):673–681) detects relapse **~15 months** ahead of imaging; RaDaR (Lipsyc-Sharf et al.) ~12.4-mo lead, 100% sensitivity for metastatic recurrence.
+- *2035:* PRS is a standing prior at every read; post-treatment ctDNA surveillance is routine, and molecular recurrence detected 1–2 years before imaging triggers pre-emptive (interception) therapy.
 
-**Slide 3 citations:**
-- Yang Z et al. A multimodal ML model for the stratification of breast cancer risk (BMU-Net). *Nat Biomed Eng.* 2024;8:1551–1564
-- Salim M et al. AI-based selection for supplemental MRI … ScreenTrustMRI. *Nat Med.* 2024;30(9):2623–2630. PMID: 38977914
-- Chen RJ et al. Towards a general-purpose foundation model for computational pathology (UNI). *Nat Med.* 2024;30:850–862
-- Wang C et al. A deep learning system for non-invasive breast cancer diagnosis with multimodal data (BINDS). *Nat Biomed Eng.* 2026. DOI 10.1038/s41551-026-01654-2
-- Li H et al. Modeling gene interactions in polygenic prediction (PRS-Net). *Genome Research.* 2025;35(1):178
-- Rothwell JWD et al. Image-only DL risk model + PRS. *Br J Cancer.* 2026
+### CENTER — multimodal fusion
+- *Now (2025):* BINDS (Wang et al., Nat Biomed Eng 2026; DOI 10.1038/s41551-026-01654-2) — **27,048 participants, 8 centres**; two-stage (US + MG first, MRI when the AI decides it changes the assessment), rad–path alignment built in. Every fusion modality beat any single modality alone.
+- *2035:* One unified multimodal foundation model ingests whatever inputs exist at each encounter, emits a single integrated risk-and-diagnosis recommendation — and decides which modality to acquire next.
+
+### RIGHT — outputs
+
+**Detection (NEW)**
+- *Now (2025):* MASAI — first RCT in breast AI (Lång et al., final results Lancet 2026; safety Lancet Oncol 2023;24:936–944) — 105,915 women; **sensitivity 80.5% vs 73.8%, +29% CDR, −12% interval cancers, −44% workload**, no FP increase. PRAIM real-world (Eisemann/Katalinic et al., Nat Med 2025) — 463,094 women; CDR 6.7 vs 5.7/1,000 (+17.6%), non-inferior recall.
+- *2035:* Mortality-endpoint readouts have matured; AI is the primary reader with targeted human oversight; interval and modality personalized by risk, not age.
+
+**Recurrence (risk)**
+- *Now (2025):* 3D multimodal MRI predicts 2–4-yr DFS at **AUC 0.90 → 0.88**; US + MRI + clinical reaches **c-index ~0.80** (external); multimodal DL correlates with the 21-gene RS / Oncotype DX (Breast Cancer Res 2025; 10.1186/s13058-025-02129-z); ctDNA-MRD adds a molecular signal months ahead of imaging.
+- *2035:* A continuously updated recurrence risk — imaging + ctDNA + clinical fused at every encounter — replaces the one-time score.
+
+**Treatment (course)**
+- *Now (2025):* H&E + clinical predict pCR at AUC ~0.87–0.90 (Ataraxis, validation ongoing); MRI multimodal models guide adjuvant decisions (PMID 40345352).
+- *2035:* The unified model outputs a treatment recommendation with predicted benefit; ctDNA-guided escalation/de-escalation standard; neoadjuvant response forecast before the first cycle.
+
+### Diagram structure
+Genomics (germline PRS + ctDNA MRD, always-on / longitudinal prior) → Clinical (chart context) → MG (entry) → US (conditional) → MRI (conditional, AI-gated) → Pathology · H&E (at biopsy) → **Multimodal fusion** → outputs: **Detection · Recurrence · Treatment**. Visual cue: each box in two registers — solid "now" + ghosted "2035".
+
+### Full citations
+- Lång K et al. MASAI — clinical safety analysis. *Lancet Oncol.* 2023;24:936–944. (Final results, *Lancet* 2026.)
+- Eisemann/Katalinic A et al. Real-world AI for cancer detection (PRAIM). *Nat Med.* 2025.
+- Yang Z et al. Multimodal ML for breast cancer risk (BMU-Net). *Nat Biomed Eng.* 2024;8:1551–1564.
+- Salim M et al. AI-based selection for supplemental MRI (ScreenTrustMRI). *Nat Med.* 2024;30(9):2623–2630. PMID 38977914.
+- Chen RJ et al. Foundation model for computational pathology (UNI). *Nat Med.* 2024;30:850–862.
+- Wang C et al. DL system for non-invasive breast cancer diagnosis (BINDS). *Nat Biomed Eng.* 2026. DOI 10.1038/s41551-026-01654-2.
+- Li H et al. Gene interactions in polygenic prediction (PRS-Net). *Genome Research.* 2025;35(1):178.
+- Rothwell JWD et al. Image-only DL risk model + PRS. *Br J Cancer.* 2026.
+- Garcia-Murillas I, Turner NC et al. WGS-powered ctDNA MRD. *Ann Oncol.* 2025;36(6):673–681. DOI 10.1016/j.annonc.2025.01.021.
+- Lipsyc-Sharf M et al. Personalized ctDNA (RaDaR) for late recurrence in HR+ breast cancer. *J Clin Oncol.* (verify year/volume.)
+- EXActDNA-003 / NSABP B-64. Bespoke ctDNA MRD validation. NCT06401421 (recruiting; est. 2030).
+- Multimodal DL ~ Oncotype DX. *Breast Cancer Res.* 2025. DOI 10.1186/s13058-025-02129-z.
+- MRI-based multimodal: recurrence + adjuvant therapy. 2025. PMID 40345352.
+- Ataraxis AI — H&E + clinical pCR prediction (validation ongoing).
 
 ---
 
