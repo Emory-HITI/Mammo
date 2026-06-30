@@ -67,19 +67,19 @@
   <g clip-path="url(#lip3)"><ellipse cx="448" cy="248" rx="74" ry="25" fill="#161D26"/></g>
   <path d="M376 248 A72 24 0 0 1 520 248" fill="none" stroke="#E7AC51" stroke-width="2" stroke-opacity=".55"/>
 
-  <!-- ===== impact burst over mole 3 ===== -->
+  <!-- ===== impact burst at contact point (mole's upper-right) ===== -->
   <g stroke="#D9785B" stroke-width="3" stroke-linecap="round">
-    <line x1="448" y1="150" x2="448" y2="132"/>
-    <line x1="486" y1="158" x2="502" y2="146"/>
-    <line x1="410" y1="158" x2="394" y2="146"/>
+    <line x1="486" y1="150" x2="498" y2="136"/>
+    <line x1="466" y1="146" x2="470" y2="128"/>
+    <line x1="506" y1="166" x2="524" y2="160"/>
   </g>
-  <text x="505" y="150" font-family="SFMono-Regular,Menlo,monospace" font-size="22" font-weight="bold" fill="#E7AC51">!</text>
+  <text x="525" y="140" font-family="SFMono-Regular,Menlo,monospace" font-size="22" font-weight="bold" fill="#E7AC51">!</text>
 
-  <!-- ===== mallet ===== -->
-  <g transform="rotate(22 470 130)">
-    <rect x="456" y="128" width="13" height="128" rx="6" fill="#5C6975"/>
-    <rect x="456" y="128" width="13" height="128" rx="6" fill="none" stroke="#9DA9B5" stroke-width="1" stroke-opacity=".5"/>
-    <rect x="410" y="84" width="104" height="54" rx="13" fill="url(#moleA)" stroke="#C98A2E" stroke-width="2"/>
-    <rect x="410" y="84" width="104" height="16" rx="8" fill="#F4D08C" opacity=".5"/>
+  <!-- ===== mallet — swung in from the upper-right (handle clear of the mole) ===== -->
+  <g transform="translate(476 162) rotate(-31)">
+    <rect x="46" y="-7" width="150" height="14" rx="7" fill="#5C6975"/>
+    <rect x="46" y="-7" width="150" height="14" rx="7" fill="none" stroke="#9DA9B5" stroke-width="1" stroke-opacity=".5"/>
+    <rect x="-52" y="-29" width="104" height="58" rx="14" fill="url(#moleA)" stroke="#C98A2E" stroke-width="2"/>
+    <rect x="-52" y="-29" width="104" height="17" rx="9" fill="#F4D08C" opacity=".5"/>
   </g>
 </svg>
