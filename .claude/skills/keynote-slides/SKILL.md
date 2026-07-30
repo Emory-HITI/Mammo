@@ -50,6 +50,11 @@ hidden-in-final with `data-hide="1"` + an HTML comment containing `hide in final
 (also matches `⚑`); `build_combined.py` and the PPTX builders drop these.
 
 ## PPTX pipeline (`keynote-iwbi-2026/pptx/`)
+For a **new HTML→PPTX conversion, prefer the dedicated `html-to-pptx` skill** —
+it is the precise, ordered procedure (register MAP → extract → build → compare →
+iterate) for the exact-layout pipeline in §B below. This section is the reference;
+that skill is the checklist.
+
 13.333×7.5in (16:9). Every slide gets the gradient/contour-motif background
 (`assets/bg_motif.png`) behind an amber accent bar. Two build approaches:
 
