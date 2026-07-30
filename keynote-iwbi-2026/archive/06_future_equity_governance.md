@@ -1,0 +1,95 @@
+# Section 6 — Equity, Governance, and Trust
+### ~6 minutes · spine stage: **POPULATION**
+
+**Purpose:** Return to the practical constraints after §5. This section is the CAD lesson at population scale: deploy without evidence, monitoring, and discipline, and the cost is no longer a wasted $400M but a wider global mortality gap. Narrative arc: the gap → three ways AI could fail the promise → the CAD lesson at scale → the choice. The first-person material (Gichoya) is here; the principles are in §7.
+
+---
+
+## The frame (the CAD loop closes)
+
+> *"I started this talk by noting that this field deployed a technology before it proved it worked, and it cost us twenty years and four hundred million dollars a year. I want to close the future-half with the same point. The next time we make that mistake, the cost will be measured in lives, and in who gets left behind."*
+
+---
+
+## Movement 1 — The gap (lead here)
+
+- **2.3 million** new female breast-cancer cases and **~670,000 deaths** (≈666,000) worldwide in 2022 — the most common cancer in women (~23.8% of female cancers); projected to **exceed 6 million cases/year by 2050.** *(GLOBOCAN 2022; Bray et al., CA Cancer J Clin 2024; breast-specific GLOBOCAN analysis, PMID 39994475)*
+- **The disparity:** Africa's mortality-to-incidence ratio is **0.51**, the highest of any region; roughly **half** the women diagnosed die, versus lower ratios in high-income Europe and North America. *The same disease has different survival, determined largely by access rather than biology.* *(GCO 2022 analysis, PMID 39874943)*
+- **WHO Global Breast Cancer Initiative (2021):** target **2.5% annual mortality reduction**, averting **2.5M deaths by 2040.**
+- **Where AI's value is clearest:** over two-thirds of the world's population lacks reliable access to a radiologist; **as many as 14 African countries have zero**; many LMICs have <5 mammography units and <10 radiologists per million. *(RAD-AID/global-radiology-gap reporting — advocacy-sourced, not a single primary census; phrase as "as many as.")* *The force-multiplier case is strongest where there is no reader at all.*
+
+> **The double-edged framing (the spine of the section):** *"The same models that could bring screening to the fourteen countries with no radiologist were trained on data that excludes those countries' women. AI can narrow breast cancer outcome disparities or widen them. The technology does not decide which. We do."*
+
+---
+
+## Movement 2 — The two gaps, and three failure modes
+
+**The two gaps (caveat emptor — the through-line from §2).** Between a strong AUC and a tool you can trust sit two gaps we have not closed:
+
+**Gap 1 — Subgroup performance: the aggregate number hides the failures.** Our group's audits show this across two domains:
+- **Breast (DBT) — Nat Commun 2026 [your group]:** overall **AUC 0.91**, but **in-situ 0.85/sens 0.55, calcifications 0.80/0.66, dense breasts 0.88/0.63.**
+- **Neuro (ICH) — npj Digit Med 2025 [your group]:** overall **82.2% sensitivity**, but **subacute 45.5%, chronic 54.8%, outpatient 72.2%.**
+- Both were **demographically robust**; the blind spots were *clinical*, on the subtle cases where help is most needed. They are found only by looking. **Subgroup-stratified performance should be a release criterion.** (Demographic gaps appear elsewhere too: density-driven false positives in the 2023 RSNA challenge / BreastScreen Norway, and degraded transfer to under-represented groups.)
+
+**Gap 2 — Explainability: we usually cannot say *why*.** When that DBT model misses an in-situ cancer, we mostly cannot explain it, so we cannot anticipate the next miss. AsymMirai (§3) showed models can be built to be interrogated; most deployed tools are not. Without explanation, subgroup auditing is the only check available, and most deployments skip it.
+
+> *"So: caveat emptor. The two things between a strong AUC and a tool you would use on a patient are whether you can see why it fails, and whether anyone checked where it fails. Both are usually missing."*
+
+**(a) Bias we cannot see — the first-person beat.**
+> *"Here is a finding from our group."* **Gichoya et al., Lancet Digital Health 2022** — deep learning predicts a patient's self-reported race from medical images: **AUC 0.81 on mammography**, 0.91–0.99 on chest X-ray, **even from corrupted, cropped, and noised images**, and not through any known proxy (density AUC only 0.61). *"No human radiologist can see race on a mammogram. The model can, and we still do not fully know how. If a model can learn that, it can learn to act on it without anyone noticing. That is the hidden-bias problem in one experiment."* *(DOI 10.1016/S2589-7500(22)00063-2)* **[confirm Trivedi co-authorship]**
+- Performance also does not transfer cleanly: externally validated mammography AI degrades on under-represented groups (worse in Hispanic women, women with prior breast cancer). Models trained on homogeneous high-income data are **brittle**.
+- The fix begins with data: **EMBED (Jeong et al., Radiology: AI 2023) — 3.4M mammographic images from ~116,000 women, ~42% African American** **[your group]** — but frameworks still do not require developers to disclose dataset composition. *(arXiv preprint 2022 says 3.5M; published version 3.4M — use 3.4M with the journal cite.)*
+
+**(b) Drift we do not monitor.** Models are not static. **Data drift** (new scanners/protocols), phenotype drift, and concept drift degrade real-world performance. **FDA has authorized ~1,250 AI/ML devices by early 2025, nearing ~1,450 by mid-2025 (radiology ~76%)**, and finalized **Predetermined Change Control Plan (PCCP)** guidance (Dec 2024), yet few cleared devices carry one. **A clearance or a CE mark is a snapshot, not a guarantee.** This is CAD's "deploy and forget" in a new form.
+
+**(c) Humans we de-skill.** The human-in-the-loop is meant to be the safeguard, but the evidence is mixed:
+- **Dratsch et al., Radiology 2023** (automation bias): when a sometimes-wrong AI was present and was wrong, reader accuracy dropped sharply; even **very experienced** readers fell to **~46%** (from ~80%+). The effect held across experience levels.
+- **Budzyń et al., Lancet Gastroenterology & Hepatology 2025** (deskilling, measured): after AI was introduced for colonoscopy, endoscopists' *unaided* detection fell **28.4% → 22.4%.** Routine AI exposure eroded unaided skill.
+- **The oversight paradox:** the EU AI Act mandates a human in the loop, but the evidence shows the human can be the weak link, and de-skilling reduces the judgment oversight depends on. Oversight is a design problem rather than a checkbox.
+
+---
+
+## Movement 3 — Governance: Europe writes the rules the world inherits
+
+- **EU AI Act — in force 1 Aug 2024.** Medical AI is largely **"high-risk"**: risk management, data governance, transparency, human oversight, robustness, post-market monitoring. **High-risk obligations apply from Aug 2026**; AI medical devices under MDR transition to **Aug 2027.** This is the most concrete governance framework relevant to this audience.
+- **Double regulation:** EU medical AI must satisfy **both MDR/IVDR and the AI Act**, with associated compliance cost and tension with innovation.
+- **Reimbursement ≠ clearance.** A cleared model that no one pays for does not reach patients. (The US still lacks a dedicated CMS pathway for most diagnostic AI; the NHS is taking a different approach with EDITH against a ~30% reader shortfall. **[VERIFY — press]**)
+
+> **The ownership line (bridge toward the close):** *"This audience of European regulators, clinicians, and scientists will write the governance model that much of the rest of the world inherits. Getting it right here sets the standard elsewhere."*
+
+---
+
+## The one summary slide (keep just this)
+
+> **FORCE MULTIPLIER ⟷ DIVIDE MULTIPLIER.** Same models, same evidence base. The difference is in the choices we make about *data, validation, monitoring, and access.* The technology is neutral; the outcome is not.
+
+---
+
+## Slide-ready key numbers
+| Claim | Number | Source |
+|---|---|---|
+| Global cases / deaths (2022) | 2.3M / ~670,000 | GLOBOCAN 2022; Bray 2024 |
+| Africa mortality:incidence ratio | 0.51 | GLOBOCAN 2022 |
+| WHO target | 2.5%/yr ↓; 2.5M deaths averted by 2040 | WHO 2021 |
+| African countries with no radiologist | 14 | reviews 2024–25 |
+| AI predicts race from mammography | AUC 0.81 | Gichoya, Lancet Digit Health 2022 |
+| Automation bias: expert accuracy when AI wrong | ~46% (from ~82%) | Dratsch, Radiology 2023 |
+| Deskilling: unaided detection drop | 28.4%→22.4% | Budzyń, Lancet GH 2025 |
+| DBT subgroup: overall vs in-situ/calc/dense | AUC 0.91 → 0.85 / 0.80 / 0.88 | Nat Commun 2026 [your group] |
+| ICH subgroup: overall vs subacute/chronic | 82.2% → 45.5% / 54.8% sens | npj Digit Med 2025 [your group] |
+| FDA AI/ML devices authorized | ~1,250 (early 2025) → ~1,450 (mid-2025); radiology ~76% | FDA list |
+| EU AI Act high-risk obligations | Aug 2026 (devices Aug 2027) | Reg (EU) 2024/1689 |
+
+## ✓ VERIFIED (agent pass) — corrections applied
+- Gichoya AUC 0.81, Dratsch (82.3%→45.5%, n=27), Budzyń (28.4→22.4%, −6.0% p=0.0089), EU AI Act dates, WHO 2.5%, Africa MIR 0.51 — **all confirmed.**
+- GLOBOCAN deaths ≈666,000 (we say ~670,000 — both fine). EMBED corrected to 3.4M / Jeong et al. Radiology: AI 2023 / ~42% AA.
+- FDA count corrected (~1,250 early → ~1,450 mid-2025); the "~8% have a PCCP" sub-claim was weak — removed.
+
+## [VERIFY — still open] before podium
+- **Confirm your co-authorship on Gichoya 2022, the DBT subgroup paper (Nat Commun 2026), and the ICH paper (npj Digit Med 2025)** before the first-person framing.
+- "14 African countries / two-thirds lack a radiologist" is advocacy-sourced (RAD-AID) — say **"as many as 14."**
+- NHS/EDITH figures (press-sourced).
+- DBT/ICH subgroup figures verified via search; double-check exact CIs against the papers before a numbers slide.
+
+## Structure note
+Restructured into 3 movements + 1 summary slide, with the CAD-at-population-scale through-line opening and closing the section. Principles and "what to do" are held for §7 so the talk ends on the call to action.

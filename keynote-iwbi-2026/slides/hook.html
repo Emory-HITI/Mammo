@@ -1,0 +1,365 @@
+<title>Keynote Hook — AI in Breast Imaging</title>
+<style>
+  :root{
+    --bg:#0F141A;            /* deep blue-charcoal */
+    --bg-2:#151C24;          /* panel */
+    --bg-3:#1B232D;          /* raised */
+    --floor:#080B0F;         /* stage behind slide */
+    --ink:#ECEFF3;
+    --ink-2:#9DA9B5;
+    --ink-3:#5C6975;
+    --line:rgba(255,255,255,.09);
+    --line-2:rgba(255,255,255,.05);
+    --amber:#E7AC51;         /* primary warm accent (gold) */
+    --amber-deep:#C98A2E;
+    --cyan:#5FB7C9;          /* cool data accent */
+    --viewport:#06090c;
+    --sans:"Helvetica Neue",Arial,system-ui,sans-serif;
+    --mono:"SFMono-Regular",Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:var(--floor);color:var(--ink);font-family:var(--sans);
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+    display:flex;flex-direction:column;align-items:center;min-height:100vh;
+  }
+
+  .topbar{width:100%;max-width:1180px;display:flex;justify-content:space-between;align-items:baseline;padding:24px 28px 16px;gap:16px}
+  .brand{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+  .brand b{color:var(--amber);font-weight:600}
+  .counter{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .counter b{color:var(--amber);font-weight:600}
+
+  .stage{width:100%;max-width:1180px;padding:0 28px;display:flex;flex-direction:column;align-items:center;gap:16px}
+
+  .frame{
+    position:relative;width:100%;aspect-ratio:16/9;border-radius:12px;overflow:hidden;
+    background:
+      radial-gradient(120% 130% at 88% 12%, #18222C 0%, var(--bg) 46%, #0C1116 100%);
+    border:1px solid var(--line);
+    box-shadow:0 36px 80px -44px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.03);
+  }
+  #motif{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.85}
+  .frame::after{ /* top accent hairline */
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:6;
+    background:linear-gradient(90deg,var(--amber),transparent 70%);opacity:.7}
+
+  .slide{position:absolute;inset:0;z-index:2;padding:clamp(28px,4.1vw,64px);display:flex;opacity:0;visibility:hidden;transition:opacity .4s ease}
+  .slide.active{opacity:1;visibility:visible}
+
+  .eyebrow{position:absolute;top:clamp(24px,3.1vw,36px);left:clamp(28px,4.1vw,64px);
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--amber);font-weight:600;display:flex;align-items:center;gap:9px}
+  .eyebrow::before{content:"";width:22px;height:1px;background:var(--amber);opacity:.6}
+
+  /* title / cover */
+  .s-title{flex-direction:column;justify-content:space-between}
+  .t-kick{font-family:var(--mono);font-size:clamp(.62rem,1vw,.72rem);letter-spacing:.18em;text-transform:uppercase;color:var(--cyan)}
+  .t-hero{margin:auto 0}
+  .s-title h1{font-size:clamp(2.6rem,7vw,5.4rem);line-height:.96;letter-spacing:-.03em;font-weight:700}
+  .s-title h1 .am{color:var(--amber)}
+  .t-sub{font-size:clamp(1.05rem,2vw,1.5rem);color:var(--ink-2);line-height:1.35;margin-top:20px;max-width:34ch;text-wrap:balance}
+  .t-by{font-family:var(--mono);font-size:clamp(.74rem,1.1vw,.86rem);letter-spacing:.05em;color:var(--ink-3);margin-top:22px}
+  .t-by b{color:var(--ink);font-weight:600}
+  .erabar{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}
+  .era{background:linear-gradient(180deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-top:2px solid var(--cyan);border-radius:9px;padding:clamp(11px,1.4vw,16px) clamp(12px,1.5vw,17px);display:flex;flex-direction:column;gap:4px}
+  .era.now{border-top-color:var(--amber);box-shadow:0 0 0 1px rgba(231,172,81,.16),0 16px 36px -26px rgba(231,172,81,.4)}
+  .era .rn{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;color:var(--cyan);font-weight:600}
+  .era.now .rn{color:var(--amber)}
+  .era .en{font-size:clamp(1rem,1.6vw,1.28rem);font-weight:700;letter-spacing:-.01em;color:var(--ink);margin-top:2px}
+  .era .ey{font-family:var(--mono);font-size:.62rem;color:var(--ink-3);font-variant-numeric:tabular-nums}
+  .era .ed{font-size:clamp(.74rem,1.05vw,.86rem);color:var(--ink-2);line-height:1.35;margin-top:3px}
+
+  /* viewport */
+  .viewport{position:relative;background:var(--viewport);border-radius:7px;overflow:hidden;
+    box-shadow:0 18px 40px -18px rgba(0,0,0,.7), inset 0 0 0 1px rgba(255,255,255,.07), 0 0 0 1px rgba(231,172,81,.10);display:flex;flex-direction:column}
+  .vp-head{display:flex;justify-content:space-between;align-items:center;padding:7px 11px;border-bottom:1px solid rgba(255,255,255,.08);
+    font-family:var(--mono);font-size:.58rem;letter-spacing:.05em;color:rgba(236,239,243,.52);flex:0 0 auto}
+  .vp-head .tag{color:var(--cyan)}
+  .vp-body{position:relative;flex:1 1 auto;min-height:0}
+  canvas.mammo{position:absolute;inset:0;width:100%;height:100%;display:block}
+  .vp-note{position:absolute;bottom:7px;left:10px;font-family:var(--mono);font-size:.55rem;color:rgba(236,239,243,.32)}
+
+  /* slide 1 */
+  .s-open{align-items:center;gap:clamp(26px,4.2vw,60px)}
+  .s-open .viewport{flex:0 0 auto;height:84%;aspect-ratio:3/4}
+  .s-open .copy{flex:1 1 0;min-width:0}
+  .s-open .label{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+  .s-open h1{font-size:clamp(1.7rem,3.5vw,3.05rem);line-height:1.08;letter-spacing:-.02em;font-weight:700;text-wrap:balance}
+  .s-open .sub{margin-top:18px;color:var(--ink-2);font-size:clamp(1rem,1.5vw,1.2rem);line-height:1.55;max-width:32ch}
+
+  /* slide 2 */
+  .s-report{align-items:center;gap:clamp(24px,3.6vw,52px)}
+  .s-report .viewport{flex:0 0 auto;height:74%;aspect-ratio:3/4}
+  .s-report .report{flex:1 1 0;min-width:0;display:flex;flex-direction:column;gap:clamp(8px,1.15vw,12px)}
+  .s-report h2{font-size:clamp(1.1rem,1.9vw,1.58rem);line-height:1.2;font-weight:700;letter-spacing:-.015em;text-wrap:balance;max-width:24ch;margin-bottom:3px}
+  .s-report h2 .q{color:var(--amber)}
+  .finding{display:grid;grid-template-columns:1fr;gap:15px;align-items:start;
+    background:linear-gradient(180deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-left:2px solid var(--amber);
+    border-radius:8px;padding:clamp(10px,1.25vw,14px) clamp(13px,1.5vw,18px)}
+  .finding .ix{font-family:var(--mono);font-size:.72rem;font-weight:600;color:var(--amber);padding-top:.15em;font-variant-numeric:tabular-nums}
+  .finding .out{font-size:clamp(.96rem,1.4vw,1.14rem);line-height:1.26;font-weight:600;color:var(--ink)}
+  .finding .out .v{color:var(--cyan)}
+  .finding .out span{display:block;font-weight:400;color:var(--ink-2);font-size:.82em;margin-top:4px}
+  .finding .out span b{color:var(--amber);font-weight:600}
+  .foot{font-size:clamp(.74rem,1.05vw,.86rem);color:var(--ink-2);line-height:1.5;margin-top:5px}
+  .foot b{color:var(--ink);font-weight:600}
+
+  /* slide 3 */
+  .s-anchor{flex-direction:column;justify-content:center;gap:18px}
+  .s-anchor .a1{font-size:clamp(2rem,4.2vw,3.5rem);line-height:1.05;letter-spacing:-.025em;font-weight:700;text-wrap:balance;max-width:16ch}
+  .s-anchor .a1 b{color:var(--amber);font-weight:700}
+  .s-anchor .a2{font-size:clamp(1.15rem,2.1vw,1.6rem);line-height:1.35;color:var(--cyan);font-weight:500;max-width:26ch;text-wrap:balance}
+
+  /* slide 4 */
+  .s-pivot{flex-direction:column;justify-content:center;gap:clamp(15px,2.3vw,26px)}
+  .pivot-line{display:flex;align-items:baseline;gap:20px;flex-wrap:wrap}
+  .pivot-line .k{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);flex:0 0 auto;width:70px;padding-top:.5em}
+  .pivot-line .v{font-size:clamp(1.3rem,2.8vw,2.15rem);line-height:1.18;font-weight:700;letter-spacing:-.015em;text-wrap:balance;max-width:24ch}
+  .pivot-line.was .v{color:var(--ink-3)}
+  .pivot-line.now .v{color:var(--ink)}
+  .pivot-line.now .v b{color:var(--amber);font-weight:700}
+  .pivot-rule{height:1px;background:var(--line);margin:2px 0}
+
+  /* slide 5 */
+  .s-spine{flex-direction:column;justify-content:center;gap:clamp(22px,3.3vw,38px)}
+  .spine-row{display:flex;align-items:stretch;gap:11px;flex-wrap:wrap}
+  .step{flex:1 1 0;min-width:122px;padding:clamp(14px,1.8vw,21px) clamp(13px,1.6vw,19px);
+    background:linear-gradient(180deg,var(--bg-3),var(--bg-2));border:1px solid var(--line);border-radius:10px;position:relative}
+  .step::before{content:"";position:absolute;top:0;left:0;width:26px;height:2px;background:var(--cyan);opacity:.55;border-radius:2px;margin:13px 0 0 14px}
+  .step .sx{font-family:var(--mono);font-size:.6rem;color:var(--ink-3);font-variant-numeric:tabular-nums;margin-top:14px}
+  .step .sw{margin-top:8px;font-size:clamp(1.05rem,2vw,1.55rem);font-weight:700;letter-spacing:-.015em;color:var(--ink)}
+  .step .sd{margin-top:6px;font-size:clamp(.72rem,1vw,.84rem);color:var(--ink-2);line-height:1.35}
+  /* graduated amber across the spine — increasing signal, ending full orange */
+  .spine-title{font-size:clamp(1.9rem,3.9vw,3rem);font-weight:700;letter-spacing:-.025em;line-height:1.04;text-wrap:balance}
+  .spine-title .am{color:var(--amber)}
+  .s-spine .step:nth-child(1){background:linear-gradient(180deg,rgba(231,172,81,.05),rgba(231,172,81,.02)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.18)}
+  .s-spine .step:nth-child(2){background:linear-gradient(180deg,rgba(231,172,81,.16),rgba(231,172,81,.07)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.36)}
+  .s-spine .step:nth-child(3){background:linear-gradient(180deg,rgba(231,172,81,.34),rgba(231,172,81,.18)),linear-gradient(180deg,var(--bg-3),var(--bg-2));border-color:rgba(231,172,81,.62)}
+  .s-spine .step:nth-child(4){background:linear-gradient(165deg,var(--amber),var(--amber-deep));border-color:var(--amber-deep);box-shadow:0 0 0 1px rgba(231,172,81,.2),0 16px 36px -26px rgba(231,172,81,.5)}
+  .s-spine .step::before{background:var(--amber)}
+  .s-spine .step:nth-child(1)::before{opacity:.3}
+  .s-spine .step:nth-child(2)::before{opacity:.55}
+  .s-spine .step:nth-child(3)::before{opacity:.8}
+  .s-spine .step:nth-child(4)::before{background:rgba(0,0,0,.35);opacity:1}
+  .s-spine .step:nth-child(4) .sx{color:rgba(20,15,5,.6)}
+  .s-spine .step:nth-child(4) .sw{color:#1a1206}
+  .s-spine .step:nth-child(4) .sd{color:rgba(26,18,6,.82)}
+  .spine-sub{font-size:clamp(1.1rem,2vw,1.45rem);line-height:1.38;color:var(--ink);font-weight:600;letter-spacing:-.01em;text-wrap:balance;max-width:40ch}
+  .spine-hand{font-size:clamp(.8rem,1.2vw,.95rem);color:var(--ink-2);border-left:2px solid var(--amber);padding-left:14px;line-height:1.45;max-width:48ch}
+
+  /* speaker + controls */
+  .speaker{width:100%;max-width:1180px;padding:2px 28px 0;display:flex;gap:13px;align-items:flex-start;min-height:56px}
+  .say{font-family:var(--mono);font-size:.58rem;letter-spacing:.16em;color:var(--amber);font-weight:600;padding-top:3px;flex:0 0 auto}
+  .saytext{font-size:clamp(.9rem,1.35vw,1.04rem);line-height:1.5;color:var(--ink-2);max-width:66ch}
+
+  .controls{width:100%;max-width:1180px;padding:8px 28px 32px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+  .dots{display:flex;gap:9px}
+  .dot{width:8px;height:8px;border-radius:50%;background:#39434E;border:none;padding:0;cursor:pointer;transition:background .25s,transform .25s}
+  .dot:hover{background:var(--ink-3)}
+  .dot.on{background:var(--amber);transform:scale(1.2)}
+  .btns{display:flex;gap:10px}
+  .btn{font-family:var(--sans);font-size:.74rem;letter-spacing:.04em;background:var(--bg-2);color:var(--ink);border:1px solid var(--line);padding:9px 17px;border-radius:7px;cursor:pointer;transition:border-color .2s,background .2s,color .2s}
+  .btn:hover{border-color:var(--amber);color:var(--amber)}
+  .btn:disabled{color:var(--ink-3);cursor:default;opacity:.5}
+  .btn:focus-visible,.dot:focus-visible{outline:2px solid var(--amber);outline-offset:3px}
+  .hint{font-family:var(--mono);font-size:.64rem;letter-spacing:.04em;color:var(--ink-3)}
+
+  /* disclosures */
+  .s-discl{flex-direction:column;justify-content:center;gap:clamp(14px,2.1vw,26px)}
+  .s-discl h1{font-size:clamp(1.9rem,3.9vw,3rem);font-weight:700;letter-spacing:-.025em;line-height:1.02}
+  .discl-grid{display:flex;gap:clamp(14px,2vw,22px) clamp(26px,4.4vw,64px);align-items:flex-start;flex-wrap:wrap}
+  .discl-roles{flex:1 1 100%;display:flex;flex-direction:column;gap:clamp(12px,1.7vw,20px);min-width:0}
+  .discl-support{flex:1 1 100%;min-width:0}
+  .drole-k{font-family:var(--mono);font-size:clamp(.82rem,1.15vw,.96rem);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:9px}
+  .dsupp-k{font-family:var(--mono);font-size:clamp(.82rem,1.15vw,.96rem);letter-spacing:.16em;text-transform:uppercase;color:var(--amber);font-weight:600;margin-bottom:11px}
+  .dchips{display:flex;flex-wrap:wrap;gap:7px}
+  .dchip{font-family:var(--mono);font-size:clamp(.76rem,1.08vw,.9rem);letter-spacing:.02em;color:var(--ink-2);border:1px solid var(--line);border-radius:6px;padding:6px 11px;background:linear-gradient(180deg,var(--bg-3),var(--bg-2))}
+
+  @media (max-width:720px){
+    .s-open,.s-report{flex-direction:column;justify-content:center;gap:18px}
+    .s-open .viewport,.s-report .viewport{height:auto;width:50%;max-width:210px;aspect-ratio:3/4}
+    .hint{display:none}
+  }
+  @media (prefers-reduced-motion:reduce){.slide{transition:opacity .12s ease}}
+</style>
+
+<div class="topbar">
+  <div class="brand"><b>Thirty Years, Three Eras</b> &nbsp;·&nbsp; IWBI 2026 · Opening</div>
+  <div class="counter">SLIDE <b id="cur">1</b> / 6</div>
+</div>
+
+<div class="stage">
+  <div class="frame" id="frame">
+    <canvas id="motif"></canvas>
+
+    <section class="slide s-title active" data-note="[Title card] Thirty Years, Three Eras: AI in Breast Imaging, from CAD to Clinical Intelligence. — Hari Trivedi, Emory University.">
+      <div class="t-kick">International Workshop on Breast Imaging · 2026</div>
+      <div class="t-hero">
+        <h1>Thirty Years,<br><span class="am">Three Eras.</span></h1>
+        <p class="t-sub">AI in Breast Imaging — from CAD to Clinical Intelligence</p>
+        <p class="t-by"><b>Hari Trivedi, MD</b> &nbsp;·&nbsp; Emory University</p>
+      </div>
+    </section>
+
+    <section class="slide s-discl" data-note="Quickly, my disclosures. I'm a founder of Avera AI and Lightbox AI, Associate CMIO at HOPPR, and I advise croviz.ai, Solis Mammography, Sirona Medical, Flatiron Health, Coefficient, Verily Life Sciences, and the Biodata Consortium. My research and the work in this talk have received industry and foundation support from the organizations listed on the right. None of these relationships dictated the content of this talk.">
+      <span class="eyebrow">Disclosures</span>
+      <h1>Disclosures</h1>
+      <div class="discl-grid">
+        <div class="discl-roles">
+          <div><div class="drole-k">Founder</div><div class="dchips"><span class="dchip">Avera AI</span><span class="dchip">Lightbox AI</span></div></div>
+          <div><div class="drole-k">Associate CMIO</div><div class="dchips"><span class="dchip">HOPPR</span></div></div>
+          <div><div class="drole-k">Advisor</div><div class="dchips"><span class="dchip">croviz.ai</span><span class="dchip">Solis Mammography</span><span class="dchip">Sirona Medical</span><span class="dchip">Flatiron Health</span><span class="dchip">Coefficient</span><span class="dchip">Verily Life Sciences</span><span class="dchip">Biodata Consortium</span></div></div>
+        </div>
+        <div class="discl-support">
+          <div class="dsupp-k">Industry / Foundation Support</div>
+          <div class="dchips">
+            <span class="dchip">Simbiosys</span><span class="dchip">HOPPR</span><span class="dchip">Clairity</span><span class="dchip">Lunit</span><span class="dchip">DeepLook Medical</span><span class="dchip">Kheiron Medical</span><span class="dchip">GE</span><span class="dchip">IBIS</span><span class="dchip">Radicait</span><span class="dchip">Voio</span><span class="dchip">Appelai</span><span class="dchip">Georgia CTSA</span><span class="dchip">RSNA</span><span class="dchip">SIR</span><span class="dchip">Nightingale Open Science</span><span class="dchip">Lacuna Fund</span><span class="dchip">Meridian Foundation</span><span class="dchip">Gates Ventures</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide s-open" data-note="As you all know, this is a screening mammogram. In fact, a normal one — and it was read as normal. This is a real, de-identified exam from Emory. This is what we do today.">
+      <div class="viewport">
+        <div class="vp-head"><span>R MLO · screening</span><span class="tag">AI —</span></div>
+        <div class="vp-body"><canvas class="mammo"></canvas><span class="vp-note">[ placeholder — swap real de-identified Emory case ]</span></div>
+      </div>
+      <div class="copy">
+        <h1>A normal screening mammogram — read as normal.</h1>
+      </div>
+    </section>
+
+    <section class="slide s-report" data-note="Two radiologists read this and were right — there is no cancer to see today. So the question I want to pose is: what are we not seeing? What I want to describe by the end of this talk is how AI models — past, present, and future — read this same mammogram, and her eventual biopsy slide, and extract information that is not visible to us. The first estimates a high probability of breast cancer within about five years — which she did develop. The second quantifies calcification in her breast arteries — an independent cardiovascular risk marker, with a measurable dose-response. The third, applied to the slide from her eventual biopsy, estimates a recurrence score we currently send to a genomics lab for about four thousand dollars. None of these is hypothetical. Each is published and externally validated, and one is already in this year's screening guidelines.">
+      <div class="viewport">
+        <div class="vp-head"><span>R MLO · screening</span><span class="tag">AI ✓✓✓</span></div>
+        <div class="vp-body"><canvas class="mammo"></canvas></div>
+      </div>
+      <div class="report">
+        <h2 style="font-size:clamp(1.7rem,3.4vw,2.7rem);max-width:15ch;margin-bottom:clamp(8px,1.4vw,16px)">What are we <span class="q">not seeing?</span></h2>
+        <p style="font-size:clamp(1rem,1.55vw,1.32rem);line-height:1.32;color:var(--ink);font-weight:600;max-width:26ch">AI reads this <span class="q">same mammogram</span> and her biopsy slide — not just the <b>lesion</b>, but the <span class="q">patient.</span></p>
+      </div>
+    </section>
+
+    <section class="slide s-spine" data-note="So over the next thirty minutes or so, I want to take you on a short journey of how we got here and where we can expect to go: from the lesion, to the image, to the patient. And I'll start with a cautionary tale, because this field has overpromised before.">
+      <h2 class="spine-title">From lesions to <span class="am">patients.</span></h2>
+      <div class="spine-row">
+        <div class="step"><div class="sx">01</div><div class="se" style="font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin:2px 0 1px">Past</div><div class="sw">Lesion</div><div class="sd">find &amp; characterize</div></div>
+        <div class="step"><div class="sx">02</div><div class="se" style="font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin:2px 0 1px">Present</div><div class="sw">Image</div><div class="sd">risk &amp; opportunistic signal</div></div>
+        <div class="step"><div class="sx">03</div><div class="se" style="font-family:var(--mono);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber);margin:2px 0 1px">Future</div><div class="sw">Patient</div><div class="sd">pathology + integration</div></div>
+      </div>
+    </section>
+
+    <!-- closing: step into a time machine -->
+    <section class="slide" style="flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:clamp(14px,2.4vw,28px)" data-note="To understand where this is going, we have to start with where it has been — because this field has overpromised before. So let's step into a time machine and go back to the beginning, to 1998.">
+      <h1 style="font-size:clamp(2rem,4.6vw,3.4rem);font-weight:700;letter-spacing:-.025em;line-height:1.04;max-width:20ch">Let's step into a <span style="color:var(--amber)">time machine.</span></h1>
+      <svg viewBox="0 0 560 320" style="width:min(520px,70%);height:auto" role="img" aria-label="Step into a time machine — back to 1998">
+          <defs><radialGradient id="g98" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#5FB7C9" stop-opacity=".5"/><stop offset="1" stop-color="#5FB7C9" stop-opacity="0"/></radialGradient></defs>
+          <g fill="none" stroke="#5FB7C9"><circle cx="280" cy="162" r="150" stroke-opacity=".12"/><circle cx="280" cy="162" r="116" stroke-opacity=".2"/><circle cx="280" cy="162" r="84" stroke-opacity=".34"/><circle cx="280" cy="162" r="54" stroke-opacity=".6"/></g>
+          <circle cx="280" cy="162" r="50" fill="url(#g98)"/>
+          <path d="M 392 96 A 150 150 0 1 0 404 214" fill="none" stroke="#E7AC51" stroke-width="2.6" stroke-linecap="round"/><path d="M 392 96 l 16 -3 l -9 17 z" fill="#E7AC51"/>
+          <g font-family="SFMono-Regular,Menlo,monospace" text-anchor="middle" font-weight="bold"><text x="280" y="30" font-size="15" fill="#9DA9B5">2026</text><text x="280" y="62" font-size="13.5" fill="#7C8893">2016</text><text x="280" y="92" font-size="12" fill="#5C6975">2008</text></g>
+          <g stroke="#5FB7C9" stroke-width="2.4" fill="none" stroke-linecap="round"><circle cx="280" cy="150" r="20" stroke-opacity=".9"/><line x1="280" y1="150" x2="280" y2="136"/><line x1="280" y1="150" x2="291" y2="156"/></g>
+          <text x="280" y="200" text-anchor="middle" font-family="SFMono-Regular,Menlo,monospace" font-size="24" font-weight="bold" fill="#5FB7C9">1998</text>
+        </svg>
+      <p style="color:var(--ink-2);font-size:clamp(1rem,1.5vw,1.2rem);max-width:44ch">This field has overpromised before. Let's start there — in 1998.</p>
+    </section>
+
+  </div>
+
+  <div class="speaker"><span class="say">SAY</span><p class="saytext" id="note"></p></div>
+</div>
+
+<div class="controls">
+  <div class="dots" id="dots"></div>
+  <div class="hint">← → arrow keys to navigate</div>
+  <div class="btns">
+    <button class="btn" id="prev">← Prev</button>
+    <button class="btn" id="next">Next →</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var i=0,n=slides.length;
+  var curEl=document.getElementById('cur'),noteEl=document.getElementById('note');
+  var prevB=document.getElementById('prev'),nextB=document.getElementById('next'),dotsWrap=document.getElementById('dots');
+  var dots=slides.map(function(_,idx){
+    var b=document.createElement('button');b.className='dot'+(idx===0?' on':'');b.setAttribute('aria-label','Slide '+(idx+1));
+    b.addEventListener('click',function(){go(idx);});dotsWrap.appendChild(b);return b;});
+  function show(idx){
+    slides.forEach(function(s,k){s.classList.toggle('active',k===idx);});
+    dots.forEach(function(d,k){d.classList.toggle('on',k===idx);});
+    curEl.textContent=idx+1;noteEl.textContent=slides[idx].getAttribute('data-note')||'';
+    prevB.disabled=idx===0;nextB.disabled=idx===n-1;}
+  function go(idx){i=Math.max(0,Math.min(n-1,idx));show(i);}
+  nextB.addEventListener('click',function(){go(i+1);});
+  prevB.addEventListener('click',function(){go(i-1);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key===' '||e.key==='PageDown'){e.preventDefault();go(i+1);}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){e.preventDefault();go(i-1);}
+    else if(e.key==='Home'){go(0);}else if(e.key==='End'){go(n-1);}});
+
+  /* density-contour signature motif */
+  function drawMotif(c){
+    var dpr=Math.min(window.devicePixelRatio||1,2);var r=c.getBoundingClientRect();
+    var w=Math.max(8,Math.round(r.width*dpr)),h=Math.max(8,Math.round(r.height*dpr));
+    c.width=w;c.height=h;var x=c.getContext('2d');x.clearRect(0,0,w,h);
+    var fx=w*0.84, fy=h*0.20;            // focal point upper-right
+    var rings=22;
+    for(var k=1;k<=rings;k++){
+      var rad=(k/rings)*Math.max(w,h)*0.95;
+      var a=0.085*(1-k/rings)+0.012;
+      x.beginPath();
+      for(var t=0;t<=Math.PI*2+0.01;t+=0.18){
+        var pert=1 + 0.10*Math.sin(t*3 + k*0.5) + 0.06*Math.cos(t*5 - k*0.3);
+        var px=fx+Math.cos(t)*rad*pert;
+        var py=fy+Math.sin(t)*rad*pert*0.9;
+        if(t===0)x.moveTo(px,py);else x.lineTo(px,py);
+      }
+      x.closePath();
+      x.strokeStyle='rgba(231,172,81,'+a.toFixed(3)+')';
+      x.lineWidth=1;x.stroke();
+    }
+  }
+
+  function renderMammo(canvas){
+    var dpr=Math.min(window.devicePixelRatio||1,2);var r=canvas.getBoundingClientRect();
+    var w=Math.max(8,Math.round(r.width*dpr)),h=Math.max(8,Math.round(r.height*dpr));
+    canvas.width=w;canvas.height=h;var ctx=canvas.getContext('2d');
+    ctx.clearRect(0,0,w,h);ctx.fillStyle='#06090c';ctx.fillRect(0,0,w,h);
+    function contour(){ctx.beginPath();ctx.moveTo(0,h*0.05);
+      ctx.quadraticCurveTo(w*0.62,h*0.10,w*0.95,h*0.50);
+      ctx.quadraticCurveTo(w*0.62,h*0.93,0,h*0.985);ctx.lineTo(0,h*0.05);ctx.closePath();}
+    ctx.save();contour();ctx.clip();
+    var g=ctx.createRadialGradient(w*0.16,h*0.5,w*0.02,w*0.16,h*0.5,w*0.98);
+    g.addColorStop(0,'rgba(230,233,238,0.92)');g.addColorStop(0.30,'rgba(170,176,186,0.78)');
+    g.addColorStop(0.60,'rgba(98,105,116,0.55)');g.addColorStop(0.85,'rgba(46,52,62,0.30)');g.addColorStop(1,'rgba(16,20,27,0.10)');
+    ctx.fillStyle=g;ctx.fillRect(0,0,w,h);
+    var pg=ctx.createLinearGradient(0,0,w*0.5,h*0.5);pg.addColorStop(0,'rgba(222,226,232,0.20)');pg.addColorStop(1,'rgba(222,226,232,0)');
+    ctx.fillStyle=pg;ctx.beginPath();ctx.moveTo(0,0);ctx.lineTo(w*0.46,0);ctx.lineTo(0,h*0.66);ctx.closePath();ctx.fill();
+    ctx.globalCompositeOperation='lighter';
+    for(var k=0;k<150;k++){var bias=Math.pow(Math.random(),1.7);
+      var bx=w*(0.05+bias*0.72),by=h*(0.16+Math.random()*0.68);
+      var rad=(w*0.012)+Math.random()*(w*0.055)*(1-bias*0.5);var a=0.05+Math.random()*0.10*(1-bias*0.4);
+      var bg=ctx.createRadialGradient(bx,by,0,bx,by,rad);
+      bg.addColorStop(0,'rgba(228,232,238,'+a.toFixed(3)+')');bg.addColorStop(1,'rgba(228,232,238,0)');
+      ctx.fillStyle=bg;ctx.beginPath();ctx.arc(bx,by,rad,0,Math.PI*2);ctx.fill();}
+    for(var d=0;d<10;d++){var sy=h*(0.28+Math.random()*0.44);
+      ctx.strokeStyle='rgba(224,229,235,'+(0.05+Math.random()*0.06).toFixed(3)+')';ctx.lineWidth=Math.max(1,w*0.004);
+      ctx.beginPath();ctx.moveTo(w*0.12,sy);ctx.quadraticCurveTo(w*0.5,sy+(Math.random()-0.5)*h*0.1,w*0.9,h*0.5);ctx.stroke();}
+    ctx.globalCompositeOperation='source-over';
+    ctx.lineWidth=Math.max(1,w*0.0035);ctx.strokeStyle='rgba(216,222,230,0.30)';contour();ctx.stroke();ctx.restore();
+    var vg=ctx.createRadialGradient(w*0.42,h*0.5,h*0.2,w*0.42,h*0.5,h*0.8);
+    vg.addColorStop(0,'rgba(0,0,0,0)');vg.addColorStop(1,'rgba(0,0,0,0.5)');ctx.fillStyle=vg;ctx.fillRect(0,0,w,h);}
+
+  function renderAll(){
+    var m=document.getElementById('motif'); if(m) drawMotif(m);
+    document.querySelectorAll('canvas.mammo').forEach(renderMammo);}
+  var t;window.addEventListener('resize',function(){clearTimeout(t);t=setTimeout(renderAll,160);});
+  requestAnimationFrame(function(){requestAnimationFrame(renderAll);});setTimeout(renderAll,300);
+  show(0);
+})();
+</script>
