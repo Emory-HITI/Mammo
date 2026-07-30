@@ -10,11 +10,12 @@ from pptx.util import Inches, Pt, Emu
 from pptx.dml.color import RGBColor
 from pptx.enum.text import PP_ALIGN, MSO_ANCHOR, MSO_AUTO_SIZE
 from pptx.enum.shapes import MSO_SHAPE
+from deckpaths import LAYOUT, SECTIONS, bg_motif
 
 SW, SH = 13.333, 7.5
 BG = RGBColor(0x0F, 0x14, 0x1A)
 TMP = tempfile.mkdtemp()
-BGIMG = os.path.join(os.path.dirname(os.path.abspath(__file__)), "assets", "bg_motif.png")
+BGIMG = str(bg_motif())
 ALIGN = {"left": PP_ALIGN.LEFT, "center": PP_ALIGN.CENTER, "right": PP_ALIGN.RIGHT,
          "justify": PP_ALIGN.JUSTIFY, "start": PP_ALIGN.LEFT, "end": PP_ALIGN.RIGHT}
 
@@ -50,7 +51,7 @@ def data_png(src):
     return p
 
 def build(name):
-    data = json.load(open("/home/user/Mammo/keynote-iwbi-2026/pptx/layout/%s.json" % name))
+    data = json.load(open(str(LAYOUT / ("%s.json" % name))))
     prs = Presentation(); prs.slide_width = Inches(SW); prs.slide_height = Inches(SH)
     blank = prs.slide_layouts[6]
     nvis = 0
@@ -136,7 +137,7 @@ def build(name):
                         f.size = Pt(pt); f.bold = rn.get("bold", False); f.italic = rn.get("italic", False)
                         f.name = "Consolas" if "mono" in (u.get("family", "").lower()) or "consol" in u.get("family", "").lower() or "sfmono" in u.get("family", "").lower() else "Arial"
                         f.color.rgb = rgb(rn.get("color"))
-    out = "/home/user/Mammo/keynote-iwbi-2026/pptx/sections/%s" % MAP[name]
+    out = str(SECTIONS / MAP[name])
     os.makedirs(os.path.dirname(out), exist_ok=True); prs.save(out)
     print("%s -> %s (%d slides)" % (name, MAP[name], nvis))
 

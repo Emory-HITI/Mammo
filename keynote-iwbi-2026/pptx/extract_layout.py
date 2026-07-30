@@ -5,6 +5,7 @@ builder consumes. Frame px → inches by frame width; font px → pt by the same
 scale. This makes the PPTX a faithful match of the HTML render."""
 import sys, json, pathlib
 from playwright.sync_api import sync_playwright
+from deckpaths import SLIDES, LAYOUT
 
 CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 JS = r"""
@@ -81,7 +82,7 @@ JS = r"""
 """
 
 def extract(name):
-    url = "file://" + str(pathlib.Path("/home/user/Mammo/keynote-iwbi-2026/slides/%s.html" % name).resolve())
+    url = "file://" + str((SLIDES / ("%s.html" % name)).resolve())
     out = []
     with sync_playwright() as p:
         b = p.chromium.launch(executable_path=CHROME, args=["--no-sandbox"])
@@ -101,7 +102,7 @@ def extract(name):
 if __name__ == "__main__":
     name = sys.argv[1]
     data = extract(name)
-    dest = "/home/user/Mammo/keynote-iwbi-2026/pptx/layout/%s.json" % name
+    dest = str(LAYOUT / ("%s.json" % name))
     pathlib.Path(dest).parent.mkdir(parents=True, exist_ok=True)
     json.dump(data, open(dest, "w"))
     vis = sum(1 for s in data if not s["hidden"])

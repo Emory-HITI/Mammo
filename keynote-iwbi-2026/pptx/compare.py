@@ -14,9 +14,8 @@ import sys, os, pathlib
 from PIL import Image, ImageDraw, ImageFont
 from playwright.sync_api import sync_playwright
 import render_pptx
+from deckpaths import SLIDES, SECTIONS
 
-HERE = pathlib.Path(__file__).resolve().parent
-SLIDES = HERE.parent / "slides"
 CHROME = "/opt/pw-browsers/chromium-1194/chrome-linux/chrome"
 MAP = {"hook": "IWBI2026_Trivedi_00_hook.pptx", "section1": "IWBI2026_Trivedi_01_CAD.pptx",
        "section2": "IWBI2026_Trivedi_02_EraII.pptx", "section2b": "IWBI2026_Trivedi_02b_EraII_2026.pptx",
@@ -48,7 +47,7 @@ def html_slides(name):
 
 def main(name, out=None):
     out = out or "compare_%s.png" % name
-    pptx = str(HERE / "sections" / MAP[name])
+    pptx = str(SECTIONS / MAP[name])
     html = html_slides(name)
     ppt = render_pptx.render_slides(pptx)
     n = max(len(html), len(ppt))

@@ -15,7 +15,23 @@ The HTML deck in `keynote-iwbi-2026/slides/` is the **source of truth**. This
 skill produces an editable `.pptx` that faithfully reproduces one HTML file by
 reading the browser's *computed* layout (positions, font sizes, colors) — not by
 re-guessing sizes. It supersedes the older hand-tuned per-section scripts for any
-new conversion. All commands run from `keynote-iwbi-2026/pptx/`.
+new conversion.
+
+## Where the scripts live & how they find the deck
+The pipeline scripts live in **two places**, kept identical:
+- **In the repo:** `keynote-iwbi-2026/pptx/` (the fallback; auto-available to any
+  session on the Mammo repo).
+- **Bundled with this skill:** `scripts/` (so the skill is self-contained when
+  uploaded to the Anthropic Skills library).
+
+`deckpaths.py` locates the deck (`keynote-iwbi-2026/`) so the scripts work from
+either place, in this order: **`$KEYNOTE_DECK`** (if it contains `slides/`) →
+walk up from the current dir for `keynote-iwbi-2026/slides/` → the repo layout
+relative to the script. So: run from anywhere inside a Mammo checkout and it just
+works; or `export KEYNOTE_DECK=/path/to/keynote-iwbi-2026` to point it explicitly.
+Run the commands from `keynote-iwbi-2026/pptx/` (repo) **or** the skill's
+`scripts/` dir — both resolve the same deck. The scripts still need the deck's
+`slides/*.html` present to read and write output into `<deck>/pptx/sections/`.
 
 ## The three scripts (do not re-invent)
 - `extract_layout.py <name>` — opens `slides/<name>.html` in Playwright at a
@@ -93,6 +109,16 @@ new conversion. All commands run from `keynote-iwbi-2026/pptx/`.
   real PowerPoint; see the title-wrap caveat above.
 - Output slides are 13.333×7.5 in (16:9). Every slide gets `assets/bg_motif.png`
   behind an amber accent bar.
+
+## Packaging / dependencies
+Bundled under `scripts/`: `deckpaths.py`, `extract_layout.py`,
+`build_from_layout.py`, `compare.py`, `render_pptx.py`, and `assets/bg_motif.png`.
+Python deps (pip): `playwright` (+ the Chromium at
+`/opt/pw-browsers/chromium-1194/chrome-linux/chrome`), `cairosvg`, `python-pptx`,
+`pillow`, `beautifulsoup4`. In a freshly recycled container these may need
+reinstalling: `pip install playwright cairosvg python-pptx pillow beautifulsoup4`.
+(Note: a piped `python3 -c import… | tail` masks a failed import behind `tail`'s
+exit 0 — check imports directly.)
 
 ## Relationship to the `keynote-slides` skill
 `keynote-slides` covers the whole deck (authoring HTML, the design-system tokens,
